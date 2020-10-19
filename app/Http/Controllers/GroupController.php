@@ -45,4 +45,12 @@ class GroupController extends Controller
         );
         return view ('admin.groupsgrid')->with($data);
     }
+    public function destroy($id)
+    {
+        Groups::destroy($id);
+    }
+    public function faqs()
+    {
+        
+    }
 }

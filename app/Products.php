@@ -18,4 +18,12 @@ class Products extends Model
     {
         return $this->belongsToMany('App\Groups');
     }
+    public function categories()
+    {
+        return $this->belongsToMany('App\Categories');
+    }
+    public function colors()
+    {
+        return $this->belongsToMany('App\Colors');
+    }
 }

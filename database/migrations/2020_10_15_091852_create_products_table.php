@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('sizes')->nullable();
             $table->integer('price');
             $table->text('description');
+            $table->boolean('enabled');
             $table->timestamps();
         });
     }

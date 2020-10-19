@@ -1,31 +1,43 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
 
+<div class="az-content-label mg-b-5 ">All Products </div>
+<p class="mg-b-10 ">A form control layout using flex-column to create vertical alignment.</p>
+<hr>
+
 
 <div class="table-responsive">
     <table class="table mg-b-0">
       <thead>
          
         <tr>
-          <th>ID</th>
+          <th>Image</th>
           <th>Name</th>
           <th>Sizes</th>
           <th>Price</th>
-          <th>Description</th>
-          <th>Image</th>
+          <th>Status</th>
+          <th>Actions</th>
+          {{-- <th>Image</th> --}}
         </tr>
       </thead>
       <tbody>
         @foreach ($products as $product)
         <tr >
-        <th  class="align-middle" scope="row">{{$product->id}}</th>
+        <th  class="align-middle" scope="row">
+          <a href="www.google.com">
+          <img src="{{ asset($product->images[0]->url)}}"  class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+        </a>
+        </th>
             <td class="align-middle" >{{$product->name}}</td>
             <td class="align-middle" >{{$product->sizes}}</td>
             <td class="align-middle" >{{$product->price}}</td>
-            <td class="align-middle" >{{$product->description}}</td>
             <td class="align-middle"> 
-                <img src="https://via.placeholder.com/500x334" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+              <span class="badge badge-pill badge-primary {{$product->enabled == 1 ? 'badge-success':'badge-danger'}}  "> {{$product->enabled == 1 ? 'Active':'Disabled'}}  </span>
             </td>
+            {{-- <td class="align-middle" >{{$product->description}}</td> --}}
+            {{-- <td class="align-middle"> 
+                <img src="https://via.placeholder.com/500x334" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+            </td> --}}
             <td>
                 <div class="row">
                    

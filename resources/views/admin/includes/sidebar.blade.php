@@ -83,16 +83,17 @@
             <ul class="nav-sub">
               <li class="nav-sub-item"><a  href="{{ route('group.form') }}" class="nav-sub-link">Add Group</a></li>
               <li class="nav-sub-item"><a  href="{{ route('group.grid') }}" class="nav-sub-link">Groups Grid</a></li>
+              <li class="nav-sub-item"><a  href="{{ route('group.faqs') }}" class="nav-sub-link">Add Group Faqs</a></li>
               {{-- <li class="nav-sub-item"><a href="form-validation.html" class="nav-sub-link">Form Validation</a></li>
               <li class="nav-sub-item"><a href="form-wizards.html" class="nav-sub-link">Form Wizards</a></li>
               <li class="nav-sub-item"><a href="form-editor.html" class="nav-sub-link">WYSIWYG Editor</a></li> --}}
             </ul>
           </li><!-- nav-item -->
           <li class="nav-item">
-            <a href="" class="nav-link with-sub"><i class="typcn typcn-chart-bar-outline"></i>Charts</a>
+            <a href="" class="nav-link with-sub"><i class="typcn typcn-chart-bar-outline"></i>Categories</a>
             <ul class="nav-sub">
-              <li class="nav-sub-item"><a href="chart-morris.html" class="nav-sub-link">Morris Charts</a></li>
-              <li class="nav-sub-item"><a href="chart-flot.html" class="nav-sub-link">Flot Charts</a></li>
+              <li class="nav-sub-item"><a href="{{ route('category.form') }}" class="nav-sub-link">Add Categories</a></li>
+              <li class="nav-sub-item"><a href="{{ route('category.grid') }}" class="nav-sub-link">Categories Grid</a></li>
               {{-- <li class="nav-sub-item"><a href="chart-chartjs.html" class="nav-sub-link">ChartJS</a></li>
               <li class="nav-sub-item"><a href="chart-sparkline.html" class="nav-sub-link">Sparkline</a></li>
               <li class="nav-sub-item"><a href="chart-peity.html" class="nav-sub-link">Peity</a></li> --}}

@@ -34,12 +34,19 @@ Route::post('/groupSubmit','GroupController@submitGroup')->name('submit.group');
 Route::get('/groupedit/{id}', 'GroupController@editgroup')->name('group.edit');
 Route::get('/groupgrid', 'GroupController@groupgrid')->name('group.grid');
 Route::delete('/deletegroup/{id}','GroupController@destroy')->name('group.delete');
+Route::delete('/groupfaqs','GroupController@faqs')->name('group.faqs');
 
 Route::get('/designadd', 'DesignController@index')->name('design.form');
 Route::post('/designSubmit','DesignController@submitDesign')->name('submit.design');
 Route::get('/designedit/{id}', 'DesignController@editdesign')->name('design.edit');
 Route::get('/designgrid', 'DesignController@designgrid')->name('design.grid');
 Route::delete('/deletedesign/{id}','DesignController@destroy')->name('design.delete');
+
+Route::get('/categoryadd', 'CategoryController@index')->name('category.form');
+Route::post('/categorySubmit','CategoryController@submitCategory')->name('submit.category');
+Route::get('/categoryedit/{id}', 'CategoryController@editcategory')->name('category.edit');
+Route::get('/categorygrid', 'CategoryController@categorygrid')->name('category.grid');
+Route::delete('/deletecategory/{id}','CategoryController@destroy')->name('category.delete');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // });

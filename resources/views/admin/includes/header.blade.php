@@ -17,7 +17,12 @@
     <link href="{{ asset('res/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('res/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('res/typicons.font/typicons.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/select2/css/select2.min.css') }}" rel="stylesheet">
+    {{-- <link href="../lib/select2/css/select2.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('res/azia.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+    
 
     {{-- <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="../lib/typicons.font/typicons.css" rel="stylesheet"> --}}

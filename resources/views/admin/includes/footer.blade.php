@@ -11,7 +11,10 @@
 <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('res/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('res/ionicons/ionicons.js') }}"></script>
+<script src="{{ asset('res/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/azia.js') }}"></script>
+
+{{-- <script src=""></script> --}}
 {{-- <script src="{{ asset('res/jqvmap/jquery.vmap.min.js') }}"></script>
 <script src="{{ asset('res/jqvmap/maps/jquery.vmap.world.js') }}"></script> --}}
 

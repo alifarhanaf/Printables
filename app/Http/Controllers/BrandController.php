@@ -24,7 +24,9 @@ class BrandController extends Controller
         return view ('admin.brandsgrid')->with($data);
     }
 
+
     public function submitBrand(Request $request){
+        dd($request);
 
         $imageName = time().'.'.$request->image->extension();  
         $path = base_path() . '/public/storage/brandImages/';
@@ -45,5 +47,20 @@ class BrandController extends Controller
         $brandimage->save();
 
        
+    }
+
+    public function editbrand($id){
+        
+
+        $brands = Brands::where('id',$id)->get();
+        $data = array(
+            "brands"=> $brands,
+        );
+        return view ('admin.editbrandform')->with($data);
+    }
+
+    public function destroy($id)
+    {
+        Brands::destroy($id);
     }
 }
