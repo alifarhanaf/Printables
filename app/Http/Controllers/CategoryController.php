@@ -6,6 +6,8 @@ use App\Images;
 use App\Categories;
 use App\CategoriesImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,14 @@ class CategoryController extends Controller
         return view ('admin.categoryform');
     }
 
-    public function submitCategory(Request $request){
+    public function submitCategory(CategoryRequest $request){
+
+        DB::beginTransaction();
+        try {
+            $category = new Categories();
+            $category->name = request('name');
+            $category->description = request('description');
+            $category->save();
 
         $imageName = time().'.'.$request->image->extension();  
         $path = base_path() . '/public/storage/categoryImages/';
@@ -23,16 +32,19 @@ class CategoryController extends Controller
         $image = new Images();
         $image->url =$imageurl;
         $image->save();
-        $category = new Categories();
-        $category->name = request('name');
-        $category->description = request('description');
-        $category->save();
+        
         $imageid = $image->id;
         $categoryid = $category->id;
         $categoryimage = new CategoriesImages();
         $categoryimage->images_id = $imageid;
         $categoryimage->categories_id = $categoryid;
         $categoryimage->save();
+        DB::commit();
+        return redirect()->route('category.form')->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('category.form')->with('message',$ex->getMessage());
+        }
 
        
     }

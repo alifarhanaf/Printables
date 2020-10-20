@@ -146,6 +146,9 @@ sub {
 
 sup {
   top: -.5em; }
+#typed a:hover{
+  color: #e3e7ed;
+  }
 
 a {
   color: #3366ff;

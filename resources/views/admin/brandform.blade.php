@@ -2,6 +2,40 @@
 @include('admin.includes.sidebar')
           <form action="{{ route('submit.brand') }}" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
+
+
+          @if(session('message') && session('message')=='Success')
+  <div class="alert alert-success ">
+    <ul>
+        
+            {{ session('message') }}
+        
+    </ul>
+</div>
+@elseif(session('message'))
+<div class="alert alert-danger ">
+  <ul>
+      
+          <li>{{ session('message') }}</li>
+      
+  </ul>
+</div>
+@endif
+
+  @if ($errors->any() )
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+
+
+
           <div class="pd-20  bg-gray-200">
             <div class="row">
               <div class="col-md-9">
@@ -51,12 +85,6 @@
           <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
         
 
-        
-
-          
-
-          
-
             <div class="row ">  
               <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
                 <input style="height: 15px" class="align-middle form-control" type="radio"  name="enable" value="1" >
@@ -97,10 +125,15 @@
 @include('admin.includes.footer')
 
 <script>
-  ClassicEditor
+      ClassicEditor
         .create( document.querySelector( '#editor' ) )
         .catch( error => {
             console.error( error );
-        } );
+      } );
+
+        $(function() {
+        var timeout = 3000; // in miliseconds (3*1000)
+        $('.alert').delay(timeout).fadeOut(300);
+        });
         
 </script>

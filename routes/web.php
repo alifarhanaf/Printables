@@ -31,10 +31,13 @@ Route::delete('/deletebrand/{id}','BrandController@destroy')->name('brand.delete
 
 Route::get('/groupadd', 'GroupController@index')->name('group.form');
 Route::post('/groupSubmit','GroupController@submitGroup')->name('submit.group');
+Route::post('/groupFAQSubmit','GroupController@submitGroupFAQ')->name('submit.group.faq');
 Route::get('/groupedit/{id}', 'GroupController@editgroup')->name('group.edit');
+Route::post('/groupeditsubmit/{id}', 'GroupController@editgroupSubmit')->name('group.edit.submit');
 Route::get('/groupgrid', 'GroupController@groupgrid')->name('group.grid');
 Route::delete('/deletegroup/{id}','GroupController@destroy')->name('group.delete');
-Route::delete('/groupfaqs','GroupController@faqs')->name('group.faqs');
+Route::delete('/groupfaqs','GroupController@faqsindex')->name('group.faqs');
+Route::delete('/deletegroupfaq/{id}','GroupController@faqsdestroy')->name('group.faq.delete');
 
 Route::get('/designadd', 'DesignController@index')->name('design.form');
 Route::post('/designSubmit','DesignController@submitDesign')->name('submit.design');
@@ -42,11 +45,16 @@ Route::get('/designedit/{id}', 'DesignController@editdesign')->name('design.edit
 Route::get('/designgrid', 'DesignController@designgrid')->name('design.grid');
 Route::delete('/deletedesign/{id}','DesignController@destroy')->name('design.delete');
 
+
 Route::get('/categoryadd', 'CategoryController@index')->name('category.form');
 Route::post('/categorySubmit','CategoryController@submitCategory')->name('submit.category');
 Route::get('/categoryedit/{id}', 'CategoryController@editcategory')->name('category.edit');
 Route::get('/categorygrid', 'CategoryController@categorygrid')->name('category.grid');
 Route::delete('/deletecategory/{id}','CategoryController@destroy')->name('category.delete');
+
+
+Route::get('/faqadd', 'FaqController@index')->name('faq.form');
+Route::get('/faqsubmit', 'FaqController@submitfaq')->name('submit.faq');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // });

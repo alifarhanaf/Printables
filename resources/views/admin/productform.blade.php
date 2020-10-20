@@ -13,9 +13,41 @@
 <form action="{{ route('submit.product') }}" method="POST" enctype="multipart/form-data">
 @endif
 
-<form action="{{ route('submit.product') }}" method="POST" enctype="multipart/form-data">
+{{-- <form action="{{ route('submit.product') }}" method="POST" enctype="multipart/form-data"> --}}
   {{ csrf_field() }}
+
+  @if(session('message') && session('message')=='Success')
+  <div class="alert alert-success ">
+    <ul>
+        
+            {{ session('message') }}
+        
+    </ul>
+</div>
+@elseif(session('message'))
+<div class="alert alert-danger ">
+  <ul>
+      
+          <li>{{ session('message') }}</li>
+      
+  </ul>
+</div>
+@endif
+
+  @if ($errors->any() )
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
   <div class="pd-20  bg-gray-200">
+
+    
     <div class="row">
       <div class="col-md-9">
         <div class="az-content-label mg-b-5 ">
@@ -219,7 +251,7 @@
           @endif --}}
           @foreach ($groups as $group)
           <div class="checkbox">
-            <li>
+            <li style="list-style-type: none;">
             <label>  <input name="group_id" type="checkbox" value="{{$group->id}}"
               @if(isset($product)) 
               {{$group->id == $product->groups[0]->id ? 'checked':''}} 
@@ -235,7 +267,7 @@
           @foreach ($brands as $brand)
           <div class="checkbox">
            
-              <li>
+              <li style="list-style-type: none;">
               
             <label>  <input name="brand_id" type="checkbox" value="{{$brand->id}}" 
               @if(isset($product))
@@ -252,7 +284,7 @@
           </div>
           @foreach ($categories as $category)
           <div class="checkbox">
-            <li>
+            <li style="list-style-type: none;">
             <label>  <input name="categories_id" type="checkbox" value="{{$category->id}}"
               @if(isset($product))
               {{$category->id == $product->categories[0]->id ? 'checked':''}}
@@ -383,4 +415,9 @@
         .catch( error => {
             console.error( error );
         } );
+
+        $(function() {
+        var timeout = 3000; // in miliseconds (3*1000)
+        $('.alert').delay(timeout).fadeOut(300);
+        });
 </script>

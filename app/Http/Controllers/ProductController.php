@@ -12,6 +12,7 @@ use App\GroupsProducts;
 use App\ImagesProducts;
 use App\CategoriesProducts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ProductRequest;
 
 
@@ -88,12 +89,12 @@ class ProductController extends Controller
     public function editProductSubmit(Request $request,$id){
         // dd($id);
         dd($request);
-        $sizes - [];
-        foreach($request->sizes as $sizes){
-            array_push($sizes,$sizes);
+        // $sizes = [];
+        // foreach($request->sizes as $sizes){
+        //     array_push($sizes,$sizes);
 
-        };
-        dd($sizes);
+        // };
+        // dd($sizes);
 
         // $imageName = time().'.'.$request->image->extension();  
         // $path = base_path() . '/public/storage/productImages/';
@@ -105,10 +106,12 @@ class ProductController extends Controller
         // $image->url =$imageurl;
         // $image->save();
         // $product = new Products();
+        $str = implode(', ', $request->sizes);
+
         $product = Products::find($id);
         // dd($product->brands[0]->id);
         $product->name = request('name');
-        $product->sizes = request('sizes');
+        $product->sizes = $str;
         $product->price = request('price');
         $product->enabled = request('enable');
         $product->description = request('description');
@@ -116,28 +119,33 @@ class ProductController extends Controller
         // dd($product->id);
         // $imageid = $image->id;
         $productid = $product->id;
+        // dd($productid);
         // $productimage = ProductImages::find()
         // $productimage = new ProductImages();
         // $productimage->products_id = $productid;
         // $productimage->images_id = $imageid;
         // $productimage->save();
-        $brandproducts = BrandsProducts::find($product->brands[0]->id);
-        // dd($brandproducts);
+        $brandproducts = BrandsProducts::where('brands_id',$product->brands[0]->id);
+        dd($brandproducts);
 
         $brandproducts->brands_id = request('brand_id');
         $brandproducts->products_id = $productid;
         $brandproducts->save();
+        dd($brandproducts->id);
 
-        $groupproducts = GroupsProducts::find($product->groups[0]->id);
+        $groupproducts = GroupsProducts::where('products_id',$productid);
         $groupproducts->groups_id = request('group_id');
         $groupproducts->products_id = $productid;
         $groupproducts->save();
+        $done = 'All done';
+        dd($done);
+
 
 
     }
 
 
-    public function submitProduct(Request $request){
+    public function submitProduct(ProductRequest $request){
         // dd($request);
         // $sizes1=[];
         // for($i=0;$i++;$i<sizeof($request->sizes)){
@@ -148,8 +156,13 @@ class ProductController extends Controller
         //     array_push($sizes1,$sizes);
 
         // };
+
+        $i=0;
         $str = implode(', ', $request->sizes);
         // dd($str);
+
+        DB::beginTransaction();
+        try {
         $product = new Products();
         $product->name = request('name');
         $product->sizes = $str;
@@ -158,7 +171,7 @@ class ProductController extends Controller
         $product->enabled = request('enable');
         $product->save();
         $productid = $product->id;
-        $i=0;
+        
         foreach($request->images as $file){
         // $imageName = time().'.'.$file->extension();
         $imageName = time().$i.'.'.$file->extension();  
@@ -189,7 +202,12 @@ class ProductController extends Controller
         $categoryproducts->categories_id = request('categories_id');
         $categoryproducts->products_id = $productid;
         $categoryproducts->save();
-        return redirect()->route('product.form');
+        DB::commit();
+        return redirect()->route('product.form')->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('product.form')->with('message',$ex->getMessage());
+        }
     }
     public function destroy($id)
     {

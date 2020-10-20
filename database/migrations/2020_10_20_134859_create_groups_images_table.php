@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupsFaqsTable extends Migration
+class CreateGroupsImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateGroupsFaqsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups_faqs', function (Blueprint $table) {
+        Schema::create('groups_images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('groups_id')->unsigned()->nullable();
             $table->foreign('groups_id')->references('id')->on('groups')->onDelete('cascade');
 
-            $table->integer('faqs_id')->unsigned()->nullable();
-            $table->foreign('faqs_id')->references('id')->on('faqs')->onDelete('cascade');
+            $table->integer('images_id')->unsigned()->nullable();
+            $table->foreign('images_id')->references('id')->on('images')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateGroupsFaqsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups_faqs');
+        Schema::dropIfExists('groups_images');
     }
 }

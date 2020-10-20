@@ -10,4 +10,8 @@ class Images extends Model
     {
         return $this->belongsToMany('App\Products');
     }
+    public function groups()
+    {
+        return $this->belongsToMany('App\Groups');
+    }
 }
