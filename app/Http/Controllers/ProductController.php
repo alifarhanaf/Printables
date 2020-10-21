@@ -24,18 +24,15 @@ class ProductController extends Controller
     {
     $this->middleware('auth');
     }
-
+    // For Products Grid
     public function productgrid(){
         $products = Products::all();
-        // $groups = Groups::all();
-        // dd($products);
         $data = array(
             "products"=> $products,
-            // "groups"=> $groups,
         );
         return view ('admin.productgrid')->with($data);
     }
-
+    // Product Add Form
     public function index(){
         $brands = Brands::all();
         $groups = Groups::all();
@@ -48,36 +45,12 @@ class ProductController extends Controller
         );
         return view ('admin.productform')->with($data);
     }
-      /**
-     * To save the item For Later .
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //Product Edit Form
     public function editproduct($id){
-        // // dd($id);
-        // $products = Products::find(1)->images;
-        // $productss = Products::all();
-        // dd($productss[0]->groups);
-        // // foreach($products[0]->images() as $images){
-        // //     dd($images[0]);
-        // // };
-        // foreach($products as $product){
-        //     // if($product->images()->count() > 0) {
-        //     //     foreach($product->images() as $image) {
-        //     //         dd($image);
-        //     //     }
-        //     // }
-        //     dd($product[1]);
-            
-        // }
-
         $product = Products::where('id',$id)->get();
-        // dd($product[0]->images);
         $groups = Groups::all();
         $brands = Brands::all();
         $categories = Categories::all();
-        // dd($brands);
         $data = array(
             "product"=> $product,
             "brands"=> $brands,
@@ -86,81 +59,51 @@ class ProductController extends Controller
         );
         return view ('admin.productform')->with($data);
     }
+    //Product Update Method
     public function editProductSubmit(Request $request,$id){
-        // dd($id);
-        dd($request);
-        // $sizes = [];
-        // foreach($request->sizes as $sizes){
-        //     array_push($sizes,$sizes);
 
-        // };
-        // dd($sizes);
-
-        // $imageName = time().'.'.$request->image->extension();  
-        // $path = base_path() . '/public/storage/productImages/';
-        // $pathsave =  '/storage/productImages/';
-        
-        // $request->image->move($path, $imageName);
-        // $imageurl = $pathsave.$imageName;
-        // $image = new Images();
-        // $image->url =$imageurl;
-        // $image->save();
-        // $product = new Products();
+        $i=0;
         $str = implode(', ', $request->sizes);
-
-        $product = Products::find($id);
-        // dd($product->brands[0]->id);
+        DB::beginTransaction();
+        try {
+        $product = Products::find($id);        
         $product->name = request('name');
         $product->sizes = $str;
         $product->price = request('price');
         $product->enabled = request('enable');
         $product->description = request('description');
         $product->save();
-        // dd($product->id);
-        // $imageid = $image->id;
-        $productid = $product->id;
-        // dd($productid);
-        // $productimage = ProductImages::find()
-        // $productimage = new ProductImages();
-        // $productimage->products_id = $productid;
-        // $productimage->images_id = $imageid;
-        // $productimage->save();
-        $brandproducts = BrandsProducts::where('brands_id',$product->brands[0]->id);
-        dd($brandproducts);
-
-        $brandproducts->brands_id = request('brand_id');
-        $brandproducts->products_id = $productid;
-        $brandproducts->save();
-        dd($brandproducts->id);
-
-        $groupproducts = GroupsProducts::where('products_id',$productid);
-        $groupproducts->groups_id = request('group_id');
-        $groupproducts->products_id = $productid;
-        $groupproducts->save();
-        $done = 'All done';
-        dd($done);
-
-
-
+        if ($request->hasFile('image')) {
+            foreach($request->images as $file){
+                $imageName = time().$i.'.'.$file->extension();  
+                $path = base_path() . '/public/storage/productImages/';
+                $pathsave =  '/storage/productImages/';
+                $file->move($path, $imageName);
+                $imageurl = $pathsave.$imageName;
+                $image = new Images();
+                $image->url =$imageurl;
+                $image->save();
+                $imageid = $image->id;
+                $product->images()->sync($imageid);
+                $i++;
+                };
+        }
+        $product->brands()->sync(request('brand_id'));
+        $product->groups()->sync(request('group_id'));
+        $product->categories()->sync(request('categories_id'));
+        DB::commit();
+        return redirect()->route('product.form')->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('product.form')->with('message',$ex->getMessage());
+        }
+        
+        
     }
-
-
+    //Product Submit Method
     public function submitProduct(ProductRequest $request){
-        // dd($request);
-        // $sizes1=[];
-        // for($i=0;$i++;$i<sizeof($request->sizes)){
-        //     $sizes1[i]== $request->sizes[i];
-
-        // };
-        // foreach($request->sizes as $sizes){
-        //     array_push($sizes1,$sizes);
-
-        // };
-
         $i=0;
         $str = implode(', ', $request->sizes);
-        // dd($str);
-
         DB::beginTransaction();
         try {
         $product = new Products();
@@ -171,9 +114,7 @@ class ProductController extends Controller
         $product->enabled = request('enable');
         $product->save();
         $productid = $product->id;
-        
         foreach($request->images as $file){
-        // $imageName = time().'.'.$file->extension();
         $imageName = time().$i.'.'.$file->extension();  
         $path = base_path() . '/public/storage/productImages/';
         $pathsave =  '/storage/productImages/';
@@ -183,25 +124,12 @@ class ProductController extends Controller
         $image->url =$imageurl;
         $image->save();
         $imageid = $image->id;
-        $productimage = new ImagesProducts();
-        $productimage->products_id = $productid;
-        $productimage->images_id = $imageid;
-        $productimage->save();
+        $product->images()->sync($imageid);
         $i++;
-
         };
-        $brandproducts = new BrandsProducts();
-        $brandproducts->brands_id = request('brand_id');
-        $brandproducts->products_id = $productid;
-        $brandproducts->save();
-        $groupproducts = new GroupsProducts();
-        $groupproducts->groups_id = request('group_id');
-        $groupproducts->products_id = $productid;
-        $groupproducts->save();
-        $categoryproducts = new CategoriesProducts();
-        $categoryproducts->categories_id = request('categories_id');
-        $categoryproducts->products_id = $productid;
-        $categoryproducts->save();
+        $product->brands()->sync(request('brand_id'));
+        $product->groups()->sync(request('group_id'));
+        $product->categories()->sync(request('categories_id'));
         DB::commit();
         return redirect()->route('product.form')->with('message','Success');
         } catch (\Exception $ex) {
@@ -209,14 +137,50 @@ class ProductController extends Controller
             return redirect()->route('product.form')->with('message',$ex->getMessage());
         }
     }
+    //Product Delete Method
     public function destroy($id)
     {
+        $imageids = [];
+        DB::beginTransaction();
+        try {
+        $product = Products::find($id);
+        if($product->images){
+        foreach($product->images as $images){
+            array_push($imageids,$images['id']);
+        };
+        Images::destroy($imageids);
+        $product->images()->detach($imageids);
+        }
+        $brandid =$product->brands[0]->id;
+        $groupid =$product->groups[0]->id;
+        $categoryid =$product->categories[0]->id;
+        $product->groups()->detach($groupid);
+        $product->categories()->detach($categoryid);
+        $product->brands()->detach($brandid);
         Products::destroy($id);
+        DB::commit();
+        return redirect()->route('product.grid')->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('product.grid')->with('message',$ex->getMessage());
+        }
+    }
+    //Delete Images From Product Method
+    public function destroyimage($id)
+    {
+        DB::beginTransaction();
+        try {
+        $image = Images::find($id);
+        $product_id = $image->products[0]->id;
+        $image->products()->detach($product_id);
+        Images::destroy($id);
+        DB::commit();
+        return redirect()->route('product.edit',$product_id)->with('message','Image Deleted Successfully');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('product.edit',$product_id)->with('message',$ex->getMessage());
+        }
     }
 
-    public function productdetail($id)
-    {
-        $product = Products::find($id);
-        
-    }
+    
 }

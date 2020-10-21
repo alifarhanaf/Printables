@@ -63,3 +63,68 @@ h2 {
 	display:none;
 	
 	}
+.list-group{
+	max-height: 100px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.card-header{
+	background: transparent;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #5b47fb;
+	position: relative;
+	width: auto;
+    padding: 10px;
+	border: 1px solid #5b47fb;
+	
+}
+
+.container1 {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: transparent;
+}
+
+.container1:hover .overlay {
+  opacity: 1;
+}
+
+.icon {
+  color: #5b47fb;
+  font-size: 30px;
+  position:absolute;
+   /* top:0;
+   right:20%; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  /* text-align: center;  */
+}
+
+.fa-user:hover {
+  color: #eee;
+}

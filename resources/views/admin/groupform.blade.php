@@ -8,8 +8,9 @@
 <form action="{{ route('group.edit.submit',$group->id) }}" method="POST" enctype="multipart/form-data">
   @else 
 <form action="{{ route('submit.group') }}" method="POST" enctype="multipart/form-data">
-  {{ csrf_field() }}
   @endif
+  {{ csrf_field() }}
+  
 
   @if(session('message') && session('message')=='Success')
   <div class="alert alert-success ">
@@ -86,18 +87,18 @@
               <div class="col-lg">
                 <textarea id="editor" name="description" rows="6" class="form-control"
                 @if(isset($group)) 
-                placeholder="{{$group->description}}"
+                placeholder="{{$group->description}}">{{$group->description}}
                 @else 
-                placeholder="Description"
+                placeholder="Description">
                 @endif
-                ></textarea>
+                </textarea>
               </div>
           </div>
 
               <div class="row row-sm mg-t-15">
                 <div class="col-sm-7 col-md-6 col-lg-4">
                   <div class="custom-file">
-                    <input name="image" type="file" class="custom-file-input" id="customFile">
+                    <input name="image" type="file" class="custom-file-input" id="customFile" >
                     <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
                 </div>
@@ -202,12 +203,19 @@
 
 
         <div class="col-md-3 mg-t-15">
-          <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
+          <div class="d-flex flex-column wd-md-100% pd-10 pd-sm-20 bg-gray-200">
         
 
             <div class="row ">  
               <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
-                <input style="height: 15px" class="align-middle form-control" type="radio"  name="enable" value="1" >
+                <input style="height: 15px" class="align-middle form-control" type="radio"  name="enable" value="1"
+                @if(isset($group))
+                
+             
+                {{$group->enabled == 1 ? 'checked':''}}
+           
+                @endif
+                >
               </div>
               <div>
                 <label >
@@ -219,7 +227,11 @@
             </div>
             <div class="row ">  
               <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
-                <input style="height: 15px" class=" align-middle form-control" type="radio"  name="enable" value="0" >
+                <input style="height: 15px" class=" align-middle form-control" type="radio"  name="enable" value="0"
+                @if(isset($group)) 
+                {{$group->enabled == 0 ? 'checked':''}}
+                @endif
+                >
               </div>
               <div>
                 <label >
@@ -228,6 +240,41 @@
               </div>
             </div>
              
+
+          </div>
+          
+          <div class="d-flex flex-column wd-md-100% pd-20 pd-sm-20 mg-t-10 bg-gray-200">
+            <div  class=" az-content-label" >
+            <p style=" margin-bottom: 0.5rem;" >Profile Image</p> 
+          </div>
+          
+          <div class="row  mg-t-20">
+            @if(isset($group))
+            @foreach ($group->images as $images)
+            
+            <div class="container1 mg-t-5 " style="max-width: 100%; padding-left:15%; padding-right:10%">
+              <img src="{{ asset($images->url)}} " class="h-125px product-thumbnail   " alt="Responsive image" >
+              <div class="overlay">
+                
+                  
+                    {{-- <button type="submit"> --}}
+                    <form action="{{ route('group.image.delete',$images->id) }}" method="POST">
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE')}}
+                      <button style="background:transparent; border:hidden;" type="submit" class="icon" title="Delete Group Profile">
+                    <i class="typcn typcn-delete"></i>
+                  </form>
+                </button>
+              
+              
+              </div>
+            </div>
+            @endforeach
+         
+            @endif
+           
+          </div>
+
 
           </div>
        

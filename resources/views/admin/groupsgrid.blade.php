@@ -13,18 +13,21 @@
         <tr>
           <th>Image</th>
           <th>Name</th>
-          <th></th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($groups as $group)
         <tr >
-        <th  class="align-middle" scope="row"><img src="https://via.placeholder.com/500x334" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image"></th>
+        <th  class="align-middle" scope="row">
+          <img src="{{ isset($group->images[0]->url) ? asset($group->images[0]->url) : 'https://via.placeholder.com/500' }}"  class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+         
+        </th>
             <td class="align-middle" >{{$group->name}}</td>
             
             <td class="align-middle"> 
-            
+              <span class="badge badge-pill badge-primary {{$group->enabled == 1 ? 'badge-success':'badge-danger'}}  "> {{$group->enabled == 1 ? 'Active':'Disabled'}}  </span>
             </td>
             <td>
                 <div class="row">

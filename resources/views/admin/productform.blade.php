@@ -1,4 +1,5 @@
 @include('admin.includes.header')
+
 @include('admin.includes.sidebar')
 
     
@@ -66,6 +67,7 @@
           Publish Product
           @endif
         </button>
+        <form>
       </div>
     </div>
   {{-- <div class="az-content-label mg-b-5 ">Enter New Product</div>
@@ -97,12 +99,12 @@
                 <div class="col-lg">
                   <textarea id="editor" name="description" rows="6" class="form-control" 
                   @if(isset($product))
-                  placeholder="{{$product->description}}"
+                  placeholder="{{$product->description}}">{{$product->description}}
                   @else
-                  placeholder=""
+                  placeholder="">
                   @endif
                   
-                  ></textarea>
+                  </textarea>
                 </div>
             </div>
             <div class="form-group row row-sm mg-t-10">
@@ -174,15 +176,45 @@
                   </div>
                 </div>
               </div>
-              <div class="mh-50px mg-t-20">
+            </form>
+
+              
+
+
+
+              <div class="row row-sm mh-50px mg-t-20">
               @if(isset($product))
               @foreach ($product->images as $images)
               
-              <img src="{{ asset($images->url)}} " class="h-125px product-thumbnail wd-100p  wd-sm-200 " alt="Responsive image">    
+              <div class="container1 mg-t-5">
+                <img src="{{ asset($images->url)}} " class="h-125px product-thumbnail wd-100p  wd-sm-200 " alt="Responsive image">
+                <div class="overlay">
+                  
+                    
+                      {{-- <button type="submit"> --}}
+                      <form action="{{ route('product.image.delete',$images->id) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE')}}
+                        <button style="background:transparent; border:hidden;" type="submit" class="icon" title="User Profile">
+                      <i class="typcn typcn-delete"></i>
+                    </form>
+                  </button>
+                
+                
+                </div>
+              </div>
               
+              {{-- <img src="{{ asset($images->url)}} " class="h-125px product-thumbnail wd-100p  wd-sm-200 " alt="Responsive image">  --}}
+              
+              
+             
+              {{-- <div class="overlay"></div> --}}
+             {{-- <div class="button"><a href="#"> BUTTON </a>   --}}
+             
               @endforeach
               @endif
               </div>
+           
 
             {{-- <button style="width: fit-content;" type="submit" class="mg-t-20 btn btn-az-primary pd-x-20"> Save </button> --}}
           </div>
@@ -190,7 +222,7 @@
         </div>
        
         <div class="col-md-3 mg-t-15">
-          <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
+          <div class="d-flex flex-column wd-md-100% pd-10 pd-sm-20 bg-gray-200">
           {{-- <div class="form-group mg-t-100 mg-lg-t-0 ">
 
             <select name="brand_ids[]" class="form-control select2" multiple="multiple">
@@ -219,9 +251,9 @@
             </select>
           </div> --}}
 
-          <div style="margin-top: 2%;" class="mg-b-0 az-content-label" >
+          {{-- <div style="margin-top: 2%;" class="mg-b-0 az-content-label" >
             <p style=" margin-bottom: 0.5rem;" >Status</p> 
-          </div>
+          </div> --}}
           <div style="margin-left: 8%">
           <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
             @if(isset($product))
@@ -239,8 +271,15 @@
 
           </div>
 
-          <div style="margin-top: 2%;" class="mg-b-0 az-content-label">
-            <p style="margin-bottom: 0.5rem;" >Select Groups</p> 
+        </div>
+        <div class="d-flex flex-column wd-md-100% pd-20 pd-sm-30 bg-gray-200 mg-t-20">
+
+          <div style="margin-top: 7%;" class=" az-content-label">
+            <a class="bg-gray-200 card-header " data-toggle="collapse" 
+            href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
+            style="padding-left: 20%; padding-right: 20%; width: -webkit-fill-available; text-align: left;" 
+          ><b>Select Groups</b></a>
+            {{-- <p style="margin-bottom: 0.5rem;" >Select Groups</p>  --}}
           </div>
           {{-- @if(isset($product))
           <div class="checkbox">
@@ -249,21 +288,38 @@
             </li>
           </div>
           @endif --}}
+          <div  class="bg-gray-100 mg-b-10">
+          <ul id="collapseExample" class="list-group mg-t-20" style="padding-left: 8%;">
           @foreach ($groups as $group)
+          
+          
           <div class="checkbox">
+            
             <li style="list-style-type: none;">
             <label>  <input name="group_id" type="checkbox" value="{{$group->id}}"
-              @if(isset($product)) 
+              @if(isset($product->groups[0])) 
               {{$group->id == $product->groups[0]->id ? 'checked':''}} 
               @endif
                > &nbsp{{$group->name}}</label>
             </li>
+          
           </div>
+        
           @endforeach
+        </ul>
+      </div>
 
-          <div style="margin-top: 2%;" class="mg-b-0 az-content-label" >
-            <p style="margin-bottom: 0.5rem;" >Select Brand</p> 
+
+
+          <div style="margin-top: 7%;" class=" az-content-label" >
+            <a class="bg-gray-200 card-header" data-toggle="collapse" 
+            href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" 
+            style="padding-left: 20%; padding-right: 20%; width: -webkit-fill-available; text-align: left;" 
+          ><b>Select Brands</b></a>
+            {{-- <p style="margin-bottom: 0.5rem;" >Select Brand</p>  --}}
           </div>
+          <div  class="bg-gray-100 mg-b-10">
+          <ul id="collapseExample1" class="list-group mg-t-20" style="padding-left: 8%;">
           @foreach ($brands as $brand)
           <div class="checkbox">
            
@@ -278,10 +334,19 @@
         
           </div>
           @endforeach
-
-          <div style="margin-top: 2%;" class="mg-b-0 az-content-label">
-            <p style="margin-bottom: 0.5rem;" >Select Categories</p> 
+          </ul>
           </div>
+          
+
+          <div style="margin-top: 7%;" class=" az-content-label ">
+            <a class="bg-gray-200 card-header" data-toggle="collapse" 
+            href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" 
+            style="padding-left: 15%; padding-right: 16%; width: -webkit-fill-available; text-align: left;" 
+          ><b>Select Category </b></a>
+            {{-- <p style="margin-bottom: 0.5rem;" >Select Categories</p>  --}}
+          </div>
+          <div  class="bg-gray-100 mg-b-10">
+          <ul id="collapseExample2" class="list-group mg-t-20" style="padding-left: 8%;">
           @foreach ($categories as $category)
           <div class="checkbox">
             <li style="list-style-type: none;">
@@ -293,6 +358,8 @@
             </li>
           </div>
           @endforeach
+          </ul>
+          </div>
           {{-- <div class="checkbox">
             <label><input type="checkbox" value="{{$group->id}}">{{$group->name}}</label>
           </div>

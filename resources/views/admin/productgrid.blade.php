@@ -25,7 +25,7 @@
         <tr >
         <th  class="align-middle" scope="row">
           <a href="www.google.com">
-          <img src="{{ asset($product->images[0]->url)}}"  class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+          <img src="{{ isset($product->images[0]->url) ? asset($product->images[0]->url) : 'https://via.placeholder.com/500' }}"  class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
         </a>
         </th>
             <td class="align-middle" >{{$product->name}}</td>
