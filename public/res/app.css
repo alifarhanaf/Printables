@@ -128,3 +128,16 @@ h2 {
 .fa-user:hover {
   color: #eee;
 }
+
+.grid-btn{
+	width: 30px;
+                    height: 30px;
+                    background: #98AFC7;
+                    border: #98AFC7;
+                    border-radius: 5px;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+}

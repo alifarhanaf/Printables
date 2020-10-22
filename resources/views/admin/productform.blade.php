@@ -60,14 +60,14 @@
         </div>
       </div>
       <div class="col-md-3 text-center">
-        <button type="submit" style="width: fit-content;" class=" btn btn-az-primary pd-x-20">
+        {{-- <button type="submit" style="width: fit-content;" class=" btn btn-az-primary pd-x-20">
           @if(isset($product))
           Update Product
           @else
           Publish Product
           @endif
-        </button>
-        <form>
+        </button> --}}
+       
       </div>
     </div>
   {{-- <div class="az-content-label mg-b-5 ">Enter New Product</div>
@@ -82,7 +82,8 @@
           
 
           <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
-           
+
+            <label class="form-label mg-b-10 pd-l-5"><b>Enter Product Name:</b></label>
             <div class="form-group">
               
               <input name="name" type="text" class="form-control" 
@@ -95,7 +96,9 @@
               @endif
               >
             </div>
-            <div class="form-group row row-sm mg-t-10 mg-b-10">
+
+            <label class="form-label mg-b-10 pd-l-5"><b>Enter Description:</b></label>
+            <div class="form-group row row-sm  mg-b-10">
                 <div class="col-lg">
                   <textarea id="editor" name="description" rows="6" class="form-control" 
                   @if(isset($product))
@@ -107,7 +110,9 @@
                   </textarea>
                 </div>
             </div>
-            <div class="form-group row row-sm mg-t-10">
+
+            <label class="form-label mg-b-10 pd-l-5"><b>Select Size:</b></label>
+            <div class="form-group row row-sm ">
               <div class="col-lg">
               <select name="sizes[]" class="form-control select2" multiple="multiple">
                 <option value="S" selected>S</option>
@@ -120,7 +125,9 @@
                   {{-- <textarea name="sizes" rows="3" class="form-control" placeholder="Sizes"></textarea> --}}
                 </div>
             </div>
-            <div class="form-group mg-t-20">
+
+            <label class="form-label mg-b-10 pd-l-5"><b>Enter Price:</b></label>
+            <div class="form-group ">
                 <input  name="price" type="text" class="form-control" 
                 @if(isset($product))
                 placeholder="{{$product->price}}" 
@@ -167,8 +174,8 @@
 
 
               
-    
-              <div class="form-group row row-sm mg-t-15">
+              <label class="form-label mg-b-10 pd-l-5"><b>Choose Image:</b></label>
+              <div class="form-group row row-sm ">
                 <div class="col-sm-7 col-md-6 col-lg-4">
                   <div class="custom-file">
                     <input name="images[]" type="file" class="custom-file-input"   multiple="multiple" id="customFile">
@@ -176,14 +183,16 @@
                   </div>
                 </div>
               </div>
+              
+              <button style="width: fit-content;" type="submit" class="mg-t-20 btn btn-az-primary pd-x-20"> Save </button>
             </form>
-
               
 
 
-
-              <div class="row row-sm mh-50px mg-t-20">
+            <label class="form-label mg-b-10 mg-t-20 pd-l-5"><b>Product Images:</b></label>
+              <div class="row row-sm mh-50px ">
               @if(isset($product))
+              
               @foreach ($product->images as $images)
               
               <div class="container1 mg-t-5">
@@ -192,12 +201,12 @@
                   
                     
                       {{-- <button type="submit"> --}}
-                      <form action="{{ route('product.image.delete',$images->id) }}" method="POST">
+                      <form class="form-inline" action="{{ route('product.image.delete',$images->id) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE')}}
                         <button style="background:transparent; border:hidden;" type="submit" class="icon" title="User Profile">
                       <i class="typcn typcn-delete"></i>
-                    </form>
+                        </form>
                   </button>
                 
                 
@@ -214,15 +223,185 @@
               @endforeach
               @endif
               </div>
-           
-
-            {{-- <button style="width: fit-content;" type="submit" class="mg-t-20 btn btn-az-primary pd-x-20"> Save </button> --}}
+              
+              
+              
+            
           </div>
 
         </div>
        
         <div class="col-md-3 mg-t-15">
-          <div class="d-flex flex-column wd-md-100% pd-10 pd-sm-20 bg-gray-200">
+
+          <div class="card bd-0">
+            <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+              Status
+            </div><!-- card-header -->
+            <div class="card-body bd bd-t-0">
+              <div style="margin-left: 8%">
+              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
+                @if(isset($product))
+                    
+                 
+                {{$product->enabled == 1 ? 'checked':''}}
+               
+                @endif
+                > <label style="margin-left: 3%">Enable</label><br>
+              </div>
+              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"
+                @if(isset($product)) 
+                {{$product->enabled == 0 ? 'checked':''}}
+                @endif
+                > <label style="margin-left: 3%">Disable</label><br>
+              </div>
+              </div>
+              
+            </div><!-- card-body -->
+          </div><!-- card -->
+
+
+          <div class="card bd-0 mg-t-10">
+            
+              <a id="collapsebtn" data-toggle="collapse" 
+            href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
+            style=" width: -webkit-fill-available; text-align: left;" 
+          ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+            
+          <b>Select Groups</b>
+        </div>
+        </a>
+              
+            <!-- card-header -->
+            <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+              
+              <ul style="padding-top:1.25rem; padding-left:8%;"   >
+                @foreach ($groups as $group)
+                
+                
+                <div class="checkbox" style="">
+                  
+                  <li style="list-style-type: none;">
+                  <label>  <input name="group_id" type="checkbox" value="{{$group->id}}"
+                    @if(isset($product->groups[0])) 
+                    {{$group->id == $product->groups[0]->id ? 'checked':''}} 
+                    @endif
+                     > &nbsp{{$group->name}}</label>
+                  </li>
+                
+                </div>
+              
+                @endforeach
+              </ul>
+              
+              
+            </div><!-- card-body -->
+          </div><!-- card -->
+
+          
+          <div class="card bd-0 mg-t-10">
+            
+              <a id="collapsebtn1" data-toggle="collapse" 
+            href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" 
+            style=" width: -webkit-fill-available; text-align: left;" 
+          >
+          <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+          <b>Select Brands</b>
+          </div>
+        </a>
+              {{-- Select Groups --}}
+            {{-- </div> --}}
+            <!-- card-header -->
+            <div id="collapseExample1" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0;  display:none;"  >
+              
+              <ul style="padding-top:1.25rem; padding-left:8%;"   >
+                @foreach ($brands as $brand)
+                
+                
+                <div class="checkbox" style="">
+                  
+                  <li style="list-style-type: none;">
+                  <label>  <input name="brand_id" type="checkbox" value="{{$brand->id}}"
+                    @if(isset($product->brands[0])) 
+                    {{$brand->id == $product->brands[0]->id ? 'checked':''}} 
+                    @endif
+                     > &nbsp{{$brand->name}}</label>
+                  </li>
+                
+                </div>
+              
+                @endforeach
+              </ul>
+              
+              
+            </div><!-- card-body -->
+          </div><!-- card -->
+
+
+          <div class="card bd-0 mg-t-10">
+            
+              <a id="collapsebtn2" data-toggle="collapse" 
+            href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" 
+            style=" width: -webkit-fill-available; text-align: left;" 
+          >
+          <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+          <b>Select Categories</b>
+          </div>
+          </a>
+              {{-- Select Groups --}}
+            {{-- </div> --}}
+            <!-- card-header -->
+            <div id="collapseExample2" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+              
+              <ul style="padding-top:1.25rem; padding-left:8%;"   >
+                @foreach ($categories as $category)
+                
+                
+                <div class="checkbox" style="">
+                  
+                  <li style="list-style-type: none;">
+                  <label>  <input name="categories_id" type="checkbox" value="{{$category->id}}"
+                    @if(isset($product->categories[0])) 
+                    {{$category->id == $product->categories[0]->id ? 'checked':''}} 
+                    @endif
+                     > &nbsp{{$category->name}}</label>
+                  </li>
+                
+                </div>
+              
+                @endforeach
+              </ul>
+              
+              
+            </div><!-- card-body -->
+          </div><!-- card -->
+
+
+
+
+
+          {{-- <div class="d-flex flex-column wd-md-100% pd-10 pd-sm-20 bg-gray-200">
+            <div style="margin-left: 8%">
+              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
+                @if(isset($product))
+                    
+                 
+                {{$product->enabled == 1 ? 'checked':''}}
+               
+                @endif
+                > <label style="margin-left: 3%">Enable</label><br>
+              </div>
+              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"
+                @if(isset($product)) 
+                {{$product->enabled == 0 ? 'checked':''}}
+                @endif
+                > <label style="margin-left: 3%">Disable</label><br>
+              </div>
+    
+              </div>
+    
+            </div> --}}
+
+
           {{-- <div class="form-group mg-t-100 mg-lg-t-0 ">
 
             <select name="brand_ids[]" class="form-control select2" multiple="multiple">
@@ -254,172 +433,8 @@
           {{-- <div style="margin-top: 2%;" class="mg-b-0 az-content-label" >
             <p style=" margin-bottom: 0.5rem;" >Status</p> 
           </div> --}}
-          <div style="margin-left: 8%">
-          <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
-            @if(isset($product))
-                
-             
-            {{$product->enabled == 1 ? 'checked':''}}
-           
-            @endif
-            > <label style="margin-left: 3%">Enable</label><br></div>
-          <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"
-            @if(isset($product)) 
-            {{$product->enabled == 0 ? 'checked':''}}
-            @endif
-            > <label style="margin-left: 3%">Disable</label><br></div>
-
-          </div>
-
-        </div>
-        <div class="d-flex flex-column wd-md-100% pd-20 pd-sm-30 bg-gray-200 mg-t-20">
-
-          <div style="margin-top: 7%;" class=" az-content-label">
-            <a class="bg-gray-200 card-header " data-toggle="collapse" 
-            href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
-            style="padding-left: 20%; padding-right: 20%; width: -webkit-fill-available; text-align: left;" 
-          ><b>Select Groups</b></a>
-            {{-- <p style="margin-bottom: 0.5rem;" >Select Groups</p>  --}}
-          </div>
-          {{-- @if(isset($product))
-          <div class="checkbox">
-            <li>
-            <label>  <input name="groups[]" type="checkbox" value="{{$product->groups[0]->id}}" checked> &nbsp{{$product->groups[0]->name}}</label>
-            </li>
-          </div>
-          @endif --}}
-          <div  class="bg-gray-100 mg-b-10">
-          <ul id="collapseExample" class="list-group mg-t-20" style="padding-left: 8%;">
-          @foreach ($groups as $group)
           
-          
-          <div class="checkbox">
-            
-            <li style="list-style-type: none;">
-            <label>  <input name="group_id" type="checkbox" value="{{$group->id}}"
-              @if(isset($product->groups[0])) 
-              {{$group->id == $product->groups[0]->id ? 'checked':''}} 
-              @endif
-               > &nbsp{{$group->name}}</label>
-            </li>
-          
-          </div>
         
-          @endforeach
-        </ul>
-      </div>
-
-
-
-          <div style="margin-top: 7%;" class=" az-content-label" >
-            <a class="bg-gray-200 card-header" data-toggle="collapse" 
-            href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" 
-            style="padding-left: 20%; padding-right: 20%; width: -webkit-fill-available; text-align: left;" 
-          ><b>Select Brands</b></a>
-            {{-- <p style="margin-bottom: 0.5rem;" >Select Brand</p>  --}}
-          </div>
-          <div  class="bg-gray-100 mg-b-10">
-          <ul id="collapseExample1" class="list-group mg-t-20" style="padding-left: 8%;">
-          @foreach ($brands as $brand)
-          <div class="checkbox">
-           
-              <li style="list-style-type: none;">
-              
-            <label>  <input name="brand_id" type="checkbox" value="{{$brand->id}}" 
-              @if(isset($product))
-              {{$brand->id == $product->brands[0]->id ? 'checked':''}}
-              @endif
-              > &nbsp{{$brand->name}}</label>
-          </li>
-        
-          </div>
-          @endforeach
-          </ul>
-          </div>
-          
-
-          <div style="margin-top: 7%;" class=" az-content-label ">
-            <a class="bg-gray-200 card-header" data-toggle="collapse" 
-            href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" 
-            style="padding-left: 15%; padding-right: 16%; width: -webkit-fill-available; text-align: left;" 
-          ><b>Select Category </b></a>
-            {{-- <p style="margin-bottom: 0.5rem;" >Select Categories</p>  --}}
-          </div>
-          <div  class="bg-gray-100 mg-b-10">
-          <ul id="collapseExample2" class="list-group mg-t-20" style="padding-left: 8%;">
-          @foreach ($categories as $category)
-          <div class="checkbox">
-            <li style="list-style-type: none;">
-            <label>  <input name="categories_id" type="checkbox" value="{{$category->id}}"
-              @if(isset($product))
-              {{$category->id == $product->categories[0]->id ? 'checked':''}}
-              @endif
-              > &nbsp{{$category->name}}</label>
-            </li>
-          </div>
-          @endforeach
-          </ul>
-          </div>
-          {{-- <div class="checkbox">
-            <label><input type="checkbox" value="{{$group->id}}">{{$group->name}}</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" value="">Option 2</label>
-          </div>
-          <div class="checkbox ">
-            <label><input type="checkbox" value="">Option 3</label>
-          </div> --}}
-
-          
-
-          {{-- <div class="az-toggle">
-            <span>
-             
-              </span></div> --}}
-
-              {{-- <div class=" switch-field ">
-                <input class="form-control" type="radio" id="radio-one" name="enable" value="1" checked/>
-                <label for="radio-one">Enable</label>
-                <input class="form-control" type="radio" id="radio-two" name="enable" value="0" />
-                <label for="radio-two">Disable</label>
-              </div> --}}
-              {{-- <div style="margin-top: 2%;" class="mg-b-0 az-content-label" >
-                <p style=" margin-bottom: 0.5rem;" >Status</p> 
-              </div> --}}
-
-
-              {{-- <div style="margin-left: 8%">
-              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"> <label style="margin-left: 3%">Enable</label><br></div>
-              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"> <label style="margin-left: 3%">Disable</label><br></div>
-              </div> --}}
-         
-         
-          
-              {{-- <div class="row ">  
-                <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
-                  <input style="height: 15px" class="align-middle form-control" type="radio"  name="enable" value="1" >
-                </div>
-                <div>
-                  <label >
-                    <span class="align-middle" style="padding-left : 0px" class="mg-t-5">Enable</span>
-                  </label>
-                </div>
-                  
-                
-              </div>
-              <div class="row ">  
-                <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
-                  <input style="height: 15px" class=" align-middle form-control" type="radio"  name="enable" value="0" >
-                </div>
-                <div>
-                  <label >
-                    <span  class="align-middle" style="padding-left : 0px" class="mg-t-5">Disbale</span>
-                  </label>
-                </div>
-              </div> --}}
-              {{-- End Radio Buttons --}}
-
-          </div>
        
           
 
@@ -431,6 +446,36 @@
 @include('admin.includes.footer')
 
 <script>
+
+document.getElementById("collapsebtn").addEventListener("click", function toffi(){
+  var sw = document.getElementById("collapseExample");
+  if (sw.style.display === "block") {
+    sw.style.display = "none";
+  } else {
+    sw.style.display = "block";
+  }
+  // console.log(sw.style.display);
+});
+document.getElementById("collapsebtn1").addEventListener("click", function toffi(){
+  var sw = document.getElementById("collapseExample1");
+  if (sw.style.display === "block") {
+    sw.style.display = "none";
+  } else {
+    sw.style.display = "block";
+  }
+  // console.log(sw.style.display);
+});
+document.getElementById("collapsebtn2").addEventListener("click", function toffi(){
+  var sw = document.getElementById("collapseExample2");
+  if (sw.style.display === "block") {
+    sw.style.display = "none";
+  } else {
+    sw.style.display = "block";
+  }
+  // console.log(sw.style.display);
+});
+
+
   // Additional code for adding placeholder in search box of select2
   (function($) {
     var Defaults = $.fn.select2.amd.require('select2/defaults');

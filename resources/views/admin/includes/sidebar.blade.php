@@ -83,7 +83,7 @@
             <ul class="nav-sub">
               <li class="nav-sub-item"><a  href="{{ route('group.form') }}" class="nav-sub-link">Add Group</a></li>
               <li class="nav-sub-item"><a  href="{{ route('group.grid') }}" class="nav-sub-link">Groups Grid</a></li>
-              <li class="nav-sub-item"><a  href="" class="nav-sub-link">Add Group Faqs</a></li>
+              <li class="nav-sub-item"><a  href="{{ route('printType.form') }}" class="nav-sub-link">Add Print Types</a></li>
               {{-- <li class="nav-sub-item"><a href="form-validation.html" class="nav-sub-link">Form Validation</a></li>
               <li class="nav-sub-item"><a href="form-wizards.html" class="nav-sub-link">Form Wizards</a></li>
               <li class="nav-sub-item"><a href="form-editor.html" class="nav-sub-link">WYSIWYG Editor</a></li> --}}

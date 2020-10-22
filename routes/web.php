@@ -33,6 +33,9 @@ Route::get('/groupgrid', 'GroupController@groupgrid')->name('group.grid');
 Route::delete('/deletegroup/{id}','GroupController@destroy')->name('group.delete');
 Route::delete('/groupimagedelete/{id}','GroupController@groupImageDelete')->name('group.image.delete');
 Route::delete('/deletegroupfaq/{id}','GroupController@faqsdestroy')->name('group.faq.delete');
+
+Route::get('/printTypeForm', 'PrintTypeController@index')->name('printType.form');
+Route::post('/printTypeSubmit','PrintTypeController@submitPrintType')->name('submit.printType');
 //Brands CRUD
 Route::get('/brandadd', 'BrandController@index')->name('brand.form');
 Route::post('/brandSubmit','BrandController@submitBrand')->name('submit.brand');
@@ -58,7 +61,7 @@ Route::delete('/deletecategory/{id}','CategoryController@destroy')->name('catego
 
 
 Route::get('/faqadd', 'FaqController@index')->name('faq.form');
-Route::get('/faqsubmit', 'FaqController@submitfaq')->name('submit.faq');
+Route::post('/faqsubmit', 'FaqController@submitfaq')->name('submit.faqs');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // });

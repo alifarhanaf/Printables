@@ -1,8 +1,33 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
 
-<div class="az-content-label mg-b-5 ">All Products </div>
-<p class="mg-b-10 ">A form control layout using flex-column to create vertical alignment.</p>
+<div class="pd-10  bg-gray-200">
+
+    
+  <div class="row">
+    <div class="col-md-9">
+      <div class="az-content-label mg-b-5 ">
+       
+        <p class="pd-t-10">All Products</p>
+        
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <a href="{{ route('product.form') }}">
+      <button  style="width: fit-content; font-size:10px; border-radius:5px; float:right;" class=" btn btn-outline-indigo btn-rounded btn-block ">
+      
+        Add New Product
+        
+      </button>
+    </a>
+      
+    </div>
+  </div>
+{{-- <div class="az-content-label mg-b-5 ">Enter New Product</div>
+<button type="submit" style="width: fit-content;" class="mg-t-20 btn btn-az-primary pd-x-20">Publish Brand</button> --}}
+
+</div>
+
 <hr>
 
 
@@ -43,13 +68,13 @@
                    
                     <form action="{{ route ('product.edit',$product->id) }}" >
                         {{ csrf_field() }}
-                <button type="submit" class="btn btn-indigo btn-icon"><i class="typcn typcn-edit"></i></button>
+                <button type="submit" class=" grid-btn" ><i class="typcn typcn-edit"></i></button>
                     </form>
                 &nbsp
                 <form action="{{ route('product.delete',$product->id) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE')}}
-                    <button  type="submit" class="btn btn-indigo btn-icon"><i class="typcn typcn-delete"></i></button>
+                    <button  type="submit" class=" grid-btn"><i class="typcn typcn-delete"></i></button>
                 </form>
                 
                 <div>

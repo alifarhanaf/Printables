@@ -18,4 +18,8 @@ class Groups extends Model
     {
         return $this->belongsToMany('App\Faqs');
     }
+    public function print_types()
+    {
+        return $this->belongsToMany('App\PrintTypes');
+    }
 }

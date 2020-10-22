@@ -7,6 +7,7 @@ use App\Groups;
 use App\Images;
 use App\FaqsGroups;
 use App\GroupsFaqs;
+use App\PrintTypes;
 use App\GroupImages;
 use App\GroupsImages;
 use Illuminate\Http\Request;
@@ -16,7 +17,11 @@ use App\Http\Requests\GroupRequest;
 class GroupController extends Controller
 {
     public function index(){
-        return view ('admin.groupform');
+        $printTypes = PrintTypes::all();
+        $data = array(
+            "printTypes"=> $printTypes,
+        );
+        return view ('admin.groupform')->with($data);
 
     }
     public function groupgrid(){
@@ -47,6 +52,7 @@ class GroupController extends Controller
     }
 
     public function submitGroup(GroupRequest $request){
+        // dd($request);
         DB::beginTransaction();
         try {
             $group = new Groups();
@@ -64,7 +70,10 @@ class GroupController extends Controller
         $image->url =$imageurl;
         $image->save();
         $imageid = $image->id;
-        $group->images()->sync($imageid);
+        // $printType = new PrintTypes();
+        $group->images()->attach($imageid);
+        $group->print_types()->attach(request('printType_ids'));
+        
         DB::commit();
         return redirect()->route('group.form')->with('message','Success');
         } catch (\Exception $ex) {
@@ -76,15 +85,18 @@ class GroupController extends Controller
     }
     public function editgroup($id){
         $group = Groups::where('id',$id)->get();
+        $printTypes = PrintTypes::all();
         $data = array(
             "group"=> $group,
+            "printTypes"=> $printTypes,
         );
         return view ('admin.groupform')->with($data);
     }
 
 
     public function editgroupSubmit(Request $request,$id){
-       
+        // $group = Groups::find($id);
+        // dd($group->printtypes);
         DB::beginTransaction();
         try {
             $group = Groups::find($id);

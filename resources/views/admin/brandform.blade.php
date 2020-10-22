@@ -55,17 +55,20 @@
             <div class="col-md-9 mg-t-15">
           
           <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
+            <label class="form-label mg-b-10 pd-l-5"><b>Brand Name:</b></label>
             <div class="form-group">
               <input name="name" type="text" class="form-control" placeholder="Enter Name">
             </div>
 
-            <div class="form-group row row-sm mg-t-10 mg-b-10">
+            <label class="form-label mg-b-10 pd-l-5"><b>Description:</b></label>
+            <div class="form-group row row-sm  mg-b-10">
               <div class="col-lg">
                 <textarea id="editor" name="description" rows="6" class="form-control" placeholder="Description"></textarea>
               </div>
           </div>
 
-              <div class="row row-sm mg-t-15">
+          <label class="form-label mg-b-10 pd-l-5"><b>Choose Image:</b></label>
+              <div class="row row-sm ">
                 <div class="col-sm-7 col-md-6 col-lg-4">
                   <div class="custom-file">
                     <input name="image" type="file" class="custom-file-input" id="customFile">
@@ -82,34 +85,32 @@
 
 
         <div class="col-md-3 mg-t-15">
-          <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
-        
-
-            <div class="row ">  
-              <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
-                <input style="height: 15px" class="align-middle form-control" type="radio"  name="enable" value="1" >
+          <div class="card bd-0">
+            <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+              Status
+            </div><!-- card-header -->
+            <div class="card-body bd bd-t-0">
+              <div style="margin-left: 8%">
+              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
+                @if(isset($brand))
+                    
+                 
+                {{$brand->enabled == 1 ? 'checked':''}}
+               
+                @endif
+                > <label style="margin-left: 3%">Enable</label><br>
               </div>
-              <div>
-                <label >
-                  <span class="align-middle" style="padding-left : 0px" class="mg-t-5">Enable</span>
-                </label>
+              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"
+                @if(isset($brand)) 
+                {{$brand->enabled == 0 ? 'checked':''}}
+                @endif
+                > <label style="margin-left: 3%">Disable</label><br>
               </div>
-                
+              </div>
               
-            </div>
-            <div class="row ">  
-              <div class="col-md-3" style="margin-top: 2%; padding-right:0; ">
-                <input style="height: 15px" class=" align-middle form-control" type="radio"  name="enable" value="0" >
-              </div>
-              <div>
-                <label >
-                  <span  class="align-middle" style="padding-left : 0px" class="mg-t-5">Disbale</span>
-                </label>
-              </div>
-            </div>
-             
-
-          </div>
+            </div><!-- card-body -->
+          </div><!-- card -->
+        
        
           
 

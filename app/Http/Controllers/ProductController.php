@@ -61,8 +61,10 @@ class ProductController extends Controller
     }
     //Product Update Method
     public function editProductSubmit(Request $request,$id){
-
+        // dd($request);
+        // dd($id);
         $i=0;
+        $imgids = [];
         $str = implode(', ', $request->sizes);
         DB::beginTransaction();
         try {
@@ -73,7 +75,7 @@ class ProductController extends Controller
         $product->enabled = request('enable');
         $product->description = request('description');
         $product->save();
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('images')) {
             foreach($request->images as $file){
                 $imageName = time().$i.'.'.$file->extension();  
                 $path = base_path() . '/public/storage/productImages/';
@@ -84,18 +86,21 @@ class ProductController extends Controller
                 $image->url =$imageurl;
                 $image->save();
                 $imageid = $image->id;
-                $product->images()->sync($imageid);
+                array_push($imgids,$imageid);
                 $i++;
                 };
         }
+        $product->images()->attach($imgids);
         $product->brands()->sync(request('brand_id'));
         $product->groups()->sync(request('group_id'));
         $product->categories()->sync(request('categories_id'));
+        $product_id = $product->id;
+        // dd($product_id);
         DB::commit();
-        return redirect()->route('product.form')->with('message','Success');
+        return redirect()->route('product.edit',$product_id)->with('message','Success');
         } catch (\Exception $ex) {
             DB::rollback();
-            return redirect()->route('product.form')->with('message',$ex->getMessage());
+            return redirect()->route('product.edit',$product_id)->with('message',$ex->getMessage());
         }
         
         
@@ -124,7 +129,7 @@ class ProductController extends Controller
         $image->url =$imageurl;
         $image->save();
         $imageid = $image->id;
-        $product->images()->sync($imageid);
+        $product->images()->attach($imageid);
         $i++;
         };
         $product->brands()->sync(request('brand_id'));
