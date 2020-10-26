@@ -1,0 +1,133 @@
+.second__second_index
+{
+    .main_text
+    {
+        padding-left: 6.5rem;
+    }
+    .container
+    {
+        max-width: 1200px;
+    }
+    @include spacing;
+    .main__buttons
+    {
+        display: flex;
+        align-items: center;
+        .first_btn_section
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-right: 1.5rem;
+            p.para_btn
+            {
+                color: #78a5ba;
+                margin-top: 0.7rem;
+                text-align: center;
+                font-weight: bolder;
+            }
+            a.btn
+            {
+                background: #77a6ba;
+                color: #e8f5f7 !important;
+                padding: 0.5rem 2.5rem;
+                img
+                {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .second_btn_section
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-left: 1.5rem;
+            p.para_btn
+            {
+                color: #78a5ba;
+                margin-top: 0.7rem;
+                text-align: center;
+                font-weight: bolder;
+            }
+            a.btn
+            {
+                padding: 0.5rem 2.5rem;
+                img
+                {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    .main_heading
+    {
+        margin-bottom: 2.5rem;
+        h1
+        {
+            @include headingMain;
+            
+        }
+    }
+    .main_paragraph
+    {
+        margin-bottom: 2.5rem;
+        p
+        {
+            @include paragraph_heading;
+            color:#515e67;
+            
+        }
+    }
+    .text_rough
+    {
+        span
+        {
+            color: #77a6ba;
+            font-weight: bold;
+            position: relative;
+            &::before
+            {
+                content: '';
+                width: 0.1rem;
+                height: 3rem;
+                background: #e1e1e1;
+                position: absolute;
+                left: 50%;
+                transform: translatex(-50%);
+                top: -30px;
+            }
+            &::after
+            {
+                content: '';
+                width: 0.1rem;
+                height: 3rem;
+                background: #e1e1e1;
+                position: absolute;
+                left: 50%;
+                transform: translatex(-50%);
+                bottom: -30px;
+            }
+
+        }
+    }
+    .main_second_section_image
+    {
+        z-index: 1;
+            position: relative;
+            &::before
+            {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: url('storage/images/home/image_background.png');
+                z-index: -1;
+                background-size: 100% 100%;
+                bottom: -0.8rem;
+            }
+       
+    }
+}

@@ -26,4 +26,8 @@ class Products extends Model
     {
         return $this->belongsToMany('App\Colors');
     }
+    public function print_locations()
+    {
+        return $this->belongsToMany('App\PrintLocations');
+    }
 }

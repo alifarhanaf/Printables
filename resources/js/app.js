@@ -6,27 +6,49 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-});
+$(document).ready(function() {
+    // slick slider
+    
+    
+    
+    
+      $('.All_Colors label').click(function(event){
+        $(this).parents('.All_Colors').find('label').removeAttr('data-active',false)
+          $(this).parents('.All_Colors').find('input').removeAttr('checked',false)
+          $(this).attr('data-active',true)
+          $(this).parent('.main_colors').find('input[type="radio"]').attr('checked','checked')
+      })
+    
+    
+       
+      $(".image_checker").change(function () {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : "+fileExtension.join(', '));
+        }
+        else
+        {
+          
+        
+        }
+    });
+    
+    
+    
+    $('.printLocation_name label').click(function(event){
+      
+      var checkNow = $(this).parent('.printLocation_name').find('input')
+    
+      if(checkNow.attr('checked')) {
+        checkNow.removeAttr('checked','checked')
+    } else {
+      checkNow.attr('checked','checked')
+    }
+    
+    })
+    
+    
+    
+    
+    });

@@ -16,6 +16,7 @@ use App\Http\Requests\GroupRequest;
 
 class GroupController extends Controller
 {
+    //Group Add Form
     public function index(){
         $printTypes = PrintTypes::all();
         $data = array(
@@ -24,6 +25,8 @@ class GroupController extends Controller
         return view ('admin.groupform')->with($data);
 
     }
+
+    //For Group Grid
     public function groupgrid(){
         $groups = Groups::all();
         $data = array(
@@ -32,27 +35,18 @@ class GroupController extends Controller
         return view ('admin.groupsgrid')->with($data);
     }
 
-    public function submitGroupFAQ(Request $request){
-        DB::beginTransaction();
-        try {
-        $groupid = request('group_id');
-        $faqs = new Faqs();
-        $faqs->questions =request('question');
-        $faqs->answers =request('answer');
-        $faqs->save();
-        $faqid = $faqs->id;
-        $faqs->groups()->sync($groupid);
-        DB::commit();
-        return redirect()->route('group.edit',$groupid)->with('message','Faq Added Successfully');
-        } catch (\Exception $ex) {
-            DB::rollback();
-            return redirect()->route('group.edit',$groupid)->with('message',$ex->getMessage());
-        }
-      
+    // Group Edit Form
+    public function editgroup($id){
+        $group = Groups::where('id',$id)->get();
+        $printTypes = PrintTypes::all();
+        $data = array(
+            "group"=> $group,
+            "printTypes"=> $printTypes,
+        );
+        return view ('admin.groupform')->with($data);
     }
-
+    //Group Submit Method
     public function submitGroup(GroupRequest $request){
-        // dd($request);
         DB::beginTransaction();
         try {
             $group = new Groups();
@@ -70,10 +64,8 @@ class GroupController extends Controller
         $image->url =$imageurl;
         $image->save();
         $imageid = $image->id;
-        // $printType = new PrintTypes();
         $group->images()->attach($imageid);
         $group->print_types()->attach(request('printType_ids'));
-        
         DB::commit();
         return redirect()->route('group.form')->with('message','Success');
         } catch (\Exception $ex) {
@@ -83,20 +75,10 @@ class GroupController extends Controller
 
        
     }
-    public function editgroup($id){
-        $group = Groups::where('id',$id)->get();
-        $printTypes = PrintTypes::all();
-        $data = array(
-            "group"=> $group,
-            "printTypes"=> $printTypes,
-        );
-        return view ('admin.groupform')->with($data);
-    }
+    
 
-
-    public function editgroupSubmit(Request $request,$id){
-        // $group = Groups::find($id);
-        // dd($group->printtypes);
+    //Submit Group Edit Method
+        public function editgroupSubmit(Request $request,$id){
         DB::beginTransaction();
         try {
             $group = Groups::find($id);
@@ -116,39 +98,29 @@ class GroupController extends Controller
                 $imageid = $image->id;
                 $group->images()->sync($imageid);
         }
+        $group->print_types()->sync(request('printType_ids'));
         DB::commit();
         return redirect()->route('group.edit',$group->id)->with('message','Success');
         } catch (\Exception $ex) {
             DB::rollback();
             return redirect()->route('group.edit',$group->id)->with('message',$ex->getMessage());
         }
-
-       
     }
-
-
-    
-    public function destroy($id)
-    {
-        $imageids = [];
-        $faqids = [];
+        //Deleting Group 
+        public function destroy($id)
+        {
         DB::beginTransaction();
         try {
         $group = Groups::find($id);
         if($group->images){
-        foreach($group->images as $images){
-            array_push($imageids,$images['id']);
-        };
-        Images::destroy($imageids);
-        $group->images()->detach($imageids);
+            $ids = idsgenerator($group->images);
+            $group->images()->detach($ids);
+            Images::destroy($ids);
         }
-        if($group->faqs){
-            foreach($group->faqs as $faqs){
-                array_push($faqids,$faqs['id']);
-            };
-            Faqs::destroy($faqids);
-            $group->faqs()->detach($faqids);
-            }
+        if($group->print_types){
+            $ids = idsgenerator($group->print_types);
+            $group->print_types()->detach($ids);
+        }
         Groups::destroy($id);
         DB::commit();
         return redirect()->route('group.grid')->with('message','Success');
@@ -156,27 +128,10 @@ class GroupController extends Controller
             DB::rollback();
             return redirect()->route('group.grid')->with('message',$ex->getMessage());
         }
-        Groups::destroy($id);
     }
-    public function faqsdestroy($id)
-    {
-        DB::beginTransaction();
-        try {
-        $faqs = Faqs::find($id);
-        $group_id = $faqs->groups[0]->id;
-        $image->groups()->detach($group_id);
-        Faqs::destroy($id);
-        DB::commit();
-        return redirect()->route('group.edit',$group_id)->with('message','Faq Deleted Successfully');
-        } catch (\Exception $ex) {
-            DB::rollback();
-            return redirect()->route('group.edit',$group_id)->with('message',$ex->getMessage());
-        }
-       
-        
-    }
-    public function groupImageDelete($id)
-    {
+        //Deleting Group Image Method
+        public function groupImageDelete($id)
+        {
         DB::beginTransaction();
         try {
         $image = Images::find($id);
@@ -192,4 +147,23 @@ class GroupController extends Controller
         
         
     }
+    // public function submitGroupFAQ(Request $request){
+        //     DB::beginTransaction();
+        //     try {
+        //     $groupid = request('group_id');
+        //     $faqs = new Faqs();
+        //     $faqs->questions =request('question');
+        //     $faqs->answers =request('answer');
+        //     $faqs->save();
+        //     $faqid = $faqs->id;
+        //     $faqs->groups()->sync($groupid);
+        //     DB::commit();
+        //     return redirect()->route('group.edit',$groupid)->with('message','Faq Added Successfully');
+        //     } catch (\Exception $ex) {
+        //         DB::rollback();
+        //         return redirect()->route('group.edit',$groupid)->with('message',$ex->getMessage());
+        //     }
+          
+        // }
+    // }
 }

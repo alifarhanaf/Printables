@@ -21,8 +21,33 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
-        return view('home');
+        return view('web.index');
+    }
+
+    public function collections()
+    {
+        return view('web.designScreen');
+    }
+    public function products()
+    {
+        return view('web.productScreen');
+    }
+    public function designDetailScreen()
+    {
+        return view('web.designDetailScreen');
+    }
+    public function printTypeScreen(){
+        return view('web.printTypeScreen');
+    }
+    public function deliveryAddressScreen(){
+        return view('web.deliveryAddressScreen'); 
+    }
+    public function cartScreen(){
+        return view('web.cartScreen');
+    }
+    public function aboutUsScreen(){
+        return view('web.aboutUsScreen');
     }
 }

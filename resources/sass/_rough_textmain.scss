@@ -1,0 +1,19 @@
+
+.rough_textmain
+{
+    .main_paragraph
+    {
+        max-width: 65rem;
+        margin: auto;
+        @include smallmargin;
+    }
+    .button_div
+    {
+        a
+        {
+            background:#77a6ba ;
+            color: #e8f5f7 !important;
+            padding: 0.5rem 2.5rem;
+        }
+    }
+}

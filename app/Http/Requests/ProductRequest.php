@@ -32,8 +32,9 @@ class ProductRequest extends FormRequest
             'sizes' => 'required',
             'price' => 'required',
             'brand_id' => 'required',
-            'group_id' => 'required',
+            'groups_id' => 'required',
             'categories_id' => 'required',
+            'printLocation_ids'=>'required',
 
         ];
     }

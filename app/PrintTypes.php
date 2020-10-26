@@ -10,4 +10,8 @@ class PrintTypes extends Model
     {
         return $this->belongsToMany('App\Groups');
     }
+    public function faqs()
+    {
+        return $this->belongsToMany('App\Faqs');
+    }
 }

@@ -1,0 +1,20 @@
+.all_designs_main
+{
+    @include spacing;
+    .main_all_desings
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: auto;
+    }
+    .child_image
+    {
+        width: 20%;
+        .main_child_spacing
+        {
+            padding: 1.5rem;
+            margin: auto;
+        }
+    }
+}

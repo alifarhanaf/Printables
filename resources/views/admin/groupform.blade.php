@@ -114,66 +114,14 @@
             {{-- <button style="width: fit-content;" type="submit" class="mg-t-20 btn btn-az-primary pd-x-20">Save</button> --}}
             </form>
           </div>
-          <div class="row">
-          </div>
+          
           @if(isset($group))
           {{-- {{$group->images[0]->url}} --}}
           {{-- {{$group[0]->images}} --}}
-          @foreach ($group->faqs as $faq)
-
-          <div class="mg-t-20 bg-gray-200"  >
-            <div class="row">
-              <div class="col-md-10">
-
-                <a class="bg-gray-200 btn" data-toggle="collapse" 
-            href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
-            style="width: -webkit-fill-available; text-align: left;" 
-          >{{$faq->questions}}</a>
-
-              </div>
-              <div class="col-md-1">
-                {{-- <div class="row"> --}}
-                  
-                    <form action="{{ route('group.faq.delete',$faq->id) }}" method="POST">
-                      {{ csrf_field() }}
-                      {{ method_field('DELETE')}}
-                      <button  type="submit" class="btn btn-indigo btn-icon"><i class="typcn typcn-delete"></i></button>
-                  </form>
-                  
-  
-                  
-                {{-- </div> --}}
-                
-
-              </div>
-            </div>
-            
-            <div class="collapse mg-t-5" id="collapseExample">
-              <div class="card card-body" style="text-align: left;">
-                {{-- {{$faq->answers}} --}}
-              </div>
-            </div>
-          </div>
-              
-          @endforeach
-
-          <div class="pd-20  bg-gray-200 mg-t-20">
-            <div class="row">
-              <div class="col-md-9 ">
-                <div class="az-content-label mg-b-5 ">
-                  
-                  <p class="pd-t-10">Want to Add More FAQS ?</p> 
-                  
-                </div>
-              </div>
-              <div class="col-md-3 text-center">
-                <button  id="faqbtn"  type="button" style="width: fit-content; " class=" btn btn-az-primary pd-x-20 ">Add FAQS</button>
-              </div>
-            </div>
-          {{-- <div class="az-content-label mg-b-5 ">Enter New Product</div>
-          <button type="submit" style="width: fit-content;" class="mg-t-20 btn btn-az-primary pd-x-20">Publish Brand</button> --}}
           
-          </div>
+          
+          
+          
           
           
 

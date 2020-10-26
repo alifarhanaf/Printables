@@ -15,8 +15,9 @@
 //     return view('admin/test');
 // });
 // Route::group(['namespace'=>'admin'],function (){
+Route::middleware(['admin'])->group(function () {
 //Products CRUD
-Route::get('/productadd', 'ProductController@index')->name('product.form');
+Route::get('/productadd', 'ProductController@index')->name('product.form')->middleware('admin');
 Route::post('/productSubmit','ProductController@submitProduct')->name('submit.product');
 Route::get('/productgrid', 'ProductController@productgrid')->name('product.grid');
 Route::get('/productedit/{id}', 'ProductController@editproduct')->name('product.edit');
@@ -36,6 +37,10 @@ Route::delete('/deletegroupfaq/{id}','GroupController@faqsdestroy')->name('group
 
 Route::get('/printTypeForm', 'PrintTypeController@index')->name('printType.form');
 Route::post('/printTypeSubmit','PrintTypeController@submitPrintType')->name('submit.printType');
+
+
+Route::get('/printLocationForm', 'PrintTypeController@plindex')->name('printLocation.form');
+Route::post('/printLocationSubmit','PrintTypeController@submitPrintLocation')->name('submit.printLocation');
 //Brands CRUD
 Route::get('/brandadd', 'BrandController@index')->name('brand.form');
 Route::post('/brandSubmit','BrandController@submitBrand')->name('submit.brand');
@@ -62,9 +67,15 @@ Route::delete('/deletecategory/{id}','CategoryController@destroy')->name('catego
 
 Route::get('/faqadd', 'FaqController@index')->name('faq.form');
 Route::post('/faqsubmit', 'FaqController@submitfaq')->name('submit.faqs');
+Route::post('/editfaqsubmit/{id}', 'FaqController@submiteditfaq')->name('submit.edit.faqs');
+Route::get('/faqedit/{id}', 'FaqController@editfaq')->name('faq.edit');
+Route::get('/faqgrid', 'FaqController@faqgrid')->name('faq.grid');
+Route::delete('/deletefaq/{id}', 'FaqController@destroy')->name('faq.delete');
+
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // });
+});
 
 
 
@@ -72,4 +83,11 @@ Auth::routes();
 
 
 
-Route::get('/', 'DashboardController@indexa');
+Route::get('/', 'HomeController@home')->name('homeScreen');
+Route::get('/designs', 'HomeController@collections')->name('designScreen');
+Route::get('/products', 'HomeController@products')->name('productScreen');
+Route::get('/designDetails', 'HomeController@designDetailScreen')->name('designDetailScreen');
+Route::get('/printTypes', 'HomeController@printTypeScreen')->name('printTypeScreen');
+Route::get('/deliveryAddress', 'HomeController@deliveryAddressScreen')->name('deliveryAddressScreen');
+Route::get('/aboutUs', 'HomeController@aboutUsScreen')->name('aboutUsScreen');
+Route::get('/cart', 'HomeController@cartScreen')->name('cartScreen');

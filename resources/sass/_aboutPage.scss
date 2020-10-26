@@ -1,0 +1,54 @@
+.about_page_section
+{
+    @include spacing;
+    .main_heading
+    {
+        h1
+        {
+            font-size: 4.5rem;
+            text-transform: uppercase;
+        }
+        margin-bottom: 3.5rem;
+    }
+    .main_about_page
+    {
+        .spacing_about
+        {
+            margin: 2rem 0rem;
+        }
+        h1
+        {
+            font-size: 3rem;
+            text-transform: uppercase;
+            // font-weight: bold;
+        }
+        .margin-spacing
+        {
+            max-width: 500px;
+        }
+    }
+}
+.ourleader_ship
+{
+    .main_headinggg
+    {
+        h1
+        {
+            font-size: 4.5rem;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.main_team_section
+{
+    margin-top: 40px;
+    .main_team_about
+    {
+        margin-top: 20px;
+        h5
+        {
+            font-size:2.1rem;
+        }
+    }
+}

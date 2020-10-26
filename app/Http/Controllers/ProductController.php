@@ -10,6 +10,7 @@ use App\Categories;
 use App\BrandsProducts;
 use App\GroupsProducts;
 use App\ImagesProducts;
+use App\PrintLocations;
 use App\CategoriesProducts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,11 +38,13 @@ class ProductController extends Controller
         $brands = Brands::all();
         $groups = Groups::all();
         $categories = Categories::all();
+        $printLocations = PrintLocations::all();
         // dd($brands);
         $data = array(
             "brands"=> $brands,
             "groups"=> $groups,
             "categories"=> $categories,
+            "printLocations"=> $printLocations
         );
         return view ('admin.productform')->with($data);
     }
@@ -51,18 +54,18 @@ class ProductController extends Controller
         $groups = Groups::all();
         $brands = Brands::all();
         $categories = Categories::all();
+        $printLocations = PrintLocations::all();
         $data = array(
             "product"=> $product,
             "brands"=> $brands,
             "groups"=> $groups,
             "categories"=>$categories,
+            "printLocations" => $printLocations,
         );
         return view ('admin.productform')->with($data);
     }
     //Product Update Method
     public function editProductSubmit(Request $request,$id){
-        // dd($request);
-        // dd($id);
         $i=0;
         $imgids = [];
         $str = implode(', ', $request->sizes);
@@ -92,10 +95,10 @@ class ProductController extends Controller
         }
         $product->images()->attach($imgids);
         $product->brands()->sync(request('brand_id'));
-        $product->groups()->sync(request('group_id'));
+        $product->groups()->sync(request('groups_id'));
         $product->categories()->sync(request('categories_id'));
+        $product->print_locations()->sync(request('printLocation_ids'));
         $product_id = $product->id;
-        // dd($product_id);
         DB::commit();
         return redirect()->route('product.edit',$product_id)->with('message','Success');
         } catch (\Exception $ex) {
@@ -133,8 +136,9 @@ class ProductController extends Controller
         $i++;
         };
         $product->brands()->sync(request('brand_id'));
-        $product->groups()->sync(request('group_id'));
-        $product->categories()->sync(request('categories_id'));
+        $product->groups()->attach(request('groups_id'));
+        $product->categories()->attach(request('categories_id'));
+        $product->print_locations()->attach(request('printLocation_ids'));
         DB::commit();
         return redirect()->route('product.form')->with('message','Success');
         } catch (\Exception $ex) {
@@ -145,23 +149,31 @@ class ProductController extends Controller
     //Product Delete Method
     public function destroy($id)
     {
-        $imageids = [];
+        
         DB::beginTransaction();
         try {
         $product = Products::find($id);
         if($product->images){
-        foreach($product->images as $images){
-            array_push($imageids,$images['id']);
-        };
-        Images::destroy($imageids);
-        $product->images()->detach($imageids);
+        $ids = idsgenerator($product->categories);
+        Images::destroy($ids);
+        $product->images()->detach($ids);
         }
-        $brandid =$product->brands[0]->id;
-        $groupid =$product->groups[0]->id;
-        $categoryid =$product->categories[0]->id;
-        $product->groups()->detach($groupid);
-        $product->categories()->detach($categoryid);
-        $product->brands()->detach($brandid);
+        if($product->categories){
+            $ids = idsgenerator($product->categories);
+            $product->categories()->detach($ids);
+        }
+        if($product->brands){
+            $ids = idsgenerator($product->brands);
+            $product->brands()->detach($ids);
+        }
+        if($product->groups){
+            $ids = idsgenerator($product->groups);
+            $product->groups()->detach($ids);
+        }
+        if($product->print_locations){
+            $ids = idsgenerator($product->print_locations);
+            $product->print_locations()->detach($ids);
+        }
         Products::destroy($id);
         DB::commit();
         return redirect()->route('product.grid')->with('message','Success');

@@ -1,0 +1,48 @@
+.why_chose_index
+{
+    @include spacing;
+    background-image: url('storage/images/home/EDDFEDED.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    .main_text_whyChose
+    {
+        @include headingUnder;
+       .chose_underText
+       {
+        max-width: 28.0rem;
+        margin: auto;
+        ul
+        {
+            margin-left: 2.5rem;
+            li
+            {
+                text-transform: capitalize;
+                position: relative;
+                &::before
+                {
+                    content: '';
+                    position: absolute;
+                    background-image: url('storage/images/SVGS/tick icon2.svg');
+                    top: 50%;
+                    width: 20%;
+                    height: 60%;
+                    background-repeat: no-repeat;
+                    left: -26px;
+                    background-size: contain;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+       }
+    }
+    .why_chose_second
+    {
+        margin-top: 10rem;
+        .whychose_img
+        {
+            max-width: 440px;
+            margin: auto;
+        }
+    }
+}

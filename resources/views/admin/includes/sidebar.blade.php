@@ -100,18 +100,18 @@
             </ul>
           </li><!-- nav-item -->
           <li class="nav-item">
-            <a href="" class="nav-link with-sub"><i class="typcn typcn-map"></i>Maps</a>
+            <a href="" class="nav-link with-sub"><i class="typcn typcn-map"></i>Misc</a>
             <ul class="nav-sub">
-              <li class="nav-sub-item"><a href="map-google.html" class="nav-sub-link">Google Maps</a></li>
-              {{-- <li class="nav-sub-item"><a href="map-leaflet.html" class="nav-sub-link">Leaflet</a></li>
-              <li class="nav-sub-item"><a href="map-vector.html" class="nav-sub-link">Vector Maps</a></li> --}}
+              <li class="nav-sub-item"><a href="{{ route('faq.form') }}" class="nav-sub-link">Add FAQS</a></li>
+              <li class="nav-sub-item"><a href="{{ route('printType.form') }}" class="nav-sub-link">Add Print Types</a></li>
+              <li class="nav-sub-item"><a href="{{ route('printLocation.form') }}" class="nav-sub-link">Add Print Locations</a></li>
             </ul>
           </li><!-- nav-item -->
           <li class="nav-item">
-            <a href="" class="nav-link with-sub"><i class="typcn typcn-tabs-outline"></i>Tables</a>
+            <a href="" class="nav-link with-sub"><i class="typcn typcn-tabs-outline"></i>Misc Grids</a>
             <ul class="nav-sub">
-              {{-- <li class="nav-sub-item"><a href="table-basic.html" class="nav-sub-link">Basic Tables</a></li>
-              <li class="nav-sub-item"><a href="table-data.html" class="nav-sub-link">Data Tables</a></li> --}}
+              <li class="nav-sub-item"><a href="{{ route('faq.grid') }}" class="nav-sub-link">FAQs Grid</a></li>
+              <li class="nav-sub-item"><a href="table-data.html" class="nav-sub-link">Data Tables</a></li>
             </ul>
           </li><!-- nav-item -->
           <li class="nav-item">

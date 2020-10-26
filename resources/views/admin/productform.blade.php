@@ -281,10 +281,12 @@
                 <div class="checkbox" style="">
                   
                   <li style="list-style-type: none;">
-                  <label>  <input name="group_id" type="checkbox" value="{{$group->id}}"
+                  <label>  <input name="groups_id[]" type="checkbox" value="{{$group->id}}"
                     @if(isset($product->groups[0])) 
-                    {{$group->id == $product->groups[0]->id ? 'checked':''}} 
-                    @endif
+                  @foreach($product->groups as $productGroup)
+                  {{$group->id == $productGroup->id ? 'checked':''}} 
+                  @endforeach
+                  @endif
                      > &nbsp{{$group->name}}</label>
                   </li>
                 
@@ -305,7 +307,7 @@
             style=" width: -webkit-fill-available; text-align: left;" 
           >
           <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
-          <b>Select Brands</b>
+          <b>Select Brand</b>
           </div>
         </a>
               {{-- Select Groups --}}
@@ -322,8 +324,10 @@
                   <li style="list-style-type: none;">
                   <label>  <input name="brand_id" type="checkbox" value="{{$brand->id}}"
                     @if(isset($product->brands[0])) 
-                    {{$brand->id == $product->brands[0]->id ? 'checked':''}} 
-                    @endif
+                  @foreach($product->brands as $productBrand)
+                  {{$brand->id == $productBrand->id ? 'checked':''}} 
+                  @endforeach
+                  @endif
                      > &nbsp{{$brand->name}}</label>
                   </li>
                 
@@ -359,10 +363,13 @@
                 <div class="checkbox" style="">
                   
                   <li style="list-style-type: none;">
-                  <label>  <input name="categories_id" type="checkbox" value="{{$category->id}}"
+                  <label>  <input name="categories_id[]" type="checkbox" value="{{$category->id}}"
                     @if(isset($product->categories[0])) 
-                    {{$category->id == $product->categories[0]->id ? 'checked':''}} 
-                    @endif
+                  @foreach($product->categories as $productCategory)
+                  {{$category->id == $productCategory->id ? 'checked':''}} 
+                  @endforeach
+                  @endif
+
                      > &nbsp{{$category->name}}</label>
                   </li>
                 
@@ -374,6 +381,47 @@
               
             </div><!-- card-body -->
           </div><!-- card -->
+
+
+          <div class="card bd-0 mg-t-10">
+            
+            <a id="collapsebtn3" data-toggle="collapse" 
+          href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3" 
+          style=" width: -webkit-fill-available; text-align: left;" 
+        >
+        <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+        <b>Select Print Locations</b>
+        </div>
+        </a>
+            {{-- Select Groups --}}
+          {{-- </div> --}}
+          <!-- card-header -->
+          <div id="collapseExample3" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+            
+            <ul style="padding-top:1.25rem; padding-left:8%;"   >
+              @foreach ($printLocations as $printLocation)
+              
+              
+              <div class="checkbox" style="">
+                
+                <li style="list-style-type: none;">
+                <label>  <input name="printLocation_ids[]" type="checkbox" value="{{$printLocation->id}}"
+                  @if(isset($product->print_locations[0])) 
+                  @foreach($product->print_locations as $productPrintLocation)
+                  {{$printLocation->id == $productPrintLocation->id ? 'checked':''}} 
+                  @endforeach
+                  @endif
+                   > &nbsp{{$printLocation->name}}</label>
+                </li>
+              
+              </div>
+            
+              @endforeach
+            </ul>
+            
+            
+          </div><!-- card-body -->
+        </div><!-- card -->
 
 
 
@@ -467,6 +515,16 @@ document.getElementById("collapsebtn1").addEventListener("click", function toffi
 });
 document.getElementById("collapsebtn2").addEventListener("click", function toffi(){
   var sw = document.getElementById("collapseExample2");
+  if (sw.style.display === "block") {
+    sw.style.display = "none";
+  } else {
+    sw.style.display = "block";
+  }
+  // console.log(sw.style.display);
+});
+
+document.getElementById("collapsebtn3").addEventListener("click", function toffi(){
+  var sw = document.getElementById("collapseExample3");
   if (sw.style.display === "block") {
     sw.style.display = "none";
   } else {

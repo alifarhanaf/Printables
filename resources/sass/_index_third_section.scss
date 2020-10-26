@@ -1,0 +1,100 @@
+.index__section_three
+{
+    @include spacing;
+    background-image: url('storage/images/home/2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    .main_under_section_three
+    {
+        @include headingUnder;
+    }
+    .row.custom_slide_parent 
+    {
+
+        .slide_child
+        {
+            padding-right: 8px;
+            padding-left: 8px;
+            &:nth-child(odd)
+            {
+                transform: translateY(-2.5rem);
+            }
+        }
+    }
+    .main__slide_section
+    {
+        .slide__all_parent
+        {
+            background-color: #fff;
+            box-shadow: 0 0 7px 4px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            transition: 0.3s;
+            cursor: pointer;
+            .image_slide
+            {
+                .img_parent_main
+                {
+                    max-width: 8.9rem;
+                    margin: auto;
+                    position: relative;
+                    .img_counter
+                    {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 2rem;
+                        height: 2rem;
+                        background: #7ba8b8;
+                        position: absolute;
+                        bottom: -1rem;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 50%;
+                        font-weight: bold;
+                        color: #e8ecf2;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+            .heading_section
+            {
+                margin: 1.6rem 0rem;
+                h4
+                {
+                    font-size: 1.9rem;
+                    color: #5f8fa5;
+                }
+
+            }
+            .para_discription
+            {
+                p
+                {
+                    @include paragraph_heading;
+                    color: #898989;
+                }
+            }
+            &:hover 
+            {
+                background: #598ba4;
+            }
+            &:hover h4
+            {
+                color: #fff;
+            }
+            &:hover p
+            {
+                color: #fff;
+            }
+            &:hover .img_counter
+            {
+               background: #f5e6b4 !important;
+               span
+               {
+                   color:#598ba4;
+               }
+            }
+        }
+    }
+}
