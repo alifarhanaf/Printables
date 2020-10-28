@@ -23,8 +23,7 @@
       
     </div>
   </div>
-{{-- <div class="az-content-label mg-b-5 ">Enter New Product</div>
-<button type="submit" style="width: fit-content;" class="mg-t-20 btn btn-az-primary pd-x-20">Publish Brand</button> --}}
+
 
 </div>
 

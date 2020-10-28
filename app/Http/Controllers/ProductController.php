@@ -210,9 +210,10 @@ class ProductController extends Controller
     // }
     public function setCookie(Request $request){
         // dd($request);
-        Cookie::queue('productID', $request->productID, 10);
+        Cookie::queue('productID', $request->productID, 60);
         return redirect()->route('designDetailScreen');
      }
+     
 
     
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Brands;
-use App\Images;
-use App\BrandImages;
+use App\Models\Brands;
+use App\Models\Images;
+use App\Models\BrandImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\BrandRequest;
@@ -17,23 +17,20 @@ class BrandController extends Controller
 
     public function brandgrid(){
         $brands = Brands::all();
-        // $groups = Groups::all();
-        // dd($brands);
         $data = array(
             "brands"=> $brands,
-            // "groups"=> $groups,
         );
         return view ('admin.brandsgrid')->with($data);
     }
 
 
     public function submitBrand(BrandRequest $request){
-        // dd($request);
         DB::beginTransaction();
         try {
             
         $brand = new Brands();
         $brand->name = request('name');
+        $brand->enabled = request('enable');
         $brand->description = request('description');
         $brand->save();
 
@@ -71,6 +68,36 @@ class BrandController extends Controller
         );
         return view ('admin.editbrandform')->with($data);
     }
+
+    public function editBrandSubmit(Request $request,$id){
+        DB::beginTransaction();
+        try {
+            $brand = Brands::find($id);
+            $brand->name = request('name');
+            $brand->description = request('description');
+            $brand->enabled = request('enable');
+            $brand->save();
+            if ($request->hasFile('image')) {
+                $imageName = time().'.'.$request->image->extension();   
+                $path = base_path() . '/public/storage/groupImages/';
+                $pathsave =  '/storage/groupImages/';
+                $request->image->move($path, $imageName);
+                $imageurl = $pathsave.$imageName;
+                $image = new Images();
+                $image->url =$imageurl;
+                $image->save();
+                $imageid = $image->id;
+                $group->images()->sync($imageid);
+        }
+        $group->print_types()->sync(request('printType_ids'));
+        DB::commit();
+        return redirect()->route('group.edit',$group->id)->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('group.edit',$group->id)->with('message',$ex->getMessage());
+        }
+    }
+
 
     public function destroy($id)
     {

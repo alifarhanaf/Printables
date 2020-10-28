@@ -71,7 +71,7 @@
                                                <img src="{{ $product[0]->images[0]->url}}" alt="" class="img-fluid">
                                            </div>
                                            <div class="product_tielt-print">
-                                               <h5 class="text-capitalize">Comfort Colors pocket t-shit - royal carribe</h5>
+                                               <h5 class="text-capitalize">{{ $product[0]->name}}</h5>
                                            </div>
                                        </div>
                                        <div class="main_delete_this">
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="view_product">
+                            {{-- <li class="view_product">
                                 <div class="spacing_product">
                                     <div class="product_head_select">
                                        <div class="d-flex">
@@ -111,7 +111,7 @@
                                                <img src="{{ $product[0]->images[0]->url}}" alt="" class="img-fluid">
                                            </div>
                                            <div class="product_tielt-print">
-                                               <h5 class="text-capitalize">Comfort Colors pocket t-shit - royal carribe</h5>
+                                               <h5 class="text-capitalize">{{ $product[0]->name}}</h5>
                                            </div>
                                        </div>
                                        <div class="main_delete_this">
@@ -142,10 +142,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                             <div class="add_Products_Msg">
                                 <div class="product_spacing text-center">
-                                    <p>You Can add upto 4 apperel options.</p>
+                                    <p>You Can add upto 4 apperel options  .</p>
                                 </div>
                             </div>
                         </ul>
@@ -161,22 +161,18 @@
                             </label>
                             <select name="print_type" id="Print_type" class="form_class form-control w-50">
                                 @foreach ($product[0]->groups[0]->print_types as $printTypes)
-                                <option value=""> {{$printTypes->name}} </option>
+                                <option  value="{{$printTypes->id}}"> {{$printTypes->name}} </option>
                                 @endforeach
                                 
                             </select>
                         </div>
-                        <div class="Order_price spacing_bottom">
-                            <label for="Order_price">
-                                Print Type
-                            </label>
-                            <select name="Order_price" id="Order_price" class="form_class form-control">
-                                <option value="">24-27</option>
-                            </select>
+                        <div id="faqs">
                         </div>
                         <div class="main__paragraph spacing_bottom">
                             <div class="main_paraSpacing">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est ab nemo delectus suscipit maxime natus assumenda sunt iure alias enim deserunt, quibusdam deleniti, saepe dolore culpa dolores ducimus ipsa explicabo.</p>
+                                <p>If you are not sure how many pieces will be ordered, select a lower range, we charge for the exact quantity ordered. More purchases means cheaper prices!<br><br>
+
+                                    However, if you do not reach minimum estimated quantity, we cannot process your order .</p>
                             </div>
                         </div>
                         <div class="shoping__option spacing_bottom">
@@ -184,25 +180,32 @@
                                 Shipping Option
                             </label>
                             <select name="shoping__option" id="shoping__option" class="form-control form_class">
-                                <option value="">Grop Sharing Free</option>
+                                @foreach ($shippingOptions as $so)
+                            <option value="{{$so->id}}">{{$so->options}}</option>
+                                @endforeach
+                                
                             </select>
                         </div>
                         <div class="main__paragraph spacing_bottom">
                             <div class="main_paraSpacing">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est ab nemo delectus suscipit maxime natus assumenda sunt iure alias enim deserunt, quibusdam deleniti, saepe dolore culpa dolores ducimus ipsa explicabo.</p>
+                                <p>Group Shipping will ship to one location.<br><br>
+                                    
+
+                                    Individual shipping costs an additional $2/pc to ship and $2/pc to fulfill. Each product will be shipped directly to the individual’s address..</p>
                             </div>
                         </div>
                         <div class="BaseTag spacing_bottom">
                             <label for="BaseTag">
-                                Shipping Option
+                                Would you like your order bagged and tagged?
                             </label>
                             <select name="BaseTag" id="BaseTag" class="form-control form_class">
-                                <option value="">Yes</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
                             </select>
                         </div>
                         <div class="main__paragraph spacing_bottom">
                             <div class="main_paraSpacing">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, adipisci.</p>
+                                <p>Bag n Tag costs an additional $1 per shirt.</p>
                             </div>
                         </div>
                         <div class="next__btn spacing_bottom">
@@ -220,4 +223,88 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+
+<script>
+    $(document).ready(function(){
+       
+        $("#Print_type").change(function(){
+        var selected = $(this).children("option:selected").val();
+       console.log(selected);
+       $.ajax({
+            url: 'allPrintTypeFaqs/'+selected,
+            type: 'get',
+            success: function(response){
+                
+                console.log(response);
+                $('#faqs').html(response);
+                
+            }
+        });
+    });
+    });
+
+    //Backup
+//     $(document).ready(function(){
+       
+//        $("#Print_type").change(function(){
+//        var selected = $(this).children("option:selected").val();
+//       console.log(selected);
+//       $.ajax({
+//            url: 'allPrintTypeFaqs/'+selected,
+//            type: 'get',
+//            success: function(response){
+//                if(response.printTypeFaqs.length>0){
+//                    console.log(response.printTypeFaqs);
+                   
+//                    for(var i = 0, l = response.printTypeFaqs.length; i < l; i++){
+//                        document.getElementById("faq"+i).style.display = "block";
+//                        document.getElementById("faqid"+i).innerHTML = response.printTypeFaqs[i].questions
+                   
+//                    $.ajax({
+//                    url: 'faqAnswers/'+response.printTypeFaqs[i].id,
+//                    type: 'get',
+//                    success: function(data){
+//                        console.log(data.faqAnswers);
+//                    //    for(var i = 0, l = response.printTypeFaqs.length; i < l; i++){
+                       
+                      
+//                        for(var j = 0, l = data.faqAnswers.length; j < l; j++){
+//                            document.getElementById("ab"+i+j).style.display = "block";
+//                            document.getElementById("ab"+i+j).innerHTML = data.faqAnswers[j].answers
+//                        }
+//                    // }
+//                        // console.log(response);
+//                        // var test = '<div class="Order_price spacing_bottom" ><label id="faqid" for="Order_price">'+response.printTypeFaqs[0].questions+'</label><select name="Order_price" id="Order_price" class="form_class form-control">'+
+//                        //     '<option value="'+data.faqAnswers[0].id+'">'+data.faqAnswers[0].answers+'</option>'+
+                          
+//                        //     '</select></div>';
+//                        // document.getElementById("faqs").innerHTML = test;
+
+//                    }
+//                });
+//            }   
+//                }
+               
+               
+//            }
+//        });
+//    });
+//    });
+   //BkEnd
+
+    // $(document).ready(function(){
+    //     $("#Print_type").change(function(){
+    //     var selected = $(this).children("option:selected").val();
+    //     console.log(selected);
+    //     // $.ajax({
+    //     //     url: 'allPrintTypeFaqs/'+selected,
+    //     //     type: 'get',
+    //     //     success: function(response){
+    //     //         console.log(response);
+    //     //         $('#faqs').html(response);
+    //     //     }
+    //     // });
+    // });
+
+</script>
 @include('web.includes.endfile')

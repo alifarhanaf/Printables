@@ -202,7 +202,7 @@
           <div class="col-md-3 mg-t-15">
 
             <div class="card bd-0">
-              <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+              <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8; border:none;">
                 Status
               </div><!-- card-header -->
               <div class="card-body bd bd-t-0">
@@ -235,14 +235,14 @@
             <a id="collapsebtn" data-toggle="collapse" 
           href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
           style=" width: -webkit-fill-available; text-align: left;" 
-        ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+        ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border:none;">
           
         <b>Select Print Types </b>
       </div>
       </a>
             
           <!-- card-header -->
-          <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+          <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
             
             <ul style="padding-top:1.25rem; padding-left:8%;"   >
               @foreach ($printTypes as $printType)
@@ -316,15 +316,15 @@
 
 @include('admin.includes.footer')
 <script>
-  document.getElementById("collapsebtn").addEventListener("click", function toffi(){
-  var sw = document.getElementById("collapseExample");
-  if (sw.style.display === "block") {
-    sw.style.display = "none";
-  } else {
-    sw.style.display = "block";
-  }
-  // console.log(sw.style.display);
-});
+//   document.getElementById("collapsebtn").addEventListener("click", function toffi(){
+//   var sw = document.getElementById("collapseExample");
+//   if (sw.style.display === "block") {
+//     sw.style.display = "none";
+//   } else {
+//     sw.style.display = "block";
+//   }
+//   // console.log(sw.style.display);
+// });
   $(document).ready(function() {
   $("#faqbtn").click(function() {
     $("#faq").toggle();

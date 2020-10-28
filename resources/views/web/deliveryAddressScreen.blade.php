@@ -121,15 +121,30 @@
                   <div class="form-row spacing_bottom">
                     <div class="form-group col-md-7">
                       <label for="inputZip">Tell us when you need your order</label>
-                      <select id="inputState" class="form-control form_class">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                      <select id="inputState1" class="form-control form_class">
+                        @foreach ($orderTenures as $ot)
+                        <option value="{{$ot->id}}">{{$ot->options}}</option>
+                        
+                        @endforeach
+                       
+                        
                       </select>
+                      {{-- <p>{{$ot->id}}</p> --}}
+                    </div>
+                  </div>
+
+                  <div id="ddInput" class="form-row spacing_bottom" style="display: none">
+                    <div class="form-group col-md-7">
+                      <label >Tell us when you need your order</label>
+                      <input type="text" class="form-control form_class" name="deliveryDate" id="dd">
+                        
                     </div>
                   </div>
 
                   <div class="main_paragrap w-50 spacing_bottom">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio ex facere architecto, in tempore vero praesentium. Atque fuga repellendus architecto.</p>
+                      <p>Greek House delivers your order within 10 business days after sizes and payment have been submitted. Need your order rushed .</p>
+                  </div>
+                  <div id="deliveryDate">
                   </div>
 
                   <div class="next_btn spacing_bottom">
@@ -146,4 +161,26 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+<script>
+   $(document).ready(function(){
+       
+       $("#inputState1").change(function(){
+       var selected = $(this).children("option:selected").val();
+      console.log(selected);
+      if(selected==1){
+        document.getElementById("ddInput").style.display = "block";
+      }
+      // $.ajax({
+      //      url: 'allPrintTypeFaqs/'+selected,
+      //      type: 'get',
+      //      success: function(response){
+               
+      //          console.log(response);
+      //          $('#faqs').html(response);
+               
+      //      }
+      //  });
+   });
+   });
+</script>
 @include('web.includes.endfile')

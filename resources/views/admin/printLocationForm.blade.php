@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="col-md-3 text-center">
-      <button type="submit" style="width: fit-content;" class=" btn btn-az-primary pd-x-20">Save Print Location</button>
+      
     </div>
   </div>
 {{-- <div class="az-content-label mg-b-5 ">Enter New Product</div>
@@ -61,7 +61,7 @@
             
               
             {{-- <button style="width: fit-content;" type="submit" class="w-20 mg-t-20 btn btn-az-primary pd-x-20">Save</button> --}}
-               
+            <button type="submit" style="width: fit-content;" class=" btn btn-az-primary pd-x-20">Save </button>
           </div>
 
           
@@ -73,7 +73,7 @@
         
         <div class="col-md-3 mg-t-15">
             <div class="card bd-0">
-                <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+                <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border:none;">
                   Status
                 </div><!-- card-header -->
                 <div class="card-body bd bd-t-0">
@@ -97,9 +97,9 @@
                   
                 </div><!-- card-body -->
               </div><!-- card -->
-       
+              
         </div>
-
+        
           </div>
 
 @include('admin.includes.footer')

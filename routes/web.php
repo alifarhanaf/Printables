@@ -79,7 +79,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Auth::routes();
 
-Route::middleware(['user'])->group(function () {
+
 
 Route::get('/', 'HomeController@home')->name('homeScreen');
 Route::get('/designs', 'HomeController@collections')->name('designScreen');
@@ -93,4 +93,7 @@ Route::get('/designByID/{id}', 'DesignController@designByID')->name('design.sing
 Route::post('/setCookie','DesignController@setCookie')->name('setCookie');
 Route::post('/setProductCookie','ProductController@setCookie')->name('setProductCookie');
 Route::post('/setDesignDetailCookie','DesignController@setDesignDetailCookie')->name('setDesignDetailCookie');
-});
+Route::get('/allPrintLocations', 'PrintTypeController@allPrintLocations')->name('allPrintLocations');
+Route::get('/allPrintTypeFaqs/{id}', 'PrintTypeController@allPrintTypeFaqs')->name('allPrintTypeFaqs');
+Route::get('/faqAnswers/{id}', 'PrintTypeController@faqAnswers')->name('faqAnswers');
+

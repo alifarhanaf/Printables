@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Designs;
 use App\Models\Products;
+use App\Models\OrderTenures;
 use Illuminate\Http\Request;
+use App\Models\PrintLocations;
+use App\Models\ShippingOptions;
 
 class HomeController extends Controller
 {
@@ -57,6 +60,7 @@ class HomeController extends Controller
     }
     public function designDetailScreen(Request $request)
     {
+        $printLocations = PrintLocations::all();
         $designID = $request->cookie('designID');
         $design = Designs::where('id',$designID)->get();
         $productID = $request->cookie('productID');
@@ -64,22 +68,29 @@ class HomeController extends Controller
         // dd($product[0]->print_locations);
         $data = array(
             "design" =>$design,
-            "product" =>$product
+            "product" =>$product,
+            "printLocations" => $printLocations
         );
         return view('web.designDetailScreen')->with($data);
     }
     public function printTypeScreen(Request $request){
+        $shippingOptions = ShippingOptions::all();
         $productID = $request->cookie('productID');
         $product = Products::where('id',$productID)->get();
         // dd($product[0]->groups[0]->print_types);
         $data = array(
             "product" =>$product,
+            "shippingOptions"=>$shippingOptions,
         );
 
         return view('web.printTypeScreen')->with($data);
     }
     public function deliveryAddressScreen(){
-        return view('web.deliveryAddressScreen'); 
+        $orderTenures = OrderTenures::all();
+        $data = array(
+            "orderTenures"=>$orderTenures
+        );
+        return view('web.deliveryAddressScreen')->with($data); 
     }
     public function cartScreen(){
         return view('web.cartScreen');

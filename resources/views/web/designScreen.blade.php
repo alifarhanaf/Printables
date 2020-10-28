@@ -1,6 +1,11 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
+@foreach ($designs as $design)
+<form action="{{ route('setCookie') }}" method="POST" >
+@endforeach
 
+   
+<input type="hidden" id="designID" name="designID" value="{{$design->id}}">
 <section class="Second_main_section">
     <div class="container">
         <div class="second_all">
@@ -31,7 +36,9 @@
                     <div class="my_all_content">
                         <div class="my_flex_main">
                             @foreach ($designs as $design)
+                            
                             @foreach ($design->images as $image)
+                            
                                 
                             
                             <div class="flex_child">
@@ -123,7 +130,7 @@
                                     <div class="main_img_div">
                                         <div class="image_spacing_main_box">
                                             <div  class="image__main">
-                                                <img id="img" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                                <img id="img" src="{{  asset('storage/images/home/4.png')}}" alt="" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -132,7 +139,7 @@
                                     <div class="main_img_div">
                                         <div class="image_spacing_main_box">
                                             <div  class="image__main">
-                                                <img id="img1" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                                <img id="img1" src="{{  asset('storage/images/home/4.png')}}" alt="" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -143,12 +150,12 @@
                             <div class="slick_big_inni">
                                 <div class="main_bigImages">
                                     <div class="spacing_main">
-                                        <img id="img2" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                        <img id="img2" src="{{  asset('storage/images/home/4.png')}}" alt="" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="main_bigImages">
                                     <div class="spacing_main">
-                                        <img id="img3" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                        <img id="img3" src="{{  asset('storage/images/home/4.png')}}" alt="" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -167,11 +174,11 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quaerat ratione facere, ea nisi sequi? Omnis excepturi necessitatibus iusto ad?</p>
                         </div>
                         <div class="button_model_collection">
-                            <form action="{{ route('setCookie') }}" method="POST" >
-                                <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
+                           
                                 <button type="submit">
                             <a  class="btn my-btn w-100">
                                 
+                                   
                                     
                                     Customize on a product
                                 {{ csrf_field() }}

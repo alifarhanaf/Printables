@@ -59,4 +59,36 @@ class PrintTypeController extends Controller
         }
       
     }
+    public function allPrintLocations(){
+         $printLocations = PrintLocations::all();
+         return $printLocations;
+    }
+    public function allPrintTypeFaqs($id){
+       
+            $printTypes = PrintTypes::where('id',$id)->get();
+            $printTypeFaqs = $printTypes[0]->faqs;
+            $data = array(
+                "printTypeFaqs"=>$printTypeFaqs,
+            );
+            return view('web.helpers.faqsAnswers')->with($data)->render();
+            
+            // dd($images);
+            // $data = array(
+            //     "printTypeFaqs"=>$printTypeFaqs,
+            // );
+            // return $data;
+      
+    }
+    public function faqAnswers($id){
+       
+        $faqs = Faqs::where('id',$id)->get();
+        $faqAnswers = $faqs[0]->answers;
+        
+        // dd($images);
+        $data = array(
+            "faqAnswers"=>$faqAnswers,
+        );
+        return $data;
+  
+}
 }

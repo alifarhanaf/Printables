@@ -82,7 +82,7 @@
         
         <div class="col-md-3 mg-t-15">
           <div class="card bd-0">
-            <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+            <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8; border:none;">
               Status
             </div><!-- card-header -->
             <div class="card-body bd bd-t-0">

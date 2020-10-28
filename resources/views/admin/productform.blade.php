@@ -189,10 +189,11 @@
               
 
 
-            <label class="form-label mg-b-10 mg-t-20 pd-l-5"><b>Product Images:</b></label>
-              <div class="row row-sm mh-50px ">
-              @if(isset($product))
+            
               
+              @if(isset($product))
+              <label class="form-label mg-b-10 mg-t-20 pd-l-5"><b>Product Images:</b></label>
+              <div class="row row-sm mh-50px ">
               @foreach ($product->images as $images)
               
               <div class="container1 mg-t-5">
@@ -219,10 +220,10 @@
              
               {{-- <div class="overlay"></div> --}}
              {{-- <div class="button"><a href="#"> BUTTON </a>   --}}
-             
+             </div>
               @endforeach
               @endif
-              </div>
+              
               
               
               
@@ -234,7 +235,7 @@
         <div class="col-md-3 mg-t-15">
 
           <div class="card bd-0">
-            <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+            <div class="card-header tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none; ">
               Status
             </div><!-- card-header -->
             <div class="card-body bd bd-t-0">
@@ -265,14 +266,14 @@
               <a id="collapsebtn" data-toggle="collapse" 
             href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
             style=" width: -webkit-fill-available; text-align: left;" 
-          ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+          ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
             
           <b>Select Groups</b>
         </div>
         </a>
               
             <!-- card-header -->
-            <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+            <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
               
               <ul style="padding-top:1.25rem; padding-left:8%;"   >
                 @foreach ($groups as $group)
@@ -306,14 +307,14 @@
             href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1" 
             style=" width: -webkit-fill-available; text-align: left;" 
           >
-          <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+          <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
           <b>Select Brand</b>
           </div>
         </a>
               {{-- Select Groups --}}
             {{-- </div> --}}
             <!-- card-header -->
-            <div id="collapseExample1" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0;  display:none;"  >
+            <div id="collapseExample1" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0;  "  >
               
               <ul style="padding-top:1.25rem; padding-left:8%;"   >
                 @foreach ($brands as $brand)
@@ -347,14 +348,14 @@
             href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" 
             style=" width: -webkit-fill-available; text-align: left;" 
           >
-          <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+          <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
           <b>Select Categories</b>
           </div>
           </a>
               {{-- Select Groups --}}
             {{-- </div> --}}
             <!-- card-header -->
-            <div id="collapseExample2" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+            <div id="collapseExample2" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
               
               <ul style="padding-top:1.25rem; padding-left:8%;"   >
                 @foreach ($categories as $category)
@@ -389,14 +390,14 @@
           href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3" 
           style=" width: -webkit-fill-available; text-align: left;" 
         >
-        <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8">
+        <div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
         <b>Select Print Locations</b>
         </div>
         </a>
             {{-- Select Groups --}}
           {{-- </div> --}}
           <!-- card-header -->
-          <div id="collapseExample3" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; display:none;"  >
+          <div id="collapseExample3" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
             
             <ul style="padding-top:1.25rem; padding-left:8%;"   >
               @foreach ($printLocations as $printLocation)
@@ -495,43 +496,43 @@
 
 <script>
 
-document.getElementById("collapsebtn").addEventListener("click", function toffi(){
-  var sw = document.getElementById("collapseExample");
-  if (sw.style.display === "block") {
-    sw.style.display = "none";
-  } else {
-    sw.style.display = "block";
-  }
-  // console.log(sw.style.display);
-});
-document.getElementById("collapsebtn1").addEventListener("click", function toffi(){
-  var sw = document.getElementById("collapseExample1");
-  if (sw.style.display === "block") {
-    sw.style.display = "none";
-  } else {
-    sw.style.display = "block";
-  }
-  // console.log(sw.style.display);
-});
-document.getElementById("collapsebtn2").addEventListener("click", function toffi(){
-  var sw = document.getElementById("collapseExample2");
-  if (sw.style.display === "block") {
-    sw.style.display = "none";
-  } else {
-    sw.style.display = "block";
-  }
-  // console.log(sw.style.display);
-});
+// document.getElementById("collapsebtn").addEventListener("click", function toffi(){
+//   var sw = document.getElementById("collapseExample");
+//   if (sw.style.display === "block") {
+//     sw.style.display = "none";
+//   } else {
+//     sw.style.display = "block";
+//   }
+//   // console.log(sw.style.display);
+// });
+// document.getElementById("collapsebtn1").addEventListener("click", function toffi(){
+//   var sw = document.getElementById("collapseExample1");
+//   if (sw.style.display === "block") {
+//     sw.style.display = "none";
+//   } else {
+//     sw.style.display = "block";
+//   }
+//   // console.log(sw.style.display);
+// });
+// document.getElementById("collapsebtn2").addEventListener("click", function toffi(){
+//   var sw = document.getElementById("collapseExample2");
+//   if (sw.style.display === "block") {
+//     sw.style.display = "none";
+//   } else {
+//     sw.style.display = "block";
+//   }
+//   // console.log(sw.style.display);
+// });
 
-document.getElementById("collapsebtn3").addEventListener("click", function toffi(){
-  var sw = document.getElementById("collapseExample3");
-  if (sw.style.display === "block") {
-    sw.style.display = "none";
-  } else {
-    sw.style.display = "block";
-  }
-  // console.log(sw.style.display);
-});
+// document.getElementById("collapsebtn3").addEventListener("click", function toffi(){
+//   var sw = document.getElementById("collapseExample3");
+//   if (sw.style.display === "block") {
+//     sw.style.display = "none";
+//   } else {
+//     sw.style.display = "block";
+//   }
+//   // console.log(sw.style.display);
+// });
 
 
   // Additional code for adding placeholder in search box of select2
