@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Designs;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,23 +25,58 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('web.index');
+        $designs = Designs::all();
+        // dd($designs[0]->images);
+        $data = array(
+            "designs"=> $designs,
+        );
+        return view('web.index')->with($data);
     }
 
     public function collections()
-    {
-        return view('web.designScreen');
+    {   
+        $designs = Designs::all();
+        $recentdesigns = Designs::all()->sortByDesc('created_at');
+        // dd($recentdesigns[0]->images);
+        $data = array(
+            "designs"=> $designs,
+            "recents"=> $recentdesigns,
+        );
+        return view('web.designScreen')->with($data);
     }
-    public function products()
-    {
-        return view('web.productScreen');
+    public function products(Request $request)
+    {   
+        $products = Products::all();
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        $data = array(
+            "design" =>$design,
+            "products" =>$products
+        );
+        return view('web.productScreen')->with($data);
     }
-    public function designDetailScreen()
+    public function designDetailScreen(Request $request)
     {
-        return view('web.designDetailScreen');
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        $productID = $request->cookie('productID');
+        $product = Products::where('id',$productID)->get();
+        // dd($product[0]->print_locations);
+        $data = array(
+            "design" =>$design,
+            "product" =>$product
+        );
+        return view('web.designDetailScreen')->with($data);
     }
-    public function printTypeScreen(){
-        return view('web.printTypeScreen');
+    public function printTypeScreen(Request $request){
+        $productID = $request->cookie('productID');
+        $product = Products::where('id',$productID)->get();
+        // dd($product[0]->groups[0]->print_types);
+        $data = array(
+            "product" =>$product,
+        );
+
+        return view('web.printTypeScreen')->with($data);
     }
     public function deliveryAddressScreen(){
         return view('web.deliveryAddressScreen'); 

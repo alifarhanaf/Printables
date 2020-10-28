@@ -82,13 +82,13 @@
               <div class="img_parent_main">
                 <img src="{{ asset('storage/images/home/12.png')}}" alt="" class="img-fluid rounded-circle">
               <div class="img_counter">
-                <span>1</span>
+                <span>2</span>
               </div>
               </div>
             </div>
               <div class="under__img_slide">
                 <div class="heading_section">
-                  <h4>Pick a product</h4>
+                  <h4>Tell A Designer What You Want</h4>
                 </div>
                 <div class="para_discription">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magnam assumenda ex soluta? Corrupti vitae, quod nisi itaque ducimus nihil.</p>
@@ -108,40 +108,13 @@
               <div class="img_parent_main">
                 <img src="{{ asset('storage/images/home/12.png')}}" alt="" class="img-fluid rounded-circle">
               <div class="img_counter">
-                <span>1</span>
+                <span>3</span>
               </div>
               </div>
             </div>
               <div class="under__img_slide">
                 <div class="heading_section">
-                  <h4>Pick a product</h4>
-                </div>
-                <div class="para_discription">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magnam assumenda ex soluta? Corrupti vitae, quod nisi itaque ducimus nihil.</p>
-                </div>
-              </div> 
-            
-          </div>
-        </div>
-
-
-      </div>
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
-
-
-        <div class="main__slide_section">
-          <div class="slide__all_parent">
-            <div class="image_slide">
-              <div class="img_parent_main">
-                <img src="{{ asset('storage/images/home/12.png')}}" alt="" class="img-fluid rounded-circle">
-              <div class="img_counter">
-                <span>1</span>
-              </div>
-              </div>
-            </div>
-              <div class="under__img_slide">
-                <div class="heading_section">
-                  <h4>Pick a product</h4>
+                  <h4>Receive a Design Within 24 Hours</h4>
                 </div>
                 <div class="para_discription">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magnam assumenda ex soluta? Corrupti vitae, quod nisi itaque ducimus nihil.</p>
@@ -162,13 +135,13 @@
               <div class="img_parent_main">
                 <img src="{{ asset('storage/images/home/12.png')}}" alt="" class="img-fluid rounded-circle">
               <div class="img_counter">
-                <span>1</span>
+                <span>4</span>
               </div>
               </div>
             </div>
               <div class="under__img_slide">
                 <div class="heading_section">
-                  <h4>Pick a product</h4>
+                  <h4>Easy Individual & Group Payments</h4>
                 </div>
                 <div class="para_discription">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magnam assumenda ex soluta? Corrupti vitae, quod nisi itaque ducimus nihil.</p>
@@ -189,13 +162,40 @@
               <div class="img_parent_main">
                 <img src="{{ asset('storage/images/home/12.png')}}" alt="" class="img-fluid rounded-circle">
               <div class="img_counter">
-                <span>1</span>
+                <span>5</span>
               </div>
               </div>
             </div>
               <div class="under__img_slide">
                 <div class="heading_section">
-                  <h4>Pick a product</h4>
+                  <h4>Receive Your Order Quickly</h4>
+                </div>
+                <div class="para_discription">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magnam assumenda ex soluta? Corrupti vitae, quod nisi itaque ducimus nihil.</p>
+                </div>
+              </div> 
+            
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+
+
+        <div class="main__slide_section">
+          <div class="slide__all_parent">
+            <div class="image_slide">
+              <div class="img_parent_main">
+                <img src="{{ asset('storage/images/home/12.png')}}" alt="" class="img-fluid rounded-circle">
+              <div class="img_counter">
+                <span>6</span>
+              </div>
+              </div>
+            </div>
+              <div class="under__img_slide">
+                <div class="heading_section">
+                  <h4>Look Great</h4>
                 </div>
                 <div class="para_discription">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magnam assumenda ex soluta? Corrupti vitae, quod nisi itaque ducimus nihil.</p>
@@ -361,7 +361,19 @@
     </div>
     <div class="main_designs">
       <div class="main_all_desings">
+        @foreach ($designs as $design)
+        @foreach($design->images as $image)
         <div class="child_image">
+          <div class="main_child_spacing">
+            <a href="">
+             <img src="{{ asset($image->url)}}" alt="" class="img-fluid">
+            </a>
+          </div>
+        </div>
+        @endforeach            
+        @endforeach
+        
+        {{-- <div class="child_image">
           <div class="main_child_spacing">
             <a href="">
              <img src="{{ asset('storage/images/home/a.png')}}" alt="" class="img-fluid">
@@ -423,14 +435,7 @@
              <img src="{{ asset('storage/images/home/a.png')}}" alt="" class="img-fluid">
             </a>
           </div>
-        </div>
-        <div class="child_image">
-          <div class="main_child_spacing">
-            <a href="">
-             <img src="{{ asset('storage/images/home/a.png')}}" alt="" class="img-fluid">
-            </a>
-          </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
@@ -440,3 +445,4 @@
   
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+@include('web.includes.endfile')

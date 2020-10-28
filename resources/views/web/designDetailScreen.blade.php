@@ -1,7 +1,7 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
 
-
+<form action="{{ route('setDesignDetailCookie') }}" method="POST" >
 <section class="header_beneath single__product_selected">
     <div class="container" >
         <div class="my_nav">
@@ -64,10 +64,12 @@
             <div class="col-md-6 col-10 m-auto d-block">
                 <div class="main_image_selected">
                     <div class="image_spacing_main">
-                        <img src="{{ asset('storage/images/wizard 2/1.png')}}" alt="" class="img-fluid">
+                        <img src="{{ asset($product[0]->images[0]->url)}}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
+            
+                 {{ csrf_field() }}
             <div class="col-md-6 col-10 m-auto d-block">
                 <div class="mian_image_aboutSection">
                     <div class="main__imageDiscription">
@@ -75,7 +77,7 @@
                             <label for="CompName" class="main_labels">
                                 Name Your Compaign
                             </label>
-                            <input type="text" class="form-control form_class" id="CompName">
+                            <input type="text" class="form-control form_class" name="CampaignName" id="CompName">
                         </div>
                         <div class="Select_Boxes">
                             <div class="all_print_location">
@@ -83,13 +85,18 @@
                                     Select printed location
                                 </label>
                                 <div class="allLocations">
+                                    @foreach ($product[0]->print_locations as $PL)
+                                        
+                                    
                                     <div class="printLocation_name">
-                                        <input type="checkbox" id="front" name="LocationPrint">
-                                        <label for="front">Front</label>
+                                    <input type="checkbox" name="printLocations[]" id="front" value="{{$PL->id}}" >
+                                    <label for="front">{{$PL->name}}</label>
                                     </div>
-                                    <div class="printLocation_name">
-                                        <input type="checkbox" id="Pocket" name="LocationPrint" checked="checked">
+                                    @endforeach
+                                    {{-- <div class="printLocation_name">
+                                        <input type="checkbox" id="Pocket" name="LocationPrint" >
                                         <label for="Pocket">Pocket</label>
+                                       
                                     </div>
                                     <div class="printLocation_name">
                                         <input type="checkbox" id="Back" name="LocationPrint">
@@ -98,9 +105,17 @@
                                     <div class="printLocation_name">
                                         <input type="checkbox" id="Sleeve" name="LocationPrint">
                                         <label for="Sleeve">Sleeve</label>
-                                    </div>
+                                    </div> --}}
                                 </div> 
                             </div>
+                        </div>
+                        <div id="textview1" >
+                        </div>
+                        <div id="textview2" >
+                        </div>
+                        <div id="textview3" >
+                        </div>
+                        <div id="textview4" >
                         </div>
                         <div class="PageInfo">
                             <p><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, recusandae.</em></p>
@@ -110,9 +125,10 @@
                                 Select printed location
                             </label>
                             <div class="main__discribe">
-                                <textarea id="discribe" cols="20" rows="5" class="form-control form_class" placeholder="1. Please add notes/changes you need a numbered list.
-2. Please try to keep your notes concise.
-3. Please make sure to write the exact text you want on the shirt (event name, date, venue, letters, school, chapter, sponors,etc"></textarea>
+                                <textarea id="discribe" name="suggestion" cols="20" rows="5" class="form-control form_class" 
+                                placeholder="1. Please add notes/changes you need a numbered list.
+                                            2. Please try to keep your notes concise.
+                                            3. Please make sure to write the exact text you want on the shirt (event name, date, venue, letters, school, chapter, sponors,etc"></textarea>
                             </div>
                         </div>
                         <div class="number_Colors">
@@ -129,25 +145,28 @@
                         <div class="UploadImages">
                             <div class="upload-btn-wrapper">
                                 <div class="upload_image">
-                                    <img src="{{ asset('storage/images/wizard 2/4.png')}}" alt="" class="img-fluid" id="fileUpload"/>
+                                    <img src="{{ asset($design[0]->images[0]->url)}}" alt="" class="img-fluid" id="fileUpload" style="max-width: 100px;height: 100px;" >
                                 </div>
                                 <input type="file" name="myfile" accept="image/*" data-type='image' class="image_checker" />
                             </div>
                             <div class="upload-btn-wrapper">
                                 <div class="upload_image">
-                                    <img src="{{ asset('storage/images/wizard 2/4.png')}}" alt="" class="img-fluid" id="fileUpload">
+                                    <img src="{{ asset('storage/images/wizard 2/4.png')}}" alt="" class="img-fluid" id="fileUpload" style="max-width: 100px;height: 100px;">
                                 </div>
                                 <input type="file" name="myfile" accept="image/*" data-type='image' class="image_checker" />
                             </div>
                             <div class="upload-btn-wrapper">
                                 <div class="upload_image">
-                                    <img src="{{ asset('storage/images/wizard 2/4.png')}}" alt="" class="img-fluid" id="fileUpload">
+                                    <img src="{{ asset('storage/images/wizard 2/4.png')}}" alt="" class="img-fluid" id="fileUpload" style="max-width: 100px;height: 100px;">
                                 </div>
                                 <input type="file" name="myfile" accept="image/*" data-type='image' class="image_checker" />
                             </div>
                         </div>
                         <div class="next__btn">
-                          <a href="{{ route('printTypeScreen')}}" class="btn my-btn">Next</a>
+                            <button type="submit">
+                          <a type="submit" class="btn my-btn">Next</a>
+                            </button>
+                       
                         </div>
                     </div>
                 </div>
@@ -163,7 +182,7 @@
 </section>
 
 
-  
+</form>
 
 
 
@@ -172,3 +191,60 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+<script>
+$('.printLocation_name label').click(function(event){
+
+    var test = '<div class="DiscribePrint"><label for="discribe" class="main_labels">Describe what you would like designed on the Front of the shirt.</label><div class="main__discribe"><textarea id="discribe" name="suggestionfrontPocket" cols="20" rows="5" class="form-control form_class"placeholder="1. Please add notes/changes you need a numbered list.&#10;2. Please try to keep your notes concise. &#10; 3. Please make sure to write the exact text you want on the shirt (event name, date, venue, letters, school, chapter, sponors,etc"></textarea></div></div>';
+    var test2 = '<div class="DiscribePrint"><label for="discribe" class="main_labels">Describe what you would like designed on the Back of the shirt.</label><div class="main__discribe"><textarea id="discribe" name="suggestionfrontPocket" cols="20" rows="5" class="form-control form_class"placeholder="1. Please add notes/changes you need a numbered list.2. Please try to keep your notes concise.3. Please make sure to write the exact text you want on the shirt (event name, date, venue, letters, school, chapter, sponors,etc"></textarea></div></div>';
+                                    
+                                    
+                                        
+                                        
+                                          
+                                            
+                                         
+                                         
+                                         
+      
+    var checkNow = $(this).parent('.printLocation_name').find('input')
+    console.log(checkNow.val());
+    // document.querySelectorAll("input[value=2]");
+    if(checkNow.attr('checked')) {
+        if(checkNow.val() == 2 ){
+            checkNow.removeAttr('checked','checked')
+      document.getElementById("textview1").innerHTML = ' ';
+        }else if(checkNow.val() == 3 ){
+            checkNow.removeAttr('checked','checked')
+      document.getElementById("textview2").innerHTML = ' ';
+        }else if(checkNow.val() == 4 ){
+            checkNow.removeAttr('checked','checked')
+      document.getElementById("textview3").innerHTML = ' ';
+        }else if(checkNow.val() == 5 ){
+      checkNow.removeAttr('checked','checked')
+      document.getElementById("textview4").innerHTML = ' ';
+        }
+    }else {
+        if(checkNow.val()==2){
+        checkNow.attr('checked','checked')
+    document.getElementById("textview1").innerHTML = test;
+        }else if(checkNow.val()==3){
+            checkNow.attr('checked','checked')
+    document.getElementById("textview2").innerHTML = test2;
+        }else if(checkNow.val()==4){
+            checkNow.attr('checked','checked')
+    document.getElementById("textview3").innerHTML = test;
+        }else if(checkNow.val()==5){
+            checkNow.attr('checked','checked')
+    document.getElementById("textview4").innerHTML = test2;
+        }
+    
+    }
+    
+   
+
+    
+  
+  });
+
+</script>
+@include('web.includes.endfile')

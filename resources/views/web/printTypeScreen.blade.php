@@ -68,7 +68,7 @@
                                     <div class="product_head_select">
                                        <div class="d-flex">
                                            <div class="image_flex_spacing">
-                                               <img src="{{ asset('storage/images/wizard 1/2.png')}}" alt="" class="img-fluid">
+                                               <img src="{{ $product[0]->images[0]->url}}" alt="" class="img-fluid">
                                            </div>
                                            <div class="product_tielt-print">
                                                <h5 class="text-capitalize">Comfort Colors pocket t-shit - royal carribe</h5>
@@ -108,7 +108,7 @@
                                     <div class="product_head_select">
                                        <div class="d-flex">
                                            <div class="image_flex_spacing">
-                                               <img src="{{ asset('storage/images/wizard 1/2.png')}}" alt="" class="img-fluid">
+                                               <img src="{{ $product[0]->images[0]->url}}" alt="" class="img-fluid">
                                            </div>
                                            <div class="product_tielt-print">
                                                <h5 class="text-capitalize">Comfort Colors pocket t-shit - royal carribe</h5>
@@ -160,7 +160,10 @@
                                 Print Type
                             </label>
                             <select name="print_type" id="Print_type" class="form_class form-control w-50">
-                                <option value="">Screen Print</option>
+                                @foreach ($product[0]->groups[0]->print_types as $printTypes)
+                                <option value=""> {{$printTypes->name}} </option>
+                                @endforeach
+                                
                             </select>
                         </div>
                         <div class="Order_price spacing_bottom">
@@ -217,3 +220,4 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+@include('web.includes.endfile')

@@ -1,17 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Brands;
-use App\Groups;
-use App\Images;
-use App\Products;
-use App\Categories;
-use App\BrandsProducts;
-use App\GroupsProducts;
-use App\ImagesProducts;
-use App\PrintLocations;
-use App\CategoriesProducts;
+use Cookie;
+use App\Models\Brands;
+use App\Models\Groups;
+use App\Models\Images;
+use App\Models\Products;
+use App\Models\Categories;
+use App\Models\BrandsProducts;
+use App\Models\GroupsProducts;
+use App\Models\ImagesProducts;
+use App\Models\PrintLocations;
+use App\Models\CategoriesProducts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ProductRequest;
@@ -198,6 +198,21 @@ class ProductController extends Controller
             return redirect()->route('product.edit',$product_id)->with('message',$ex->getMessage());
         }
     }
+    // public function productByID($id){
+    //     $products = Products::where('id',$id)->get();
+    //     $images = $design[0]->images;
+    //     // dd($images);
+    //     $data = array(
+    //         "design"=> $design,
+    //         "designImages"=>$images,
+    //     );
+    //     return $data;
+    // }
+    public function setCookie(Request $request){
+        // dd($request);
+        Cookie::queue('productID', $request->productID, 10);
+        return redirect()->route('designDetailScreen');
+     }
 
     
 }

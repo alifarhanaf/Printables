@@ -21,7 +21,7 @@
       <tbody>
         @foreach ($designs as $design)
         <tr >
-        <th  class="align-middle" scope="row"><img src="https://via.placeholder.com/500x334" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image"></th>
+        <th  class="align-middle" scope="row"><img src="{{ asset($design->images[0]->url)}}" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image"></th>
             <td class="align-middle" >{{$design->name}}</td>
             {{-- <td class="align-middle" >{{$design->description}}</td> --}}
             <td class="align-middle"> 

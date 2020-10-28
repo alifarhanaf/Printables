@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,10 +8,10 @@ class Images extends Model
 {
     public function products()
     {
-        return $this->belongsToMany('App\Products');
+        return $this->belongsToMany('App\Models\Products');
     }
     public function groups()
     {
-        return $this->belongsToMany('App\Groups');
+        return $this->belongsToMany('App\Models\Groups');
     }
 }

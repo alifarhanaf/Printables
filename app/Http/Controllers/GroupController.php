@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Faqs;
-use App\Groups;
-use App\Images;
-use App\FaqsGroups;
-use App\GroupsFaqs;
-use App\PrintTypes;
-use App\GroupImages;
-use App\GroupsImages;
+use App\Models\Faqs;
+use App\Models\Groups;
+use App\Models\Images;
+use App\Models\FaqsGroups;
+use App\Models\GroupsFaqs;
+use App\Models\PrintTypes;
+use App\Models\GroupImages;
+use App\Models\GroupsImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\GroupRequest;

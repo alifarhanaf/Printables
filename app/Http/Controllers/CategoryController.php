@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Images;
-use App\Categories;
-use App\CategoriesImages;
+use App\Models\Images;
+use App\Models\Categories;
+use App\Models\CategoriesImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CategoryRequest;

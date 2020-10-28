@@ -55,6 +55,7 @@ Route::get('/designadd', 'DesignController@index')->name('design.form');
 Route::post('/designSubmit','DesignController@submitDesign')->name('submit.design');
 Route::get('/designedit/{id}', 'DesignController@editdesign')->name('design.edit');
 Route::get('/designgrid', 'DesignController@designgrid')->name('design.grid');
+
 Route::delete('/deletedesign/{id}','DesignController@destroy')->name('design.delete');
 
 
@@ -71,17 +72,14 @@ Route::post('/editfaqsubmit/{id}', 'FaqController@submiteditfaq')->name('submit.
 Route::get('/faqedit/{id}', 'FaqController@editfaq')->name('faq.edit');
 Route::get('/faqgrid', 'FaqController@faqgrid')->name('faq.grid');
 Route::delete('/deletefaq/{id}', 'FaqController@destroy')->name('faq.delete');
-
-
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-// });
 });
 
 
 
 Auth::routes();
 
-
+Route::middleware(['user'])->group(function () {
 
 Route::get('/', 'HomeController@home')->name('homeScreen');
 Route::get('/designs', 'HomeController@collections')->name('designScreen');
@@ -91,3 +89,8 @@ Route::get('/printTypes', 'HomeController@printTypeScreen')->name('printTypeScre
 Route::get('/deliveryAddress', 'HomeController@deliveryAddressScreen')->name('deliveryAddressScreen');
 Route::get('/aboutUs', 'HomeController@aboutUsScreen')->name('aboutUsScreen');
 Route::get('/cart', 'HomeController@cartScreen')->name('cartScreen');
+Route::get('/designByID/{id}', 'DesignController@designByID')->name('design.single');
+Route::post('/setCookie','DesignController@setCookie')->name('setCookie');
+Route::post('/setProductCookie','ProductController@setCookie')->name('setProductCookie');
+Route::post('/setDesignDetailCookie','DesignController@setDesignDetailCookie')->name('setDesignDetailCookie');
+});

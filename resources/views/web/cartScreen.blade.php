@@ -206,3 +206,4 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+@include('web.includes.endfile')

@@ -13,13 +13,13 @@ class CreateDesignImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('design_images', function (Blueprint $table) {
+        Schema::create('designs_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('design_id')->unsigned()->nullable();
-            $table->foreign('design_id')->references('id')->on('designs')->onDelete('cascade');
+            $table->integer('designs_id')->unsigned()->nullable();
+            $table->foreign('designs_id')->references('id')->on('designs')->onDelete('cascade');
 
-            $table->integer('image_id')->unsigned()->nullable();
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
+            $table->integer('images_id')->unsigned()->nullable();
+            $table->foreign('images_id')->references('id')->on('images')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateDesignImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('design_images');
+        Schema::dropIfExists('designs_images');
     }
 }

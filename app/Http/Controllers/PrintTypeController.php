@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Faqs;
-use App\PrintTypes;
-use App\PrintLocations;
+use App\Models\Faqs;
+use App\Models\PrintTypes;
+use App\Models\PrintLocations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Faqs;
-use App\Answers;
-use App\FaqsAnswers;
-use App\DesignImages;
+use App\Models\Faqs;
+use App\Models\Answers;
+use App\Models\FaqsAnswers;
+use App\Models\DesignImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

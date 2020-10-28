@@ -25,5 +25,3 @@ $('.slickInni').slick({
 
 </script>
 
-</body>
-</html>
