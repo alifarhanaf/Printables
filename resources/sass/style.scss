@@ -6,6 +6,9 @@
     line-height: normal;
     
 }
+ button{
+    outline: none !important;
+ }
 i{
     font-size: 2rem !important;
     color: #e8ecf2;
@@ -76,6 +79,7 @@ ul
             padding-bottom: 0.5rem;
             font-size: 1.4rem;
             border-radius: 0.5rem;
+            outline: none !important;
 }
 
 

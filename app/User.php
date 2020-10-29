@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+    public function addresses()
+    {
+        return $this->belongsToMany('App\Models\Addresses');
+    }
 
     /**
      * The attributes that are mass assignable.

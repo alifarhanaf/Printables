@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Cookie;
+use App\Models\Colors;
 use App\Models\Designs;
 use App\Models\Products;
 use App\Models\OrderTenures;
@@ -16,10 +17,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -50,11 +51,14 @@ class HomeController extends Controller
     public function products(Request $request)
     {   
         $products = Products::all();
+        $colors = Colors::all();
         $designID = $request->cookie('designID');
+        // dd($designID);
         $design = Designs::where('id',$designID)->get();
         $data = array(
             "design" =>$design,
-            "products" =>$products
+            "products" =>$products,
+            "colors" =>$colors
         );
         return view('web.productScreen')->with($data);
     }
@@ -92,10 +96,19 @@ class HomeController extends Controller
         );
         return view('web.deliveryAddressScreen')->with($data); 
     }
-    public function cartScreen(){
-        return view('web.cartScreen');
+    public function cartScreen(Request $request){
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        $productID = $request->cookie('productID');
+        $product = Products::where('id',$productID)->get();
+        $data = array(
+            "design" =>$design,
+            "product" =>$product,
+        );
+        return view('web.cartScreen')->with($data);
     }
     public function aboutUsScreen(){
         return view('web.aboutUsScreen');
     }
+    
 }

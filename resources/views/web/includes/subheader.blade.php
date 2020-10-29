@@ -34,12 +34,9 @@
         </ul>
         <div class="buttons_main  my-2 my-lg-0 my-2 my-lg-0 text-lg-left text-center">
             <a href="{{ route('designScreen') }}" class="btn my-btn">START HERE</a>
+           
+            @if(Illuminate\Support\Facades\Auth::check())
             <div class="ml-3 d-inline-block mx-4">
-              {{-- //START
-              <a class="dropdown-item" >
-                  <i class="typcn typcn-power-outline"></i> Sign Out</a>
-                  
-              //End --}}
               <a  class="signoutText" href="{{ route('logout') }}"
               onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -50,6 +47,16 @@
                 @csrf
             </form>
             </div>
+            @else
+            <div class="ml-3 d-inline-block mx-4">
+              <a  class="signoutText" href="{{ route('login') }}"
+              >
+                <i class="fa fa-user mr-1"></i>
+                LogIn
+              </a>
+              
+            </div>
+            @endif
             <div class="cart_main mr-4 d-lg-inline-block d-none">
               <div class="cart_div">
                 <a href=""  class="cart_font">

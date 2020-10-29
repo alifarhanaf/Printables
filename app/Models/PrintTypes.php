@@ -14,4 +14,8 @@ class PrintTypes extends Model
     {
         return $this->belongsToMany('App\Models\Faqs');
     }
+    public function campaigns()
+    {
+        return $this->belongsToMany('App\Models\Campaigns');
+    }
 }

@@ -148,19 +148,24 @@
                       </div>
                     </div>  
                     <div class="col-md-6 col-10 d-block main_product_section">
+                      <form action="{{ route('setProductCookie') }}" method="POST" >
+                        {{ csrf_field() }}
                       <div class="main_image_discrition">
                         <div class="main_spacing_all">
                           <div class="color_one">
                             <h6>Choose a Color:</h6>
-                            <div class="All_Colors">
+                            <div class="All_Colors" style="padding-right: 20%;">
+                              @foreach ($colors as $color)
                               <div class="main_colors">
-                                <input type="radio" name="colors" id="red">
-                                <label for="red"></label>
+                                <input type="radio" name="color" value="{{$color->hexcode}}" >
+                                <label style="background-color:{{$color->hexcode}};"></label>
                               </div>
-                              <div class="main_colors">
+                              @endforeach
+                              
+                              {{-- <div class="main_colors">
                                 <input type="radio" name="colors" id="green" checked="checked">
                                 <label for="green"></label>
-                              </div>
+                              </div> --}}
                             </div>
                             <div class="size_brand">
                               <h6>Size:</h6>
@@ -196,10 +201,9 @@
                                   <button class="btn w-100 my-btn close___button" data-dismiss="modal">Close</button>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <form action="{{ route('setProductCookie') }}" method="POST" >
-                                        {{ csrf_field() }}
+                                    
                                         <input type="hidden" id="productID" name="productID" value="{{$product->id}}">
-                                        <button type="submit">
+                                        <button type="submit" style="border-radius: 0.5rem;">
                                   <a  class="btn w-100 my-btn next_buttonn" >Next</a>
 
                                 </button>
@@ -244,4 +248,13 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+<script>
+
+$('.All_Colors label').click(function(event){
+    $(this).parents('.All_Colors').find('label').removeAttr('data-active',false)
+      $(this).parents('.All_Colors').find('input').removeAttr('checked',false)
+      $(this).attr('data-active',true)
+      $(this).parent('.main_colors').find('input[type="radio"]').attr('checked','checked')
+  })
+</script>
 @include('web.includes.endfile')

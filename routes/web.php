@@ -90,10 +90,13 @@ Route::get('/deliveryAddress', 'HomeController@deliveryAddressScreen')->name('de
 Route::get('/aboutUs', 'HomeController@aboutUsScreen')->name('aboutUsScreen');
 Route::get('/cart', 'HomeController@cartScreen')->name('cartScreen');
 Route::get('/designByID/{id}', 'DesignController@designByID')->name('design.single');
-Route::post('/setCookie','DesignController@setCookie')->name('setCookie');
-Route::post('/setProductCookie','ProductController@setCookie')->name('setProductCookie');
-Route::post('/setDesignDetailCookie','DesignController@setDesignDetailCookie')->name('setDesignDetailCookie');
+Route::post('/setCookie','CookieController@setCookie')->name('setCookie');
+Route::post('/setProductCookie','CookieController@setProductCookie')->name('setProductCookie');
+Route::post('/setPrintTypeCookie','CookieController@setPrintTypeCookie')->name('setPrintTypeCookie');
+
+Route::post('/setDesignDetailCookie','CookieController@setDesignDetailCookie')->name('setDesignDetailCookie');
 Route::get('/allPrintLocations', 'PrintTypeController@allPrintLocations')->name('allPrintLocations');
 Route::get('/allPrintTypeFaqs/{id}', 'PrintTypeController@allPrintTypeFaqs')->name('allPrintTypeFaqs');
 Route::get('/faqAnswers/{id}', 'PrintTypeController@faqAnswers')->name('faqAnswers');
 
+Route::post('/setDraftCampaign','CampaignController@setDraftCampaign')->name('setDraftCampaign');

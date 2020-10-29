@@ -72,6 +72,7 @@
                                            </div>
                                            <div class="product_tielt-print">
                                                <h5 class="text-capitalize">{{ $product[0]->name}}</h5>
+                                               <p>{{ Cookie::get('color') }}</p>
                                            </div>
                                        </div>
                                        <div class="main_delete_this">
@@ -84,7 +85,9 @@
                                         <div class="main__footer_selcet">
                                             <div class="main_all_colors">
                                                 <div class="colors_parent_div">
-                                                    <div class="color_main"></div>
+                                                    <div class="color_main" style="background-color:{{Cookie::get('color')}} ">
+                                                        
+                                                    </div>
                                                 </div>
                                                 <div class="colors_parent_div">
                                                     <div class="color_main"></div>
@@ -96,6 +99,7 @@
                                                     <div class="color_main"></div>
                                                 </div>
                                                 <div class="main__image_color">
+                                                    {{-- <img src="{{ asset('storage/images/home/colors.png')}}" alt="logo" class="img-fluid"> --}}
 
                                                 </div>
                                             </div>
@@ -155,11 +159,13 @@
             <div class="col-lg-6 col-md-10 d-block m-auto ">
                 <div class="print_info">
                     <div class="all_info_under_spacing">
+                        <form action="{{ route('setPrintTypeCookie') }}" method="POST" >
                         <div class="print_type spacing_bottom">
                             <label for="Print_type">
                                 Print Type
                             </label>
-                            <select name="print_type" id="Print_type" class="form_class form-control w-50">
+                            <select name="print_type" id="Print_type"  class="form_class form-control w-50">
+                                <option  value=""> Select One </option>
                                 @foreach ($product[0]->groups[0]->print_types as $printTypes)
                                 <option  value="{{$printTypes->id}}"> {{$printTypes->name}} </option>
                                 @endforeach
@@ -179,7 +185,7 @@
                             <label for="shoping__option">
                                 Shipping Option
                             </label>
-                            <select name="shoping__option" id="shoping__option" class="form-control form_class">
+                            <select name="shippingOption" id="shoping__option" class="form-control form_class">
                                 @foreach ($shippingOptions as $so)
                             <option value="{{$so->id}}">{{$so->options}}</option>
                                 @endforeach
@@ -198,9 +204,9 @@
                             <label for="BaseTag">
                                 Would you like your order bagged and tagged?
                             </label>
-                            <select name="BaseTag" id="BaseTag" class="form-control form_class">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                            <select name="bagAndTag" id="BaseTag" class="form-control form_class">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
                             </select>
                         </div>
                         <div class="main__paragraph spacing_bottom">
@@ -209,7 +215,18 @@
                             </div>
                         </div>
                         <div class="next__btn spacing_bottom">
-                        <a href="{{ route('deliveryAddressScreen')}}" class="btn my-btn">Next</a>
+                        
+                                {{-- <input type="hidden" id="designID" name="designID" value=""> --}}
+                                <button type="submit" style="border:none;">
+                            <a  class="btn my-btn w-100">
+                                 
+                                    Next
+                                {{ csrf_field() }}
+                               
+                            </a>
+                        </button>
+                        </form>
+                        {{-- <a href="{{ route('deliveryAddressScreen')}}" class="btn my-btn">Next</a> --}}
                         </div>
                     </div>
                 </div>

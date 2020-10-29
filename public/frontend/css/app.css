@@ -16,6 +16,11 @@ html {
   font-size: 62.5% !important;
 }
 
+button {
+  outline: none !important;
+  border: none !important;
+}
+
 h1 {
   font-size: 3.8rem;
   font-weight: light;

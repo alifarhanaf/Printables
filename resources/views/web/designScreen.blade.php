@@ -1,11 +1,9 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
-@foreach ($designs as $design)
-<form action="{{ route('setCookie') }}" method="POST" >
-@endforeach
+
 
    
-<input type="hidden" id="designID" name="designID" value="{{$design->id}}">
+
 <section class="Second_main_section">
     <div class="container">
         <div class="second_all">
@@ -38,12 +36,12 @@
                             @foreach ($designs as $design)
                             
                             @foreach ($design->images as $image)
-                            
+                           
                                 
                             
                             <div class="flex_child">
                                 <div class="chlidren_spacing">
-                                <button type="button" class="designInfo" data-toggle="modal" data-id="{{$design->id}}" data-target="#exampleModal">
+                                <button type="button" class="designInfo" data-toggle="modal" data-id="{{$design->id}}" data-target="#exampleModal{{$design->id}}">
                                     
                                         <div class="popup_header">
                                             <div class="img_parent">
@@ -51,6 +49,89 @@
                                             </div>
                                         </div>
                                 </button>
+
+                                  <!-- Modal -->
+                                 
+    <div class="modal fade" id="exampleModal{{$design->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered model_custom_width">
+            <div class="modal-content">
+            <div class="modal-body my_custom_model">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                <div class="row">
+                    <div class="col-lg-7 col-md-6 col-12 d-block">
+                        <div class="my__all_images">
+                            <div class="all__small_images">
+                                <div class="slickInni">
+                                    <div class="images_all">
+                                        <div class="main_img_div">
+                                            <div class="image_spacing_main_box">
+                                                <div  class="image__main">
+                                                    <img id="img" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="images_all">
+                                        <div class="main_img_div">
+                                            <div class="image_spacing_main_box">
+                                                <div  class="image__main">
+                                                    <img id="img1" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="all__big_images">
+                                <div class="slick_big_inni">
+                                    <div class="main_bigImages">
+                                        <div class="spacing_main">
+                                            <img id="img2" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class="main_bigImages">
+                                        <div class="spacing_main">
+                                            <img id="img3" src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-12 d-block mx-auto">
+                        <div class="model_main_section_textt">
+                            <div class="main_heading_collection">
+                                <h1 id="title">university of flwrida - fraternity row</h1>
+                            </div>
+                            <div class="button_main_section">
+                                <a href="" class="btn my-btn">compaign # 42790</a>
+                            </div>
+                            <div class="main_section_para_collection">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quaerat ratione facere, ea nisi sequi? Omnis excepturi necessitatibus iusto ad?</p>
+                            </div>
+                            <div class="button_model_collection">
+                                <form action="{{ route('setCookie') }}" method="POST" >
+                                    <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
+                                    <button type="submit" style="border:none;">
+                                <a  class="btn my-btn w-100">
+                                     
+                                        Customize on a product
+                                    {{ csrf_field() }}
+                                   
+                                </a>
+                            </button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        {{-- End Modal --}}
 
                                 
 
@@ -91,6 +172,7 @@
                                             </div>
                                         </div>
                                     </button>
+                                          
                                 </div>
                             </div>
 
@@ -114,7 +196,7 @@
     
         <!-- Modal -->
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered model_custom_width">
         <div class="modal-content">
         <div class="modal-body my_custom_model">
@@ -175,7 +257,7 @@
                         </div>
                         <div class="button_model_collection">
                            
-                                <button type="submit">
+                                <button type="submit" style="border:none;">
                             <a  class="btn my-btn w-100">
                                 
                                    
@@ -193,7 +275,7 @@
         </div>
         </div>
     </div>
-    </div>
+    </div> --}}
     {{-- End Modal --}}
 
     
@@ -206,34 +288,34 @@
 @include('web.includes.subfooter')    
 @include('web.includes.footer')
 <script>
-    $(document).ready(function(){
-        $('.designInfo').click(function(){
+//     $(document).ready(function(){
+//         $('.designInfo').click(function(){
 
-            var designid = $(this).data('id');
-            console.log(designid);
-            // AJAX request
-            $.ajax({
-            url: 'designByID/'+designid,
-            type: 'get',
-            success: function(response){ 
-            // Add response in Modal body
-        //    console.log(response);
-            // console.log(response.design[0].id);
-            // $("#title").html(response.design[0].name);
-            $("#img").attr("src", response.designImages[0].url);
-            $("#img1").attr("src", response.designImages[0].url);
-            $("#img2").attr("src", response.designImages[0].url);
-            $("#img3").attr("src", response.designImages[0].url);
-            $("#designID").val(response.design[0].id);
-            // $('.modal-body').html(response);
+//             var designid = $(this).data('id');
+//             console.log(designid);
+//             // AJAX request
+//             $.ajax({
+//             url: 'designByID/'+designid,
+//             type: 'get',
+//             success: function(response){ 
+//             // Add response in Modal body
+//         //    console.log(response);
+//             // console.log(response.design[0].id);
+//             // $("#title").html(response.design[0].name);
+//             $("#img").attr("src", response.designImages[0].url);
+//             $("#img1").attr("src", response.designImages[0].url);
+//             $("#img2").attr("src", response.designImages[0].url);
+//             $("#img3").attr("src", response.designImages[0].url);
+//             $("#designID").val(response.design[0].id);
+//             // $('.modal-body').html(response);
 
-            // Display Modal
-            $('#exampleModal').modal('show'); 
-    }
-  });
+//             // Display Modal
+//             $('#exampleModal').modal('show'); 
+//     }
+//   });
 
-        });
-    });
+//         });
+//     });
 
 </script>
 @include('web.includes.endfile')

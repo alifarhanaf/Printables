@@ -18,4 +18,8 @@ class Faqs extends Model
     {
         return $this->belongsToMany('App\Models\PrintTypes');
     }
+    public function campaigns()
+    {
+        return $this->belongsToMany('App\Models\Campaigns');
+    }
 }

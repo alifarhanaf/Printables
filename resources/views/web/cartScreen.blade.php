@@ -94,24 +94,40 @@
                                     <div class="product_main_section">
                                         <div class="d-flex">
                                             <div class="product_image_cart">
-                                                <img src="{{ asset('storage/images/wizard 2/1.png')}}" alt="" class="img-fluid">
+                                                <img src="{{($product[0]->images[0]->url)}}" alt="" class="img-fluid">
                                             </div>
                                             <div class="product-main_section">
                                                 <div class="product_title-cart">
-                                                    <h4>Comfort Colors - Garment-Dyed Heabyweight Long Sleeve Pocket T-Shirt - Bring Salmon</h4>
+                                                <h4>{{$product[0]->name}}</h4>
                                                 </div>
                                                 <div class="Product__main_varants">
                                                     <div class="product__pricees">
-                                                        <span>Prices:</span><span>24/7</span>
+                                                    <span>Price:</span><span> {{$product[0]->price}}$</span>
                                                     </div> 
                                                     <div class="tags_base">
-                                                        <span>Bag & tag:</span><span> Yes</span>
+                                                        <span>Bag & tag:</span><span>
+                                                            {{ Cookie::get('bagAndTag') }}
+                                                            {{-- @if({{ Cookie::get('bagAndTag') }} == 1)
+                                                             Yes
+                                                             @else
+                                                             No
+                                                             @endif --}}
+                                                            </span>
                                                     </div>
                                                     <div class="size">
-                                                        <span>Size:</span><span>S</span>
+                                                        <span>Size:</span><span>{{$product[0]->sizes}}</span>
                                                     </div>
                                                     <div class="Color_cart">
-                                                        <span>Colors:</span><span> Red</span>
+                                                        <div class="row">
+                                                            <div class="col-md-2">
+                                                               <span>Colors:</span>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <div style="width: 10px; height:10px; margin-top:6px; background-color:#000;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
                                                     </div>
                                                    
                                                 </div>
@@ -130,13 +146,13 @@
                                     </div>
                                 </div>
                                 <div class="Price_title text-right">
-                                    <span>26$</span>
+                                    <span>{{$product[0]->price}}$</span>
                                 </div>
                                 <div class="Quantity_div text-right">
                                     <input type="number"  value="1" min="1" name="Quantity_cart" id="Quantity_cart" class="form-control my-1 mr-sm-2">
                                 </div>
                                 <div class="total_div text-right">
-                                    <span>55.00$</span>
+                                    <span>{{$product[0]->price}}$</span>
                                 </div>
                             </div>
 
@@ -160,7 +176,7 @@
                                             <span>SubTotal</span>
                                         </div>
                                         <div class="subTotal_price">
-                                            <span>55.00$</span>
+                                            <span>{{$product[0]->price}}$</span>
                                         </div>
                                     </div>
 

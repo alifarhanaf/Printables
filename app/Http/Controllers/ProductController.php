@@ -208,11 +208,7 @@ class ProductController extends Controller
     //     );
     //     return $data;
     // }
-    public function setCookie(Request $request){
-        // dd($request);
-        Cookie::queue('productID', $request->productID, 60);
-        return redirect()->route('designDetailScreen');
-     }
+  
      
 
     

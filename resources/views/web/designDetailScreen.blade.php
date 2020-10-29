@@ -61,7 +61,7 @@
         </div> 
        
         <div class="row">
-            <div class="col-md-6 col-10 m-auto d-block">
+            <div class="col-md-6 col-10 mx-auto d-block">
                 <div class="main_image_selected">
                     <div class="image_spacing_main">
                         <img src="{{ asset($product[0]->images[0]->url)}}" alt="" class="img-fluid">
@@ -128,7 +128,7 @@
                                 What You want on your Front
                             </label>
                             <div class="main__discribe">
-                                <textarea id="discribe" name="suggestions[]" cols="20" rows="5" class="form-control form_class" 
+                                <textarea id="discribee{{$i}}" name="" cols="20" rows="5" class="form-control form_class" 
                                 placeholder="1. Please add notes/changes you need a numbered list.&#10;2. Please try to keep your notes concise.&#10;3. Please make sure to write the exact text you want on the shirt (event     name, date, venue, letters, school, chapter, sponors,etc"></textarea>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                             <label for="Numbers" class="main_labels">
                                 No. of colors
                             </label>
-                            <select name="SelectColors[]" id="Numbers" class="form-control form_class">
+                            <select id="Numbere{{$i}}" name="SelectColors"  class="form-control form_class">
                                 <option value=""> Select Colors</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -218,9 +218,12 @@ $('.printLocation_name label').click(function(event){
         }
     }else{
         for ( var i = 0, l = response.length; i < l; i++ ) {
+                document.getElementById("discribee"+i).name = response[i].name+"Suggestion";
+                document.getElementById("Numbere"+i).name = response[i].name+"Colors";
                     if(checkNow.val() == response[i].id){
                         checkNow.attr('checked','checked')
                     document.getElementById("testview"+i).style.display = "block";
+                    
                     document.getElementById("numSelect"+i).style.display = "block";
                     document.getElementById("label"+i).innerHTML = 'Describe what you would like designed on the '+ response[i].name +' of the shirt.';
                     }

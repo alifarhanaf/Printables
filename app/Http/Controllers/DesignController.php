@@ -74,22 +74,7 @@ class DesignController extends Controller
         );
         return $data;
     }
-    public function setCookie(Request $request){
-        // dd($request);
-        Cookie::queue('designID', $request->designID, 60);
-        return redirect()->route('productScreen');
-     }
-     public function setDesignDetailCookie(Request $request){
-        //  dd($request);
-        $str = implode(',', $request->printLocations);
-        $strColors = implode(',', $request->SelectColors);
-        $strSuggestions = implode(',', $request->suggestions);
-        Cookie::queue('Campaign Name', $request->CampaignName, 60);
-        Cookie::queue('PrintLocations', $str, 60);
-        Cookie::queue('suggestions', $strSuggestions, 60);
-        Cookie::queue('SelectColors',  $strColors, 60);
-        return redirect()->route('printTypeScreen');
-        // dd($request);
-     }
+    
+     
     //  printTypeScreen
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Cookie;
 use App\Models\Faqs;
 use App\Models\PrintTypes;
 use App\Models\PrintLocations;
@@ -90,5 +90,7 @@ class PrintTypeController extends Controller
         );
         return $data;
   
-}
+    }
+    
+
 }

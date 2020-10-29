@@ -30,4 +30,8 @@ class Products extends Model
     {
         return $this->belongsToMany('App\Models\PrintLocations');
     }
+    public function campaigns()
+    {
+        return $this->belongsToMany('App\Models\Campaigns');
+    }
 }
