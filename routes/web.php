@@ -100,3 +100,11 @@ Route::get('/allPrintTypeFaqs/{id}', 'PrintTypeController@allPrintTypeFaqs')->na
 Route::get('/faqAnswers/{id}', 'PrintTypeController@faqAnswers')->name('faqAnswers');
 
 Route::post('/setDraftCampaign','CampaignController@setDraftCampaign')->name('setDraftCampaign');
+
+
+Route::get('/productsByBrandID/{id}', 'CookieController@productsByBrandID')->name('productsByBrandID');
+
+Route::get('/productsByCategoryID/{id}', 'CookieController@productsByCategoryID')->name('productsByCategoryID');
+Route::get('/productsByBrandAndCategoryID/{bid}/{cid}', 'CookieController@productsByBrandAndCategoryID')->name('productsByBrandAndCategoryID');
+Route::get('/productsSearchWithBrandAndCategoryID/{bid}/{cid}/{search}', 'CookieController@productsSearchWithBrandAndCategoryID')->name('productsSearchWithBrandAndCategoryID');
+Route::get('/testProducts', 'CookieController@testProducts');

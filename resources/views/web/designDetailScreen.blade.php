@@ -90,31 +90,11 @@
                                         
                                     
                                     <div class="printLocation_name">
-                                    <input type="checkbox" name="printLocations[]" id="front" value="{{$PL->id}}" >
+                                    <input name="printLocations[]" data-selection="{{$PL->selections}}" data-name="{{$PL->name}}" type="checkbox" id="front" value="{{$PL->id}}" >
                                     
                                     <label for="front">{{$PL->name}}</label>
                                     </div>
-                        
-                                    
-                                   
-
-                                   
-
                                     @endforeach
-                                    {{-- <div class="printLocation_name">
-                                        <input type="checkbox" id="Pocket" name="LocationPrint" >
-                                        <label for="Pocket">Pocket</label>
-                                       
-                                    </div>
-                                    <div class="printLocation_name">
-                                        <input type="checkbox" id="Back" name="LocationPrint">
-                                        <label for="Back">Back</label>
-                                    </div>
-                                    <div class="printLocation_name">
-                                        <input type="checkbox" id="Sleeve" name="LocationPrint">
-                                        <label for="Sleeve">Sleeve</label>
-                                    </div> --}}
-
                                 </div> 
                             </div>
                         </div>
@@ -222,6 +202,7 @@ $('.printLocation_name label').click(function(event){
                 document.getElementById("Numbere"+i).name = response[i].name+"Colors";
                     if(checkNow.val() == response[i].id){
                         checkNow.attr('checked','checked')
+                        
                     document.getElementById("testview"+i).style.display = "block";
                     
                     document.getElementById("numSelect"+i).style.display = "block";
@@ -233,6 +214,46 @@ $('.printLocation_name label').click(function(event){
   });
 }
     });
+
+
 });
+
+
+
+// $(document).ready(function(){
+//     $.ajax({
+//             url: 'allPrintLocations',
+//             type: 'get',
+//             success: function(response){ 
+          
+// $('.printLocation_name label').click(function(event){
+
+//     var checkNow = $(this).parent('.printLocation_name').find('input')
+//     if(checkNow.attr('checked')) { 
+//         for ( var i = 0, l = response.length; i < l; i++ ) {
+//             if(checkNow.val() == response[i].id ){
+//                 checkNow.removeAttr('checked','checked')
+//                 document.getElementById("testview"+i).style.display = "none";
+//                 document.getElementById("numSelect"+i).style.display = "none";
+//             }
+//         }
+//     }else{
+//         for ( var i = 0, l = response.length; i < l; i++ ) {
+//                 document.getElementById("discribee"+i).name = response[i].name+"Suggestion";
+//                 document.getElementById("Numbere"+i).name = response[i].name+"Colors";
+//                     if(checkNow.val() == response[i].id){
+//                         checkNow.attr('checked','checked')
+//                     document.getElementById("testview"+i).style.display = "block";
+                    
+//                     document.getElementById("numSelect"+i).style.display = "block";
+//                     document.getElementById("label"+i).innerHTML = 'Describe what you would like designed on the '+ response[i].name +' of the shirt.';
+//                     }
+//                 }
+//     }
+      
+//   });
+// }
+//     });
+// });
 </script>
 @include('web.includes.endfile')

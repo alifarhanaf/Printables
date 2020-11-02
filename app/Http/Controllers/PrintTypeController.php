@@ -39,15 +39,26 @@ class PrintTypeController extends Controller
       
     }
     public function plindex(){
-        return view ('admin.printLocationform');
+        $printLocations = PrintLocations::all();
+        // dd($faqs[8]->answers);
+        $data = array(
+            "printLocations"=> $printLocations,
+        );
+
+        return view ('admin.printLocationform')->with($data);
     }
     public function submitPrintLocation(Request $request){
         // dd($request);
+        $str = '';
+        if ($request->has('selections')) {
+        $str = implode(', ', $request->selections);
+        }
         DB::beginTransaction();
         try {
         $printLocations = new PrintLocations();
         $printLocations->name =request('name');
         $printLocations->enabled = request('enable');
+        $printLocations->selections = $str;
         $printLocations->save();
         // $printLocations->faqs()->attach(request('faq_ids'));
 

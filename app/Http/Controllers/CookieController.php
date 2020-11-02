@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 use Cookie;
+use App\Models\Brands;
+use App\Models\Colors;
+use App\Models\Designs;
+use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CookieController extends Controller
 {
@@ -52,5 +58,96 @@ class CookieController extends Controller
     public function setCookie(Request $request){
         Cookie::queue('designID', $request->designID, 60);
         return redirect()->route('productScreen');
+    }
+    public function productsByBrandID(Request $request , $id){
+       
+        $brand = Brands::where('id',$id)->get();
+        $products = $brand[0]->products;
+        $colors = Colors::all();
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        
+        $data = array(
+            "products"=>$products,
+            "colors"=>$colors,
+            "design"=>$design
+        );
+        return view('web.helpers.productFilter')->with($data)->render();
+        
+  
+    }
+    
+    public function productsByCategoryID(Request $request , $id){
+       
+        $category = Categories::where('id',$id)->get();
+        // dd($category[0]->products);
+        $products = $category[0]->products;
+        // dd($products);
+        $colors = Colors::all();
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        
+        $data = array(
+            "products"=>$products,
+            "colors"=>$colors,
+            "design"=>$design
+        );
+        return view('web.helpers.productFilter')->with($data)->render();
+        
+  
+    }
+    
+    public function productsByBrandAndCategoryID(Request $request,$bid,$cid ){
+       
+        $products = DB::table('products')
+        ->join('brands_products', 'products.id', '=', 'brands_products.products_id')
+        ->join('brands', 'brands.id', '=', 'brands_products.brands_id')
+        ->join('categories_products', 'products.id', '=', 'categories_products.products_id')
+        ->join('categories', 'categories.id', '=', 'categories_products.categories_id')
+        ->where('brands.id', '=', $bid)
+        ->where('categories.id', '=', $cid)
+        ->select('products.id')->get();
+        $arr = [];
+        foreach($products as $product){
+            array_push($arr,$product->id);
+        }
+        $ids =  implode(',', $arr);
+        $products = Products::findMany($ids);
+        $colors = Colors::all();
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        $data = array(
+            "products"=>$products,
+            "colors"=>$colors,
+            "design"=>$design
+        );
+        return view('web.helpers.productFilter')->with($data)->render();
+    }
+    public function productsSearchWithBrandAndCategoryID(Request $request,$bid,$cid,$search ){
+    //    dd($search);
+        $products = DB::table('products')
+        ->join('brands_products', 'products.id', '=', 'brands_products.products_id')
+        ->join('brands', 'brands.id', '=', 'brands_products.brands_id')
+        ->join('categories_products', 'products.id', '=', 'categories_products.products_id')
+        ->join('categories', 'categories.id', '=', 'categories_products.categories_id')
+        ->where('brands.id', '=', $bid)
+        ->where('categories.id', '=', $cid)
+        ->select('products.id')->get();
+        $arr = [];
+        foreach($products as $product){
+            array_push($arr,$product->id);
+        }
+        $ids =  implode(',', $arr);
+        // $designs=  Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->get();
+        $products = Products::where('name', 'LIKE', '%' . $search . '%')->findMany($ids);
+        $colors = Colors::all();
+        $designID = $request->cookie('designID');
+        $design = Designs::where('id',$designID)->get();
+        $data = array(
+            "products"=>$products,
+            "colors"=>$colors,
+            "design"=>$design
+        );
+        return view('web.helpers.productFilter')->with($data)->render();
     }
 }

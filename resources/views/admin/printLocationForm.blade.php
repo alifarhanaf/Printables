@@ -79,24 +79,54 @@
                 <div class="card-body bd bd-t-0">
                   <div style="margin-left: 8%">
                   <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
-                    @if(isset($printLocations))
-                        
-                     
-                    {{$printLocations->enabled == 1 ? 'checked':''}}
                    
-                    @endif
                     > <label style="margin-left: 3%">Enable</label><br>
                   </div>
                   <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"
-                    @if(isset($printLocations)) 
-                    {{$printLocations->enabled == 0 ? 'checked':''}}
-                    @endif
+                   
                     > <label style="margin-left: 3%">Disable</label><br>
                   </div>
                   </div>
                   
                 </div><!-- card-body -->
               </div><!-- card -->
+
+              <div class="card bd-0 mg-t-10">
+            
+                <a id="collapsebtn" data-toggle="collapse" 
+              href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
+              style=" width: -webkit-fill-available; text-align: left;" 
+            ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
+              
+            <b>Select Groups</b>
+          </div>
+          </a>
+                
+              <!-- card-header -->
+              <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
+                
+                <ul style="padding-top:1.25rem; padding-left:8%;"   >
+                  @foreach ($printLocations as $pt)
+                  
+                  
+                  <div class="checkbox" style="">
+                    
+                    <li style="list-style-type: none;">
+                    <label>  <input name="selections[]" type="checkbox" value="{{$pt->name}}"
+                     
+                    
+                    
+                       > &nbsp{{$pt->name}}</label>
+                    </li>
+                  
+                  </div>
+                
+                  @endforeach
+                </ul>
+                
+                
+              </div><!-- card-body -->
+            </div><!-- card -->
               
         </div>
         

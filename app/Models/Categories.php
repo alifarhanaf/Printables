@@ -10,4 +10,8 @@ class Categories extends Model
     {
         return $this->belongsToMany('App\Models\Images');
     }
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Products');
+    }
 }

@@ -17,6 +17,7 @@ class CreatePrintLocationsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->boolean('enabled');
+            $table->string('selections');
             $table->timestamps();
         });
     }

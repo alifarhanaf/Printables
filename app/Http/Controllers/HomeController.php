@@ -37,11 +37,20 @@ class HomeController extends Controller
         return view('web.index')->with($data);
     }
 
-    public function collections()
+    public function collections(Request $request)
     {   
+        if ($request->has('search')) {
+            $designs=  Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->get();
+            $recentdesigns = Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->orderBy('created_at','DESC')->get();
+            // $recentdesigns = $recentdesigns->sortByDesc('created_at');
+            $data = array(
+                "designs"=> $designs,
+                "recents"=> $recentdesigns,
+            );
+            return view('web.designScreen')->with($data);
+        }
         $designs = Designs::all();
         $recentdesigns = Designs::all()->sortByDesc('created_at');
-        // dd($recentdesigns[0]->images);
         $data = array(
             "designs"=> $designs,
             "recents"=> $recentdesigns,
@@ -53,7 +62,6 @@ class HomeController extends Controller
         $products = Products::all();
         $colors = Colors::all();
         $designID = $request->cookie('designID');
-        // dd($designID);
         $design = Designs::where('id',$designID)->get();
         $data = array(
             "design" =>$design,
