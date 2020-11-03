@@ -48,8 +48,8 @@ class CampaignController extends Controller
         $address->zipCode = $request->zipCode;
         $address->save();
         $addressId = $address->id;
-        $user =  Auth::user();
-        $user->addresses()->sync($addressId);
+        // $user =  Auth::user();
+        // $user->addresses()->sync($addressId);
         $campaign->designs()->sync($designID);
         $campaign->addresses()->sync($addressId);
         $campaign->products()->sync($productID);
@@ -73,7 +73,7 @@ class CampaignController extends Controller
         return redirect()->route('cartScreen');
         } catch (\Exception $ex) {
             DB::rollback();
-            return redirect()->route('designDetailScreen');
+            return redirect()->route('deliveryAddressScreen');
         }
         
     }

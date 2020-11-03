@@ -45,7 +45,7 @@ class PrintTypeController extends Controller
             "printLocations"=> $printLocations,
         );
 
-        return view ('admin.printLocationform')->with($data);
+        return view ('admin.printLocationForm')->with($data);
     }
     public function submitPrintLocation(Request $request){
         // dd($request);
