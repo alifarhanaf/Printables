@@ -77,6 +77,13 @@ class CampaignController extends Controller
         }
         
     }
+    public function campaignScreen(){
+        $campaigns = Campaigns::all();
+        $data = array(
+            "campaigns"=> $campaigns,
+        );
+        return view('web.campaignScreen')->with($data);
+    }
 
     
 }

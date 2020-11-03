@@ -14,3 +14,202 @@
 .all__small_images .flickity-slider {
     transform: unset !important;
 }
+#sidebar li.list-group-item {
+    border: none !important;
+}
+#sidebar ul.list-group {
+    margin-inline-start: 1% !important;
+}
+#sidebar h5.card-title {
+    color: #84a0ac !important;
+    margin-inline-start: 8% !important;
+    font-size: 1.5rem !important;
+}
+#sidebar .card {
+    border-radius: 10px !important;
+    /* margin-left: 20% !important; 
+    margin-top:10% !important;
+    width: 80% !important; */
+    margin: 6%;
+}
+#sidebar i{
+    color: #84a0ac; 
+}
+#sidebar p.large {
+    margin-bottom: 0;
+    padding-inline-start: 5%;
+}
+#sidebar p.smallp {
+    font-size: 1.1rem;
+    padding-inline-start: 5%;
+}
+#tabs .card {
+    border-radius: 10px !important;
+    
+    /* margin-top:3% !important; */
+    margin: 2%;
+    
+   
+    
+}
+/* #subtabs .card {
+    border-radius: 10px !important;
+    
+    margin-top:3% !important;
+    margin-right: 5%;
+    
+} */
+#cardInsideCard .card{
+    border-radius: 5px !important;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    width: 20%px;
+    height: 10%;
+    background-color: #84a0ac;
+ 
+    
+}
+.mid {
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .mid {
+        text-align: left;
+    }
+}
+
+#cardInsideCard p{
+    align-self: center !important;
+    color: whitesmoke;
+    font-size: 1.8rem;
+}
+#cardInsideCard button.btn.btn-primary {
+    
+    height: 30px;
+    background-color: #84a0bf;
+    width: 100px;
+    font-size: 1.5rem;
+}
+#HeadaingP p{
+    color: #84a0ac;
+    font-size: 2.0rem;
+    
+    font-weight: 400 !important;
+}
+#HeadaingZ p{
+    color: #84a0ac;
+    font-size: 2.0rem;
+    /* float: right; */
+    /* text-align: right; */
+    
+    
+}
+#subHeaderCard .card{
+    border-right: none;
+    border-left: none;
+    border-radius: 0px !important;
+    margin: 2% !important;
+
+}
+
+#BodyCard .card{
+    
+    
+    margin: 2% !important;
+    border: none !important;
+    /* border-top: 1px !important; */
+
+   
+
+}
+#BodyCard th{
+    border: none;
+    font-size: 1.2rem;
+    color: #84a0ac;
+    font-weight: 500;
+}
+.new{
+    font-weight: 300 !important;
+}
+
+
+#HeadaingN p{
+    color: #84a0ac;
+    font-size: 1.5rem;
+    padding: 0.5%;
+    text-align: center;
+    margin-bottom: 0;
+}
+#tabss a{
+    font-size: 1.5rem; 
+    color: #84a0ac;
+    font-weight: 500;
+}
+#tabss .card{
+    border-bottom: 1px solid #f1e9b8 ;
+    margin: 2%;
+}
+#tabss .nav-tabs .nav-link {
+    border: 0px !important; 
+     border-top-left-radius: 0px !important; 
+     border-top-right-radius: 0px !important;
+}
+#tabss .nav-item.nav-link.active {
+    background: #84a0bf;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+#tabss .card-header {
+    background-color: white !important;
+} 
+#tabss .nav-tabs {
+    border-bottom: 0px !important ;
+}
+
+
+
+/* #tabss nav > .nav.nav-tabs{
+
+    border: none;
+      color:#fff;
+      background:#272e38;
+      border-radius:0;
+  
+  }
+  #tabss nav > div a.nav-item.nav-link,
+  #tabss nav > div a.nav-item.nav-link.active
+  {
+    border: none;
+      padding: 18px 25px;
+      color:#fff;
+      background:#272e38;
+      border-radius:0;
+  }
+  
+  #tabss nav > div a.nav-item.nav-link.active:after
+   {
+    content: "";
+    position: relative;
+    bottom: -60px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #e74c3c ;
+  }
+  #tabss .tab-content{
+    background: #fdfdfd;
+      line-height: 25px;
+      border: 1px solid #ddd;
+      border-top:5px solid #e74c3c;
+      border-bottom:5px solid #e74c3c;
+      padding:30px 25px;
+  }
+  
+  #tabss nav > div a.nav-item.nav-link:hover,
+  #tabss nav > div a.nav-item.nav-link:focus
+  {
+    border: none;
+      background: #e74c3c;
+      color:#fff;
+      border-radius:0;
+      transition:background 0.20s linear;
+  } */

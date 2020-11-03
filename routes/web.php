@@ -108,3 +108,5 @@ Route::get('/productsByCategoryID/{id}', 'CookieController@productsByCategoryID'
 Route::get('/productsByBrandAndCategoryID/{bid}/{cid}', 'CookieController@productsByBrandAndCategoryID')->name('productsByBrandAndCategoryID');
 Route::get('/productsSearchWithBrandAndCategoryID/{bid}/{cid}/{search}', 'CookieController@productsSearchWithBrandAndCategoryID')->name('productsSearchWithBrandAndCategoryID');
 Route::get('/testProducts', 'CookieController@testProducts');
+
+Route::get('/campaigns', 'CampaignController@campaignScreen')->name('campaignScreen');
