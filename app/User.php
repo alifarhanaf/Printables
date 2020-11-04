@@ -13,6 +13,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Addresses');
     }
+    public function campaigns()
+    {
+        return $this->belongsToMany('App\Models\Campaigns');
+    }
 
     /**
      * The attributes that are mass assignable.

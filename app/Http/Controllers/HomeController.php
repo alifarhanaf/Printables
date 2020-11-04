@@ -40,12 +40,14 @@ class HomeController extends Controller
     public function collections(Request $request)
     {   
         if ($request->has('search')) {
+            $search = $request->search;
             $designs=  Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->get();
             $recentdesigns = Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->orderBy('created_at','DESC')->get();
             // $recentdesigns = $recentdesigns->sortByDesc('created_at');
             $data = array(
                 "designs"=> $designs,
                 "recents"=> $recentdesigns,
+                "search" => $search,
             );
             return view('web.designScreen')->with($data);
         }
@@ -63,6 +65,7 @@ class HomeController extends Controller
         $colors = Colors::all();
         $designID = $request->cookie('designID');
         $design = Designs::where('id',$designID)->get();
+        // dd($design);
         $data = array(
             "design" =>$design,
             "products" =>$products,

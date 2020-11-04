@@ -16,7 +16,7 @@
             </div>
             <div class="input_search_field">
                 <div class="form-group">              
-                    <input placeholder="Search for like social rush, bid day, dog, etc...." type="search"  name="search" class="form-control" id="exampleFormControlFile1">
+                    <input placeholder="Search for like social rush, bid day, dog, etc...." type="search"  name="search" value="@if(isset($search)){{$search}}@endif" class="form-control" id="exampleFormControlFile1" onchange="saveValue(this);">
                     </div>
             </div>
         </form>

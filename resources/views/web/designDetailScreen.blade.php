@@ -1,7 +1,7 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
 
-<form action="{{ route('setDesignDetailCookie') }}" method="POST">
+<form action="{{ route('setDesignDetailCookie') }}" method="POST" enctype="multipart/form-data">
     <section class="header_beneath single__product_selected">
         <div class="container">
             <div class="my_nav">
@@ -137,26 +137,32 @@
                             <div class="UploadImages">
                                 <div class="upload-btn-wrapper">
                                     <div class="upload_image">
-                                        <img src="{{ asset($design[0]->images[0]->url) }}" alt="" class="img-fluid"
-                                            id="fileUpload" style="max-width: 100px;height: 100px;">
-                                    </div>
-                                    <input type="file" name="myfile" accept="image/*" data-type='image'
+                                        @if(isset($design[0]))
+                                        <img src="{{ asset($design[0]->images[0]->url) }}" alt="" class="img-fluid" id="fileUpload" style="max-width: 100px;height: 100px;">
+                                        </div>
+                                        @else
+                                        <img src="{{ asset('storage/images/wizard 2/4.png') }}" alt="" class="img-fluid" id="fileUpload" style="max-width: 100px;height: 100px;">
+                                        </div>
+                                        <input type="file" name="myfile[]" accept="image/*" data-type='image'
                                         class="image_checker" />
+                                        @endif
+                                        
+                                </div>
+                                <div class="upload-btn-wrapper">
+                                    <div class="upload_image">
+                                        <img src="{{ asset('storage/images/wizard 2/4.png') }}" alt="" class="img-fluid"
+                                            id="fileUpload" style="max-width: 100px;height: 100px;">
+                                            <input type="file" name="myfile[]" accept="image/*" data-type='image'
+                                        class="image_checker" />
+                                    </div>
+                                    
                                 </div>
                                 <div class="upload-btn-wrapper">
                                     <div class="upload_image">
                                         <img src="{{ asset('storage/images/wizard 2/4.png') }}" alt="" class="img-fluid"
                                             id="fileUpload" style="max-width: 100px;height: 100px;">
                                     </div>
-                                    <input type="file" name="myfile" accept="image/*" data-type='image'
-                                        class="image_checker" />
-                                </div>
-                                <div class="upload-btn-wrapper">
-                                    <div class="upload_image">
-                                        <img src="{{ asset('storage/images/wizard 2/4.png') }}" alt="" class="img-fluid"
-                                            id="fileUpload" style="max-width: 100px;height: 100px;">
-                                    </div>
-                                    <input type="file" name="myfile" accept="image/*" data-type='image'
+                                    <input type="file" name="myfile[]" accept="image/*" data-type='image'
                                         class="image_checker" />
                                 </div>
                             </div>

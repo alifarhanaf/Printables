@@ -161,10 +161,61 @@
 }
 #tabss .card-header {
     background-color: white !important;
+}
+#tabss .card-body {
+    padding: 0px !important;
 } 
 #tabss .nav-tabs {
     border-bottom: 0px !important ;
 }
+
+#mainHeader .card {
+    border: 1px solid #84a0ac;
+    border-radius: 5px;
+    margin: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#mainHeader i {
+    font-size: 1.7rem !important;
+    color: #84a0ac;
+}
+#activeOrdersCard .card {
+    border: 1px solid #84a0ac;
+    border-radius: 5px;
+    margin: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#activeOrdersCard button.btn.btn-primary {
+    height: 25px;
+    background-color: #84a0bf;
+    width: 70px;
+    font-size: 1.2rem;
+}
+
+#cardLayer .card {
+    
+    background-color: #84a0ac;
+    height: 45px;
+    border-radius: 0px !important;
+    
+    
+   margin: 0px !important;
+    
+}
+#cardLayer p{
+    color: whitesmoke !important;
+    font-size: 1.5rem;
+   padding-left: 2%;
+   padding-right: 2%;
+
+}
+#cardLayer .row{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 
 
 

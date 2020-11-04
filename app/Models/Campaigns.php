@@ -42,6 +42,14 @@ class Campaigns extends Model
     {
         return $this->belongsToMany('App\Models\Suggestions');
     }
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+    public function images()
+    {
+        return $this->belongsToMany('App\Models\Images');
+    }
     
 
 }

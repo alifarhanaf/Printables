@@ -99,17 +99,20 @@
        
         <div id="main_all_produts_section" class="main_all_produts_section">
             <div class="main_prduct " style="text-align: center;">
+                @if(isset($design[0]))
                 <h1>Slected Design </h1>
                 <div class="image_selected">
                     <div class="image_spacing">
-                        <img src="{{ asset($design[0]->images[0]->url) }}" alt="" class="img-fluid">
+                        <img src="{{ $design[0]->images[0]->url }}"  alt="" class="img-fluid">
                     </div>
                 </div>
+                @endif
             </div>
 
             <div class="all_products__main">
                 <div class="main_under_product_spacing">
                     <div class="row">
+                        
                         @foreach ($products as $product)
 
 
@@ -197,13 +200,21 @@
                                                                         <span>{{ $product->price }}$</span>
                                                                     </div>
                                                                     <div class="selected_image">
+                                                                        @if(isset($design[0]))
                                                                         <h6>Selected Design</h6>
                                                                         <div class="slected_image">
                                                                             <div class="image_select_spacing">
-                                                                                <img src="{{ $design[0]->images[0]->url }}"
-                                                                                    class="img-fluid" alt="">
+                                                                                
+                                                                                <img src="
+                                                                                
+                                                                                {{ $design[0]->images[0]->url }}
+                                                                                
+                                                                                "class="img-fluid" alt="">
+                                                                                
                                                                             </div>
                                                                         </div>
+                                                                        @endif
+
                                                                         <div class="product_discription">
                                                                             <p>Lorem ipsum dolor sit amet consectetur
                                                                                 adipisicing elit. Doloremque ut itaque
@@ -260,6 +271,7 @@
             </div>
             {{-- //Ending Model Body --}}
             @endforeach
+           
         </div>
    
     </div>

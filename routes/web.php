@@ -99,7 +99,7 @@ Route::get('/allPrintLocations', 'PrintTypeController@allPrintLocations')->name(
 Route::get('/allPrintTypeFaqs/{id}', 'PrintTypeController@allPrintTypeFaqs')->name('allPrintTypeFaqs');
 Route::get('/faqAnswers/{id}', 'PrintTypeController@faqAnswers')->name('faqAnswers');
 
-Route::post('/setDraftCampaign','CampaignController@setDraftCampaign')->name('setDraftCampaign');
+Route::post('/setDraftCampaign','CampaignController@setDraftCampaign')->name('setDraftCampaign')->middleware('user');
 
 
 Route::get('/productsByBrandID/{id}', 'CookieController@productsByBrandID')->name('productsByBrandID');
@@ -109,4 +109,6 @@ Route::get('/productsByBrandAndCategoryID/{bid}/{cid}', 'CookieController@produc
 Route::get('/productsSearchWithBrandAndCategoryID/{bid}/{cid}/{search}', 'CookieController@productsSearchWithBrandAndCategoryID')->name('productsSearchWithBrandAndCategoryID');
 Route::get('/testProducts', 'CookieController@testProducts');
 
-Route::get('/campaigns', 'CampaignController@campaignScreen')->name('campaignScreen');
+Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen');
+Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
+Route::get('/userCampaigns', 'CampaignController@userCampaigns');

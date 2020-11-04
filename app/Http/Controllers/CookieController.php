@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use Cookie;
+use File;
+use Storage;
 use App\Models\Brands;
 use App\Models\Colors;
+use App\Models\Images;
 use App\Models\Designs;
 use App\Models\Products;
 use App\Models\Categories;
@@ -18,6 +21,8 @@ class CookieController extends Controller
         return redirect()->route('designDetailScreen');
      }
      public function setDesignDetailCookie(Request $request){
+        //  dd($request);
+         $i=0;
         $str = implode(',', $request->printLocations);
         Cookie::queue('campaignName', $request->CampaignName, 60);
         Cookie::queue('FrontSuggestion', $request->FrontSuggestion, 60);
@@ -29,9 +34,31 @@ class CookieController extends Controller
         Cookie::queue('SleevesSuggestion', $request->SleevesSuggestion, 60);
         Cookie::queue('SleevesColors', $request->SleevesColors, 60);
         Cookie::queue('PrintLocations', $str, 60);
+        foreach($request->myfile as $file){
+            $imageName = time().$i.'.'.$file->extension();  
+            $garbagepath = public_path().'/storage/garbage';
+            $garbagepath1 = "'storage'garbage";
+            $file->move($garbagepath, $imageName);
+            $pathsave =  '/storage/CampaignImages/';
+            $imageurl = $pathsave.$imageName;
+            $imageName1="'".$imageName;
+            $oldpath=str_replace("'",'',public_path().addslashes($garbagepath1).addslashes($imageName1));
+            // dd($oldpath);
+            $newpath = public_path() . '/storage/CampaignImages/';
+            Cookie::queue('imageurl'.$i, $imageurl, 60);
+            Cookie::queue('oldpath'.$i, $oldpath, 60);
+            Cookie::queue('newpath'.$i, $newpath, 60);
+            Cookie::queue('imageName'.$i, $imageName, 60);
+            // File::move($pa,$campaignImagespath.$imageName );
+            $i++;
+            };
+            
+        
+        // dd($request);
         return redirect()->route('printTypeScreen');
      }
      public function setPrintTypeCookie(Request $request){
+        //  dd($request);
         $strFaqIds = implode(',', $request->faqIDs);
         $strAnswerIds = implode(',', $request->answers);
         Cookie::queue('FaqIds', $strFaqIds, 60);
