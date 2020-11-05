@@ -46,54 +46,66 @@ class CampaignController extends Controller
         $campaign->deliveryDate = $deliveryDate;
         $campaign->is_draft = true;
         $campaign->save();
-        if($request->cookie('imageurl0')){
-            $imageurl0 = $request->cookie('imageurl0');
-            $oldpath0 = $request->cookie('oldpath0');
-            $newpath0 = $request->cookie('newpath0');
+        if($request->cookie('imageName0')){
+            // $imageurl0 = $request->cookie('imageurl0');
+            // $oldpath0 = $request->cookie('oldpath0');
+            // $newpath0 = $request->cookie('newpath0');
             $imageName0 = $request->cookie('imageName0');
-            // dd($oldpath0);
-            File::move($oldpath0,$newpath0.$imageName0 );
+            $garbagepath = "'storage'garbage";
+            $oldpath=str_replace("'",'',public_path().addslashes($garbagepath).addslashes("'".$imageName0));
+            $newpath = public_path() . '/storage/CampaignImages/';
+            $pathsave =  '/storage/CampaignImages/';
+            $imageurl = $pathsave.$imageName0;
+            File::move($oldpath,$newpath.$imageName0 );
             $image = new Images();
-            $image->url =$imageurl0;
+            $image->url =$imageurl;
             $image->save();
             $campaign->images()->attach($image->id);
             
-            Cookie::queue('imageurl0', '', -1);
-            Cookie::queue('oldpath0', '', -1);
-            Cookie::queue('newpath0', '', -1);
+            // Cookie::queue('imageurl0', '', -1);
+            // Cookie::queue('oldpath0', '', -1);
+            // Cookie::queue('newpath0', '', -1);
             Cookie::queue('imageName0', '', -1);
             
         };
-        if($request->cookie('imageurl1')){
-            $imageurl1 = $request->cookie('imageurl1');
-            $oldpath1 = $request->cookie('oldpath1');
-            $newpath1 = $request->cookie('newpath1');
+        if($request->cookie('imageName1')){
+            // $imageurl1 = $request->cookie('imageurl1');
+            // $oldpath1 = $request->cookie('oldpath1');
+            // $newpath1 = $request->cookie('newpath1');
             $imageName1 = $request->cookie('imageName1');
-            // dd($oldpath0);
-            File::move($oldpath1,$newpath1.$imageName1 );
+            $garbagepath = "'storage'garbage";
+            $oldpath=str_replace("'",'',public_path().addslashes($garbagepath).addslashes("'".$imageName1));
+            $newpath = public_path() . '/storage/CampaignImages/';
+            $pathsave =  '/storage/CampaignImages/';
+            $imageurl = $pathsave.$imageName1;
+            File::move($oldpath,$newpath.$imageName1 );
             $image = new Images();
-            $image->url =$imageurl1;
+            $image->url =$imageurl;
             $image->save();
             $campaign->images()->attach($image->id);
-            Cookie::queue('imageurl1', '', -1);
-            Cookie::queue('oldpath1', '', -1);
-            Cookie::queue('newpath1', '', -1);
+            // Cookie::queue('imageurl1', '', -1);
+            // Cookie::queue('oldpath1', '', -1);
+            // Cookie::queue('newpath1', '', -1);
             Cookie::queue('imageName1', '', -1);
         };
-        if($request->cookie('imageurl2')){
-            $imageurl2 = $request->cookie('imageurl2');
-            $oldpath2 = $request->cookie('oldpath2');
-            $newpath2 = $request->cookie('newpath2');
+        if($request->cookie('imageName2')){
+            // $imageurl2 = $request->cookie('imageurl2');
+            // $oldpath2 = $request->cookie('oldpath2');
+            // $newpath2 = $request->cookie('newpath2');
             $imageName2 = $request->cookie('imageName2');
-            // dd($oldpath0);
-            File::move($oldpath2,$newpath2.$imageName2 );
+            $garbagepath = "'storage'garbage";
+            $oldpath=str_replace("'",'',public_path().addslashes($garbagepath).addslashes("'".$imageName2));
+            $newpath = public_path() . '/storage/CampaignImages/';
+            $pathsave =  '/storage/CampaignImages/';
+            $imageurl = $pathsave.$imageName2;
+            File::move($oldpath,$newpath.$imageName2 );
             $image = new Images();
-            $image->url =$imageurl2;
+            $image->url =$imageurl;
             $image->save();
             $campaign->images()->attach($image->id);
-            Cookie::queue('imageurl2', '', -1);
-            Cookie::queue('oldpath2', '', -1);
-            Cookie::queue('newpath2', '', -1);
+            // Cookie::queue('imageurl2', '', -1);
+            // Cookie::queue('oldpath2', '', -1);
+            // Cookie::queue('newpath2', '', -1);
             Cookie::queue('imageName2', '', -1);
         };
         $address = new Addresses();

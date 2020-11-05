@@ -41,13 +41,13 @@ class CookieController extends Controller
             $file->move($garbagepath, $imageName);
             $pathsave =  '/storage/CampaignImages/';
             $imageurl = $pathsave.$imageName;
-            $imageName1="'".$imageName;
-            $oldpath=str_replace("'",'',public_path().addslashes($garbagepath1).addslashes($imageName1));
+            // $imageName1="'".$imageName;
+            $oldpath=str_replace("'",'',public_path().addslashes($garbagepath1).addslashes("'".$imageName));
             // dd($oldpath);
             $newpath = public_path() . '/storage/CampaignImages/';
-            Cookie::queue('imageurl'.$i, $imageurl, 60);
-            Cookie::queue('oldpath'.$i, $oldpath, 60);
-            Cookie::queue('newpath'.$i, $newpath, 60);
+            // Cookie::queue('imageurl'.$i, $imageurl, 60);
+            // Cookie::queue('oldpath'.$i, $oldpath, 60);
+            // Cookie::queue('newpath'.$i, $newpath, 60);
             Cookie::queue('imageName'.$i, $imageName, 60);
             // File::move($pa,$campaignImagespath.$imageName );
             $i++;
