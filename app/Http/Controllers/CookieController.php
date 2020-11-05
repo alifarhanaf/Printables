@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Cookie;
 use File;
+use Cookie;
 use Storage;
 use App\Models\Brands;
 use App\Models\Colors;
@@ -12,17 +12,30 @@ use App\Models\Products;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ProductCookieRequest;
+use App\Http\Requests\PrintTypeCookieRequest;
+use App\Http\Requests\DesignDetailCookieRequest;
 
 class CookieController extends Controller
 {
-    public function setProductCookie(Request $request){
+    public function setProductCookie(ProductCookieRequest $request){
+        DB::beginTransaction();
+        try {
         Cookie::queue('productID', $request->productID, 60);
         Cookie::queue('color', $request->color, 60);
+        DB::commit();
         return redirect()->route('designDetailScreen');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('productScreen')->with('message',$ex->getMessage());
+        }
+        
      }
-     public function setDesignDetailCookie(Request $request){
+     public function setDesignDetailCookie(DesignDetailCookieRequest $request){
         //  dd($request);
          $i=0;
+         DB::beginTransaction();
+        try {
         $str = implode(',', $request->printLocations);
         Cookie::queue('campaignName', $request->CampaignName, 60);
         Cookie::queue('FrontSuggestion', $request->FrontSuggestion, 60);
@@ -34,6 +47,9 @@ class CookieController extends Controller
         Cookie::queue('SleevesSuggestion', $request->SleevesSuggestion, 60);
         Cookie::queue('SleevesColors', $request->SleevesColors, 60);
         Cookie::queue('PrintLocations', $str, 60);
+        if ($request->hasFile('myfile')) {
+            //
+        
         foreach($request->myfile as $file){
             $imageName = time().$i.'.'.$file->extension();  
             $garbagepath = public_path().'/storage/garbage';
@@ -41,32 +57,41 @@ class CookieController extends Controller
             $file->move($garbagepath, $imageName);
             $pathsave =  '/storage/CampaignImages/';
             $imageurl = $pathsave.$imageName;
-            // $imageName1="'".$imageName;
             $oldpath=str_replace("'",'',public_path().addslashes($garbagepath1).addslashes("'".$imageName));
-            // dd($oldpath);
             $newpath = public_path() . '/storage/CampaignImages/';
-            // Cookie::queue('imageurl'.$i, $imageurl, 60);
-            // Cookie::queue('oldpath'.$i, $oldpath, 60);
-            // Cookie::queue('newpath'.$i, $newpath, 60);
             Cookie::queue('imageName'.$i, $imageName, 60);
-            // File::move($pa,$campaignImagespath.$imageName );
             $i++;
             };
+        }
+            DB::commit();
+            return redirect()->route('printTypeScreen');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('designDetailScreen')->with('message',$ex->getMessage());
+        }
             
         
         // dd($request);
-        return redirect()->route('printTypeScreen');
+        // return redirect()->route('printTypeScreen');
      }
-     public function setPrintTypeCookie(Request $request){
+     public function setPrintTypeCookie(PrintTypeCookieRequest $request){
         //  dd($request);
-        $strFaqIds = implode(',', $request->faqIDs);
+        DB::beginTransaction();
+        try {
+        $strFaqIds = implode(',', $request->faqIds);
         $strAnswerIds = implode(',', $request->answers);
         Cookie::queue('FaqIds', $strFaqIds, 60);
         Cookie::queue('AnswerIds', $strAnswerIds, 60);
         Cookie::queue('printType', $request->print_type, 60);
         Cookie::queue('shippingOption',  $request->shippingOption, 60);
         Cookie::queue('bagAndTag',  $request->bagAndTag, 60);
+        DB::commit();
         return redirect()->route('deliveryAddressScreen');
+    } catch (\Exception $ex) {
+        DB::rollback();
+        return redirect()->route('printTypeScreen')->with('message',$ex->getMessage());
+    }
+        // return redirect()->route('deliveryAddressScreen');
 
     }
     public function setAddressCookie(Request $request){

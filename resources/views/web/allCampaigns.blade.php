@@ -73,7 +73,7 @@
                     <th class="new">{{$activeCampaign->updated_at}}</th>
                     
                     <th class="new">
-                        {{$activeCampaign->is_draft == 1 ? 'STATUS_AWAITING':'N/A'}}
+                        {{$activeCampaign->status == 1 ? 'STATUS_AWAITING':'N/A'}}
                     </th>
                    
                   </tr>

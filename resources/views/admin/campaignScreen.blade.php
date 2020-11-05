@@ -278,31 +278,32 @@
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-    var pusher = new Pusher('629eecc55450630967da', {
+
+var pusher = new Pusher('629eecc55450630967da', {
     cluster: 'ap2',
     forceTLS: true
-    });
+});
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function (data) {
-    alert(JSON.stringify(data));
-    // if (my_id == data.from) {
-    //     $('#' + data.to).click();
-    // } else if (my_id == data.to) {
-    //     if (receiver_id == data.from) {
-    //         // if receiver is selected, reload the selected user ...
-    //         $('#' + data.from).click();
-    //     } else {
-    //         // if receiver is not seleted, add notification for that user
-    //         var pending = parseInt($('#' + data.from).find('.pending').html());
+var channel = pusher.subscribe('my-channel');
+channel.bind('my-event', function (data) {
+    // alert(JSON.stringify(data));
+    if (my_id == data.from) {
+        $('#' + data.to).click();
+    } else if (my_id == data.to) {
+        if (receiver_id == data.from) {
+            // if receiver is selected, reload the selected user ...
+            $('#' + data.from).click();
+        } else {
+            // if receiver is not seleted, add notification for that user
+            var pending = parseInt($('#' + data.from).find('.pending').html());
 
-    //         if (pending) {
-    //             $('#' + data.from).find('.pending').html(pending + 1);
-    //         } else {
-    //             $('#' + data.from).append('<span class="pending">1</span>');
-    //         }
-    //     }
-    // }
+            if (pending) {
+                $('#' + data.from).find('.pending').html(pending + 1);
+            } else {
+                $('#' + data.from).append('<span class="pending">1</span>');
+            }
+        }
+    }
 });
 
 
@@ -318,9 +319,10 @@
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
               var message = $(this).val();
+            //   alert(message);
                 $(this).val(''); // while pressed enter text box will be empty
 
-                var datastr = "receiver_id=" + 1 + "&message=" + message;
+                var datastr = "receiver_id=" + 2 + "&message=" + message;
                 $.ajax({
                     type: "post",
                     url: "/message", // need to create this post route
@@ -338,7 +340,6 @@
                 })
             }
         });
-
 
         // make a function to scroll down auto
     function scrollToBottomFunc() {

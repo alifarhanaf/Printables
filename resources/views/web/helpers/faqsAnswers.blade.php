@@ -1,7 +1,7 @@
 <div  class="Order_price spacing_bottom" >
     @foreach ($printTypeFaqs as $faq)
     <label for="Order_price">
-        <input type="hidden" id="faqIDs" name="faqIDs[]" value="{{$faq->id}}">
+        <input type="hidden" id="faqIDs" name="faqIds[]" value="{{$faq->id}}">
         {{$faq->questions}}
     </label>
     <select name="answers[]" id="faqanswers" class="form_class form-control">

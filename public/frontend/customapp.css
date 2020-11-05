@@ -216,6 +216,73 @@
     padding-right: 2%;
 }
 
+.message-wrapper {
+    padding: 10px;
+    height: 536px;
+    background: #eeeeee;
+}
+
+.messages .message {
+    margin-bottom: 15px;
+}
+
+.messages .message:last-child {
+    margin-bottom: 0;
+}
+
+.received, .sent {
+    width: 45%;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.received {
+    background: #ffffff;
+}
+
+.sent {
+    background: #00cc00;
+    float: right;
+    text-align: right;
+}
+
+.message .sent p {
+    margin: 5px 0;
+    color: whitesmoke;
+}
+.message .received p {
+    margin: 5px 0;
+    color: black;
+}
+.message .date {
+    color: whitesmoke;
+    font-size: 12px;
+}
+
+.message .active {
+    background: #eeeeee;
+}
+
+#messages input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0 0 0;
+    display: inline-block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #cccccc;
+}
+
+#messages input[type=text]:focus {
+    border: 1px solid #aaaaaa;
+}
+.user-wrapper, .message-wrapper {
+    border: 1px solid #dddddd;
+    overflow-y: auto;
+}
+
+
 
 
 

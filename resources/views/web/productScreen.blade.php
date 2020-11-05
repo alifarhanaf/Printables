@@ -1,5 +1,15 @@
 @include('web.includes.header')
+@if ($errors->any() )
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 @include('web.includes.subheader')
+
 
 <section class="header_beneath">
     <div class="container">
@@ -7,7 +17,7 @@
             <div class="row under_nav ">
                 <div class="col-lg-2 col-12 d-block m-auto" data-toggle="modal" data-target="#exampleModal">
                     <div class="my_link">
-                        <a href="" class="main">
+                    <a href="{{route('productScreen')}}" class="main">
                             <div class="span_round">
                                 <span>1</span>
                             </div>
@@ -312,6 +322,10 @@
 </script>
 <script>
     $(document).ready(function() {
+        $(function() {
+        var timeout = 2000; // in miliseconds (3*1000)
+        $('.alert').delay(timeout).fadeOut(300);
+        });
 
         $("#inlineFormBrandFilter").change(function() {
             var brandID = $(this).children("option:selected").val();
