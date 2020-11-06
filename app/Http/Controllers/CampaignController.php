@@ -8,6 +8,7 @@ use Pusher\Pusher;
 use App\Models\Faqs;
 use App\Models\Images;
 use App\Models\Message;
+use App\Events\TestEvent;
 use App\Models\Addresses;
 use App\Models\Campaigns;
 use App\Models\Suggestions;
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CampaignSubmitRequest;
 
 class CampaignController extends Controller
-{
+{   
+        
     
         public function setDraftCampaign(CampaignSubmitRequest $request){
             // dd($request);
@@ -33,9 +35,6 @@ class CampaignController extends Controller
         $bagAndTag = $request->cookie('bagAndTag');
         $color = $request->cookie('color');
         
-        $printType = $request->cookie('printType');
-        $shippingOption = $request->cookie('shippingOption');
-        $suggestions = $request->cookie('suggestions');
         $printType = $request->cookie('printType');
         $shippingOption = $request->cookie('shippingOption');
         $suggestions = $request->cookie('suggestions');
@@ -133,6 +132,26 @@ class CampaignController extends Controller
         $suggestions->sleevesColors = $request->cookie('SleevesColors');
         $suggestions->save();
         $campaign->suggestions()->sync($suggestions->id);
+        Cookie::queue('campaignName', '', -1);
+        Cookie::queue('designID', '', -1);
+        Cookie::queue('productID', '', -1);
+        Cookie::queue('AnswerIds', '', -1);
+        Cookie::queue('FaqIds', '', -1);
+        Cookie::queue('PrintLocations', '', -1);     
+        Cookie::queue('SelectColors', '', -1);
+        Cookie::queue('bagAndTag', '', -1);
+        Cookie::queue('color', '', -1);   
+        Cookie::queue('printType', '', -1);
+        Cookie::queue('shippingOption', '', -1);
+        Cookie::queue('suggestions', '', -1);
+        Cookie::queue('FrontSuggestion', '', -1);
+        Cookie::queue('BackSuggestion', '', -1);
+        Cookie::queue('PocketSuggestion', '', -1);
+        Cookie::queue('SleevesSuggestion', '', -1);
+        Cookie::queue('FrontColors', '', -1);
+        Cookie::queue('BackColors', '', -1);
+        Cookie::queue('PocketColors', '', -1);    
+        Cookie::queue('SleevesColors', '', -1);
         DB::commit();
         return redirect()->route('allCampaigns');
         } catch (\Exception $ex) {
@@ -254,6 +273,7 @@ class CampaignController extends Controller
     // }
     public function sendMessage(Request $request)
     {
+        error_reporting(E_ALL);
         $from = Auth::id();
         $to = $request->receiver_id;
         $message = $request->message;
@@ -264,12 +284,12 @@ class CampaignController extends Controller
         $data->message = $message;
         $data->is_read = 0; // message will be unread when sending message
         $data->save();
-        dd($data->id);
+        // dd($data->id);
 
         // pusher
         $options = array(
             'cluster' => 'ap2',
-            'useTLS' => true
+            'useTLS'=>true
         );
 
         $pusher = new Pusher(
@@ -278,9 +298,11 @@ class CampaignController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
-
-        $data = ['from' => $from, 'to' => $to]; // sending from and to user id when pressed enter
-        $pusher->trigger('my-channel', 'my-event', $data);
+        
+        $data = ['from' => $from, 'to' => intval($to)];
+        // $response=event(new TestEvent($data));
+        $response = $pusher->trigger('my-channel', 'my-event', $data);
+        // dd($response);
     }
     public function campaignScreenAdmin($id){
         $campaigns = Campaigns::where('id',$id)->get();
@@ -290,18 +312,18 @@ class CampaignController extends Controller
                 array_push($arr,$faq->id);
             }
         }
-        // dd($arr);
+       
         $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
-        // dd($faqs[0]->id);
-        // if(in_array($faqs[0]->id, $arr))
-        // {
-
         
-
-        // }
-        // dd($campaigns);
+        $data = array(
+            "campaigns"=> $campaigns,
+        );
+        return view('admin.campaignScreen')->with($data);
+    }
+    public function getMessages($id){
         $my_id = Auth::id();
-        $user_id = 2;
+        $user_id = $id;
+        // return true;
 
         // Make read all unread message
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
@@ -312,13 +334,13 @@ class CampaignController extends Controller
         })->oRwhere(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
-        // dd($messages);
         $data = array(
-            "campaigns"=> $campaigns,
             "messages" =>$messages,
         );
-        return view('admin.campaignScreen')->with($data);
-    }
 
+        return view('web.helpers.messages')->with($data);
+        // dd($messages);
+
+    }
     
 }

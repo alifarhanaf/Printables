@@ -10,7 +10,7 @@
       <div class="cart_main d-inline-block mr-4 d-lg-none d-block">
         <div class="cart_div">
           <a href=""  class="cart_font">
-            <img src="images/SVGS/5.svg">
+            <img src="{{ asset('storage/images/SVGS/5.svg')}}">
             <div class="number_div">
                 <span>1</span>
             </div>

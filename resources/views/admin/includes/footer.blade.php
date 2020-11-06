@@ -7,7 +7,7 @@
   </div><!-- container -->
 </div><!-- az-footer -->
 </div><!-- az-content -->
-
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('res/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('res/ionicons/ionicons.js') }}"></script>

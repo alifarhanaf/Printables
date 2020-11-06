@@ -80,7 +80,7 @@ Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaig
 Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
 });
 
-
+Route::get('/messages/{id}', 'CampaignController@getMessages')->name('getMessages');
 
 Auth::routes();
 

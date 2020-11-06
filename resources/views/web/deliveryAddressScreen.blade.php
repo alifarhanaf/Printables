@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-2 col-12 d-lg-block d-none m-auto">
                     <div class="my_link">
-                        <a href="{{route('printypeScreen')}}" class="main">
+                        <a href="{{route('printTypeScreen')}}" class="main">
                             <div class="span_round">
                                 <span>3</span>
                             </div>

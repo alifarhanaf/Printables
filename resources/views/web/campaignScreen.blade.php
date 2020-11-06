@@ -91,7 +91,7 @@
                         <div class="card-header ">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
+                                  <a class="nav-item nav-link active" id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
                                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Products</a>
                                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Description</a>
                                   
@@ -108,31 +108,25 @@
                                       
                                     {{-- Start Here --}}
                                     <div id="messages">
-                                    <div class="message-wrapper">
+                                    {{-- <div class="message-wrapper">
                                       <ul class="messages">
                                           @foreach($messages as $message)
                                               <li class="message clearfix">
-                                                  {{--if message from id is equal to auth id then it is sent by logged in user --}}
+                                                  
                                                   <div class="{{ ($message->from == Auth::id()) ? 'sent' : 'received' }}">
                                                       <p>{{$message->message}}</p>
                                                       <p class="date">{{ date('d M y, h:i a', strtotime($message->created_at)) }}</p>
                                                   </div>
                                               </li>
                                               @endforeach
-                                              {{-- <li class="message clearfix">
-                                                if message from id is equal to auth id then it is sent by logged in user
-                                                <div class="received">
-                                                    <p>Here is Received Message</p>
-                                                    <p class="date">19-10-2020</p>
-                                                </div>
-                                            </li> --}}
+                                              
                                           
                                       </ul>
                                   </div>
                                   
                                   <div class="input-text">
                                       <input type="text" name="message" class="submit">
-                                  </div>
+                                  </div> --}}
                                     </div>
                                     {{-- End Here --}}
 
@@ -261,7 +255,9 @@
 </div>
 @include('web.includes.subfooter')
 @include('web.includes.footer')
-<script>
+<script type="text/javascript">
+var receiver_id = '';
+    var my_id = "{{ Auth::id() }}";
    $(document).ready(function(){
 
      // ajax setup form csrf token
@@ -270,40 +266,49 @@
     //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     //         }
     //     });
-    // $.ajaxSetup({
-    // headers: {
-    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    // }
-    // });
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-    var pusher = new Pusher('629eecc55450630967da', {
+    var pusher = new Pusher('223a4a6c277405a81d20', {
     cluster: 'ap2',
-    forceTLS: true
     });
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
-    alert(JSON.stringify(data));
-    // if (my_id == data.from) {
-    //     $('#' + data.to).click();
-    // } else if (my_id == data.to) {
-    //     if (receiver_id == data.from) {
-    //         // if receiver is selected, reload the selected user ...
-    //         $('#' + data.from).click();
-    //     } else {
-    //         // if receiver is not seleted, add notification for that user
-    //         var pending = parseInt($('#' + data.from).find('.pending').html());
-
-    //         if (pending) {
-    //             $('#' + data.from).find('.pending').html(pending + 1);
-    //         } else {
-    //             $('#' + data.from).append('<span class="pending">1</span>');
-    //         }
-    //     }
-    // }
+      // alert(JSON.stringify(data));
+      if (my_id == data.from) {
+            $('#nav-home-tab').click();
+            }else if(my_id == data.to){
+              $('#nav-home-tab').click();
+            }
+            // receiver_id = data.to;
+            // $.ajax({
+            //     type: "get",
+            //     url: "/messages/" + receiver_id, // need to create this route
+            //     success: function (data) {
+            //         $('#messages').html(data);
+            //         scrollToBottomFunc();
+            //     }
+            // });
+    // alert(JSON.stringify(data));
+    
 });
+$('#nav-home-tab').click(function () {
+            receiver_id = $(this).data('id');
+            $.ajax({
+                type: "get",
+                url: "/messages/" + receiver_id, // need to create this route
+                success: function (data) {
+                    $('#messages').html(data);
+                    scrollToBottomFunc();
+                }
+            });
+        });
 
 
 
@@ -313,8 +318,6 @@
 
         //Sending Message
     $(document).on('keypress', '.input-text input', function (e) {
-            
-
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
               var message = $(this).val();
@@ -327,6 +330,7 @@
                     data: datastr,
                     cache: false,
                     success: function (data) {
+                      // alert(JSON.stringify(data));
                       // alert(data);
 
                     },

@@ -47,9 +47,12 @@
         @foreach ($campaigns as $campaign)
         <tr >
         <th  class="align-middle" scope="row">
-          <a href="www.google.com">
+          <form action="{{ route ('campaignScreenAdmin',$campaign->id) }}" >
+            {{ csrf_field() }}
+          <button type="submit">
           <img src="{{ isset($campaign->designs[0]->images[0]->url) ? asset($campaign->designs[0]->images[0]->url) : 'https://via.placeholder.com/500' }}"  class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
-        </a>
+          </button>
+          </form>
         </th>
             <td class="align-middle" ><a style="font-weight: 400; color:black; text-transform: uppercase;" href="www.google.com">{{$campaign->name}}</a></td>
             <td class="align-middle" >{{$campaign->deliveryDate}}</td>
