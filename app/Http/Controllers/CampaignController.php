@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Auth;
 use File;
 use Cookie;
+
+use App\User;
 use Pusher\Pusher;
 use App\Models\Faqs;
 use App\Models\Images;
@@ -14,6 +16,10 @@ use App\Models\Campaigns;
 use App\Models\Suggestions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\CampaignSubmissionMail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MessageNotificationMail;
+use App\Mail\UserToAdminNotification;
 use App\Http\Requests\CampaignSubmitRequest;
 
 class CampaignController extends Controller
@@ -132,6 +138,8 @@ class CampaignController extends Controller
         $suggestions->sleevesColors = $request->cookie('SleevesColors');
         $suggestions->save();
         $campaign->suggestions()->sync($suggestions->id);
+        Mail::to($user->email)->send(new CampaignSubmissionMail($user,$campaign));
+        // Mail::to($user->email)->send(new CampaignSubmissionMail($user));
         Cookie::queue('campaignName', '', -1);
         Cookie::queue('designID', '', -1);
         Cookie::queue('productID', '', -1);
@@ -164,6 +172,12 @@ class CampaignController extends Controller
         
     }
     public function campaignScreen($id){
+
+        $campaigns = Campaigns::where('id',$id)->get();
+        $user = Auth::user();
+        // $campaigns = $user->campaigns;
+        // Mail::to($user->email)->send(new CampaignSubmissionMail($user,$campaigns[0]));
+
         $campaigns = Campaigns::where('id',$id)->get();
         $arr = [];
         foreach($campaigns as $campaign){
@@ -271,9 +285,12 @@ class CampaignController extends Controller
 
     //     return view('messages.index', ['messages' => $messages]);
     // }
+    // public function sendMessage(Request $request)
+    // {
+       
+    // }
     public function sendMessage(Request $request)
     {
-        error_reporting(E_ALL);
         $from = Auth::id();
         $to = $request->receiver_id;
         $message = $request->message;
@@ -284,24 +301,40 @@ class CampaignController extends Controller
         $data->message = $message;
         $data->is_read = 0; // message will be unread when sending message
         $data->save();
+        $user = User::where('id',$to)->first();
+        $usertwo = User::where('id',$from)->first();
+        // dd($user);
+        // dd($user[0]->email);
+        // dd($from+1);
+        if($from == '1'){
+            Mail::to($user->email)->send(new MessageNotificationMail($user));
+        }else{
+            Mail::to($user->email)->send(new UserToAdminNotification($user));
+        }
+        
         // dd($data->id);
 
         // pusher
         $options = array(
             'cluster' => 'ap2',
-            'useTLS'=>true
+            'encrypted' => false
         );
-
         $pusher = new Pusher(
             env('PUSHER_APP_KEY'),
             env('PUSHER_APP_SECRET'),
             env('PUSHER_APP_ID'),
             $options
         );
-        
         $data = ['from' => $from, 'to' => intval($to)];
         // $response=event(new TestEvent($data));
-        $response = $pusher->trigger('my-channel', 'my-event', $data);
+        try{
+            $response = $pusher->trigger('my-channel', 'my-event', $data);
+            // dd($response);
+        } catch (\Exception $ex) {
+        
+        // dd($ex->getMessage());
+         }
+        // $response = 
         // dd($response);
     }
     public function campaignScreenAdmin($id){
@@ -321,6 +354,7 @@ class CampaignController extends Controller
         return view('admin.campaignScreen')->with($data);
     }
     public function getMessages($id){
+        // dd($id);
         $my_id = Auth::id();
         $user_id = $id;
         // return true;
@@ -334,6 +368,7 @@ class CampaignController extends Controller
         })->oRwhere(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
+        // dd($messages);
         $data = array(
             "messages" =>$messages,
         );
@@ -341,6 +376,16 @@ class CampaignController extends Controller
         return view('web.helpers.messages')->with($data);
         // dd($messages);
 
+    }
+    public function testEmail(){
+        $campaigns = Campaigns::where('id',111113)->get();
+        $user = Auth::user();
+        $data = array(
+            "campaign" => $campaigns[0],
+            "user" => $user,
+        );
+        return view('web.emails.userRegisterMail')->with($data);
+        
     }
     
 }

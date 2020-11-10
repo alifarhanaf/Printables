@@ -77,9 +77,9 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/totalCampaigns', 'CampaignController@allCampaignsAdmin')->name('allCampaignsAdmin');
 
 Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaigns')->name('setForApprovalCampaigns');
-Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
-});
 
+});
+Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
 Route::get('/messages/{id}', 'CampaignController@getMessages')->name('getMessages');
 
 Auth::routes();
@@ -114,8 +114,17 @@ Route::get('/productsByBrandAndCategoryID/{bid}/{cid}', 'CookieController@produc
 Route::get('/productsSearchWithBrandAndCategoryID/{bid}/{cid}/{search}', 'CookieController@productsSearchWithBrandAndCategoryID')->name('productsSearchWithBrandAndCategoryID');
 Route::get('/testProducts', 'CookieController@testProducts');
 
-Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen');
-Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
+
 Route::get('/userCampaigns', 'CampaignController@userCampaigns');
 
 Route::post('message', 'CampaignController@sendMessage');
+
+Route::middleware(['user'])->group(function () {
+
+});
+
+Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen');
+Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
+
+Route::get('/testEmail', 'CampaignController@testEmail');
+// Route::view('/userRegister', 'web.emails.userRegisterMail');

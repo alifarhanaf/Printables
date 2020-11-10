@@ -75,7 +75,7 @@
 
                                     <button type="button" class="btn btn-primary">{{ $campaign->id }}</button>
                                 </div>
-                                <div class="col-md-4  my-auto mid" id="HeadaingP">
+                            <div class="col-md-4  my-auto mid" id="HeadaingP" data-id="{{$campaign->users[0]->id}}">
                                     <p>{{ $campaign->name }}</p>
                                 </div>
                                 <div class="col-md-4  my-auto mid" id="HeadaingZ">
@@ -93,7 +93,7 @@
                         <div class="card-header ">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" data-id="2" id="nav-home-tab" data-toggle="tab"
+                                    <a class="nav-item nav-link active" data-id="{{$campaign->users[0]->id}}" id="nav-home-tab" data-toggle="tab"
                                         href="#nav-home" role="tab" aria-controls="nav-home"
                                         aria-selected="true">Messages</a>
                                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
@@ -194,43 +194,78 @@
 
                                                 </div>
                                                 <div id="cardLayer">
-                                                    <div class="card card-body  ">
-                                                        <div class="row d-flex justify-content-between  my-auto">
-                                                            <p>POCKET OF SHIRT </p>
-                                                            <p class="card-text"># OF COLORS: 2</p>
-                                                        </div>
-                                                    </div>
-                                                    <p
-                                                        style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">
-                                                        Please Make it Centered</p>
-                                                    <div class="card card-body  ">
-                                                        <div class="row d-flex justify-content-between  my-auto">
-                                                            <p>BACK OF SHIRT </p>
-                                                            <p class="card-text"># OF COLORS: 2</p>
-                                                        </div>
-                                                    </div>
-                                                    <p
-                                                        style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">
-                                                        Please Make it Centered</p>
-                                                    <div class="card card-body  ">
-                                                        <div class="row d-flex justify-content-between  my-auto">
-                                                            <p>Sleeves OF SHIRT </p>
-                                                            <p class="card-text"># OF COLORS: 2</p>
-                                                        </div>
-                                                    </div>
-                                                    <p
-                                                        style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">
-                                                        Please Make it Centered</p>
-                                                    <div class="card card-body  ">
-                                                        <div class="row d-flex justify-content-between  my-auto">
-                                                            <p>References</p>
-                                                            <p class="card-text"></p>
-                                                        </div>
-                                                    </div>
-                                                    <img src="http://127.0.0.1:8000/storage/images/home/4.png" alt=""
-                                                        class="img-fluid" style="width:40%;height:40%;">
-
-
+                                                    @if($campaign->suggestions)
+                              @if($campaign->suggestions[0]->frontSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >FRONT OF SHIRT </p>
+                                <p class="card-text"># OF COLORS: 2</p>
+                                </div>
+                              </div>
+                              <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->frontSuggestion}}</p>
+                              @endif
+                              @if($campaign->suggestions[0]->backSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >BACK OF SHIRT </p>
+                                @if($campaign->suggestions[0]->backColors)
+                                <p class="card-text"># OF COLORS: 2</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
+                                </div>
+                              </div>
+                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->backSuggestion}}</p>
+                              @endif
+                              @if($campaign->suggestions[0]->pocketSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >POCKET OF SHIRT </p>
+                                @if($campaign->suggestions[0]->pocketColors)
+                                <p class="card-text"># OF COLORS: 2</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
+                                </div>
+                              </div>
+                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->pocketSuggestion}}</p>
+                              @endif
+                              @if($campaign->suggestions[0]->sleevesSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >SLEEVES OF SHIRT </p>
+                                @if($campaign->suggestions[0]->sleevesColors)
+                                <p class="card-text"># OF COLORS: 2</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
+                                </div>
+                              </div>
+                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->sleevesSuggestion}}</p>
+                              @endif
+                              @endif
+                            <div class="card card-body  ">
+                              <div class="row d-flex justify-content-between  my-auto" >
+                              <p >SELECTED DESIGNS</p>
+                              <p class="card-text"></p>
+                              </div>
+                            </div>
+                            @if($campaign->designs)
+                            <img src="{{$campaign->designs[0]->images[0]->url}}" alt="" class="img-fluid" style="width:20%;height:20%;">
+                  
+                
+                            @endif
+                            <div class="card card-body  ">
+                              <div class="row d-flex justify-content-between  my-auto" >
+                              <p >USER CUSTOM DESIGNS</p>
+                              <p class="card-text"></p>
+                              </div>
+                            </div>
+                            @if($campaign->images)
+                            @foreach ($campaign->images as $image)
+                            <img src="{{$image->url}}" alt="" class="img-fluid" style="width:20%;height:20%;">    
+                            @endforeach
+                            @endif
                                                 </div>
 
                                             </div>
@@ -257,6 +292,20 @@
     var my_id = "{{ Auth::id() }}";
     $(document).ready(function() {
 
+        $('#nav-home-tab').click(function() {
+            receiver_id = $(this).data('id');
+            console.log(receiver_id);
+            $.ajax({
+                type: "get",
+                url: "/messages/" + receiver_id, // need to create this route
+                success: function(data) {
+                    $('#messages').html(data);
+                    scrollToBottomFunc();
+                }
+            });
+        });
+        
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -269,9 +318,11 @@
         var pusher = new Pusher('223a4a6c277405a81d20', {
             cluster: 'ap2',
         });
+        console.log(pusher);
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
+            // alert(JSON.stringify(data));
             if (my_id == data.from) {
                 $('#nav-home-tab').click();
             } else if (my_id == data.to) {
@@ -279,32 +330,30 @@
             }
 
         });
-        $('#nav-home-tab').click(function() {
-            receiver_id = $(this).data('id');
-            $.ajax({
-                type: "get",
-                url: "/messages/" + receiver_id, // need to create this route
-                success: function(data) {
-                    $('#messages').html(data);
-                    scrollToBottomFunc();
-                }
-            });
-        });
+        
+        
+        
+
+        
         //Sending Message
         $(document).on('keypress', '.input-text input', function(e) {
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
                 var message = $(this).val();
+                // console.log(receiver_id);
                 //   alert(message);
                 $(this).val(''); // while pressed enter text box will be empty
 
-                var datastr = "receiver_id=" + 3 + "&message=" + message;
+                var datastr = "receiver_id=" + 2 + "&message=" + message;
                 $.ajax({
                     type: "post",
                     url: "/message", // need to create this post route
                     data: datastr,
                     cache: false,
-                    success: function(data) {},
+                    success: function(data) {
+                        // alert(data);
+                        // $('#nav-home-tab').click();
+                    },
                     error: function(jqXHR, status, err) {},
                     complete: function() {
                         scrollToBottomFunc();
@@ -312,6 +361,7 @@
                 })
             }
         });
+    
 
         // make a function to scroll down auto
         function scrollToBottomFunc() {

@@ -91,7 +91,7 @@
                         <div class="card-header ">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                  <a class="nav-item nav-link active" id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
                                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Products</a>
                                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Description</a>
                                   
@@ -193,35 +193,81 @@
                                       
                                       </div>
                             <div id="cardLayer">
-                            <div class="card card-body  ">
-                              <div class="row d-flex justify-content-between  my-auto" >
-                              <p >POCKET OF SHIRT </p>
-                              <p class="card-text"># OF COLORS: 2</p>
+                              @if($campaign->suggestions)
+                              @if($campaign->suggestions[0]->frontSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >FRONT OF SHIRT </p>
+                                <p class="card-text"># OF COLORS: 2</p>
+                                </div>
                               </div>
-                            </div>
-                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">Please Make it Centered</p>
-                            <div class="card card-body  ">
-                              <div class="row d-flex justify-content-between  my-auto" >
-                              <p >BACK OF SHIRT </p>
-                              <p class="card-text"># OF COLORS: 2</p>
+                              <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->frontSuggestion}}</p>
+                              @endif
+                              @if($campaign->suggestions[0]->backSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >BACK OF SHIRT </p>
+                                @if($campaign->suggestions[0]->backColors)
+                                <p class="card-text"># OF COLORS: 2</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
+                                </div>
                               </div>
-                            </div>
-                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">Please Make it Centered</p>
-                            <div class="card card-body  ">
-                              <div class="row d-flex justify-content-between  my-auto" >
-                              <p >Sleeves OF SHIRT </p>
-                              <p class="card-text"># OF COLORS: 2</p>
+                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->backSuggestion}}</p>
+                              @endif
+                              @if($campaign->suggestions[0]->pocketSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >POCKET OF SHIRT </p>
+                                @if($campaign->suggestions[0]->pocketColors)
+                                <p class="card-text"># OF COLORS: 2</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
+                                </div>
                               </div>
-                            </div>
-                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">Please Make it Centered</p>
+                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->pocketSuggestion}}</p>
+                              @endif
+                              @if($campaign->suggestions[0]->sleevesSuggestion)
+                              <div class="card card-body  ">
+                                <div class="row d-flex justify-content-between  my-auto" >
+                                <p >SLEEVES OF SHIRT </p>
+                                @if($campaign->suggestions[0]->sleevesColors)
+                                <p class="card-text"># OF COLORS: 2</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
+                                </div>
+                              </div>
+                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->sleevesSuggestion}}</p>
+                              @endif
+                              @endif
                             <div class="card card-body  ">
                               <div class="row d-flex justify-content-between  my-auto" >
-                              <p >References</p>
+                              <p >SELECTED DESIGNS</p>
                               <p class="card-text"></p>
                               </div>
                             </div>
-                            <img src="http://127.0.0.1:8000/storage/images/home/4.png" alt="" class="img-fluid" style="width:40%;height:40%;">
-                             
+                            @if($campaign->designs)
+                            <img src="{{$campaign->designs[0]->images[0]->url}}" alt="" class="img-fluid" style="width:20%;height:20%;">
+                  
+                
+                            @endif
+                            <div class="card card-body  ">
+                              <div class="row d-flex justify-content-between  my-auto" >
+                              <p >USER CUSTOM DESIGNS</p>
+                              <p class="card-text"></p>
+                              </div>
+                            </div>
+                            @if($campaign->images)
+                            @foreach ($campaign->images as $image)
+                            <img src="{{$image->url}}" alt="" class="img-fluid" style="width:20%;height:20%;">    
+                            @endforeach
+                            
+
+                            @endif
+                            
                           
                           </div>
                             
@@ -298,26 +344,26 @@ var receiver_id = '';
     // alert(JSON.stringify(data));
     
 });
+
 $('#nav-home-tab').click(function () {
             receiver_id = $(this).data('id');
+            // console.log(receiver_id);
             $.ajax({
                 type: "get",
                 url: "/messages/" + receiver_id, // need to create this route
                 success: function (data) {
+                  // console.log(data);
                     $('#messages').html(data);
                     scrollToBottomFunc();
                 }
             });
         });
+        
 
 
-
-
-
-
-
+       
         //Sending Message
-    $(document).on('keypress', '.input-text input', function (e) {
+        $(document).on('keypress', '.input-text input', function (e) {
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
               var message = $(this).val();
@@ -332,6 +378,7 @@ $('#nav-home-tab').click(function () {
                     success: function (data) {
                       // alert(JSON.stringify(data));
                       // alert(data);
+                      // $('#nav-home-tab').click();
 
                     },
                     error: function (jqXHR, status, err) {
@@ -342,6 +389,7 @@ $('#nav-home-tab').click(function () {
                 })
             }
         });
+        
 
 
         // make a function to scroll down auto
