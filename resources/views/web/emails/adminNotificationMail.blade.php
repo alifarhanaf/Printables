@@ -95,6 +95,8 @@
     
                 <div class="message">
                     <p style="text-align: center;color: #84a0bf;"> Hi {{$user->name }}, Your received a new message from Geneologie Team. </p>
+                    <p style="text-align: center;color: #84a0bf;"> {{$string->message}} </p>
+                    
                     <hr style="margin-bottom: 0px">
     
                    

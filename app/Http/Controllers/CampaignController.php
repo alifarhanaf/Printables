@@ -294,7 +294,6 @@ class CampaignController extends Controller
         $from = Auth::id();
         $to = $request->receiver_id;
         $message = $request->message;
-
         $data = new Message();
         $data->from = $from;
         $data->to = $to;
@@ -302,40 +301,44 @@ class CampaignController extends Controller
         $data->is_read = 0; // message will be unread when sending message
         $data->save();
         $user = User::where('id',$to)->first();
-        $usertwo = User::where('id',$from)->first();
-        // dd($user);
+        $message = Message::where('id',$data->id)->first();
+        $customer = User::where('id',$from)->first();
+        // dd($message);
         // dd($user[0]->email);
         // dd($from+1);
         if($from == '1'){
-            Mail::to($user->email)->send(new MessageNotificationMail($user));
+            // dd('Im Admin' );
+            Mail::to($user->email)->send(new MessageNotificationMail($user,$message));
         }else{
-            Mail::to($user->email)->send(new UserToAdminNotification($user));
+            
+            Mail::to($user->email)->send(new UserToAdminNotification($user,$message,$customer));
         }
+        $pusher = new Pusher("629eecc55450630967da", "629f709434b064e55202", "1102594", array('cluster' => 'ap2'));
+        $data = ['from' => $from, 'to' => intval($to)];
+        $response = $pusher->trigger('my-channel', 'my-event', $data);
+        // dd($response);
         
         // dd($data->id);
 
         // pusher
-        $options = array(
-            'cluster' => 'ap2',
-            'encrypted' => false
-        );
-        $pusher = new Pusher(
-            env('PUSHER_APP_KEY'),
-            env('PUSHER_APP_SECRET'),
-            env('PUSHER_APP_ID'),
-            $options
-        );
-        $data = ['from' => $from, 'to' => intval($to)];
+        // $options = array(
+        //     'cluster' => 'ap2',
+        //     'port'=>443
+        // );
+        // $pusher = new Pusher(
+        //     env('PUSHER_APP_KEY'),
+        //     env('PUSHER_APP_SECRET'),
+        //     env('PUSHER_APP_ID'),
+        //     $options
+        // );
+        // $data = ['from' => $from, 'to' => intval($to)];
         // $response=event(new TestEvent($data));
-        try{
-            $response = $pusher->trigger('my-channel', 'my-event', $data);
+      
+            // $response = $pusher->trigger('my-channel', 'my-event', array('message' => 'hello world'));
+            // $response = $pusher->trigger('my-channel', 'my-event', $data);
             // dd($response);
-        } catch (\Exception $ex) {
         
-        // dd($ex->getMessage());
-         }
-        // $response = 
-        // dd($response);
+        
     }
     public function campaignScreenAdmin($id){
         $campaigns = Campaigns::where('id',$id)->get();

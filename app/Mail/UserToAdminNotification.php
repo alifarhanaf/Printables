@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\User;
+use App\Models\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -18,11 +19,13 @@ class UserToAdminNotification extends Mailable
      * @return void
      */
     public $user;
-    private $sender;
-    public function __construct(User $user)
+    public $string;
+    public $customer;
+    public function __construct(User $user,Message $message,User $customer)
     {
         $this->user = $user;
-        // $this->sender = $usertwo;
+        $this->string = $message;
+        $this->customer = $customer;
     }
 
     /**
@@ -34,6 +37,8 @@ class UserToAdminNotification extends Mailable
     {
         $data = array(
             "user"=> $this->user,
+            "string"=>$this->string,
+            "customer"=>$this->customer,
             // "sender" => $this->sender
         );
         return $this->from($this->user->email, 'User')->subject(' New Message from User')->view('web.emails.userNotificationMail')->with($data);

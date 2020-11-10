@@ -94,7 +94,8 @@
     
     
                 <div class="message">
-                    <p style="text-align: center;color: #84a0bf;"> Hi, Your received a new message from User. </p>
+                    <p style="text-align: center;color: #84a0bf;"> Hi, You've received a new message from {{$customer->name}}. </p>
+                    <p style="text-align: center;color: #84a0bf;">{{$string->message}}. </p>
                     <hr style="margin-bottom: 0px">
     
                    
