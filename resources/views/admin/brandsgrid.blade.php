@@ -1,6 +1,34 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
 
+@if(session('message') && session('message')=='Success')
+<div class="alert alert-success ">
+  <ul>
+      
+          {{ session('message') }}
+      
+  </ul>
+</div>
+@elseif(session('message'))
+<div class="alert alert-danger ">
+<ul>
+    
+        <li>{{ session('message') }}</li>
+    
+</ul>
+</div>
+@endif
+
+@if ($errors->any() )
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
+
 <div class="pd-10  bg-gray-200">
 
     
@@ -48,7 +76,11 @@
         @foreach ($brands as $brand)
         <tr >
         <th  class="align-middle" scope="row">
+          @if(isset($brand->images[0]->url))
+          <img src="{{ asset($brand->images[0]->url)}}" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+          @else
           <img src="https://via.placeholder.com/500x334" class="img-thumbnail wd-50p wd-sm-50" alt="Responsive image">
+          @endif
         </th>
             <td class="align-middle" >{{$brand->name}}</td>
             {{-- <td class="align-middle" >{{$brand->description}}</td> --}}
@@ -60,13 +92,13 @@
             <td>
                 <div class="row">
                    
-                    <form action="{{ route ('brand.edit',$brand->id) }}" >
+                    <form action="{{ route ('brand.edit',$brand->id) }}"  >
                         {{ csrf_field() }}
                         
                 <button type="submit" class="grid-btn"><i class="typcn typcn-edit"></i></button>
                     </form>
                 &nbsp
-                <form action="{{ route('product.delete',$brand->id) }}" method="POST">
+                <form action="{{ route('brand.delete',$brand->id) }}" method="POST" >
                     {{ csrf_field() }}
                     {{ method_field('DELETE')}}
                     <button  type="submit" class="grid-btn"><i class="typcn typcn-delete"></i></button>

@@ -46,22 +46,23 @@ Route::get('/brandadd', 'BrandController@index')->name('brand.form');
 Route::post('/brandSubmit','BrandController@submitBrand')->name('submit.brand');
 Route::get('/brandedit/{id}', 'BrandController@editbrand')->name('brand.edit');
 Route::get('/brandgrid', 'BrandController@brandgrid')->name('brand.grid');
-Route::post('/editbrandsubmit/{id}','BrandController@editBrandSubmit')->name('submit.edit.brand');
+Route::post('/editbrandsubmit/{id}','BrandController@editBrandSubmit')->name('submit.edited.brand');
 Route::delete('/deletebrand/{id}','BrandController@destroy')->name('brand.delete');
 
 
 
 Route::get('/designadd', 'DesignController@index')->name('design.form');
 Route::post('/designSubmit','DesignController@submitDesign')->name('submit.design');
-Route::get('/designedit/{id}', 'DesignController@editdesign')->name('design.edit');
+Route::get('/designedit/{id}', 'DesignController@editDesign')->name('design.edit');
 Route::get('/designgrid', 'DesignController@designgrid')->name('design.grid');
-
+Route::post('/submitEditedDesign/{id}','DesignController@submitEditedDesign')->name('submit.edited.design');
 Route::delete('/deletedesign/{id}','DesignController@destroy')->name('design.delete');
 
 
 Route::get('/categoryadd', 'CategoryController@index')->name('category.form');
 Route::post('/categorySubmit','CategoryController@submitCategory')->name('submit.category');
-Route::get('/categoryedit/{id}', 'CategoryController@editcategory')->name('category.edit');
+Route::get('/categoryedit/{id}', 'CategoryController@editCategory')->name('category.edit');
+Route::post('/submitEditedCategory/{id}','CategoryController@submitEditedCategory')->name('submit.edited.category');
 Route::get('/categorygrid', 'CategoryController@categorygrid')->name('category.grid');
 Route::delete('/deletecategory/{id}','CategoryController@destroy')->name('category.delete');
 

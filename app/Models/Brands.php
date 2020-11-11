@@ -10,4 +10,8 @@ class Brands extends Model
     {
         return $this->belongsToMany('App\Models\Products');
     }
+    public function images()
+    {
+        return $this->belongsToMany('App\Models\Images');
+    }
 }

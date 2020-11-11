@@ -141,3 +141,7 @@ h2 {
                     justify-content: center;
                     flex-shrink: 0;
 }
+.ax {
+  border: none;
+  outline: none !important;
+} 

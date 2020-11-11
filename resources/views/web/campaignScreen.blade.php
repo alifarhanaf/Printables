@@ -1,7 +1,7 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
 <div class="container-fluid">
-  @foreach ($campaigns as $campaign)
+ 
     <div class="row">
         <div class="col-md-3">
             <div id="sidebar">
@@ -77,7 +77,7 @@
                             <p>{{$campaign->name}}</p>
                         </div>
                         <div class="col-md-4  my-auto mid"  id="HeadaingZ">
-                            <p>STATUS: {{$campaign->status == 1 ? 'STATUS_AWAITING':'N/A'}}</p>
+                            <p>STATUS: {{$campaign->status == 1 ? 'STATUS AWAITING':'N/A'}}</p>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                                   <div class="tab-pane fade show active" style="padding-left: 15px; padding-right:15px" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                       
                                     {{-- Start Here --}}
-                                    <div id="messages">
+                                  <div id="messages" data-id="{{$campaign->id}}">
                                     {{-- <div class="message-wrapper">
                                       <ul class="messages">
                                           @foreach($messages as $message)
@@ -297,7 +297,7 @@
             
         </div>
     </div>
-    @endforeach
+    
 </div>
 @include('web.includes.subfooter')
 @include('web.includes.footer')
@@ -367,9 +367,10 @@ $('#nav-home-tab').click(function () {
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
               var message = $(this).val();
+              var campaign_id = $('messages')
                 $(this).val(''); // while pressed enter text box will be empty
 
-                var datastr = "receiver_id=" + 1 + "&message=" + message;
+                var datastr = "receiver_id=" + 1 + "&message=" + message +"&campaign_id" + campaign_id;
                 $.ajax({
                     type: "post",
                     url: "/message", // need to create this post route

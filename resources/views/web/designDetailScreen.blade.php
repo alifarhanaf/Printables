@@ -1,13 +1,5 @@
 @include('web.includes.header')
-@if ($errors->any() )
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+
 @include('web.includes.subheader')
 
 <form action="{{ route('setDesignDetailCookie') }}" method="POST" enctype="multipart/form-data">
@@ -80,6 +72,15 @@
 
                 {{ csrf_field() }}
                 <div class="col-md-6 col-10 m-auto d-block">
+                    @if ($errors->any() )
+                    <div class="alert alert-danger" style="margin-top: 5px">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     <div class="mian_image_aboutSection">
                         <div class="main__imageDiscription">
                             <div class="compainName">

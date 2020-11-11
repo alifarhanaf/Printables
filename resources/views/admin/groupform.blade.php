@@ -92,6 +92,7 @@
                 @else 
                 placeholder="Description">
                 @endif
+                
                 </textarea>
               </div>
           </div>

@@ -6,17 +6,24 @@
         <div class="row py-auto  ">
             <div class="col-md ">
                 <div class="row d-flex justify-content-center">
-                
+                <a href="{{route('designScreen')}}">
+                <div class="row">
                 <i  class="fa fa-edit "></i>
                 &nbsp &nbsp
                 <p>NEW CAMPAIGN</p>
                 </div>
+                </a>
+                </div>
             </div>
             <div class="col-md">
                 <div class="row d-flex justify-content-center">
+                  <a href="{{route('designScreen')}}">
+                    <div class="row">
                 <i  class="fa fa-photo "></i>
-                &nbsp &nbsp
+                &nbsp &nbsp 
                 <p>VISIT DESIGN GALLERY</p>
+                    </div>
+                  </a>
                 </div>
             </div>
             <div class="col-md">
@@ -28,9 +35,13 @@
             </div>
             <div class="col-md">
                 <div class="row d-flex justify-content-center">
+                  <a href="{{route('homeScreen')}}">
+                    <div class="row">
                 <i  class="fa fa-shopping-bag "></i>
                 &nbsp &nbsp
                 <p>VISIT STORE</p>
+                    </div>
+                  </a>
                 </div>
             </div>
             <div class="col-md">

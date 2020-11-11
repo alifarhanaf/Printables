@@ -12,17 +12,21 @@ use Illuminate\Support\Facades\Response;
 
 class DesignController extends Controller
 {
-    public function index(){
+    //Design Form
+    public function index()
+    {
         return view ('admin.designform');
-
     }
-    public function submitDesign(DesignRequest $request){
-        
+    //Design Submit
+    public function submitDesign(DesignRequest $request)
+    {
+        // dd($request);
         DB::beginTransaction();
         try {
         $design = new Designs();
         $design->name = request('name');
         $design->description = request('description');
+        $design->enabled = request('status');
         $design->save();
         $imageName = time().'.'.$request->image->extension();  
         $path = base_path() . '/public/storage/designImages/';
@@ -34,13 +38,6 @@ class DesignController extends Controller
         $image->save();
         $imageid = $image->id;
         $design->images()->sync($imageid);
-        
-        // $imageid = $image->id;
-        // $designid = $design->id;
-        // $designimage = new DesignImages();
-        // $designimage->design_id = $designid;
-        // $designimage->image_id = $imageid;
-        // $designimage->save();
         DB::commit();
         return redirect()->route('design.form')->with('message','Success');
         } catch (\Exception $ex) {
@@ -49,25 +46,79 @@ class DesignController extends Controller
         }
        
     }
-    public function designgrid(){
+    //Design Grid
+    public function designgrid()
+    {
         $designs = Designs::all();
-        // $groups = Groups::all();
-        // dd($brands);
         $data = array(
             "designs"=> $designs,
-            // "groups"=> $groups,
         );
         return view ('admin.designgrid')->with($data);
     }
-
-    public function destroy($id)
-    {
-        Designs::destroy($id);
+    //Design Edit Form
+    public function editDesign($id){
+        $design = Designs::where('id',$id)->first();
+        $data = array(
+            "design"=> $design,
+        );
+        return view ('admin.designform')->with($data);
     }
-    public function designByID($id){
+    //Submit Edited Design
+    public function submitEditedDesign(Request $request,$id)
+    {
+        DB::beginTransaction();
+        try {
+        $design = Designs::find($id);
+        $design->name = request('name');
+        $design->description = request('description');
+        $design->enabled = request('status');
+        $design->save();
+        if ($request->hasFile('image')) {
+        $imageName = time().'.'.$request->image->extension();  
+        $path = base_path() . '/public/storage/designImages/';
+        $pathsave =  '/storage/designImages/';
+        $request->image->move($path, $imageName);
+        $imageurl = $pathsave.$imageName;
+        $image = new Images();
+        $image->url =$imageurl;
+        $image->save();
+        $imageid = $image->id;
+        $design->images()->sync($imageid);
+        }
+        DB::commit();
+        return redirect()->route('design.edit',$design->id)->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('design.edit',$design->id)->with('message',$ex->getMessage());
+        }
+
+    }
+    
+
+    //Design Delete
+    public function destroy($id)
+    {   
+        DB::beginTransaction();
+        try {
+        $design = Designs::find($id);
+        if($design->images){
+        $ids = idsgenerator($design->images);
+        Images::destroy($ids);
+        $design->images()->detach($ids);
+        }
+        Designs::destroy($id);
+        DB::commit();
+        return redirect()->route('design.grid')->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('design.grid')->with('message',$ex->getMessage());
+        }
+    }
+    //Fetch Design Details By ID
+    public function designByID($id)
+    {
         $design = Designs::where('id',$id)->get();
         $images = $design[0]->images;
-        // dd($images);
         $data = array(
             "design"=> $design,
             "designImages"=>$images,
@@ -75,6 +126,4 @@ class DesignController extends Controller
         return $data;
     }
     
-     
-    //  printTypeScreen
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Auth;
 use File;
 use Cookie;
-
 use App\User;
 use Pusher\Pusher;
 use App\Models\Faqs;
@@ -26,9 +25,8 @@ class CampaignController extends Controller
 {   
         
     
-        public function setDraftCampaign(CampaignSubmitRequest $request){
-            // dd($request);
-
+    public function setDraftCampaign(CampaignSubmitRequest $request)
+    {
         DB::beginTransaction();
         try {
         $campaignName = $request->cookie('campaignName');
@@ -62,8 +60,6 @@ class CampaignController extends Controller
         $campaign->save();
         if($request->cookie('imageName0')){
             $imageName0 = $request->cookie('imageName0');
-            // $garbagepath = "'storage'garbage";
-            // $oldpath=str_replace("'",'',public_path().addslashes($garbagepath).addslashes("'".$imageName0));
 	        $oldpath = public_path().'/storage/garbage/'.$imageName0;
             $newpath = public_path(). '/storage/CampaignImages/';
             $pathsave =  '/storage/CampaignImages/';
@@ -78,8 +74,6 @@ class CampaignController extends Controller
         };
         if($request->cookie('imageName1')){
             $imageName1 = $request->cookie('imageName1');
-            // $garbagepath = "'storage'garbage";
-            // $oldpath=str_replace("'",'',public_path().addslashes($garbagepath).addslashes("'".$imageName1));
             $oldpath = public_path().'/storage/garbage/'.$imageName1;
             $newpath = public_path() . '/storage/CampaignImages/';
             $pathsave =  '/storage/CampaignImages/';
@@ -93,8 +87,6 @@ class CampaignController extends Controller
         };
         if($request->cookie('imageName2')){
             $imageName2 = $request->cookie('imageName2');
-            // $garbagepath = "'storage'garbage";
-            // $oldpath=str_replace("'",'',public_path().addslashes($garbagepath).addslashes("'".$imageName2));
             $oldpath = public_path().'/storage/garbage/'.$imageName2;
             $newpath = public_path() . '/storage/CampaignImages/';
             $pathsave =  '/storage/CampaignImages/';
@@ -139,7 +131,6 @@ class CampaignController extends Controller
         $suggestions->save();
         $campaign->suggestions()->sync($suggestions->id);
         Mail::to($user->email)->send(new CampaignSubmissionMail($user,$campaign));
-        // Mail::to($user->email)->send(new CampaignSubmissionMail($user));
         Cookie::queue('campaignName', '', -1);
         Cookie::queue('designID', '', -1);
         Cookie::queue('productID', '', -1);
@@ -167,40 +158,22 @@ class CampaignController extends Controller
             dd($ex->getMessage());
             return redirect()->route('deliveryAddressScreen');
         }
-
-        
-        
     }
-    public function campaignScreen($id){
-
-        $campaigns = Campaigns::where('id',$id)->get();
+    public function campaignScreen($id)
+    {
+        $campaign = Campaigns::where('id',$id)->first();
         $user = Auth::user();
-        // $campaigns = $user->campaigns;
-        // Mail::to($user->email)->send(new CampaignSubmissionMail($user,$campaigns[0]));
-
-        $campaigns = Campaigns::where('id',$id)->get();
+        // $campaigns = Campaigns::where('id',$id)->get();
         $arr = [];
-        foreach($campaigns as $campaign){
+        
             foreach($campaign->faqs as $faq){
                 array_push($arr,$faq->id);
             }
-        }
-        // dd($arr);
         $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
-        // dd($faqs[0]->id);
-        // if(in_array($faqs[0]->id, $arr))
-        // {
-
-        
-
-        // }
-        // dd($campaigns);
         $my_id = Auth::id();
         $user_id = 1;
-
         // Make read all unread message
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
-
         // Get all message from selected user
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $user_id)->where('to', $my_id);
@@ -208,7 +181,7 @@ class CampaignController extends Controller
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
         $data = array(
-            "campaigns"=> $campaigns,
+            "campaign"=> $campaign,
             "messages" =>$messages,
         );
         return view('web.campaignScreen')->with($data);
@@ -217,78 +190,28 @@ class CampaignController extends Controller
         $user =  Auth::user();
         $closedCampaigns = $user->campaigns()->where('status',5)->get();
         $activeCampaigns = $user->campaigns()->where('status',1)->get();
-        // $campaigns = Campaigns::all();
         $data = array(
             "closedCampaigns"=> $closedCampaigns,
             "activeCampaigns"=>$activeCampaigns
         );
         return view('web.allCampaigns')->with($data);
     }
-    public function userCampaigns(){
-        $user =  Auth::user();
-        
-        $campaigns = $user->campaigns;
-        dd($campaigns);
-        
-        
-    }
-    public function allCampaignsAdmin(){
-        
+    public function allCampaignsAdmin()
+    {
         $campaigns = Campaigns::all();
         $data = array(
             "campaigns"=> $campaigns,
         );
         return view('admin.campaignsGrid')->with($data);
     }
-    public function setForApprovalCampaigns(){
-        
+    public function setForApprovalCampaigns()
+    {
         $campaigns = Campaigns::where('status','1')->get();
         $data = array(
             "campaigns"=> $campaigns,
         );
         return view('admin.pendingApprovalCampaigns')->with($data);
     }
-    public function campaignScreenAdmin1($id){
-        $campaigns = Campaigns::where('id',$id)->get();
-        // $arr = [];
-        // foreach($campaigns as $campaign){
-        //     foreach($campaign->faqs as $faq){
-        //         array_push($arr,$faq->id);
-        //     }
-        // }
-        
-        // $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
-        // dd($faqs[0]->id);
-        // if(in_array($faqs[0]->id, $arr))
-        // {
-        // }
-        // dd($campaigns);
-        $data = array(
-            "campaigns"=> $campaigns,
-        );
-        return view('web.campaignScreen')->with($data);
-    }
-    // public function getMessage()
-    // {
-    //     $my_id = Auth::id();
-    //     $user_id = 1;
-
-    //     // Make read all unread message
-    //     Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
-
-    //     // Get all message from selected user
-    //     $messages = Message::where(function ($query) use ($user_id, $my_id) {
-    //         $query->where('from', $user_id)->where('to', $my_id);
-    //     })->oRwhere(function ($query) use ($user_id, $my_id) {
-    //         $query->where('from', $my_id)->where('to', $user_id);
-    //     })->get();
-
-    //     return view('messages.index', ['messages' => $messages]);
-    // }
-    // public function sendMessage(Request $request)
-    // {
-       
-    // }
     public function sendMessage(Request $request)
     {
         $from = Auth::id();
@@ -303,92 +226,56 @@ class CampaignController extends Controller
         $user = User::where('id',$to)->first();
         $message = Message::where('id',$data->id)->first();
         $customer = User::where('id',$from)->first();
-        // dd($message);
-        // dd($user[0]->email);
-        // dd($from+1);
         if($from == '1'){
-            // dd('Im Admin' );
             Mail::to($user->email)->send(new MessageNotificationMail($user,$message));
         }else{
-            
             Mail::to($user->email)->send(new UserToAdminNotification($user,$message,$customer));
         }
         $pusher = new Pusher("629eecc55450630967da", "629f709434b064e55202", "1102594", array('cluster' => 'ap2'));
         $data = ['from' => $from, 'to' => intval($to)];
         $response = $pusher->trigger('my-channel', 'my-event', $data);
-        // dd($response);
-        
-        // dd($data->id);
-
-        // pusher
-        // $options = array(
-        //     'cluster' => 'ap2',
-        //     'port'=>443
-        // );
-        // $pusher = new Pusher(
-        //     env('PUSHER_APP_KEY'),
-        //     env('PUSHER_APP_SECRET'),
-        //     env('PUSHER_APP_ID'),
-        //     $options
-        // );
-        // $data = ['from' => $from, 'to' => intval($to)];
-        // $response=event(new TestEvent($data));
-      
-            // $response = $pusher->trigger('my-channel', 'my-event', array('message' => 'hello world'));
-            // $response = $pusher->trigger('my-channel', 'my-event', $data);
-            // dd($response);
-        
         
     }
-    public function campaignScreenAdmin($id){
-        $campaigns = Campaigns::where('id',$id)->get();
+    public function campaignScreenAdmin($id)
+    {
+        $campaign = Campaigns::where('id',$id)->first();
         $arr = [];
-        foreach($campaigns as $campaign){
+        
             foreach($campaign->faqs as $faq){
                 array_push($arr,$faq->id);
             }
-        }
-       
-        $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
         
+        $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
         $data = array(
-            "campaigns"=> $campaigns,
+            "campaign"=> $campaign,
         );
         return view('admin.campaignScreen')->with($data);
     }
-    public function getMessages($id){
-        // dd($id);
+    public function getMessages($id)
+    {
         $my_id = Auth::id();
         $user_id = $id;
-        // return true;
-
         // Make read all unread message
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
-
         // Get all message from selected user
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $user_id)->where('to', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
-        // dd($messages);
         $data = array(
             "messages" =>$messages,
         );
-
         return view('web.helpers.messages')->with($data);
-        // dd($messages);
-
     }
-    public function testEmail(){
-        $campaigns = Campaigns::where('id',111113)->get();
-        $user = Auth::user();
-        $data = array(
-            "campaign" => $campaigns[0],
-            "user" => $user,
-        );
-        return view('web.emails.userRegisterMail')->with($data);
-        
-    }
+    // public function testEmail(){
+    //     $campaigns = Campaigns::where('id',111113)->get();
+    //     $user = Auth::user();
+    //     $data = array(
+    //         "campaign" => $campaigns[0],
+    //         "user" => $user,
+    //     );
+    //     return view('web.emails.userRegisterMail')->with($data);
+    // }
     
 }

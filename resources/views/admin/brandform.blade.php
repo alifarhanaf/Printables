@@ -1,6 +1,10 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
-          <form action="{{ route('submit.brand') }}" method="POST" enctype="multipart/form-data">
+@if(isset($brand))
+<form action="{{ route('submit.edited.brand',$brand->id) }}" method="POST" enctype="multipart/form-data">
+  @else
+  <form action="{{ route('submit.brand') }}" method="POST" enctype="multipart/form-data">
+  @endif
           {{ csrf_field() }}
 
 
@@ -40,7 +44,12 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="az-content-label mg-b-5 ">
-                  <p class="pd-t-10">Enter New Brand</p> 
+                  @if(isset($brand))
+                  <p class="pd-t-10">Edit Your Brand</p>
+                  @else
+                  <p class="pd-t-10">Enter New Brand</p>
+                  @endif
+                   
                 </div>
               </div>
               <div class="col-md-3 text-center">
@@ -57,13 +66,27 @@
           <div class="d-flex flex-column wd-md-100% pd-30 pd-sm-40 bg-gray-200">
             <label class="form-label mg-b-10 pd-l-5"><b>Brand Name:</b></label>
             <div class="form-group">
-              <input name="name" type="text" class="form-control" placeholder="Enter Name">
+              <input name="name" type="text" class="form-control"
+              @if(isset($brand))
+                placeholder="{{$brand->name}}"
+                value="{{$brand->name}}"
+                @else 
+                placeholder="Enter Name"
+                value=""
+                @endif
+               >
             </div>
 
             <label class="form-label mg-b-10 pd-l-5"><b>Description:</b></label>
             <div class="form-group row row-sm  mg-b-10">
               <div class="col-lg">
-                <textarea id="editor" name="description" rows="6" class="form-control" placeholder="Description"></textarea>
+                <textarea id="editor" name="description" rows="6" class="form-control"
+                @if(isset($brand)) 
+                    placeholder="{{$brand->description}}">{{$brand->description}}
+                    @else 
+                    placeholder="Description">
+                    @endif
+                </textarea>
               </div>
           </div>
 
@@ -92,7 +115,7 @@
             </div><!-- card-header -->
             <div class="card-body bd bd-t-0">
               <div style="margin-left: 8%">
-              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="1"
+              <div class="row"><input style="margin-top: 2%" type="radio" name="status" value="1"
                 @if(isset($brand))
                     
                  
@@ -101,7 +124,7 @@
                 @endif
                 > <label style="margin-left: 3%">Enable</label><br>
               </div>
-              <div class="row"><input style="margin-top: 2%" type="radio" name="enable" value="0"
+              <div class="row"><input style="margin-top: 2%" type="radio" name="status" value="0"
                 @if(isset($brand)) 
                 {{$brand->enabled == 0 ? 'checked':''}}
                 @endif

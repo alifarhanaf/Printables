@@ -1,5 +1,33 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@if (session('message') && session('message') == 'Success')
+    <div class="alert alert-success ">
+        <ul>
+
+            {{ session('message') }}
+
+        </ul>
+    </div>
+@elseif(session('message'))
+    <div class="alert alert-danger ">
+        <ul>
+
+            <li>{{ session('message') }}</li>
+
+        </ul>
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
 <div class="pd-10  bg-gray-200">
 
@@ -49,7 +77,9 @@
             <td class="align-middle" >{{$category->name}}</td>
             {{-- <td class="align-middle" >{{$design->description}}</td> --}}
             <td class="align-middle"> 
-              <span class="badge badge-pill badge-primary badge-success  "> Active  </span>
+              <span class="badge badge-pill badge-primary {{ $category->enabled == 1 ? 'badge-success' : 'badge-danger' }}  ">
+                            {{ $category->enabled == 1 ? 'Active' : 'Disabled' }} 
+              </span>
             </td>
             <td>
                 <div class="row">
@@ -81,3 +111,10 @@
 
 
 @include('admin.includes.footer')
+<script>
+  $(function() {
+      var timeout = 3000; // in miliseconds (3*1000)
+      $('.alert').delay(timeout).fadeOut(300);
+  });
+
+</script>

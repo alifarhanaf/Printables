@@ -1,7 +1,7 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
 <div class="container-fluid">
-    @foreach ($campaigns as $campaign)
+    
         <div class="row">
             <div class="col-md-3">
                 <div id="sidebar">
@@ -283,7 +283,6 @@
 
         </div>
 </div>
-@endforeach
 </div>
 @include('web.includes.subfooter')
 @include('web.includes.footer')
@@ -339,12 +338,14 @@
         $(document).on('keypress', '.input-text input', function(e) {
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
+                var receiver_id = $('#nav-home-tab').data('id');
                 var message = $(this).val();
+                
                 // console.log(receiver_id);
                 //   alert(message);
                 $(this).val(''); // while pressed enter text box will be empty
 
-                var datastr = "receiver_id=" + 2 + "&message=" + message;
+                var datastr = "receiver_id=" + receiver_id + "&message=" + message;
                 $.ajax({
                     type: "post",
                     url: "/message", // need to create this post route
