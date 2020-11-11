@@ -22,6 +22,7 @@
     {{-- <link href="../lib/select2/css/select2.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('res/azia.css') }}" rel="stylesheet">
     <link href="{{ asset('res/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/custombk.css') }}" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
     
 

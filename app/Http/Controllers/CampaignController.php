@@ -216,6 +216,7 @@ class CampaignController extends Controller
     {
         $from = Auth::id();
         $to = $request->receiver_id;
+        $campaignId= $request->campaign_id;
         $message = $request->message;
         $data = new Message();
         $data->from = $from;
@@ -250,6 +251,21 @@ class CampaignController extends Controller
             "campaign"=> $campaign,
         );
         return view('admin.campaignScreen')->with($data);
+    }
+    public function campaignScreenAdmin1($id)
+    {
+        $campaign = Campaigns::where('id',$id)->first();
+        $arr = [];
+        
+            foreach($campaign->faqs as $faq){
+                array_push($arr,$faq->id);
+            }
+        
+        $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
+        $data = array(
+            "campaign"=> $campaign,
+        );
+        return view('admin.singleCampaign')->with($data);
     }
     public function getMessages($id)
     {

@@ -80,8 +80,10 @@ Route::get('/totalCampaigns', 'CampaignController@allCampaignsAdmin')->name('all
 Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaigns')->name('setForApprovalCampaigns');
 
 });
-Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
+// Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
 Route::get('/messages/{id}', 'CampaignController@getMessages')->name('getMessages');
+
+Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin1')->name('campaignScreenAdmin1');
 
 Auth::routes();
 

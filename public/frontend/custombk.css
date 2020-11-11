@@ -1,0 +1,375 @@
+.main_bigImages {
+    width: 100% !important;
+    height: 100% !important;
+}
+.flickity-viewport {
+    height: 100% !important;
+}
+.images_all.is-selected.is-nav-selected {
+    position: unset !important;
+}
+.all__small_images .images_all.is-selected {
+    position: unset !important;
+}
+.all__small_images .flickity-slider {
+    transform: unset !important;
+}
+#sidebar li.list-group-item {
+    border: none !important;
+   
+    padding-left: 0rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: #e3e7ed ;
+}
+#sidebar li.list-group-item span {
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+#sidebar ul.list-group {
+    margin-inline-start: 1% !important;
+    overflow: hidden;
+    max-height: 100%;
+}
+#sidebar h5.card-title {
+    color: #000 !important;
+    margin-inline-start: 8% !important;
+    font-size: 1.0rem !important;
+}
+#cardInsideCard h5.card-title {
+    color: #3d4246;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 800 !important;
+    margin: auto;
+    text-align: center;
+}
+#startrow .col-md-3{
+    padding: 0px !important;
+}
+#sidebar .card {
+    border-radius: 10px !important;
+    /* margin-left: 20% !important; 
+    margin-top:10% !important;
+    width: 80% !important; */
+    margin: 6%;
+    background:#e3e7ed ;
+}
+
+
+#sidebar i{
+    color: #84a0ac; 
+}
+#sidebar p.large {
+    margin-bottom: 0;
+    padding-inline-start: 5%;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+#sidebar p.smallp {
+    font-size: 1.1rem;
+    padding-inline-start: 5%;
+    font-size: 0.8rem;
+}
+#tabs .card {
+    border-radius: 10px !important;
+    background: #e3e7ed;
+    /* margin-top:3% !important; */
+    margin: 2%;
+    
+   
+    
+}
+/* #subtabs .card {
+    border-radius: 10px !important;
+    
+    margin-top:3% !important;
+    margin-right: 5%;
+    
+} */
+#cardInsideCard .card{
+    border-radius: 5px !important;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    width: 20%px;
+    height: 10%;
+    background-color: #84a0ac;
+ 
+    
+}
+.mid {
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .mid {
+        text-align: left;
+    }
+}
+
+#cardInsideCard p{
+    align-self: center !important;
+    color: whitesmoke;
+    font-size: 1.8rem;
+}
+#cardInsideCard button.btn.btn-primary {
+    
+    height: 30px;
+    background-color: #4130c5;
+    width: 100px;
+    font-size: 0.80rem;
+    font-weight: 500;
+}
+#HeadaingP p{
+    color: #000;
+    font-size: 0.90rem;
+    font-weight: 500 !important;
+}
+#HeadaingZ p{
+    color: #000;
+    font-size: 0.90rem;
+    font-weight: 500;
+    /* float: right; */
+    /* text-align: right; */
+    
+    
+}
+#subHeaderCard .card{
+    border-right: none;
+    border-left: none;
+    border-radius: 0px !important;
+    margin: 2% !important;
+
+}
+
+#BodyCard .card{
+    
+    
+    margin: 2% !important;
+    border: none !important;
+    /* border-top: 1px !important; */
+
+   
+
+}
+#BodyCard th{
+    border: none;
+    font-size: 0.9rem;
+    color: #000;
+    font-weight: 500;
+}
+.new{
+    font-weight: 300 !important;
+}
+
+
+#HeadaingN p{
+    color: #84a0ac;
+    font-size: 1.5rem;
+    padding: 0.5%;
+    text-align: center;
+    margin-bottom: 0;
+}
+#tabss a{
+    font-size: 0.75rem; 
+    color: #2e39bf;;
+    font-weight: 500;
+}
+#tabss .card{
+    border-bottom: 1px solid #b4bdce ;
+    border-left: 1px solid #b4bdce ;
+    border-right: 1px solid #b4bdce ;
+    margin: 2%;
+    background: #cdd4e0 ;
+}
+#tabss .nav-tabs .nav-link {
+    border: 0px !important; 
+     border-top-left-radius: 0px !important; 
+     border-top-right-radius: 0px !important;
+}
+#tabss .nav-item.nav-link.active {
+    background: #4130c5;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+#tabss .nav-tabs .nav-link {
+    background-color: whitesmoke;
+}
+#tabss .card-header {
+    background-color: #b4bdce !important;
+    border: none;
+}
+#tabss .card-body {
+    padding: 0px !important;
+} 
+#tabss .nav-tabs {
+    border-bottom: 0px !important ;
+}
+
+#mainHeader .card {
+    border: 1px solid #84a0ac;
+    border-radius: 5px;
+    margin: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#mainHeader i {
+    font-size: 1.7rem !important;
+    color: #84a0ac;
+}
+#activeOrdersCard .card {
+    border: 1px solid #84a0ac;
+    border-radius: 5px;
+    margin: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#activeOrdersCard button.btn.btn-primary {
+    height: 25px;
+    background-color: #84a0bf;
+    width: 70px;
+    font-size: 1.2rem;
+}
+
+#cardLayer .card {
+    
+    background-color: #4130c5;
+    height: 45px;
+    border-radius: 0px !important;
+    
+    
+   margin: 0px !important;
+    
+}
+#cardLayer p{
+    color: whitesmoke !important;
+    font-size: 0.9rem;
+   padding-left: 2%;
+   padding-right: 2%;
+   /* padding-bottom: 1%; */
+
+}
+#cardLayer .row{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.message-wrapper {
+    padding: 10px;
+    height: 536px;
+    background: #eeeeee;
+}
+.message-wrapper ul{
+    list-style-type: none !important;
+}
+.messages {
+    padding-inline-start: 0px;
+}
+.messages .message {
+    margin-bottom: 15px;
+}
+
+.messages .message:last-child {
+    margin-bottom: 0;
+}
+
+.received, .sent {
+    width: 45%;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.received {
+    background: #ffffff;
+}
+
+.sent {
+    background: #84a0bf;
+    float: right;
+    text-align: right;
+}
+
+.message .sent p {
+    margin: 5px 0;
+    color: whitesmoke;
+}
+.message .received p {
+    margin: 5px 0;
+    color: black;
+}
+.message .date {
+    color: whitesmoke;
+    font-size: 12px;
+}
+
+.message .active {
+    background: #eeeeee;
+}
+
+#messages input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0 0 0;
+    display: inline-block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #cccccc;
+}
+
+#messages input[type=text]:focus {
+    border: 1px solid #aaaaaa;
+}
+.user-wrapper, .message-wrapper {
+    border: 1px solid #dddddd;
+    overflow-y: auto;
+}
+
+
+
+
+
+/* #tabss nav > .nav.nav-tabs{
+
+    border: none;
+      color:#fff;
+      background:#272e38;
+      border-radius:0;
+  
+  }
+  #tabss nav > div a.nav-item.nav-link,
+  #tabss nav > div a.nav-item.nav-link.active
+  {
+    border: none;
+      padding: 18px 25px;
+      color:#fff;
+      background:#272e38;
+      border-radius:0;
+  }
+  
+  #tabss nav > div a.nav-item.nav-link.active:after
+   {
+    content: "";
+    position: relative;
+    bottom: -60px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #e74c3c ;
+  }
+  #tabss .tab-content{
+    background: #fdfdfd;
+      line-height: 25px;
+      border: 1px solid #ddd;
+      border-top:5px solid #e74c3c;
+      border-bottom:5px solid #e74c3c;
+      padding:30px 25px;
+  }
+  
+  #tabss nav > div a.nav-item.nav-link:hover,
+  #tabss nav > div a.nav-item.nav-link:focus
+  {
+    border: none;
+      background: #e74c3c;
+      color:#fff;
+      border-radius:0;
+      transition:background 0.20s linear;
+  } */
