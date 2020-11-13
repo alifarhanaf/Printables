@@ -59,6 +59,7 @@ Route::post('/submitEditedDesign/{id}','DesignController@submitEditedDesign')->n
 Route::delete('/deletedesign/{id}','DesignController@destroy')->name('design.delete');
 
 
+
 Route::get('/categoryadd', 'CategoryController@index')->name('category.form');
 Route::post('/categorySubmit','CategoryController@submitCategory')->name('submit.category');
 Route::get('/categoryedit/{id}', 'CategoryController@editCategory')->name('category.edit');
@@ -80,6 +81,8 @@ Route::get('/totalCampaigns', 'CampaignController@allCampaignsAdmin')->name('all
 Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaigns')->name('setForApprovalCampaigns');
 
 });
+Route::get('/allDesigns','DesignController@allDesigns');
+Route::get('/allSuggestedDesignGroups/{id}','CampaignController@allSuggestedDesignGroups');
 // Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
 Route::get('/messages/{id}', 'CampaignController@getMessages')->name('getMessages');
 
@@ -130,4 +133,11 @@ Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campai
 Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
 
 Route::get('/testEmail', 'CampaignController@testEmail');
+Route::get('/smallBigImages/{id}', 'CampaignController@smallBigImages');
+Route::get('/smallBigImagesSuggested/{id}','CampaignController@smallBigImagesSuggested');
 // Route::view('/userRegister', 'web.emails.userRegisterMail');
+Route::get('/approveDesign/{id}', 'CampaignController@approveDesign')->name('approveDesign');
+// Route::get('dropzone', 'ImageController@index');
+ 
+Route::post('campaign/upload_image/{id}', 'ImageController@campaign_upload_image')->name('campaign.upload_image');
+ 

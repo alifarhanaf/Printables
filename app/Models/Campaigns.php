@@ -50,6 +50,14 @@ class Campaigns extends Model
     {
         return $this->belongsToMany('App\Models\Images');
     }
+    // public function suggested_images()
+    // {
+    //     return $this->belongsToMany('App\Models\SuggestedImages');
+    // }
+    public function suggested_design_groups()
+    {
+        return $this->belongsToMany('App\Models\SuggestedDesignGroups');
+    }
     
 
 }

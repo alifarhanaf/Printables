@@ -32,7 +32,7 @@ class BrandController extends Controller
             
         $brand = new Brands();
         $brand->name = request('name');
-        $brand->enabled = request('enable');
+        $brand->enabled = request('status');
         $brand->description = request('description');
         $brand->save();
 

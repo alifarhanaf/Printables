@@ -8,6 +8,7 @@ use App\User;
 use Pusher\Pusher;
 use App\Models\Faqs;
 use App\Models\Images;
+use App\Models\Designs;
 use App\Models\Message;
 use App\Events\TestEvent;
 use App\Models\Addresses;
@@ -19,6 +20,7 @@ use App\Mail\CampaignSubmissionMail;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageNotificationMail;
 use App\Mail\UserToAdminNotification;
+use App\Models\SuggestedDesignGroups;
 use App\Http\Requests\CampaignSubmitRequest;
 
 class CampaignController extends Controller
@@ -162,13 +164,14 @@ class CampaignController extends Controller
     public function campaignScreen($id)
     {
         $campaign = Campaigns::where('id',$id)->first();
+        // dd($campaign->deliveryDate);
         $user = Auth::user();
         // $campaigns = Campaigns::where('id',$id)->get();
         $arr = [];
         
-            foreach($campaign->faqs as $faq){
-                array_push($arr,$faq->id);
-            }
+            // foreach($campaign->faqs as $faq){
+            //     array_push($arr,$faq->id);
+            // }
         $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
         $my_id = Auth::id();
         $user_id = 1;
@@ -284,14 +287,48 @@ class CampaignController extends Controller
         );
         return view('web.helpers.messages')->with($data);
     }
-    // public function testEmail(){
-    //     $campaigns = Campaigns::where('id',111113)->get();
-    //     $user = Auth::user();
-    //     $data = array(
-    //         "campaign" => $campaigns[0],
-    //         "user" => $user,
-    //     );
-    //     return view('web.emails.userRegisterMail')->with($data);
-    // }
+    public function testEmail(){
+        $campaigns = Campaigns::where('id',111113)->get();
+        $user = Auth::user();
+        $data = array(
+            "campaign" => $campaigns[0],
+            "user" => $user,
+        );
+        return view('web.emails.userRegisterMail')->with($data);
+    }
+    public function smallBigImages($id){
+        $design = Designs::where('id',$id)->first();
+        $data = array(
+            "design"=>$design
+        );
+        return view('web.helpers.modalContent')->with($data)->render();
+    }
+    public function smallBigImagesSuggested($id){
+        // $campaign = Campaigns::where('id',$id)->first();
+        $designGroup = SuggestedDesignGroups::where('id',$id)->first();
+        // dd($designGroup->campaigns);
+        // $suggestedDesigns = $designGroups->suggested_images;
+        $data = array(
+            "designGroup" => $designGroup
+        );
+        return view('web.helpers.modalContentSuggested')->with($data)->render();
+    }
+    public function allSuggestedDesignGroups($id){
+        $campaign = Campaigns::where('id',$id)->first();
+        $suggestedDesigns = $campaign->suggested_design_groups;
+        // dd($suggestedDesigns);
+        $data = array(
+            "suggestedDesigns" => $suggestedDesigns
+        );
+        return $data;
+    }
+    public function approveDesign($id) {
+        // dd($id);
+        $campaign = Campaigns::find($id);
+        $campaign->status = 3;
+        $campaign->save();
+        return redirect()->route('campaignScreen',$campaign->id);
+
+    }
     
 }

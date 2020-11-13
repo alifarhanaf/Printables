@@ -1,19 +1,4 @@
-.main_bigImages {
-    width: 100% !important;
-    height: 100% !important;
-}
-.flickity-viewport {
-    height: 100% !important;
-}
-.images_all.is-selected.is-nav-selected {
-    position: unset !important;
-}
-.all__small_images .images_all.is-selected {
-    position: unset !important;
-}
-.all__small_images .flickity-slider {
-    transform: unset !important;
-}
+
 #sidebar li.list-group-item {
     border: none !important;
 }
@@ -282,6 +267,7 @@
     border: 1px solid #dddddd;
     overflow-y: auto;
 }
+
 
 
 

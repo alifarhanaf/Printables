@@ -125,5 +125,12 @@ class DesignController extends Controller
         );
         return $data;
     }
+    public function allDesigns(){
+        $designs = Designs::all();
+        $data = array(
+            "designs"=>$designs
+        );
+        return $data;
+    }
     
 }

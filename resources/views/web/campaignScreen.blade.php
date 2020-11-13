@@ -77,7 +77,15 @@
                             <p>{{$campaign->name}}</p>
                         </div>
                         <div class="col-md-4  my-auto mid"  id="HeadaingZ">
-                            <p>STATUS: {{$campaign->status == 1 ? 'STATUS AWAITING':'N/A'}}</p>
+                            <p>STATUS: 
+                              @if($campaign->status==1)
+                              DESIGN AWAITING
+                              @elseif($campaign->status==2)
+                              DESIGN IN PROCESS
+                              @elseif($campaign->status==3)
+                              DESIGN APPROVED
+                              @endif
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -94,6 +102,10 @@
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
                                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Products</a>
                                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Description</a>
+                                  @if(isset($campaign->suggested_design_groups))
+                                  <a class="nav-item nav-link" id="nav-design-tab" data-toggle="tab" href="#nav-design" role="tab" aria-controls="nav-design" aria-selected="false">Proposed Designs</a>
+                                  @endif
+                                  
                                   
                                 </div>
                               </nav>
@@ -102,7 +114,7 @@
                         <div class="container">
                             <div class="row">
                               <div class="col-md-12 " style="padding: 0px;">
-                               
+                    
                                 <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                   <div class="tab-pane fade show active" style="padding-left: 15px; padding-right:15px" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                       
@@ -272,6 +284,73 @@
                           </div>
                             
                             </div>
+
+                            {{-- Start Here --}}
+
+                            <div class="tab-pane fade" id="nav-design" role="tabpanel" aria-labelledby="nav-design-tab">
+                              
+                      <div id="cardLayer">
+                      
+                      <div class="card card-body  ">
+                        <div class="row d-flex justify-content-between  my-auto" >
+                        <p >SUGGESTED DESIGNS</p>
+                        <p class="card-text"></p>
+                        </div>
+                      </div>
+                      @if(isset($campaign->suggested_design_groups))
+                      <div class="row" >
+
+                      @foreach ($campaign->suggested_design_groups as $image)
+                      {{-- Start Here --}}
+                     
+                       
+                      
+                         <div class="col-md-3" >
+                           <div style="max-width: 200px;
+                           margin: auto;">
+                           
+                      <a href="#exampleModal{{$image->id}}" id="modalBtn{{$image->id}}"  data-toggle="modal" data-id="{{$image->id}}" data-target="">
+                              <img src="{{$image->suggested_images[0]->url}}" alt="" class="img-fluid" style=" padding:2%;">
+                      </a>
+                     
+                      </div>
+                         </div>
+                   
+                     
+
+                  <!-- Modal -->
+                 
+<div class="modal fade" id="exampleModal{{$image->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered model_custom_width">
+<div class="modal-content">
+<div class="modal-body my_custom_model">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    <div id="modalContent{{$image->id}}">
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+{{-- End Modal --}}
+
+                      
+                      {{--End Here --}}
+                      @endforeach
+                    </div>
+                      @endif
+                      
+                      
+                      
+                    
+                    </div>
+                      
+                      </div>
+                            
+
+                            {{-- End Here --}}
                         
                                 </div>
                                   
@@ -302,16 +381,112 @@
 @include('web.includes.subfooter')
 @include('web.includes.footer')
 <script type="text/javascript">
-var receiver_id = '';
+    var receiver_id = '';
     var my_id = "{{ Auth::id() }}";
-   $(document).ready(function(){
 
-     // ajax setup form csrf token
-    //  $.ajaxSetup({
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+    
+   $(document).ready(function(){
+    var campaign_id = $('#messages').data('id');
+    
+    // console.log(campaign_id);
+    $.ajax({
+            url: '/allSuggestedDesignGroups/'+campaign_id,
+            type: 'get',
+            success: function(data){
+              for (var i = 0, l = data.suggestedDesigns.length; i < l; i++) {
+                var group_id = $('.group_id'+data.suggestedDesigns[i].id).data('id');
+                
+                // var hello = data.suggestedDesigns[i].id;
+              $('#modalBtn'+data.suggestedDesigns[i].id).click(function(e){
+                var id  = $(this).data('id');
+                
+     
+      
+      $.ajax({
+      url: '/smallBigImagesSuggested/'+id,
+      type: 'get',
+      success: function(response){
+        // console.log(response);
+        for(var j=0 , k =data.suggestedDesigns.length; j < k; j++ ){
+                                $('#modalContent'+data.suggestedDesigns[j].id).html(response);
+                                }
+
+                                $('.slick_big_inni').slick({
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false,
+                                fade: false,
+                                asNavFor: '.slickInni'
+                                });
+                                $('.slickInni').slick({
+                                slidesToShow: 4,
+                                slidesToScroll: 1,
+                                asNavFor: '.slick_big_inni',
+                                dots: false,
+                                focusOnSelect: true,
+                                vertical: true,
+                                verticalSwiping: true,
+                                infinite:false,
+                                arrows: false
+                                });    
+                                }
+      });        
+                            
+                        });
+              }
+            }
+    });
+    
+
+   
+                    
+
+    // $.ajax({
+    //         url: 'allDesigns/',
+    //         type: 'get',
+    //         success: function(response){
+    //             for (var i = 0, l = response.designs.length; i < l; i++) {
+    //                 $('#modalBtn'+response.designs[i].id).click(function(e){
+    //                     var id = $('#designID').data('id');
+    //                 $.ajax({
+    //                         url: 'smallBigImages/'+id,
+    //                         type: 'get',
+    //                         success: function(data){
+    //                             for(var j=0 , k =response.designs.length; j < k; j++ ){
+    //                             $('#modalContent'+response.designs[j].id).html(data);
+    //                             }
+    //                             $('.slick_big_inni').slick({
+    //                             slidesToShow: 1,
+    //                             slidesToScroll: 1,
+    //                             arrows: false,
+    //                             fade: false,
+    //                             asNavFor: '.slickInni'
+    //                             });
+    //                             $('.slickInni').slick({
+    //                             slidesToShow: 4,
+    //                             slidesToScroll: 1,
+    //                             asNavFor: '.slick_big_inni',
+    //                             dots: false,
+    //                             focusOnSelect: true,
+    //                             vertical: true,
+    //                             verticalSwiping: true,
+    //                             infinite:false,
+    //                             arrows: false
+    //                             });            
+    //                         }
+    //                     });
+    //                 });
+    //             }
     //         }
     //     });
+
+        //End Here
+
+
+
+
+
     $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -402,5 +577,21 @@ $('#nav-home-tab').click(function () {
     }
   
    }); 
+</script>
+<script>
+  $(document).ready(function(){
+        // 1st carousel, main
+        // $('.slick_big_inni').flickity({
+        //     prevNextButtons: false,pageDots: false,groupCells:1
+        // });
+        // // 2nd carousel, navigation
+        // $('.slickInni').flickity({
+        // asNavFor: '.slick_big_inni',
+        // contain: true,
+        // pageDots: false,
+        // prevNextButtons: false,
+        // groupCells:3
+        // });
+    });
 </script>
 @include('web.includes.endfile')
