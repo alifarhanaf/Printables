@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\Images;
 use App\Models\Campaigns;
 use Illuminate\Http\Request;
 use App\Models\SuggestedImages;
+use App\Mail\DesignSuggestionMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\SuggestedDesignGroups;
 
 class ImageController extends Controller
@@ -34,6 +37,8 @@ class ImageController extends Controller
         $image->save();
         $imageid = $image->id;
         $nsdg->suggested_images()->attach($imageid);
+        $user = User::find($campaign->users[0]->id);
+        Mail::to($campaign->users[0]->email)->send(new DesignSuggestionMail($user,$campaign));
         }
         return redirect()->route('campaignScreenAdmin1',$campaign->id);
          

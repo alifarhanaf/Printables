@@ -229,7 +229,7 @@
                                                 aria-labelledby="nav-home-tab">
 
                                                 {{-- Start Here--}}
-                                                <div id="messages">
+                                        <div id="messages" data-id="{{$campaign->id}}">
 
                                                 </div>
                                                 {{-- End Here --}}
@@ -560,12 +560,14 @@
                 if (e.keyCode === 13 && message != '') {
                     var receiver_id = $('#nav-home-tab').data('id');
                     var message = $(this).val();
+                    var campaign_id = $('#messages').data('id');
+                console.log(campaign_id);
 
                     // console.log(receiver_id);
                     //   alert(message);
                     $(this).val(''); // while pressed enter text box will be empty
 
-                    var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                    var datastr = "receiver_id=" + receiver_id + "&message=" + message + "&campaign_id=" + campaign_id;
                     $.ajax({
                         type: "post",
                         url: "/message", // need to create this post route

@@ -6,17 +6,23 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <style>
             .container{
                 width: 100%;
                 max-width: 500px;
                 margin: auto;
+                padding: 0px;
+                border: 1px solid #84a0bf;
+                background: #fafafa;
             }
             .header{
                 background: none;
                 border: 1px solid #84a0bf;
                 text-align: center;
                 padding: 20px;
+                background-color: #fafafa;
+                border-bottom: 2px solid #84a0bf; 
             }
             .container-body{
                 padding: 20px 20px 0px 20px;
@@ -75,7 +81,30 @@
             #mailsys h6{
                 color: #84a0bf;
             }
-    
+            .az{
+                background: #84a0bf;
+                background-color: #84a0bf;
+                border-color: #84a0bf;
+            }
+            .btn-primary:hover {
+            color: #fff;
+            background-color: #84a0bf;
+            border-color: #84a0bf;
+            }
+            .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+                color: #fff;
+                background-color: #84a0bf;
+                border-color: #84a0bf;
+            }
+            a{
+                color: #fff;
+            }               
+            a:hover{
+                color: #fff;
+            } 
+            a:active{
+                color: #fff;
+            }
         </style>
     </head>
     <body>
@@ -89,18 +118,22 @@
         <div class="contaner_contaner">
             <div class="container-body">
                 <div class="title">
-                    <h3 style="color: #84a0bf">New Notification</h3>
+                    <h3 style="color: #84a0bf;font-size:1.5rem;font-weight:600;">New Message Notification</h3>
                 </div>
     
     
-                <div class="message">
-                    <p style="text-align: center;color: #84a0bf;"> Hi, You've received a new message from {{$customer->name}}. </p>
-                    <p style="text-align: center;color: #84a0bf;">{{$string->message}}. </p>
+                <div class="message" style="text-align: center;">
+                    <p style="color: #84a0bf;"> Hi Admin,  You've received a new message from {{$customer->name}}. </p>
+                   
+                    <button type="button" class="btn btn-primary az" >
+                    <a href="{{ route('campaignScreenAdmin1',$campaign->id) }}" > Click Here to See</a>
+                    </button
                     <hr style="margin-bottom: 0px">
     
                    
             </div>
         </div>
+        <hr>
         <div class="contaner_contaner">
             <div class="footer">
                 <p>Geneologie 2020</p>

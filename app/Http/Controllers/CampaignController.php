@@ -15,6 +15,8 @@ use App\Models\Addresses;
 use App\Models\Campaigns;
 use App\Models\Suggestions;
 use Illuminate\Http\Request;
+use App\Mail\ApproveDesignMail;
+use App\Mail\CampaignApprovalMail;
 use Illuminate\Support\Facades\DB;
 use App\Mail\CampaignSubmissionMail;
 use Illuminate\Support\Facades\Mail;
@@ -192,7 +194,7 @@ class CampaignController extends Controller
     public function allCampaigns(){
         $user =  Auth::user();
         $closedCampaigns = $user->campaigns()->where('status',5)->get();
-        $activeCampaigns = $user->campaigns()->where('status',1)->get();
+        $activeCampaigns = $user->campaigns()->get();
         $data = array(
             "closedCampaigns"=> $closedCampaigns,
             "activeCampaigns"=>$activeCampaigns
@@ -220,6 +222,7 @@ class CampaignController extends Controller
         $from = Auth::id();
         $to = $request->receiver_id;
         $campaignId= $request->campaign_id;
+        $campaign = Campaigns::find($campaignId);
         $message = $request->message;
         $data = new Message();
         $data->from = $from;
@@ -231,9 +234,9 @@ class CampaignController extends Controller
         $message = Message::where('id',$data->id)->first();
         $customer = User::where('id',$from)->first();
         if($from == '1'){
-            Mail::to($user->email)->send(new MessageNotificationMail($user,$message));
+            Mail::to($user->email)->send(new MessageNotificationMail($user,$campaign));
         }else{
-            Mail::to($user->email)->send(new UserToAdminNotification($user,$message,$customer));
+            Mail::to($user->email)->send(new UserToAdminNotification($user,$campaign,$customer));
         }
         $pusher = new Pusher("629eecc55450630967da", "629f709434b064e55202", "1102594", array('cluster' => 'ap2'));
         $data = ['from' => $from, 'to' => intval($to)];
@@ -288,14 +291,16 @@ class CampaignController extends Controller
         return view('web.helpers.messages')->with($data);
     }
     public function testEmail(){
-        $campaigns = Campaigns::where('id',111113)->get();
+        $campaigns = Campaigns::where('id',111154)->get();
         $user = Auth::user();
         $data = array(
             "campaign" => $campaigns[0],
             "user" => $user,
         );
-        return view('web.emails.userRegisterMail')->with($data);
+        // dd($campaigns->users[0]->email);
+        return view('web.emails.designSuggestionMail')->with($data);
     }
+    
     public function smallBigImages($id){
         $design = Designs::where('id',$id)->first();
         $data = array(
@@ -327,8 +332,31 @@ class CampaignController extends Controller
         $campaign = Campaigns::find($id);
         $campaign->status = 3;
         $campaign->save();
+        $admin = User::find(1);
+        $u = $campaign->users->first();
+        $vid = $u->id;
+        // dd($vid);
+        $user = User::find($vid);
+        // dd($user);
+        Mail::to($admin->email)->send(new ApproveDesignMail($user,$campaign));
         return redirect()->route('campaignScreen',$campaign->id);
 
+    }
+    public function testEmail2(){
+        $campaigns = Campaigns::where('id',111154)->first();
+        
+        $admin = User::find(1);
+        $u = $campaigns->users->first();
+        $vid = $u->id;
+        $user = User::find($vid);
+        $data = array(
+            "campaign" => $campaigns,
+            "user" => $user,
+          
+        );
+        // dd($campaigns->users[0]->email);
+        // dd($customer);
+        return view('web.emails.campaignApprovalMail')->with($data);
     }
     public function approveCampaign(Request $request,$id) 
     {
@@ -337,6 +365,14 @@ class CampaignController extends Controller
         $campaign->price = $request->CampaignPrice;
         $campaign->status = 4;
         $campaign->save();
+        
+        $u = $campaign->users->first();
+        
+        $vid = $u->id;
+        
+        $user = User::find($vid);
+        // dd($user);
+        Mail::to($user->email)->send(new CampaignApprovalMail($user,$campaign));
         return redirect()->route('campaignScreenAdmin1',$campaign->id);
     }
     

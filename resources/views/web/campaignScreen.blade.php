@@ -549,12 +549,14 @@ $('#nav-home-tab').click(function () {
         $(document).on('keypress', '.input-text input', function (e) {
             // check if enter key is pressed and message is not null also receiver is selected
             if (e.keyCode === 13 && message != '') {
+              
               var message = $(this).val();
-              var campaign_id = $('#messages').data('id');
-              console.log(campaign_id);
+              
                 $(this).val(''); // while pressed enter text box will be empty
+                var campaign_id = $('#messages').data('id');
+                console.log(campaign_id);
 
-                var datastr = "receiver_id=" + 1 + "&message=" + message +"&campaign_id" + campaign_id;
+                var datastr = "receiver_id=" + 1 + "&message=" + message +"&campaign_id=" + campaign_id;
                 $.ajax({
                     type: "post",
                     url: "/message", // need to create this post route

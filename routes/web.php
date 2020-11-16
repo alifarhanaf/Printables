@@ -79,9 +79,9 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/totalCampaigns', 'CampaignController@allCampaignsAdmin')->name('allCampaignsAdmin');
 
 Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaigns')->name('setForApprovalCampaigns');
-Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin1')->name('campaignScreenAdmin1');
-});
 
+});
+Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin1')->name('campaignScreenAdmin1')->middleware('auth');
 // AJAX REQUESTS
 Route::get('/allDesigns','DesignController@allDesigns');
 Route::get('/allSuggestedDesignGroups/{id}','CampaignController@allSuggestedDesignGroups');
@@ -111,7 +111,7 @@ Route::get('/allPrintLocations', 'PrintTypeController@allPrintLocations')->name(
 Route::get('/allPrintTypeFaqs/{id}', 'PrintTypeController@allPrintTypeFaqs')->name('allPrintTypeFaqs');
 Route::get('/faqAnswers/{id}', 'PrintTypeController@faqAnswers')->name('faqAnswers');
 
-Route::post('/setDraftCampaign','CampaignController@setDraftCampaign')->name('setDraftCampaign')->middleware('user');
+Route::post('/setDraftCampaign','CampaignController@setDraftCampaign')->name('setDraftCampaign')->middleware('auth');
 
 
 Route::get('/productsByBrandID/{id}', 'CookieController@productsByBrandID')->name('productsByBrandID');
@@ -130,10 +130,11 @@ Route::post('message', 'CampaignController@sendMessage');
 
 // });
 
-Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen');
+Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen')->middleware('auth');
 Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
 
 Route::get('/testEmail', 'CampaignController@testEmail');
+Route::get('/testEmail2', 'CampaignController@testEmail2');
 Route::get('/smallBigImages/{id}', 'CampaignController@smallBigImages');
 Route::get('/smallBigImagesSuggested/{id}','CampaignController@smallBigImagesSuggested');
 // Route::view('/userRegister', 'web.emails.userRegisterMail');

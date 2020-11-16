@@ -118,19 +118,17 @@
         <div class="contaner_contaner">
             <div class="container-body">
                 <div class="title">
-                    <h3 style="color: #84a0bf;font-size:1.5rem;font-weight:600;">New Design Suggestion</h3>
+                    <h3 style="color: #84a0bf;font-size:1.5rem;font-weight:600;"> Campaign Approval</h3>
                 </div>
     
     
                 <div class="message" style="text-align: center;">
-                    <p style="color: #84a0bf;"> Hi {{$user->name }}, Your received a new design Suggestion from Geneologie Team. </p>
+                    <p style="color: #84a0bf;"> Hi {{$user->name}}, Admin approved your Campaign {{$campaign->id}} for further processing. </p>
                    
                     <button type="button" class="btn btn-primary az" >
                     <a href="{{ route('campaignScreen',$campaign->id) }}" > Click Here to See</a>
                     </button
                     <hr style="margin-bottom: 0px">
-    
-                   
             </div>
         </div>
         <hr>

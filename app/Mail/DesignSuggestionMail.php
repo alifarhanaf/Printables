@@ -2,10 +2,12 @@
 
 namespace App\Mail;
 
+use App\User;
+use App\Models\Campaigns;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class DesignSuggestionMail extends Mailable
 {
@@ -36,6 +38,6 @@ class DesignSuggestionMail extends Mailable
             "user"=> $this->user,
             "campaign"=> $this->campaign
         );
-        return $this->from($this->sender, 'Geneologie')->subject('New Design Suggestion')->view('web.emails.mail')->with($data);
+        return $this->from($this->sender, 'Geneologie')->subject('New Design Suggestion')->view('web.emails.designSuggestionMail')->with($data);
     }
 }

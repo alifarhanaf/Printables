@@ -3,14 +3,13 @@
 namespace App\Mail;
 
 use App\User;
-use App\Models\Message;
 use App\Models\Campaigns;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserToAdminNotification extends Mailable
+class CampaignApprovalMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -21,12 +20,11 @@ class UserToAdminNotification extends Mailable
      */
     public $user;
     public $campaign;
-    public $customer;
-    public function __construct(User $user,Campaigns $campaign,User $customer)
+    private $sender = 'admin@geneologie.com';
+    public function __construct(User $user,Campaigns $campaign)
     {
         $this->user = $user;
         $this->campaign = $campaign;
-        $this->customer = $customer;
     }
 
     /**
@@ -38,11 +36,8 @@ class UserToAdminNotification extends Mailable
     {
         $data = array(
             "user"=> $this->user,
-            "campaign"=>$this->campaign,
-            "customer"=>$this->customer,
-            // "sender" => $this->sender
+            "campaign"=> $this->campaign
         );
-        return $this->from($this->customer->email, 'User')->subject(' New Message from User')->view('web.emails.userNotificationMail')->with($data);
-    
+        return $this->from($this->sender, 'Geneologie')->subject(' Campaign Approval Notification')->view('web.emails.campaignApprovalMail')->with($data);
     }
 }
