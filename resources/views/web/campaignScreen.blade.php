@@ -84,6 +84,10 @@
                               DESIGN IN PROCESS
                               @elseif($campaign->status==3)
                               DESIGN APPROVED
+                              @elseif($campaign->status==4)
+                              IN PROCESS
+                              @elseif($campaign->status==5)
+                              CAMPAIGN APPROVED
                               @endif
                             </p>
                         </div>
@@ -195,7 +199,7 @@
                                           <tbody>
                                             <tr>
                                               <th class="new" scope="row">Juliana Wil</th>
-                                              <th class="new">24-47</th>
+                                              <th class="new">{{$campaign->answers[0]->answers}}</th>
                                               <th class="new">University of Houston</th>
                                               <th class="new">Alpha Chi Omega</th>
                                             </tr>
@@ -210,7 +214,11 @@
                               <div class="card card-body  ">
                                 <div class="row d-flex justify-content-between  my-auto" >
                                 <p >FRONT OF SHIRT </p>
-                                <p class="card-text"># OF COLORS: 2</p>
+                                @if($campaign->suggestions[0]->frontColors)
+                                <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->frontColors}}</p>
+                                @else
+                                <p class="card-text"># OF COLORS: #</p>
+                                @endif
                                 </div>
                               </div>
                               <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->frontSuggestion}}</p>
@@ -220,7 +228,7 @@
                                 <div class="row d-flex justify-content-between  my-auto" >
                                 <p >BACK OF SHIRT </p>
                                 @if($campaign->suggestions[0]->backColors)
-                                <p class="card-text"># OF COLORS: 2</p>
+                                <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->backColors}}</p>
                                 @else
                                 <p class="card-text"># OF COLORS: #</p>
                                 @endif
@@ -233,7 +241,7 @@
                                 <div class="row d-flex justify-content-between  my-auto" >
                                 <p >POCKET OF SHIRT </p>
                                 @if($campaign->suggestions[0]->pocketColors)
-                                <p class="card-text"># OF COLORS: 2</p>
+                                <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->pocketColors}}</p>
                                 @else
                                 <p class="card-text"># OF COLORS: #</p>
                                 @endif
@@ -246,7 +254,7 @@
                                 <div class="row d-flex justify-content-between  my-auto" >
                                 <p >SLEEVES OF SHIRT </p>
                                 @if($campaign->suggestions[0]->sleevesColors)
-                                <p class="card-text"># OF COLORS: 2</p>
+                                <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->sleevesColors}}</p>
                                 @else
                                 <p class="card-text"># OF COLORS: #</p>
                                 @endif

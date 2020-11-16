@@ -323,7 +323,9 @@
     border: 1px solid #dddddd;
     overflow-y: auto;
 }
-
+.main_colors input[checked="checked"] + label {
+    border: 2px solid black;
+}
 
 
 

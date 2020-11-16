@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 use Cookie;
 use App\Models\Brands;
+use App\Models\Colors;
 use App\Models\Groups;
 use App\Models\Images;
 use App\Models\Products;
 use App\Models\Categories;
+use Illuminate\Http\Request;
 use App\Models\BrandsProducts;
 use App\Models\GroupsProducts;
 use App\Models\ImagesProducts;
 use App\Models\PrintLocations;
 use App\Models\CategoriesProducts;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ProductRequest;
 
@@ -35,8 +36,10 @@ class ProductController extends Controller
     }
     // Product Add Form
     public function index(){
+        
         $brands = Brands::all();
         $groups = Groups::all();
+        $colors =  Colors::all();
         $categories = Categories::all();
         $printLocations = PrintLocations::all();
         // dd($brands);
@@ -44,7 +47,9 @@ class ProductController extends Controller
             "brands"=> $brands,
             "groups"=> $groups,
             "categories"=> $categories,
-            "printLocations"=> $printLocations
+            "printLocations"=> $printLocations,
+            "colors"=>$colors,
+
         );
         return view ('admin.productform')->with($data);
     }
@@ -110,6 +115,7 @@ class ProductController extends Controller
     }
     //Product Submit Method
     public function submitProduct(ProductRequest $request){
+        // dd($request);
         $i=0;
         $str = implode(', ', $request->sizes);
         DB::beginTransaction();
@@ -121,6 +127,7 @@ class ProductController extends Controller
         $product->description = request('description');
         $product->enabled = request('enable');
         $product->save();
+        $product->colors()->attach($request->colors);
         $productid = $product->id;
         foreach($request->images as $file){
         $imageName = time().$i.'.'.$file->extension();  

@@ -138,6 +138,29 @@
                 @endif
                 >
               </div>
+
+              <label class="form-label mg-b-10 pd-l-5"><b>Select Colors:</b></label>
+              <div class="form-group ">
+              <div class="All_Colors" >
+                <div class="row " style="padding-inline-start: 5%">
+                  @foreach ($colors as $color)
+                      <div class="main_colors" >
+                          <input style="display: none" type="checkbox" name="colors[]"
+                              value="{{ $color->id }}">
+                          <label
+                              style="background-color:{{ $color->hexcode }};
+                              cursor: pointer;
+                              width: 1.3rem;
+                              height: 1.3rem;
+                              margin-left:2px;
+                              
+                              border-radius: 5px;">
+                            </label>
+                      </div>
+                @endforeach
+                </div>
+              </div>
+              </div>
 {{-- 
               <select class="form-control select2" multiple="multiple">
                 <option value="Firefox" selected>Firefox</option>
@@ -493,6 +516,14 @@
 
        
 @include('admin.includes.footer')
+<script>
+  $('.All_Colors label').click(function(event) {
+      $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+      $(this).attr('data-active', true)
+      $(this).parent('.main_colors').find('input[type="checkbox"]').attr('checked', 'checked')
+  })
+
+</script>
 
 <script>
 

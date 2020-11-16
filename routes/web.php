@@ -79,18 +79,19 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/totalCampaigns', 'CampaignController@allCampaignsAdmin')->name('allCampaignsAdmin');
 
 Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaigns')->name('setForApprovalCampaigns');
-
+Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin1')->name('campaignScreenAdmin1');
 });
+
+// AJAX REQUESTS
 Route::get('/allDesigns','DesignController@allDesigns');
 Route::get('/allSuggestedDesignGroups/{id}','CampaignController@allSuggestedDesignGroups');
-// Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin')->name('campaignScreenAdmin');
 Route::get('/messages/{id}', 'CampaignController@getMessages')->name('getMessages');
 
-Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin1')->name('campaignScreenAdmin1');
+
 
 Auth::routes();
 
-
+//User Side Routes
 
 Route::get('/', 'HomeController@home')->name('homeScreen');
 Route::get('/designs', 'HomeController@collections')->name('designScreen');
@@ -125,9 +126,9 @@ Route::get('/userCampaigns', 'CampaignController@userCampaigns');
 
 Route::post('message', 'CampaignController@sendMessage');
 
-Route::middleware(['user'])->group(function () {
+// Route::middleware(['user'])->group(function () {
 
-});
+// });
 
 Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen');
 Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
@@ -140,4 +141,6 @@ Route::get('/approveDesign/{id}', 'CampaignController@approveDesign')->name('app
 // Route::get('dropzone', 'ImageController@index');
  
 Route::post('campaign/upload_image/{id}', 'ImageController@campaign_upload_image')->name('campaign.upload_image');
+
+Route::post('campaign/approveCampaign/{id}', 'CampaignController@approveCampaign')->name('approve.campaign');
  

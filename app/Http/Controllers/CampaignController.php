@@ -172,7 +172,7 @@ class CampaignController extends Controller
             // foreach($campaign->faqs as $faq){
             //     array_push($arr,$faq->id);
             // }
-        $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
+        // $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
         $my_id = Auth::id();
         $user_id = 1;
         // Make read all unread message
@@ -329,6 +329,15 @@ class CampaignController extends Controller
         $campaign->save();
         return redirect()->route('campaignScreen',$campaign->id);
 
+    }
+    public function approveCampaign(Request $request,$id) 
+    {
+        // dd($request);
+        $campaign = Campaigns::find($id);
+        $campaign->price = $request->CampaignPrice;
+        $campaign->status = 4;
+        $campaign->save();
+        return redirect()->route('campaignScreenAdmin1',$campaign->id);
     }
     
 }

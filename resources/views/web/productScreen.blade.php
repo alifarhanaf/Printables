@@ -181,7 +181,7 @@
                                                                     hein uper wali --}}
                                                                     <h6>Choose a Color:</h6>
                                                                     <div class="All_Colors" style="padding-right: 20%;">
-                                                                        @foreach ($colors as $color)
+                                                                        @foreach ($product->colors as $color)
                                                                             <div class="main_colors">
                                                                                 <input type="radio" name="color"
                                                                                     value="{{ $color->hexcode }}">

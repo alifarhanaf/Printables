@@ -40,8 +40,11 @@ class HomeController extends Controller
     public function collections(Request $request)
     {   
         if ($request->has('search')) {
+
+            // dd($request->input('search'));
             $search = $request->search;
             $designs=  Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->get();
+            // dd($designs);
             $recentdesigns = Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->orderBy('created_at','DESC')->get();
             // $recentdesigns = $recentdesigns->sortByDesc('created_at');
             $data = array(

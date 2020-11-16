@@ -35,7 +35,7 @@
                             @foreach ($designs as $design)
                             <div class="flex_child">
                                 <div class="chlidren_spacing">
-                                    <button type="button" id="modalBtn" data-toggle="modal" data-id="{{$design->id}}" data-target="#exampleModal{{$design->id}}">
+                                    <button type="button" id="modalBtn{{$design->id}}" data-toggle="modal" data-id="{{$design->id}}" data-target="#exampleModal{{$design->id}}">
                                         <div class="popup_header">
                                             <div class="img_parent">
                                                 <img src="{{ asset($design->images[0]->url)}}" alt="design" id="designID" data-id="{{$design->id}}" class="img-fluid">
@@ -50,7 +50,7 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
-                                                    <div id="modalContent">
+                                                    <div id="modalContent{{$design->id}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,7 +69,7 @@
                             @foreach ($recents as $recent)
                             <div class="flex_child">
                                 <div class="chlidren_spacing">
-                                    <button type="button" id="modalBtn{{$recent->id}}" data-toggle="modal"  data-target="#exampleModal{{$recent->id}}">
+                                    <button type="button" id="modalBtnRecent{{$recent->id}}" data-toggle="modal" data-id="{{$recent->id}}"  data-target="#exampleModalRecent{{$recent->id}}">
                                         <div class="popup_header">
                                             <div class="img_parent">
                                                 <img src="{{ asset($recent->images[0]->url)}}" alt="design" class="img-fluid">
@@ -77,14 +77,14 @@
                                         </div>
                                     </button>
                                     {{-- Modal 2 Start --}}
-                                    <div class="modal fade" id="exampleModal{{$recent->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModalRecent{{$recent->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg modal-dialog-centered model_custom_width">
                                             <div class="modal-content">
                                             <div class="modal-body my_custom_model">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
-                                                <div id="modalContent{{$recent->id}}">
+                                                <div id="modalContentRecent{{$recent->id}}">
                                                 </div>
                                             </div>
                                             </div>
@@ -119,7 +119,8 @@ $(document).ready(function(){
             success: function(response){
                 for (var i = 0, l = response.designs.length; i < l; i++) {
                     $('#modalBtn'+response.designs[i].id).click(function(e){
-                        var id = $('#designID').data('id');
+                        // var id = $('#designID').data('id');
+                        var id  = $(this).data('id');
                     $.ajax({
                             url: 'smallBigImages/'+id,
                             type: 'get',
@@ -148,6 +149,39 @@ $(document).ready(function(){
                             }
                         });
                     });
+                    //Start
+                    $('#modalBtnRecent'+response.designs[i].id).click(function(e){
+                        // var id = $('#designID').data('id');
+                        var id  = $(this).data('id');
+                    $.ajax({
+                            url: 'smallBigImages/'+id,
+                            type: 'get',
+                            success: function(data){
+                                for(var j=0 , k =response.designs.length; j < k; j++ ){
+                                $('#modalContentRecent'+response.designs[j].id).html(data);
+                                }
+                                $('.slick_big_inni').slick({
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false,
+                                fade: false,
+                                asNavFor: '.slickInni'
+                                });
+                                $('.slickInni').slick({
+                                slidesToShow: 4,
+                                slidesToScroll: 1,
+                                asNavFor: '.slick_big_inni',
+                                dots: false,
+                                focusOnSelect: true,
+                                vertical: true,
+                                verticalSwiping: true,
+                                infinite:false,
+                                arrows: false
+                                });            
+                            }
+                        });
+                    });
+                    //End
                 }
             }
         });

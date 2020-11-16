@@ -12,6 +12,6 @@ class SuggestedDesignGroups extends Model
     }
     public function campaigns()
     {
-        return $this->belongsToMany('App\Models\campaigns');
+        return $this->belongsToMany('App\Models\Campaigns');
     }
 }

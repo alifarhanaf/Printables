@@ -62,6 +62,9 @@
                          
                         <div class="panel panel-default" style="width:100%">
                           <div class="panel-body">
+                              @if($campaign->status == 3 || $campaign->status == 4 || $campaign->status == 5)
+                              <p style="color: black !important; text-align: center ;font-size: 1.0rem !important;font-weight:500 !important; padding-top:20px;" > Design Already Approved</p>
+                              @else
                             <form   style="text-align: center" method="POST" action="{{ route('campaign.upload_image',$campaign->id) }}" enctype="multipart/form-data">
                                 {{-- <input type="file" name="file" /> --}}
                               @csrf
@@ -93,14 +96,87 @@
                                     </div>
                                 </div>
                               
-                             
-
-                            
-                            
                             <div align="center">
                               <button type="submit" style="width: 100%; background:#4130c5;" class="btn btn-info" id="submit-all">Submit</button>
                             </div>
                         </form>
+                        @endif
+                          </div>
+                        </div>
+                          
+                      
+                      
+                       
+                      </div>
+                    
+                    
+                
+            </div>
+            </div>
+        </div>
+    </div>
+        {{-- End Modal --}}
+
+
+
+                            </div>
+
+                            <div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-id="2" data-target="#exampleModal2" style="width:120px !important; font-size:0.50rem;margin-right:15px;">APPROVE CAMPAIGN</button>  
+                                 <!-- Modal -->
+                                 
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg mx-auto modal-dialog-centered model_custom_width">
+            <div class="modal-content">
+            <div class="modal-body my_custom_model">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                <div class="row ">
+                    <div id="tabs" style="width: 100%">
+                        <div class="card card-body " style="margin-bottom: 0.5%; margin-top:0.5%;height:100%;padding: 10px;background:#4130c5; ">
+                            <div id="">
+                                <div class="row " style="width: 100% !important;">
+                                   
+                                        <h5 class="card-title my-auto" style="color:whitesmoke">APPROVE CAMPAIGN</h5>
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div><!-- card -->
+                    </div>
+                </div>
+                    <div class="container-fluid mg-t-20">
+                       
+                         
+                        <div class="panel panel-default" style="width:100%">
+                          <div class="panel-body">
+                              @if($campaign->status == 3)
+                                <form   style="text-align: center" method="POST" action="{{ route('approve.campaign',$campaign->id) }}" >
+                                    {{-- <input type="file" name="file" /> --}}
+                                  @csrf
+                                  <div class="d-flex flex-column wd-md-100% ">
+                                    
+                                    <label class="form-label " style="text-align: left"><b>Enter Campaign Price:</b></label>
+                                    <div class="form-group">
+                                      
+                                      <input name="CampaignPrice" type="text" class="form-control"placeholder="Enter Price"value="">
+                                      
+                                    </div>
+                                  </div>
+                                  
+                                  
+                                  
+                                <div align="center">
+                                  <button type="submit" style="width: 100%; background:#4130c5;" class="btn btn-info" id="submit-all">Submit</button>
+                                </div>
+                            </form>
+
+                              @elseif($campaign->status == 4)
+                              <p style="color: black !important; text-align: center ;font-size: 1.0rem !important;font-weight:500 !important; padding-top:20px;" > Proposal Sent For Approval To User</p> 
+                              @else
+                              <p style="color: black !important; text-align: center ;font-size: 1.0rem !important;font-weight:500 !important; padding-top:20px;" > Design Not Approved Yet</p> 
+                              @endif
                           </div>
                         </div>
                           
@@ -115,14 +191,7 @@
             </div>
         </div>
         </div>
-        {{-- End Modal --}}
-
-
-
-                            </div>
-
-                            <div>
-                                <button type="button" class="btn btn-primary" style="width:120px !important; font-size:0.50rem;margin-right:15px;">APPROVE CAMPAIGN</button>                            
+        {{-- End Modal --}}                          
                             </div>
                             
                         </div> 
@@ -212,7 +281,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th class="new" scope="row">Juliana Wil</th>
-                                                                <th class="new">24-47</th>
+                                                                <th class="new">{{$campaign->answers[0]->answers}}</th>
                                                                 <th class="new">University of Houston</th>
                                                                 <th class="new">Alpha Chi Omega</th>
                                                             </tr>
@@ -226,7 +295,11 @@
                                                             <div class="card card-body  ">
                                                                 <div class="row d-flex justify-content-between  my-auto">
                                                                     <p class="my-auto">FRONT OF SHIRT </p>
-                                                                    <p class="card-text my-auto"># OF COLORS: 2</p>
+                                                                    @if ($campaign->suggestions[0]->frontColors)
+                                                                    <p class="card-text my-auto"># OF COLORS: {{$campaign->suggestions[0]->frontColors}}</p>
+                                                                    @else
+                                                                    <p class="card-text"># OF COLORS: #</p>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <p style="padding-left: 2%; padding-top:2%; color:#031b4e !important;">
@@ -238,7 +311,7 @@
                                                                 <div class="row d-flex justify-content-between  my-auto">
                                                                     <p class="my-auto">BACK OF SHIRT </p>
                                                                     @if ($campaign->suggestions[0]->backColors)
-                                                                        <p class="card-text "># OF COLORS: 2</p>
+                                                                        <p class="card-text "># OF COLORS: {{$campaign->suggestions[0]->backColors}}</p>
                                                                     @else
                                                                         <p class="card-text"># OF COLORS: #</p>
                                                                     @endif
@@ -254,7 +327,7 @@
                                                                 <div class="row d-flex justify-content-between  my-auto">
                                                                     <p class="my-auto">POCKET OF SHIRT </p>
                                                                     @if ($campaign->suggestions[0]->pocketColors)
-                                                                        <p class="card-text"># OF COLORS: 2</p>
+                                                                <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->pocketColors}}</p>
                                                                     @else
                                                                         <p class="card-text"># OF COLORS: #</p>
                                                                     @endif
@@ -269,7 +342,7 @@
                                                                 <div class="row d-flex justify-content-between  my-auto">
                                                                     <p class="my-auto">SLEEVES OF SHIRT </p>
                                                                     @if ($campaign->suggestions[0]->sleevesColors)
-                                                                        <p class="card-text"># OF COLORS: 2</p>
+                                                                <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->sleevesColors}}</p>
                                                                     @else
                                                                         <p class="card-text"># OF COLORS: #</p>
                                                                     @endif
@@ -389,9 +462,6 @@
                                 <p class="smallp">{{ $address->zipCode }}</p>
 
                             @endforeach
-
-
-
 
                         </div>
                     </div>
