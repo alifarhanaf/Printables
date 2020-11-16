@@ -38,8 +38,9 @@ class ImageController extends Controller
         $imageid = $image->id;
         $nsdg->suggested_images()->attach($imageid);
         $user = User::find($campaign->users[0]->id);
-        Mail::to($campaign->users[0]->email)->send(new DesignSuggestionMail($user,$campaign));
+        
         }
+        Mail::to($campaign->users[0]->email)->send(new DesignSuggestionMail($user,$campaign));
         return redirect()->route('campaignScreenAdmin1',$campaign->id);
          
    

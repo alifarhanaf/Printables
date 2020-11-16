@@ -98,12 +98,20 @@
             }
             a{
                 color: #fff;
+                text-transform: uppercase;
+                text-decoration: none;
             }               
             a:hover{
                 color: #fff;
             } 
             a:active{
                 color: #fff;
+            }
+            .az {
+                padding: 10px 8px;
+                border-radius: 5px;
+                outline: none;
+                border: none;
             }
         </style>
     </head>
