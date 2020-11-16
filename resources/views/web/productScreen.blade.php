@@ -311,15 +311,7 @@
 
 @include('web.includes.subfooter')
 @include('web.includes.footer')
-<script>
-  $('.All_Colors label').click(function(event) {
-      $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
-      $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
-      $(this).attr('data-active', true)
-      $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
-  })
 
-</script>
 <script>
     $(document).ready(function() {
         $(function() {
@@ -339,6 +331,12 @@
 
                     console.log(response);
                     $('#main_all_produts_section').html(response);
+                    $('.All_Colors label').click(function(event) {
+                    $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+                    $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
+                    $(this).attr('data-active', true)
+                    $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+    })
 
                 }
             });
@@ -351,6 +349,12 @@
 
                     console.log(response);
                     $('#main_all_produts_section').html(response);
+                    $('.All_Colors label').click(function(event) {
+                    $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+                    $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
+                    $(this).attr('data-active', true)
+                    $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+    })
 
                 }
             });
@@ -372,6 +376,12 @@
 
                     console.log(response);
                     $('#main_all_produts_section').html(response);
+                    $('.All_Colors label').click(function(event) {
+                    $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+                    $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
+                    $(this).attr('data-active', true)
+                    $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+    })
 
                 }
             });
@@ -383,6 +393,12 @@
 
                     console.log(response);
                     $('#main_all_produts_section').html(response);
+                    $('.All_Colors label').click(function(event) {
+                    $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+                    $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
+                    $(this).attr('data-active', true)
+                    $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+    })
 
                 }
             });
@@ -410,6 +426,12 @@
 
                     console.log(response);
                     $('#main_all_produts_section').html(response);
+                    $('.All_Colors label').click(function(event) {
+                    $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+                    $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
+                    $(this).attr('data-active', true)
+                    $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+    })
 
                 }
             });
@@ -420,5 +442,13 @@
     });
 
 </script>
-
+<script>
+    $('.All_Colors label').click(function(event) {
+        $(this).parents('.All_Colors').find('label').removeAttr('data-active', false)
+        $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
+        $(this).attr('data-active', true)
+        $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+    })
+  
+  </script>
 @include('web.includes.endfile')
