@@ -69,9 +69,16 @@ class DashboardController extends Controller
             if($campaign){
                 $campaignName =$campaign->name;
                 $campaignId = $campaign->id;
+                
             }else{
                 $campaignName = '';
                 $campaignId= '';
+                
+            }
+            if($user){
+                $username = $user->name;
+            }else{
+                $username= '';
             }
             
             $data = array(
@@ -81,7 +88,7 @@ class DashboardController extends Controller
                 "campaignName" => $campaignName,
                 
                 "campaignId" => $campaignId,
-                "from" => $user->name,
+                "from" => $username,
                 "created_at" => $message->created_at
             );
             array_push($array,$data);

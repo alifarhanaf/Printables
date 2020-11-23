@@ -67,6 +67,7 @@ class HomeController extends Controller
         $products = Products::all();
         $colors = Colors::all();
         $designID = $request->cookie('designID');
+        
         $design = Designs::where('id',$designID)->get();
         // dd($design);
         $data = array(

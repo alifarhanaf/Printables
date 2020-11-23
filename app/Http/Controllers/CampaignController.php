@@ -128,14 +128,30 @@ class CampaignController extends Controller
         $campaign->print_types()->sync($printType);
         $campaign->shipping_options()->sync($shippingOption);
         $suggestions = new Suggestions();
-        $suggestions->frontSuggestion = $request->cookie('FrontSuggestion');
-        $suggestions->backSuggestion = $request->cookie('BackSuggestion');
-        $suggestions->pocketSuggestion = $request->cookie('PocketSuggestion');
-        $suggestions->sleevesSuggestion = $request->cookie('SleevesSuggestion');
-        $suggestions->frontColors = $request->cookie('FrontColors');
-        $suggestions->backColors = $request->cookie('BackColors');
-        $suggestions->pocketColors = $request->cookie('PocketColors');
-        $suggestions->sleevesColors = $request->cookie('SleevesColors');
+        if($request->cookie('FrontSuggestion')){
+            $suggestions->frontSuggestion = $request->cookie('FrontSuggestion');
+        }
+        if($request->cookie('BackSuggestion')){
+            $suggestions->frontSuggestion = $request->cookie('BackSuggestion');
+        }
+        if($request->cookie('PocketSuggestion')){
+            $suggestions->frontSuggestion = $request->cookie('PocketSuggestion');
+        }
+        if($request->cookie('SleevesSuggestion')){
+            $suggestions->sleevesSuggestion = $request->cookie('SleevesSuggestion');
+        }
+        if($request->cookie('FrontColors')){
+            $suggestions->frontColors = $request->cookie('FrontColors');
+        }
+        if($request->cookie('BackColors')){
+            $suggestions->backColors = $request->cookie('BackColors');
+        }
+        if($request->cookie('PocketColors')){
+            $suggestions->pocketColors = $request->cookie('PocketColors');
+        }
+        if($request->cookie('SleevesColors')){
+            $suggestions->sleevesColors = $request->cookie('SleevesColors');
+        }
         $suggestions->save();
         $campaign->suggestions()->sync($suggestions->id);
         $admins = User::where('id', 1)->first();

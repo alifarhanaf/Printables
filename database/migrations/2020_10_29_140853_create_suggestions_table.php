@@ -15,14 +15,14 @@ class CreateSuggestionsTable extends Migration
     {
         Schema::create('suggestions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('frontSuggestion');
-            $table->string('backSuggestion');
-            $table->string('pocketSuggestion');
-            $table->string('sleevesSuggestion');
-            $table->string('frontColors');
-            $table->string('backColors');
-            $table->string('pocketColors');
-            $table->string('sleevesColors');
+            $table->string('frontSuggestion')->nullable();
+            $table->string('backSuggestion')->nullable();
+            $table->string('pocketSuggestion')->nullable();
+            $table->string('sleevesSuggestion')->nullable();
+            $table->string('frontColors')->nullable();
+            $table->string('backColors')->nullable();
+            $table->string('pocketColors')->nullable();
+            $table->string('sleevesColors')->nullable();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ use App\Http\Requests\DesignDetailCookieRequest;
 class CookieController extends Controller
 {
     public function setProductCookie(ProductCookieRequest $request){
+        
         DB::beginTransaction();
         try {
         Cookie::queue('productID', $request->productID, 60);
@@ -38,14 +39,23 @@ class CookieController extends Controller
         try {
         $str = implode(',', $request->printLocations);
         Cookie::queue('campaignName', $request->CampaignName, 60);
-        Cookie::queue('FrontSuggestion', $request->FrontSuggestion, 60);
-        Cookie::queue('FrontColors', $request->FrontColors, 60);
-        Cookie::queue('BackSuggestion', $request->BackSuggestion, 60);
-        Cookie::queue('BackColors', $request->BackColors, 60);
-        Cookie::queue('PocketSuggestion', $request->PocketSuggestion, 60);
-        Cookie::queue('PocketColors', $request->PocketColors, 60);
-        Cookie::queue('SleevesSuggestion', $request->SleevesSuggestion, 60);
-        Cookie::queue('SleevesColors', $request->SleevesColors, 60);
+        
+        if($request->FrontColors !== null && $request->FrontSuggestion !== null){
+            Cookie::queue('FrontSuggestion', $request->FrontSuggestion, 60);
+            Cookie::queue('FrontColors', $request->FrontColors, 60);
+        }
+        if($request->BackColors !== null && $request->BackSuggestion !== null){
+            Cookie::queue('BackSuggestion', $request->BackSuggestion, 60);
+            Cookie::queue('BackColors', $request->BackColors, 60);
+        }
+        if($request->PocketColors !== null && $request->PocketSuggestion !== null){
+            Cookie::queue('PocketSuggestion', $request->PocketSuggestion, 60);
+            Cookie::queue('PocketColors', $request->PocketColors, 60);
+        }
+        if($request->SleevesColors !== null && $request->SleevesSuggestion !== null){
+            Cookie::queue('SleevesSuggestion', $request->SleevesSuggestion, 60);
+            Cookie::queue('SleevesColors', $request->SleevesColors, 60);
+        }
         Cookie::queue('PrintLocations', $str, 60);
         if ($request->hasFile('myfile')) {
             //
