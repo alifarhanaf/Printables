@@ -20,11 +20,11 @@
             
         </div>
         <div class="all_my_content">
-            <ul class="nav nav-pills my-tabs_btns" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
+            <ul class="nav nav-pills my-tabs_btns" style="width:100%" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation" style="width: 50%">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">POPULAR</a>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" style="width: 50%">
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">RECENT</a>
                 </li>
                 </ul>

@@ -66,11 +66,21 @@ class DashboardController extends Controller
         foreach($messages as $message){
             $campaign = Campaigns::where('id',$message->campaign_id)->first();
             $user = User::where('id',$message->from)->first();
+            if($campaign){
+                $campaignName =$campaign->name;
+                $campaignId = $campaign->id;
+            }else{
+                $campaignName = '';
+                $campaignId= '';
+            }
+            
             $data = array(
                 "messageID" =>  $message->id,
                 "message" => $message->message,
-                "campaignName" => $campaign->name,
-                "campaignId" => $campaign->id,
+                
+                "campaignName" => $campaignName,
+                
+                "campaignId" => $campaignId,
                 "from" => $user->name,
                 "created_at" => $message->created_at
             );
