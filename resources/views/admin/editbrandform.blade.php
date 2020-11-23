@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 
           <div class="az-content-label mg-b-5 ">Edit Your Brand</div>
           <p class="mg-b-10 ">A form control layout using flex-column to create vertical alignment.</p>

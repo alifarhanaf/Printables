@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 @if (isset($category))
 
     <form action="{{ route('submit.edited.category', $category->id) }}" method="POST" enctype="multipart/form-data">

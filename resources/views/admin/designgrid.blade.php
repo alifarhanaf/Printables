@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 @if (session('message') && session('message') == 'Success')
     <div class="alert alert-success ">
         <ul>

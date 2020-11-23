@@ -82,6 +82,7 @@ Route::get('/setForApprovalCampaigns', 'CampaignController@setForApprovalCampaig
 
 });
 Route::get('/campaign/{id}', 'CampaignController@campaignScreenAdmin1')->name('campaignScreenAdmin1')->middleware('auth');
+Route::get('/Campaign/{id}/{bid}', 'CampaignController@campaignScreenAdmin2')->name('campaignScreenAdmin2')->middleware('auth');
 // AJAX REQUESTS
 Route::get('/allDesigns','DesignController@allDesigns');
 Route::get('/allSuggestedDesignGroups/{id}','CampaignController@allSuggestedDesignGroups');
@@ -123,25 +124,20 @@ Route::get('/testProducts', 'CookieController@testProducts');
 
 
 Route::get('/userCampaigns', 'CampaignController@userCampaigns');
-
 Route::post('message', 'CampaignController@sendMessage');
-
 // Route::middleware(['user'])->group(function () {
-
 // });
-
 Route::get('/campaigns/{id}', 'CampaignController@campaignScreen')->name('campaignScreen')->middleware('auth');
 Route::get('/allCampaigns', 'CampaignController@allCampaigns')->name('allCampaigns');
-
-Route::get('/testEmail', 'CampaignController@testEmail');
+Route::get('/testMessages', 'CampaignController@testMessages');
 Route::get('/testEmail2', 'CampaignController@testEmail2');
 Route::get('/smallBigImages/{id}', 'CampaignController@smallBigImages');
 Route::get('/smallBigImagesSuggested/{id}','CampaignController@smallBigImagesSuggested');
 // Route::view('/userRegister', 'web.emails.userRegisterMail');
-Route::get('/approveDesign/{id}', 'CampaignController@approveDesign')->name('approveDesign');
+Route::get('/approveDesign/{id}/{bid}', 'CampaignController@approveDesign')->name('approveDesign');
 // Route::get('dropzone', 'ImageController@index');
- 
 Route::post('campaign/upload_image/{id}', 'ImageController@campaign_upload_image')->name('campaign.upload_image');
-
 Route::post('campaign/approveCampaign/{id}', 'CampaignController@approveCampaign')->name('approve.campaign');
  
+Route::get('/terms&conditions', 'MiscController@TandC')->name('Terms&Conditions');
+Route::get('/privacyPolicy', 'MiscController@privacyPolicy')->name('PrivacyPolicy');

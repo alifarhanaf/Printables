@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 @if(isset($brand))
 <form action="{{ route('submit.edited.brand',$brand->id) }}" method="POST" enctype="multipart/form-data">
   @else

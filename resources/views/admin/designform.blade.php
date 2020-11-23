@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 @if (isset($design))
     <form action="{{ route('submit.edited.design',$design->id) }}" method="POST" enctype="multipart/form-data">
 @else

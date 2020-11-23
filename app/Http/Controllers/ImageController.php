@@ -45,5 +45,13 @@ class ImageController extends Controller
          
    
     }
+    public function loginTest() {
+        return view ('auth.newLogin');
+
+    }
+    public function loginTestPost(Request $request) {
+        dd($request);
+
+    }
  
 }

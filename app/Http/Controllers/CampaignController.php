@@ -5,6 +5,7 @@ use Auth;
 use File;
 use Cookie;
 use App\User;
+use Carbon\Carbon;
 use Pusher\Pusher;
 use App\Models\Faqs;
 use App\Models\Images;
@@ -24,6 +25,9 @@ use App\Mail\MessageNotificationMail;
 use App\Mail\UserToAdminNotification;
 use App\Models\SuggestedDesignGroups;
 use App\Http\Requests\CampaignSubmitRequest;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\DesignApprovalNotification;
+use App\Notifications\CampaignSubmissionNotification;
 
 class CampaignController extends Controller
 {   
@@ -134,6 +138,8 @@ class CampaignController extends Controller
         $suggestions->sleevesColors = $request->cookie('SleevesColors');
         $suggestions->save();
         $campaign->suggestions()->sync($suggestions->id);
+        $admins = User::where('id', 1)->first();
+        Notification::send($admins, new CampaignSubmissionNotification($campaign));
         Mail::to($user->email)->send(new CampaignSubmissionMail($user,$campaign));
         Cookie::queue('campaignName', '', -1);
         Cookie::queue('designID', '', -1);
@@ -226,6 +232,7 @@ class CampaignController extends Controller
         $message = $request->message;
         $data = new Message();
         $data->from = $from;
+        $data->campaign_id = $campaignId;
         $data->to = $to;
         $data->message = $message;
         $data->is_read = 0; // message will be unread when sending message
@@ -261,13 +268,18 @@ class CampaignController extends Controller
     public function campaignScreenAdmin1($id)
     {
         $campaign = Campaigns::where('id',$id)->first();
-        $arr = [];
-        
-            foreach($campaign->faqs as $faq){
-                array_push($arr,$faq->id);
-            }
-        
-        $faqs = Faqs::where('questions', 'LIKE', '%' . 'Estimated Quantity' . '%')->get();
+        $data = array(
+            "campaign"=> $campaign,
+        );
+        return view('admin.singleCampaign')->with($data);
+    }
+    public function campaignScreenAdmin2($id,$bid)
+    {
+        $user = User::find(1);
+        // dd($user);
+        $user->unreadNotifications()->where('id',$bid)->update(['read_at' => Carbon::now()]);
+        // $notification = Notification();
+        $campaign = Campaigns::where('id',$id)->first();
         $data = array(
             "campaign"=> $campaign,
         );
@@ -290,15 +302,23 @@ class CampaignController extends Controller
         );
         return view('web.helpers.messages')->with($data);
     }
-    public function testEmail(){
-        $campaigns = Campaigns::where('id',111154)->get();
-        $user = Auth::user();
-        $data = array(
-            "campaign" => $campaigns[0],
-            "user" => $user,
-        );
-        // dd($campaigns->users[0]->email);
-        return view('web.emails.designSuggestionMail')->with($data);
+    public function testMessages(){
+        // $details = [
+        //     'greeting' => 'Hi Artisan',
+        //     'body' => 'This is my first notification from ItSolutionStuff.com',
+        //     'thanks' => 'Thank you for using ItSolutionStuff.com tuto!',
+        //     'actionText' => 'View My Site',
+        //     'actionURL' => url('/'),
+        //     'order_id' => 101
+        // ];
+       
+        $admins = User::where('id', 1)->first();
+        Notification::send($admins, new CampaignSubmissionNotification($details));
+  
+        
+  
+        // Notification::send($user, new MyFirstNotification($details));
+        
     }
     
     public function smallBigImages($id){
@@ -327,8 +347,11 @@ class CampaignController extends Controller
         );
         return $data;
     }
-    public function approveDesign($id) {
-        // dd($id);
+    public function approveDesign($id,$bid) {
+        // dd($bid);
+        $designs = SuggestedDesignGroups::find($bid);
+        $designs->approved_for = $id;
+        $designs->save();
         $campaign = Campaigns::find($id);
         $campaign->status = 3;
         $campaign->save();
@@ -338,7 +361,10 @@ class CampaignController extends Controller
         // dd($vid);
         $user = User::find($vid);
         // dd($user);
+        $admins = User::where('id', 1)->first();
+        Notification::send($admins, new DesignApprovalNotification($campaign));
         Mail::to($admin->email)->send(new ApproveDesignMail($user,$campaign));
+
         return redirect()->route('campaignScreen',$campaign->id);
 
     }

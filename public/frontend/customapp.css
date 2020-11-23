@@ -318,3 +318,14 @@
       border-radius:0;
       transition:background 0.20s linear;
   } */
+  .TandS {
+    text-align: left;
+     padding-left:0px;
+     margin:20px;
+      margin-left:0px !important;
+       font-size:1.5rem;
+        text-transform: uppercase;
+         font-weight:500;
+     color: #84a0ac !important; 
+
+  }

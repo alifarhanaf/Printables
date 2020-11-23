@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 <form action="{{ route('submit.printType') }}" method="POST">
   {{ csrf_field() }}
 

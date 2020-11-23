@@ -1,5 +1,6 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
+@include('admin.includes.headerbar')
 <div class="container-fluid">
     
         <div class="row">

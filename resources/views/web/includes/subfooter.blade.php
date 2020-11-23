@@ -33,13 +33,13 @@
               <div class="col-md-3 col-12  d-block my-md-auto my-4">
                 <ul class="mx-auto">
                   <li>
-                    <a href="" class="text-white">Contact us</a>
+                    <a href="mailto:someone@mail.com"class="text-white">Contact us</a>
                   </li>
                   <li>
-                    <a href="" class="text-white">Policy & Privicy</a>
+                    <a href="{{route('PrivacyPolicy')}}" class="text-white">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="" class="text-white">Tearms & Conditions</a>
+                    <a href="{{route('Terms&Conditions')}}" class="text-white">Terms & Conditions</a>
                   </li>
                   <li>
                     <a href="" class="text-white">Help</a>

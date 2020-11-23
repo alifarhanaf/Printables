@@ -43,7 +43,7 @@
                 <p style="color:black !important;">{{$designGroup->description}}</p>
             </div>
             <div class="button_model_collection">
-                <form action="{{ route('approveDesign',$designGroup->campaigns[0]->id) }}"  >
+                <form action="{{ route('approveDesign',['id'=> $designGroup->campaigns[0]->id, 'bid'=>$designGroup->id]) }}"  >
                     {{-- <input type="hidden" id="designID" name="designID" value="{{$design->id}}"> --}}
                     {{ csrf_field() }}
                     <button type="submit" style="border:none;">

@@ -1,5 +1,6 @@
 @include('admin.includes.header')
 @include('admin.includes.sidebar')
+@include('admin.includes.headerbar')
 
 @if(isset($faq))
 @foreach ($faq as $faq)
