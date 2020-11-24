@@ -12,7 +12,69 @@
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
+    @if ($errors->any() )
+    <div  class="alert alert-danger" style="border: 2px solid #77a6ba; padding : 5px;">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>
+            <span class="invalid-feedback" role="alert" style="color:red">
+              <strong>{{ $error }}</strong>
+            </span>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    {{-- <div>
+    @if ($errors->any() )
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+              <li>
+              <span class="invalid-feedback" role="alert" style="color:red">
+                <strong>{{ $error }}</strong>
+              </span>
+              </li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
+    </div> --}}
+  
+    {{-- @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+    @error('email')
+                                    <span class="invalid-feedback" role="alert" style="color:red;">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+            @error('password')
+                                    <span class="invalid-feedback" role="alert" style="color: red;">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
     <div class="container">
+     
+      
+{{--       
+      @if ($errors->any() )
+<div class="alert alert-danger">
+    <ul>
+      @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif --}}
+
       <div class="forms-container">
         <div class="signin-signup">
           <form method="POST" action="{{ route('login') }}" class="sign-in-form">
@@ -21,23 +83,19 @@
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-              @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"  />
+              
+                               
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"  />
+              
+                                
             </div>
+       
+            
+            {{-- <span>Hello This is span to test</span> --}}
             <input type="submit" value="Login" class="btn solid" />
             {{-- <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
@@ -63,37 +121,30 @@
               <i class="fas fa-user"></i>
               <input id="name" type="text" placeholder="Enter Your Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input id="email" type="email" placeholder="Enter Your Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input id="password" type="password" placeholder="Enter Your Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
                 <input id="password-confirm" type="password" placeholder="Confirm Your Password" class="form-control" name="password_confirmation" required autocomplete="new-password">         
               </div>
-            <input type="submit" class="btn" value="Sign up" />
+              
+         
+             
+              
+                               
+            <input type="submit" id="signup" class="btn" value="Sign up" />
             {{-- <p class="social-text">Or Sign up with social platforms</p> --}}
             {{-- <div class="social-media">
               <a href="#" class="social-icon">
@@ -145,5 +196,46 @@
 
     {{-- <script src="app.js"></script> --}}
     <script src="{{ asset('frontend/style.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+
+        $(function() {
+        var timeout = 2000; // in miliseconds (3*1000)
+        $('.alert').delay(timeout).fadeOut(300);
+        });
+       
+        
+        var cookie = document.cookie;
+        console.log(cookie);
+        const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('error'))
+        .split('=')[1];
+        // alert(cookieValue);
+        if(cookieValue === 'available'){
+          // alert('Hi')
+          container.classList.add("sign-up-mode");
+        }
+
+        $("#errorz").hide();
+      
+       
+
+     
+        
+        
+      //   setTimeout(function(){
+      //     var removing = browser.cookies.remove({
+      //     url: tabs[0].url,
+      //     name: "error"
+      //     });
+      //   },1000)
+        
+      });
+    
+// 
+// </script>
+    
   </body>
 </html>

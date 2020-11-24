@@ -132,10 +132,10 @@ class CampaignController extends Controller
             $suggestions->frontSuggestion = $request->cookie('FrontSuggestion');
         }
         if($request->cookie('BackSuggestion')){
-            $suggestions->frontSuggestion = $request->cookie('BackSuggestion');
+            $suggestions->backSuggestion = $request->cookie('BackSuggestion');
         }
         if($request->cookie('PocketSuggestion')){
-            $suggestions->frontSuggestion = $request->cookie('PocketSuggestion');
+            $suggestions->pocketSuggestion = $request->cookie('PocketSuggestion');
         }
         if($request->cookie('SleevesSuggestion')){
             $suggestions->sleevesSuggestion = $request->cookie('SleevesSuggestion');

@@ -3,10 +3,10 @@
 <div class="container-fluid">
     <div id="mainHeader">
     <div class="card card-body ">
-        <div class="row py-auto  ">
+        <div id="hoverAnchor" class="row py-auto  ">
             <div class="col-md ">
                 <div class="row d-flex justify-content-center">
-                <a href="{{route('designScreen')}}">
+                <a  href="{{route('designScreen')}}">
                 <div class="row">
                 <i  class="fa fa-edit "></i>
                 &nbsp &nbsp
@@ -78,7 +78,10 @@
                         <form action="{{ route ('campaignScreen',$activeCampaign->id) }}" >
                             {{ csrf_field() }}
                         <button type="submit" class="btn btn-primary">{{$activeCampaign->id}}</button>   
-                        {{$activeCampaign->name}}
+                        <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">
+                          {{$activeCampaign->name}}
+                        </a>
+                        
                     </form>
                     </th>
                     <th class="new">{{$activeCampaign->updated_at}}</th>
@@ -145,6 +148,11 @@
 </div>
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+<style>
+  #hoverAnchor a:hover{
+    text-decoration: none;
+  }
+  </style>
 <script>
    $(document).ready(function(){
        
@@ -162,7 +170,7 @@
                
     //        }
     //    });
-   });
+  //  });
    }); 
 </script>
 @include('web.includes.endfile')
