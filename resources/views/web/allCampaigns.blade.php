@@ -87,7 +87,18 @@
                     <th class="new">{{$activeCampaign->updated_at}}</th>
                     
                     <th class="new">
-                        {{$activeCampaign->status == 1 ? 'STATUS_AWAITING':'N/A'}}
+                      @if($activeCampaign->status==1)
+                              DESIGN AWAITING
+                              @elseif($activeCampaign->status==2)
+                              DESIGN IN PROCESS
+                              @elseif($activeCampaign->status==3)
+                              DESIGN APPROVED
+                              @elseif($activeCampaign->status==4)
+                              IN PROCESS
+                              @elseif($activeCampaign->status==5)
+                              CAMPAIGN APPROVED
+                              @endif
+                        {{-- {{$activeCampaign->status == 1 ? 'STATUS_AWAITING':'N/A'}} --}}
                     </th>
                    
                   </tr>

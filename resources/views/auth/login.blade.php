@@ -25,55 +25,12 @@
         </ul>
     </div>
     @endif
-    {{-- <div>
-    @if ($errors->any() )
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-              <li>
-              <span class="invalid-feedback" role="alert" style="color:red">
-                <strong>{{ $error }}</strong>
-              </span>
-              </li>
-              @endforeach
-          </ul>
-      </div>
-      @endif
-    </div> --}}
-  
-    {{-- @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-    @error('email')
-                                    <span class="invalid-feedback" role="alert" style="color:red;">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-            @error('password')
-                                    <span class="invalid-feedback" role="alert" style="color: red;">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
+ 
+ 
     <div class="container">
      
       
-{{--       
-      @if ($errors->any() )
-<div class="alert alert-danger">
-    <ul>
-      @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif --}}
+
 
       <div class="forms-container">
         <div class="signin-signup">
