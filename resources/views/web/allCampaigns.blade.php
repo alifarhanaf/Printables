@@ -102,7 +102,7 @@
 
 
     <div id="activeOrdersCard">
-    <div class="card card-body ">
+    <div id="colsedOrders" class="card card-body ">
         <div id="BodyCard" >                         
             <table class="table table-responsive d-md-table" style=" margin-top: 10px;">
                 <thead>
@@ -117,8 +117,10 @@
                    @foreach ($closedCampaigns as $closedCampaign)
                   <tr>
                     <th class="new" scope="row">
-                        <button type="button" class="btn btn-primary">{{$closedCampaign->id}}</button>   
+                        <button type="button" class="btn btn-primary">{{$closedCampaign->id}}</button>
+                        <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">   
                         {{$closedCampaign->name}}
+                        </a>
                     </th>
                     <th class="new">{{$closedCampaign->updated_at}}</th>
                     <th class="new">View Total Ordered</th>
@@ -149,8 +151,29 @@
 @include('web.includes.subfooter')
 @include('web.includes.footer')
 <style>
+  #BodyCard a {
+    color: #84a0bf !important;
+  }
+  #BodyCard a:hover{
+    color: #1c2e42 !important;
+    text-decoration: none;
+  }
+  /* #colsedOrders a {
+    color: #84a0bf !important;
+  }
+  #colsedOrders a:hover{
+    color: #1c2e42 !important;
+    text-decoration: none;
+  } */
   #hoverAnchor a:hover{
     text-decoration: none;
+    color: ;
+  }
+  #hoverAnchor p {
+    color: #84a0bf;
+  }
+  #hoverAnchor p:hover {
+    color: #1c2e42;
   }
   </style>
 <script>

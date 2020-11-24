@@ -348,7 +348,7 @@ SECTION 20.1.5 - FOR DAMAGED ITEMS
 SECTION 20.1.6 - ALL RETURNS AND EXCHANGES MUST BE MAILED TO THE FOLLOWING ADDRESS:
 </h5>
  
-<h5 class="TandS" style="font-size:1.3rem; font-weight:500; color:black !important">
+<p >
 ​Greek House
 
 <br>
@@ -356,7 +356,7 @@ SECTION 20.1.6 - ALL RETURNS AND EXCHANGES MUST BE MAILED TO THE FOLLOWING ADDRE
 <br>
 Los Angeles, CA 90048
 <br>
-</h5>
+</p>
  
 <h5 class="TandS" >
 SECTION 20.2 - CUSTOM ORDERS / BULK CHAPTER ORDERS
