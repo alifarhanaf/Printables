@@ -186,6 +186,11 @@
   #hoverAnchor p:hover {
     color: #1c2e42;
   }
+  #mainHeader i:hover {
+    font-size: 1.3rem !important;
+    color: #1c2e42;
+  
+}
   </style>
 <script>
    $(document).ready(function(){

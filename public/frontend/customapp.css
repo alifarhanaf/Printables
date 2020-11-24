@@ -162,7 +162,8 @@
     margin-right: 5%; */
 }
 #mainHeader i {
-    font-size: 1.7rem !important;
+    font-size: 1.3rem !important;
+    line-height: 2.2rem;
     color: #84a0ac;
 }
 #activeOrdersCard .card {
