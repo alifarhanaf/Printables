@@ -128,10 +128,13 @@
                    @foreach ($closedCampaigns as $closedCampaign)
                   <tr>
                     <th class="new" scope="row">
-                        <button type="button" class="btn btn-primary">{{$closedCampaign->id}}</button>
+                      <form action="{{ route ('campaignScreen',$activeCampaign->id) }}" >
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-primary">{{$closedCampaign->id}}</button>
                         <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">   
                         {{$closedCampaign->name}}
                         </a>
+                      </form>
                     </th>
                     <th class="new">{{$closedCampaign->updated_at}}</th>
                     <th class="new">View Total Ordered</th>

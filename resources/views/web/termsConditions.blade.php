@@ -21,7 +21,7 @@
     OVERVIEW
 </h5>
 <p>
-    This website is operated by College Thread, LLC DBA Greek House. Throughout the site, the terms “we”, “us” and “our” refer to College Thread. College Thread offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+    This website is operated by College Thread, LLC DBA Geneologie. Throughout the site, the terms “we”, “us” and “our” refer to College Thread. College Thread offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
 <br>
 <br>
  
@@ -103,7 +103,7 @@ We reserve the right at any time to modify or discontinue the Service (or any pa
 <br>
 We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.
 <br>
-No changes are allowed once proof has been approved unless approved by Greek House
+No changes are allowed once proof has been approved unless approved by Geneologie
 <br>
 </p>
 
@@ -307,13 +307,13 @@ SECTION 20.1.2 - FOR NON-CAMPAIGN (RETAIL) ITEMS
 </h5>
  
 <p>
-NO REFUNDS. EXCHANGE ONLY within 10 days from when shipment is received. All exchanges dependent on existing stock. Notice must be given to support@greekhouse.org within 2 days from when shipment is received for any problems or concerns with merchandise. Items must be in their original packaging.
+NO REFUNDS. EXCHANGE ONLY within 10 days from when shipment is received. All exchanges dependent on existing stock. Notice must be given to support@geneologie.org within 2 days from when shipment is received for any problems or concerns with merchandise. Items must be in their original packaging.
 <br>
 To process your return, be sure to wait for approval of your return before you send it back.
 <br>
-​If your order arrives damaged, please send us a photo of the damage by email to support@greekhouse.org within 48 hours of receiving the shipment. If you do not report the damage to us within this 48 hour period, we may not be able to honor your claim.
+​If your order arrives damaged, please send us a photo of the damage by email to support@geneologie.org within 48 hours of receiving the shipment. If you do not report the damage to us within this 48 hour period, we may not be able to honor your claim.
 <br>
-Domestic customers are financially responsible for shipping the item back to Greek House for the exchange. International customers are financially responsible for shipping the item back to Greek House for the exchange, as well as for shipping the exchanged item back to their respective country. Any item(s) purchased at a normal price before the start of a sale may not be exchanged for items at sale price. We will not issue a credit for the difference in price on items purchased before the start of sale. ALL SALE ITEMS ARE FINAL. NO EXCHANGES OR REFUNDS.
+Domestic customers are financially responsible for shipping the item back to Geneologie for the exchange. International customers are financially responsible for shipping the item back to Geneologie for the exchange, as well as for shipping the exchanged item back to their respective country. Any item(s) purchased at a normal price before the start of a sale may not be exchanged for items at sale price. We will not issue a credit for the difference in price on items purchased before the start of sale. ALL SALE ITEMS ARE FINAL. NO EXCHANGES OR REFUNDS.
 <br>
 </p>
  
@@ -340,7 +340,7 @@ SECTION 20.1.5 - FOR DAMAGED ITEMS
 </h5>
  
 <p>
-​If your order arrives damaged, please send us a photo of the damage by email to support@greekhouse.org within 48 hours of receiving the shipment. If you do not report the damage to us within this 48 hour period, we may not be able to honor your claim.
+​If your order arrives damaged, please send us a photo of the damage by email to support@geneologie.org within 48 hours of receiving the shipment. If you do not report the damage to us within this 48 hour period, we may not be able to honor your claim.
 <br>
 </p>
  
@@ -349,8 +349,7 @@ SECTION 20.1.6 - ALL RETURNS AND EXCHANGES MUST BE MAILED TO THE FOLLOWING ADDRE
 </h5>
  
 <p >
-​Greek House
-
+​Geneologie
 <br>
 ​457 N Hayworth Ave.
 <br>
@@ -367,13 +366,13 @@ SECTION 20.2.1 - RETURN POLICY FOR CUSTOM ORDERS
 </h5>
  
 <p>
-​We guarantee and stand behind the quality of our products. If we make a mistake, we will fix it. All claims will be reviewed by our customer service department before processing. Claims may be filed within 1 week of your receipt of garments. Please email your claims to customer service at support@greekhouse.org. If we are at fault for the unacceptable product, a replacement of the product will be sent to you within 2 weeks of our receipt of defective product. Items cannot be sent in without authorization, if any items are received before authorization for return, they will be held and shipped back at your own expense.
+​We guarantee and stand behind the quality of our products. If we make a mistake, we will fix it. All claims will be reviewed by our customer service department before processing. Claims may be filed within 1 week of your receipt of garments. Please email your claims to customer service at support@geneologie.org. If we are at fault for the unacceptable product, a replacement of the product will be sent to you within 2 weeks of our receipt of defective product. Items cannot be sent in without authorization, if any items are received before authorization for return, they will be held and shipped back at your own expense.
 <br>
-Once you approve an artwork proof, unless the product we deliver is different from the mock up, Greek House is not liable for any claims by the customer that the product is not acceptable. Please review artwork proofs carefully for design measurements and colors. Please keep in mind that the garment, design, placement, and colors represented in artwork proofs area visual representation of the product. Actual garment, design placement, and colors may vary from the provided artwork proof. We make every effort to display as accurately as possible the colors of our products that appear in artwork proofs. However, as the actual colors you see will depend on your monitor, we cannot guarantee that your monitor’s display of any color will be accurate. The best way to guarantee color accuracy is for you to view an actual hard copy of an official Pantone color chart. We mix our inks based on the official Pantone color-mixing guide. Once a final artwork proof is approved, no changes can be made to the order for any reason.
+Once you approve an artwork proof, unless the product we deliver is different from the mock up, Geneologie is not liable for any claims by the customer that the product is not acceptable. Please review artwork proofs carefully for design measurements and colors. Please keep in mind that the garment, design, placement, and colors represented in artwork proofs area visual representation of the product. Actual garment, design placement, and colors may vary from the provided artwork proof. We make every effort to display as accurately as possible the colors of our products that appear in artwork proofs. However, as the actual colors you see will depend on your monitor, we cannot guarantee that your monitor’s display of any color will be accurate. The best way to guarantee color accuracy is for you to view an actual hard copy of an official Pantone color chart. We mix our inks based on the official Pantone color-mixing guide. Once a final artwork proof is approved, no changes can be made to the order for any reason.
 <br>
 Orders over 50 pieces are subject to a 2% machine defect allowance. All customers should order enough excess garments to cover the possibility of machine defects. We do our best to avoid any machine defects, but claims related to machine defect will be denied.
 <br>
-If you have any questions regarding the above policies, please feel free to contact customer service at support@greekhouse.org
+If you have any questions regarding the above policies, please feel free to contact customer service at support@geneologie.org
 <br>
 </p>
  
@@ -382,9 +381,9 @@ SECTION 21 - DESIGN TIME
 </h5>
  
 <p>
-Per Greek House's terms and conditions, you are agreeing that by placing a design request through http://greekhouse.org/start-here, that you are liable for ALL DESIGN FEES ASSOCIATED WITH THE ORDER AND/OR CAMPAIGN.
+Per Geneologie's terms and conditions, you are agreeing that by placing a design request through http://geneologie.org/start-here, that you are liable for ALL DESIGN FEES ASSOCIATED WITH THE ORDER AND/OR CAMPAIGN.
 <br>
-Greek House provides 2 hours of free design IF AND ONLY IF YOU (THE CLIENT) GOES THROUGH WITH THE PURCHASE OF THE ORDER AND/OR CAMPAIGN WITH AT LEAST 80% OF THE ESTIMATED QUANTITY ORDERED.
+Geneologie provides 2 hours of free design IF AND ONLY IF YOU (THE CLIENT) GOES THROUGH WITH THE PURCHASE OF THE ORDER AND/OR CAMPAIGN WITH AT LEAST 80% OF THE ESTIMATED QUANTITY ORDERED.
 </p>
 <br>
  
