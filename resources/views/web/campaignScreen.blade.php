@@ -1,6 +1,6 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
-<div class="container-fluid">
+<div class="container">
  
     <div class="row">
         <div class="col-md-3">

@@ -157,9 +157,9 @@
 #mainHeader .card {
     border: 1px solid #84a0ac;
     border-radius: 5px;
-    margin: 3%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 3% 0;
+    /* margin-left: 5%;
+    margin-right: 5%; */
 }
 #mainHeader i {
     font-size: 1.7rem !important;
@@ -168,9 +168,8 @@
 #activeOrdersCard .card {
     border: 1px solid #84a0ac;
     border-radius: 5px;
-    margin: 2%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 2% 0;
+    
 }
 #activeOrdersCard button.btn.btn-primary {
     height: 25px;

@@ -1,6 +1,6 @@
 @include('web.includes.header')
 @include('web.includes.subheader')
-<div class="container-fluid">
+<div class="container">
     <div id="mainHeader">
     <div class="card card-body ">
         <div id="hoverAnchor" class="row py-auto  ">
@@ -55,7 +55,7 @@
       </div><!-- card -->
     </div>
 
-    <h4 style="margin-inline-start: 5%" >OPEN ODERS:</h4>
+    <h4  >OPEN ODERS:</h4>
 
 
     <div id="activeOrdersCard">
@@ -109,7 +109,7 @@
     </div><!-- card -->
     </div>
 
-    <h4 style="margin-inline-start: 5%" >CLOSED ODERS:</h4>
+    <h4  >CLOSED ODERS:</h4>
 
 
     <div id="activeOrdersCard">
