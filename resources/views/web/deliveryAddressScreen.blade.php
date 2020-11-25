@@ -141,7 +141,6 @@
                        
                         
                       </select>
-                      {{-- <p>{{$ot->id}}</p> --}}
                     </div>
                   </div>
 
@@ -195,6 +194,9 @@
       console.log(selected);
       if(selected==2){
         document.getElementById("ddInput").style.display = "block";
+      }
+      if(selected==1){
+        document.getElementById("ddInput").style.display = "none";
       }
       // $.ajax({
       //      url: 'allPrintTypeFaqs/'+selected,

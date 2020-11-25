@@ -35,6 +35,11 @@ class CampaignController extends Controller
     
     public function setDraftCampaign(CampaignSubmitRequest $request)
     {
+        // if($request->deliveryDate == null ){
+        //     $date = now()->addDays(10);
+        //     dd($date->date);
+        // }
+        // dd($request);
         DB::beginTransaction();
         try {
         $campaignName = $request->cookie('campaignName');
@@ -61,7 +66,8 @@ class CampaignController extends Controller
         $deliveryDate = $request->deliveryDate;
         $campaign->deliveryDate = $deliveryDate;
         }else{
-            $campaign->deliveryDate = date('Y-m-d H:i:s');
+            $campaign->deliveryDate = date('Y-m-d H:i:s')->addDays(10); 
+            // date('Y-m-d H:i:s')
         }
         
         $campaign->status = 1;
@@ -416,6 +422,29 @@ class CampaignController extends Controller
         // dd($user);
         Mail::to($user->email)->send(new CampaignApprovalMail($user,$campaign));
         return redirect()->route('campaignScreenAdmin1',$campaign->id);
+    }
+    public function rushDelivery(Request $request , $id){
+        // dd($request);
+        $campaign = Campaigns::find($id);
+        $campaign->deliveryDate = $request->deliveryDate ;
+        $campaign->rush_delivery = $request->rushDelivery;
+        $campaign->save();
+        return redirect()->back();
+    }
+    public function editAddress(Request $request, $id){
+        // dd($request);
+        $address = Addresses::find($id);
+        $address->addressName = $request->addressName;
+        $address->firstName = $request->firstName;
+        $address->lastName = $request->lastName;
+        $address->addressLine1 = $request->addressLine1;
+        $address->addressLine2 = $request->addressLine2;
+        $address->city = $request->city;
+        $address->state = $request->state;
+        $address->zipCode = $request->zipCode;
+        $address->save();
+        return redirect()->back();
+        
     }
     
 }

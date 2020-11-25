@@ -138,6 +138,8 @@ Route::get('/approveDesign/{id}/{bid}', 'CampaignController@approveDesign')->nam
 // Route::get('dropzone', 'ImageController@index');
 Route::post('campaign/upload_image/{id}', 'ImageController@campaign_upload_image')->name('campaign.upload_image');
 Route::post('campaign/approveCampaign/{id}', 'CampaignController@approveCampaign')->name('approve.campaign');
+Route::post('campaign/edit_rush_delivery/{id}','CampaignController@rushDelivery')->name('rushDelivery');
+Route::post('campaign/edit_address/{id}','CampaignController@editAddress')->name('editAddress');
  
 Route::get('/terms&conditions', 'MiscController@TandC')->name('Terms&Conditions');
 Route::get('/privacyPolicy', 'MiscController@privacyPolicy')->name('PrivacyPolicy');

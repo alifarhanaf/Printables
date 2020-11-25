@@ -332,3 +332,19 @@
   img#designID:hover {
     transform: scale(1.1,1.1);
 }
+#footer-button .btn-primary{
+    background-color: #84a0bf;
+    border-color: #84a0bf;
+}
+#footer-button .btn-primary:hover {
+    background-color: #84a0bf;
+    border-color: #84a0bf;
+}
+#footer-button .btn-primary:active{
+    background-color: #84a0bf;
+    border-color: #84a0bf;
+}
+#modalBodyContent label{
+    font-size: 1.1rem;
+    font-weight: 600;
+}     
