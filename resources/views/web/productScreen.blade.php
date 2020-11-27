@@ -108,7 +108,8 @@
 
        
         <div id="main_all_produts_section" class="main_all_produts_section">
-            <div class="main_prduct px-auto mx-auto " style="text-align: center; margin-bottom:10px;">
+            <div class="main_prduct px-auto mx-auto " style="text-align: center;      margin-bottom: 50px;
+            margin-top: 30px;">
                 @if(isset($design[0]))
                 <div style="border: 1px solid black; padding-top:20%;padding-bottom:20%; padding-right:30%;padding-left:30%; width:200px;">
                 <h1>Slected Design </h1>
