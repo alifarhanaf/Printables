@@ -140,7 +140,7 @@
                 >
               </div>
 
-              <label class="form-label mg-b-10 pd-l-5"><b>Select Colors:</b></label>
+              {{-- <label class="form-label mg-b-10 pd-l-5"><b>Select Colors:</b></label>
               <div class="form-group ">
               <div class="All_Colors" >
                 <div class="row " style="padding-inline-start: 5%">
@@ -161,43 +161,8 @@
                 @endforeach
                 </div>
               </div>
-              </div>
-{{-- 
-              <select class="form-control select2" multiple="multiple">
-                <option value="Firefox" selected>Firefox</option>
-                <option value="Chrome">Chrome</option>
-                <option value="Safari">Safari</option>
-                <option value="Opera">Opera</option>
-                <option value="Internet Explorer">Internet Explorer</option>
-              </select> --}}
-
-              {{-- <div class="form-group mg-t-20 mg-lg-t-0 ">
-                <select name="brand_id" class="form-control select2 ">
-                  <option label="Select Brand"></option>
-                  @foreach ($brands as $brand)
-                  <option value="{{$brand->id}}">{{$brand->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="form-group mg-t-20 mg-lg-t-0 ">
-                <select name="group_id" class="  form-control select2 mg-t-15">
-                  <option label="Select Group"></option>
-                  @foreach ($groups as $group)
-                            <option value="{{$group->id}}">{{$group->name}}</option>
-                  @endforeach
-                </select>
               </div> --}}
 
-              
-            
-             
-              
-           
-
-
-
-              
               <label class="form-label mg-b-10 pd-l-5"><b>Choose Image:</b></label>
               <div class="form-group row row-sm ">
                 <div class="col-sm-7 col-md-6 col-lg-4">

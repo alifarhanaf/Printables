@@ -19,6 +19,7 @@
     <link href="{{ asset('res/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('res/typicons.font/typicons.css') }}" rel="stylesheet">
     <link href="{{ asset('res/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/spectrum/spectrum.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     {{-- <link href="{{ asset('js/dropzone/dist/dropzone.css') }}" rel="stylesheet"> --}}
     {{-- <link href="{{ asset('js/drjquery/dist/imageuploadify.min.css') }}" rel="stylesheet"><br type="_moz"> --}}

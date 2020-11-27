@@ -131,7 +131,11 @@
                                     data-target="#exampleModal{{ $product->id }}">
                                     <div class="product_underimg">
                                         <div class="roduct_imgage text-center">
-                                            <img src="{{ asset($product->images[0]->url) }}" alt="" class="img-fluid">
+                                            @if(count($product->variants)>0)
+                                                            <img src="{{ $product->variants[0]->images[0]->url }}" alt="" class="img-fluid">
+                                                           
+                                                            @endif
+                                            {{-- <img src="{{ asset($product->images[0]->url) }}" alt="" class="img-fluid"> --}}
                                         </div>
                                     </div>
                                     <div class="product_text_under text-center">
@@ -163,9 +167,13 @@
                                             <div class="row">
                                                 <div class="col-md-6 col-10 d-block m-auto image_product">
                                                     <div class="main_image_class">
-                                                        <div class="image_mainm_spacing text-center">
-                                                            <img src="{{ $product->images[0]->url }}" alt=""
-                                                                class="img-fluid">
+                                                        <div class="image_mainm_spacing text-center" >
+                                                            {{-- <p></p> --}}
+                                                            @if(count($product->variants)>0)
+                                                            <div id="imageProduct">
+                                                            <img  src="{{ $product->variants[0]->images[0]->url }}"  alt="" class="img-fluid">
+                                                            </div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -181,14 +189,21 @@
                                                                     hein uper wali --}}
                                                                     <h6>Choose a Color:</h6>
                                                                     <div class="All_Colors" style="padding-right: 20%;">
-                                                                        @foreach ($product->colors as $color)
+                                                                        @if(count($product->variants)>0)
+                                                                        @foreach ($product->variants as $variant)
+                                                                        {{-- <div id="" data-id=""> --}}
+                                                                        @foreach($variant->colors as $color)
                                                                             <div class="main_colors">
                                                                                 <input type="radio" name="color"
-                                                                                    value="{{ $color->hexcode }}">
+                                                                                    value="{{ $color->hexcode }}" data-id="{{$variant->id}}">
                                                                                 <label
                                                                                     style="background-color:{{ $color->hexcode }};"></label>
                                                                             </div>
+                                                                            @endforeach
                                                                         @endforeach
+
+                                                                        @endif
+                                                                        
 
 
                                                                     </div>
@@ -448,6 +463,19 @@
         $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
         $(this).attr('data-active', true)
         $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
+        var id = $(this).parent('.main_colors').find('input[type="radio"]').data('id');
+        $.ajax({
+                url: 'getProductImage/'+id,
+                type: 'get',
+                success: function(response) {
+                   
+                    $('#imageProduct').html(response);
+                    // console.log(response);
+
+                }
+        });
+
+        console.log(id);
     })
   
   </script>

@@ -76,6 +76,8 @@ class HomeController extends Controller
     public function products(Request $request)
     {   
         $products = Products::all();
+        // dd($products);
+        // dd($products[3]->variants[0]->images[0]->url);
         $colors = Colors::all();
         $designID = $request->cookie('designID');
         

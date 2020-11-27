@@ -26,6 +26,11 @@ class Products extends Model
     {
         return $this->belongsToMany('App\Models\Colors');
     }
+    public function variants()
+    {
+        return $this->belongsToMany('App\Models\Variants');
+    }
+
     public function print_locations()
     {
         return $this->belongsToMany('App\Models\PrintLocations');

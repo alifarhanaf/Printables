@@ -31,10 +31,7 @@ class DesignController extends Controller
     }
     public function updatedDesigns(Request $request) {
         $array = json_decode($request->getContent(), true);
-        // dd($array);
-        // dd(count($array));
         $designs = [];
-        
         $query = Events::query();
         if (array_key_exists("0",$array)) {
             $query = $query->where('name', $array[0]);
@@ -46,21 +43,6 @@ class DesignController extends Controller
             }
         }
         $events = $query->get();
-        // if (array_key_exists("0",$array)) {
-        // $query = $query->where('name', $array[0]);
-
-        // }
-        // if (array_key_exists("1",$array)){
-        // // if ($array[1]) {
-        // $query = $query->orWhere('name', $array[1]);
-        // }
-        // if (array_key_exists("2",$array)) {
-        // $query = $query->orWhere('name', $array[2]);
-        // }
-
-
-        
-
         $pquery = PrimaryEvents::query();
         if (array_key_exists("0",$array)) {
             $pquery = $pquery->where('name', $array[0]);
@@ -71,14 +53,6 @@ class DesignController extends Controller
             }
         }
         $pevents = $pquery->get();
-        // if (array_key_exists("1",$array)){
-        
-        // $pquery = $pquery->orWhere('name', $array[1]);
-        // }
-        // if (array_key_exists("2",$array)) {
-        // $pquery = $pquery->orWhere('name', $array[2]);
-        // }
-
         $oquery = Organizations::query();
         if (array_key_exists("0",$array)) {
             $oquery = $oquery->where('name', $array[0]);
@@ -89,12 +63,6 @@ class DesignController extends Controller
             }
         }
         $orgs = $oquery->get();
-
-
-        
-
-
-
 
         foreach($events as $event){
             foreach($event->designs as $design){
@@ -112,7 +80,6 @@ class DesignController extends Controller
             } 
         };
         $designs = array_unique($designs);
-        // dd($designs);
         $allDesigns = Designs::find($designs);
         $recentDesigns = Designs::orderBy('created_at', 'DESC')->find($designs);
         $data = array(
@@ -122,8 +89,6 @@ class DesignController extends Controller
         );
         // dd($allDesigns);
         return view('web.helpers.filteredDesigns')->with($data)->render();
-
-
     }
     //Design Submit
     public function submitDesign(DesignRequest $request)

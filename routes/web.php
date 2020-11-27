@@ -24,6 +24,8 @@ Route::get('/productedit/{id}', 'ProductController@editproduct')->name('product.
 Route::post('/editproductsubmit/{id}','ProductController@editProductSubmit')->name('submit.edit.product');
 Route::delete('/deleteproduct/{id}','ProductController@destroy')->name('product.delete');
 Route::delete('/deleteproductimage/{id}','ProductController@destroyimage')->name('product.image.delete');
+Route::get('/add_product_variants/{id}', 'ProductController@addVariants')->name('product.variants');
+Route::post('/product_variants_submit/{id}','ProductController@submitProductVariants')->name('submit.product.variants');
 //Group CRUD
 Route::get('/groupadd', 'GroupController@index')->name('group.form');
 Route::post('/groupSubmit','GroupController@submitGroup')->name('submit.group');
@@ -155,3 +157,5 @@ Route::post('campaign/edit_address/{id}','CampaignController@editAddress')->name
  
 Route::get('/terms&conditions', 'MiscController@TandC')->name('Terms&Conditions');
 Route::get('/privacyPolicy', 'MiscController@privacyPolicy')->name('PrivacyPolicy');
+
+Route::get('getProductImage/{id}','MiscController@getProductImage');

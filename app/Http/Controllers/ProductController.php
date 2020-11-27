@@ -7,6 +7,7 @@ use App\Models\Colors;
 use App\Models\Groups;
 use App\Models\Images;
 use App\Models\Products;
+use App\Models\Variants;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\BrandsProducts;
@@ -52,6 +53,62 @@ class ProductController extends Controller
 
         );
         return view ('admin.productform')->with($data);
+    }
+    public function addVariants($id){
+        $colors = Colors::all();
+        $product = Products::where('id',$id)->first();
+        $data = array(
+            "product" => $product,
+            "colors" => $colors,
+        );
+        return view ('admin.productVariantsForm')->with($data);
+
+    }
+    public function submitProductVariants(Request $request, $id){
+        // dd($request->all());
+        
+        // dd($a);
+        
+
+        DB::beginTransaction();
+        try {
+            $colors = Colors::all();
+            $a = array_filter($request->names);
+            $cc = count($colors);
+            for($i=0;$i<$cc;$i++){
+            if(array_key_exists($i,$a)){
+               $variant = new Variants();
+               $variant->name = $a[$i];
+               $variant->save();
+               if(array_key_exists($i,$request->colors)){
+                   $variant->colors()->sync($colors[$i]);
+               }
+               if(array_key_exists($i,$request->images)){
+                $imageName = time().$i.'.'.$request->images[$i]->extension();  
+                $path = base_path() . '/public/storage/variantImages/';
+                $pathsave =  '/storage/variantImages/';
+                $request->images[$i]->move($path, $imageName);
+                $imageurl = $pathsave.$imageName;
+                $image = new Images();
+                $image->url =$imageurl;
+                $image->save();
+                $imageid = $image->id;
+                $variant->images()->sync($imageid);
+                $product = Products::find($id);
+                $product->variants()->attach($variant->id);
+            }
+            }
+
+        };
+        DB::commit();
+        return redirect()->route('product.grid')->with('message','Success');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return redirect()->route('product.variants',$id)->with('message',$ex->getMessage());
+        }
+       
+        
+
     }
     //Product Edit Form
     public function editproduct($id){
@@ -127,7 +184,7 @@ class ProductController extends Controller
         $product->description = request('description');
         $product->enabled = request('enable');
         $product->save();
-        $product->colors()->attach($request->colors);
+        // $product->colors()->attach($request->colors);
         $productid = $product->id;
         foreach($request->images as $file){
         $imageName = time().$i.'.'.$file->extension();  
@@ -147,7 +204,7 @@ class ProductController extends Controller
         $product->categories()->attach(request('categories_id'));
         $product->print_locations()->attach(request('printLocation_ids'));
         DB::commit();
-        return redirect()->route('product.form')->with('message','Success');
+        return redirect()->route('product.variants',$product->id);
         } catch (\Exception $ex) {
             DB::rollback();
             return redirect()->route('product.form')->with('message',$ex->getMessage());
@@ -208,13 +265,14 @@ class ProductController extends Controller
     // public function productByID($id){
     //     $products = Products::where('id',$id)->get();
     //     $images = $design[0]->images;
-    //     // dd($images);
+  
     //     $data = array(
     //         "design"=> $design,
     //         "designImages"=>$images,
     //     );
     //     return $data;
     // }
+    
 
    
   

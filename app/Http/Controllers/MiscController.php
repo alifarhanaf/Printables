@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Events;
+use App\Models\Variants;
 use Illuminate\Http\Request;
 use App\Models\Organizations;
 use App\Models\PrimaryEvents;
@@ -76,6 +77,17 @@ class MiscController extends Controller
             DB::rollback();
             return redirect()->route('addOrganization')->with('message',$ex->getMessage());
         }
+    }
+    public function getProductImage($id) {
+        $variant = Variants::where('id',$id)->first();
+        // dd($variant->images);
+         $url = $variant->images[0]->url;
+         $data = array(
+            "url" => $url,
+         );
+        return view('web.helpers.imageUpdate')->with($data)->render();
+        // $url = public_path().$variant->images[0]->url;
+        // return $url;
     }
     
 

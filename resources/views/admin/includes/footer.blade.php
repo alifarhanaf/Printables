@@ -14,6 +14,7 @@
 
 
 <script src="{{ asset('res/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('res/spectrum/spectrum.js') }}"></script>
  {{-- <script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/dropzone/dist/min/dropzone.min.js"></script> --}}
 {{-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
