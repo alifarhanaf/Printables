@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 use Cookie;
 use App\Models\Colors;
+use App\Models\Events;
 use App\Models\Designs;
 use App\Models\Products;
 use App\Models\OrderTenures;
 use Illuminate\Http\Request;
+use App\Models\Organizations;
+use App\Models\PrimaryEvents;
 use App\Models\PrintLocations;
 use App\Models\ShippingOptions;
 
@@ -39,8 +42,10 @@ class HomeController extends Controller
 
     public function collections(Request $request)
     {   
+        $events = Events::all();
+        $primaryEvents = PrimaryEvents::all();
+        $organizations = Organizations::all();
         if ($request->has('search')) {
-
             // dd($request->input('search'));
             $search = $request->search;
             $designs=  Designs::where('name', 'LIKE', '%' . $request->input('search') . '%')->get();
@@ -51,6 +56,9 @@ class HomeController extends Controller
                 "designs"=> $designs,
                 "recents"=> $recentdesigns,
                 "search" => $search,
+                "events" => $events,
+                "primaryEvents" => $primaryEvents,
+                "organizations" => $organizations,
             );
             return view('web.designScreen')->with($data);
         }
@@ -59,6 +67,9 @@ class HomeController extends Controller
         $data = array(
             "designs"=> $designs,
             "recents"=> $recentdesigns,
+            "events" => $events,
+            "primaryEvents" => $primaryEvents,
+            "organizations" => $organizations,
         );
         return view('web.designScreen')->with($data);
     }

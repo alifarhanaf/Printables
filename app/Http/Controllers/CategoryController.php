@@ -14,6 +14,7 @@ class CategoryController extends Controller
     //Category Form
     public function index(){
         return view ('admin.categoryform');
+        
     }
 
     // Category Edit Form

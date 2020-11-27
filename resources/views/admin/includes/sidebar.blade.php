@@ -83,6 +83,14 @@
             </ul>
           </li><!-- nav-item -->
           <li class="nav-item">
+            <a href="" class="nav-link with-sub"><i class="typcn typcn-tabs-outline"></i>Misc Forms</a>
+            <ul class="nav-sub">
+              <li class="nav-sub-item"><a href="{{ route('addEvent') }}" class="nav-sub-link">Add Event</a></li>
+              <li class="nav-sub-item"><a href="{{ route('addPrimaryEvent') }}" class="nav-sub-link">Add Primary Event</a></li>
+              <li class="nav-sub-item"><a href="{{ route('addOrganization') }}" class="nav-sub-link">Add Organization</a></li>
+            </ul>
+          </li><!-- nav-item -->
+          <li class="nav-item">
             <a href="" class="nav-link with-sub"><i class="typcn typcn-tabs-outline"></i>Campaigns</a>
             <ul class="nav-sub">
               <li class="nav-sub-item"><a href="{{ route('allCampaignsAdmin') }}" class="nav-sub-link">All Campaigns</a></li>

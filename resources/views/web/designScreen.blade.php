@@ -8,27 +8,165 @@
                 <h1 class="text-center">DESIGN GALLERY</h1>
             </div>
             <div class="main_paragraph text-center">
-                <p>All Design Can be customize for your oragination</p>
+                <p style="font-size:1.6rem;font-weight:500;">10,000+ Customizable Designs</p>
+                <p style="font-size:1.6rem;font-weight:500;">Have Your Own Idea? Request It <a href="https://www.google.com">Here</a>.</p>
             </div>
-            <div class="input_search_field">
+            {{-- <div class="input_search_field">
                 <div class="form-group">    
                     <form method="get" action="{{ route('designScreen') }}">          
                     <input placeholder="Search for like social rush, bid day, dog, etc...." type="search" name="search" value="@if(isset($search)){{$search}}@endif" class="form-control" id="exampleFormControlFile1" onchange="saveValue(this);" >
                     </form>
                 </div>
-            </div>
+            </div> --}}
             
         </div>
-        <div class="all_my_content">
-            <ul class="nav nav-pills my-tabs_btns" style="width:100%" id="pills-tab" role="tablist">
+        <div class="row">
+            <div class="col-md-3">
+                {{-- Start --}}
+                <div id="left-nav" class="sideBarSearch">
+                    <div class="sticky-top">
+                        <div class="px-4 py-4">
+                            <div>
+                                <div>
+                                    <div data-v-26752785="" class="form-group has-search mt-3 pt-5">
+                                        <span data-v-26752785="" class="text-center form-control-feedback"></span>
+                                        <form method="get" action="{{ route('designScreen') }}">          
+                                            <input placeholder="Search for like social rush, bid day, dog, etc...." type="search" name="search" value="@if(isset($search)){{$search}}@endif" class="form-control" id="exampleFormControlFile1" onchange="saveValue(this);" >
+                                            </form>
+                                         {{-- <input data-v-26752785="" type="text" name="search" placeholder="Search Designs" title="Use comma to search for multiple designs." data-toggle="tooltip" class="search-field form-control"> --}}
+                                        </div>
+                                    </div>
+                                     <div data-v-e6af0ca4="" class="mt-n3">
+                                       
+                                         {{-- <form data-v-e6af0ca4="" id="design-search" action="https://greekhouse.org/design-gallery" method="GET"> 
+                                            <input data-v-e6af0ca4="" type="hidden" id="q" name="tags">
+                                        </form>  --}}
+                                        <div data-v-e6af0ca4="" class="mt-2">
+                                            <span data-v-e6af0ca4="" class="text-sm font-weight-semi-bold color-slate d-none">Filter By:</span>
+                                             <span data-v-e6af0ca4="" class="clear-filter badge badge-light p-2 mr-1 align-middle my-1 text-white float-right d-none">
+                    Clear Filters
+                </span> </div> <div data-v-e6af0ca4="" class="mt-2"><div data-v-e6af0ca4="" class="text-center d-md-none"><button data-v-e6af0ca4="" type="button" data-toggle="collapse" data-target="#accordion-container" aria-expanded="false" aria-controls="accordion-container" class="btn btn-sm btn-block btn-dark mb-2">
+                        FILTER BY
+                    </button>
+                </div>
+                 <div data-v-e6af0ca4="" id="accordion-container" class="collapse d-md-block">
+                     <div data-v-e6af0ca4="" id="accordion" aria-multiselectable="true" class="accordion indicator-chevron">
+                         <div data-v-e6af0ca4="" class="m-b-0">
+                             <div data-v-e6af0ca4="" role="tab" id="sort-by-heading" href="#sort-by-collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="sort-by-collapse" class="card-header">
+                             <a data-v-e6af0ca4="" class="text-xs">Sort By</a>
+                            </div>
+                            {{-- Start --}}
+                            <div data-v-e6af0ca4="" id="sort-by-collapse" role="tabpanel" aria-labelledby="sort-by-heading" class="collapse show">
+                            <div id="navPillsId" style="height: 100%; overflow-y:auto">
+                            <ul class="nav nav-pills my-tabs_btns" style="width:100%;height: 100%;display:block;" id="pills-tab" role="tablist">
+                            <li class="nav-item active" role="presentation" style="width: 50%">
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" style="text-transform: none;">Popular</a>
+                            </li>
+                            <li class="nav-item" role="presentation" style="width: 50%">
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="text-transform: none;">Recent</a>
+                            </li>
+                            </ul>
+                            </div>
+                            </div>
+                            {{-- End --}}
+                             {{-- <div data-v-e6af0ca4="" id="sort-by-collapse" role="tabpanel" aria-labelledby="sort-by-heading" class="collapse show">
+                                 <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
+                                     <div data-v-e6af0ca4="" class="custom-control custom-radio form-control-sm">
+                                     
+                                     <input data-v-e6af0ca4="" type="radio" name="sortyBy"  class="custom-control-input" value="popularity" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"> 
+                                     <label data-v-e6af0ca4="" for="pills-home-tab" class="custom-control-label">Popular</label>
+                                    </div>
+                                    <div data-v-e6af0ca4="" class="custom-control custom-radio form-control-sm">
+                                        <input data-v-e6af0ca4="" type="radio" name="sortyBy"  class="custom-control-input" value="recency" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> 
+                                        <label data-v-e6af0ca4="" for="pills-profile-tab" class="custom-control-label">Recent</label>
+                                    </div>
+                                </div>
+                            </div> --}}
+                             <div data-v-e6af0ca4="" role="tab" id="primary-event-heading" href="#primary-event-collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="primary-event-collapse" class="card-header collapsed" >
+                                 <a data-v-e6af0ca4="" class="card-title text-sm">Primary Event</a>
+                                </div>
+                                 <div data-v-e6af0ca4="" id="primary-event-collapse" role="tabpanel" aria-labelledby="primary-event-heading" class="collapse " 
+                                 >
+                                 <div style="height: 150px; overflow-y:auto; border: 3px solid rgba(0,0,0,.03);
+                                 border-top: none;background: #f1f1f1;">
+                                     <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
+                                         @foreach($primaryEvents as $pevents)
+                                         {{-- <form method="get" action="{{ route('designScreen') }}">          
+                                            <button type="submit"> --}}
+                                           
+                                            
+                                         <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
+                                             <input data-v-e6af0ca4="" type="checkbox" id="{{$pevents->name}}" name="tags[]" class="custom-control-input" value="{{$pevents->name}}">
+                                              <label data-v-e6af0ca4="" for="{{$pevents->name}}" class="custom-control-label">{{$pevents->name}}</label>
+                                            </div>
+                                        </button>
+                                        {{-- </form> --}}
+                                            @endforeach
+                                              
+                                        </div>
+                                 </div>
+                                    </div> 
+                                    <div data-v-e6af0ca4="" role="tab" id="event-heading" href="#event-collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="event-collapse" class="card-header collapsed">
+                                        <a data-v-e6af0ca4="" class="card-title text-sm">Event</a>
+                                    </div>
+                                        <div data-v-e6af0ca4="" id="event-collapse" role="tabpanel" aria-labelledby="event-heading" class="collapse" style="">
+                                            <div style="height: 150px; overflow-y:auto;border: 3px solid rgba(0,0,0,.03);
+                                            border-top: none;background: #f1f1f1;">
+                                        <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
+                                            @foreach($events as $event)
+                                            <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
+                                                <input data-v-e6af0ca4="" type="checkbox" id="{{$event->name}}" name="tags[]" class="custom-control-input" value="{{$event->name}}"> 
+                                            <label data-v-e6af0ca4="" for="{{$event->name}}" class="custom-control-label">{{$event->name}}</label>
+                                        </div>
+                                        @endforeach
+
+                                            </div>
+                                        </div>
+                                        </div>
+                                            <div data-v-e6af0ca4="" role="tab" id="organization-heading" href="#organization-collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="organization-collapse" class="card-header">
+                                                <a data-v-e6af0ca4="" class="card-title text-sm">Organization</a>
+                                            </div>
+                                                <div data-v-e6af0ca4="" id="organization-collapse" role="tabpanel" aria-labelledby="organization-heading" class="collapse show" style="">
+                                                <div style="height: 150px; overflow-y:auto; border: 3px solid rgba(0,0,0,.03);
+                                                border-top: none;background: #f1f1f1;">
+                                                    <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
+                                                        @foreach ($organizations as $og)
+                                                            
+                                                    
+                                                        <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
+                                                            <input data-v-e6af0ca4="" type="checkbox" id="{{$og->name}}" name="tags[]" class="custom-control-input" value="{{$og->name}}"> 
+                                                            <label data-v-e6af0ca4="" for="{{$og->name}}" class="custom-control-label">{{$og->name}}</label>
+                                                        </div>
+                                                        @endforeach
+                                                        
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {{-- End --}}
+            </div>
+            <div class="col-md-9" >
+                <div id="render">
+            
+        <div class="all_my_content" style="padding-top: 1.5rem">
+            {{-- <ul class="nav nav-pills my-tabs_btns" style="width:100%" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation" style="width: 50%">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">POPULAR</a>
                 </li>
                 <li class="nav-item" role="presentation" style="width: 50%">
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">RECENT</a>
                 </li>
-                </ul>
-            <div class="tab-content" id="pills-tabContent" >
+                </ul> --}}
+            <div class="tab-content mt-3 pt-5" id="pills-tabContent"  >
                 <div class="tab-pane fade show active" id="pills-home"  role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="my_all_content">
                         <div class="my_flex_main">
@@ -100,6 +238,10 @@
                 </div>
                 </div>
         </div>
+                </div>
+
+    </div>
+</div>
     
     
     
@@ -113,6 +255,16 @@
 @include('web.includes.footer')
 <script>
 $(document).ready(function(){
+
+    $(".nav-item").on("click", function(e) {
+    $(".nav-item").removeClass("active");
+    $(this).addClass("active");
+    e.preventDefault();
+    });
+
+
+
+
     $.ajax({
             url: 'allDesigns/',
             type: 'get',
@@ -185,8 +337,43 @@ $(document).ready(function(){
                 }
             }
         });
+        $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        var checkboxElems = document.querySelectorAll("input[type='checkbox']");
+                for (var i = 0; i < checkboxElems.length; i++) {
+                checkboxElems[i].addEventListener("click", function(){
+                    // alert('Hi');
+                    let array = [];
+                    
+                    $('.custom-control-input:checked').each(function () {
+                    array.push($(this).val());
+                   
+                });
+                console.log(array);
+                $.ajax({
+                url: 'updatedDesigns',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(array),
+                success: function(response){
+                    // console.log(response);
+                    $('#render').html(response);
+                }
+                });
+                // console.log(array);
+                });
+                
+                
+                };
+               
+                
        
     });
+
 
     
 

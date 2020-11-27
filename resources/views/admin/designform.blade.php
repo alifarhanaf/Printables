@@ -128,6 +128,123 @@
             </div><!-- card-body -->
         </div><!-- card -->
 
+        <div class="card bd-0 mg-t-10">
+            
+            <a id="collapsebtn" data-toggle="collapse" 
+          href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
+          style=" width: -webkit-fill-available; text-align: left;" 
+        ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
+          
+        <b>Select Events</b>
+      </div>
+      </a>
+            
+          <!-- card-header -->
+          <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
+            
+            <ul style="padding-top:1.25rem; padding-left:8%;"   >
+              @foreach ($events as $event)
+              
+              
+              <div class="checkbox" style="">
+                
+                <li style="list-style-type: none;">
+                <label>  <input name="eventId" type="radio" value="{{$event->id}}"
+                  @if(isset($design->events[0])) 
+                @foreach($design->events as $designEvent)
+                {{$event->id == $designEvent->id ? 'checked':''}} 
+                @endforeach
+                @endif
+                   > &nbsp{{$event->name}}</label>
+                </li>
+              
+              </div>
+            
+              @endforeach
+            </ul>
+            
+            
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+        <div class="card bd-0 mg-t-10">
+            
+            <a id="collapsebtn" data-toggle="collapse" 
+          href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
+          style=" width: -webkit-fill-available; text-align: left;" 
+        ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
+          
+        <b>Select Primary Events</b>
+      </div>
+      </a>
+            
+          <!-- card-header -->
+          <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
+            
+            <ul style="padding-top:1.25rem; padding-left:8%;"   >
+              @foreach ($primaryEvents as $pevent)
+              
+              
+              <div class="checkbox" style="">
+                
+                <li style="list-style-type: none;">
+                <label>  <input name="primaryEventId" type="radio" value="{{$pevent->id}}"
+                  @if(isset($design->primaryEvents[0])) 
+                @foreach($design->primaryEvents as $designPrimaryEvent)
+                {{$pevent->id == $designPrimaryEvent->id ? 'checked':''}} 
+                @endforeach
+                @endif
+                   > &nbsp{{$pevent->name}}</label>
+                </li>
+              
+              </div>
+            
+              @endforeach
+            </ul>
+            
+            
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+        <div class="card bd-0 mg-t-10">
+            
+            <a id="collapsebtn" data-toggle="collapse" 
+          href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" 
+          style=" width: -webkit-fill-available; text-align: left;" 
+        ><div class="card-header  tx-medium bd-0 tx-white bg-indigo" style="background: #f4f5f8;border: none;">
+          
+        <b>Select Organizations</b>
+      </div>
+      </a>
+            
+          <!-- card-header -->
+          <div id="collapseExample" class="card-body bd bd-t-0 list-group " style="overflow-x: hidden; padding: 0; margin-bottom: 0; "  >
+            
+            <ul style="padding-top:1.25rem; padding-left:8%;"   >
+              @foreach ($organizations as $ogs)
+              
+              
+              <div class="checkbox" style="">
+                
+                <li style="list-style-type: none;">
+                <label>  <input name="organizationId" type="radio" value="{{$ogs->id}}"
+                  @if(isset($design->organizations[0])) 
+                @foreach($design->organizations as $dogs)
+                {{$ogs->id == $dogs->id ? 'checked':''}} 
+                @endforeach
+                @endif
+                   > &nbsp{{$ogs->name}}</label>
+                </li>
+              
+              </div>
+            
+              @endforeach
+            </ul>
+            
+            
+          </div><!-- card-body -->
+        </div><!-- card -->
+
     </div>
 
 </div>

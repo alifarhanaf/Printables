@@ -17,7 +17,7 @@
 // Route::group(['namespace'=>'admin'],function (){
 Route::middleware(['admin'])->group(function () {
 //Products CRUD
-Route::get('/productadd', 'ProductController@index')->name('product.form')->middleware('admin');
+Route::get('/productadd', 'ProductController@index')->name('product.form');
 Route::post('/productSubmit','ProductController@submitProduct')->name('submit.product');
 Route::get('/productgrid', 'ProductController@productgrid')->name('product.grid');
 Route::get('/productedit/{id}', 'ProductController@editproduct')->name('product.edit');
@@ -57,6 +57,17 @@ Route::get('/designedit/{id}', 'DesignController@editDesign')->name('design.edit
 Route::get('/designgrid', 'DesignController@designgrid')->name('design.grid');
 Route::post('/submitEditedDesign/{id}','DesignController@submitEditedDesign')->name('submit.edited.design');
 Route::delete('/deletedesign/{id}','DesignController@destroy')->name('design.delete');
+
+Route::get('/add_event', 'MiscController@addEvent')->name('addEvent');
+Route::post('/event_submit','MiscController@submitEvent')->name('submitEvent');
+
+
+Route::get('/add_primary_event', 'MiscController@addPrimaryEvent')->name('addPrimaryEvent');
+Route::post('/primary_event_submit','MiscController@submitPrimaryEvent')->name('submitPrimaryEvent');
+
+
+Route::get('/add_organization', 'MiscController@addOrganization')->name('addOrganization');
+Route::post('/organization_submit','MiscController@submitOrganization')->name('submitOrganization');
 
 
 
@@ -133,6 +144,7 @@ Route::get('/testMessages', 'CampaignController@testMessages');
 Route::get('/testEmail2', 'CampaignController@testEmail2');
 Route::get('/smallBigImages/{id}', 'CampaignController@smallBigImages');
 Route::get('/smallBigImagesSuggested/{id}','CampaignController@smallBigImagesSuggested');
+Route::post('updatedDesigns','DesignController@updatedDesigns')->name('designSearch');
 // Route::view('/userRegister', 'web.emails.userRegisterMail');
 Route::get('/approveDesign/{id}/{bid}', 'CampaignController@approveDesign')->name('approveDesign');
 // Route::get('dropzone', 'ImageController@index');

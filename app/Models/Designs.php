@@ -14,4 +14,16 @@ class Designs extends Model
     {
         return $this->belongsToMany('App\Models\Campaigns');
     }
+    public function events()
+    {
+        return $this->belongsToMany('App\Models\Events');
+    }
+    public function primary_events()
+    {
+        return $this->belongsToMany('App\Models\PrimaryEvents');
+    }
+    public function organizations()
+    {
+        return $this->belongsToMany('App\Models\Organizations');
+    }
 }
