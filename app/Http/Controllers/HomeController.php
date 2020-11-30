@@ -117,11 +117,14 @@ class HomeController extends Controller
     public function printTypeScreen(Request $request){
         $shippingOptions = ShippingOptions::all();
         $productID = $request->cookie('productID');
+        $variantID = $request->cookie('variantID');
         $product = Products::where('id',$productID)->get();
+        $variant = Variants::where('id',$variantID)->first();
         // dd($product[0]->groups[0]->print_types);
         $data = array(
             "product" =>$product,
             "shippingOptions"=>$shippingOptions,
+            "variant"=> $variant
         );
 
         return view('web.printTypeScreen')->with($data);

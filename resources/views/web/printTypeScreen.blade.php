@@ -77,7 +77,7 @@
                                     <div class="product_head_select">
                                        <div class="d-flex">
                                            <div class="image_flex_spacing">
-                                               <img src="{{ $product[0]->images[0]->url}}" alt="" class="img-fluid">
+                                               <img src="{{ $variant->images[0]->url}}" alt="" class="img-fluid">
                                            </div>
                                            <div class="product_tielt-print">
                                                <h5 class="text-capitalize">{{ $product[0]->name}}</h5>
@@ -86,7 +86,7 @@
                                        </div>
                                        <div class="main_delete_this">
                                            <button class="delete" data-hide="true">
-                                               <img src="{{ asset('storage/images/wizard 3/icon-basket.png')}}" alt="" class="img-fluid">
+                                               {{-- <img src="{{ asset('storage/images/wizard 3/icon-basket.png')}}" alt="" class="img-fluid"> --}}
                                            </button>
                                        </div> 
                                     </div>
