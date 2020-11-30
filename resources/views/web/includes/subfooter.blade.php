@@ -17,7 +17,7 @@
               <div class="col-md-4 col-12  d-block my-md-auto my-4">
                 <ul class="mx-auto">
                   <li>
-                    <a href="" class="text-white">Join Our Team</a>
+                    <a href="{{ route('JoinOurHouse') }}" class="text-white">Join Our Team</a>
                   </li>
                   <li>
                     <a href="{{route('designScreen')}}" class="text-white">Designs</a>

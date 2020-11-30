@@ -93,7 +93,7 @@
                             <div class="col-md-6 col-md-offset-3 mt-4">
                                 <div class="form-group">
                                     <div class="text-center px-auto mx-auto" >
-                                    <button type="submit" class="btn btn-dark btn-lg shadow " id="submit_work_with_us">SIGN UP</button>
+                                    <button type="submit" class="btn btn-dark btn-lg shadow " id="submit_work_with_us">JOIN</button>
                                     </div>
                                     {{-- <input id="username" name="username" type="hidden" value="">
                                     <input id="password" name="password" type="hidden" value="">

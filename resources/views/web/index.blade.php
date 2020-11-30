@@ -14,16 +14,18 @@
               <p>Get a free, professional design your chapter will <br/> love back within 24 hours</p>
             </div>
             <div class="main__buttons">
-              <div class="first_btn_section">
-                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase"><img src="{{ asset('storage/images/SVGS/6.svg')}}" alt=""></i>Shop design</a>
+              <div class="first_btn_section" id="indexBtn2">
+                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
+                  <i class="fa fa-shopping-bag fa-sm" style="color: black"></i>&nbsp Shop design</a>
                 <p class="para_btn">Start with one of ours.Everything<br/> 
                   is 100% customizable</p>
               </div>
               <div class="text_rough">
                 <span>OR</span>
               </div>
-              <div class="second_btn_section">
-                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase"><img src="{{ asset('storage/images/SVGS/3.svg')}}" alt=""></i>Shop design</a>
+              <div class="second_btn_section" id="indexBtn1">
+                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
+                  <i class="fa fa-pencil" style="color: black"></i> &nbsp Shop design</a>
                 <p class="para_btn">Have our desingers bring<br/>
                   your idea to life</p>
               </div>

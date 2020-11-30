@@ -9,7 +9,7 @@
             </div>
             <div class="main_paragraph text-center">
                 <p style="font-size:1.6rem;font-weight:500;">10,000+ Customizable Designs</p>
-                <p style="font-size:1.6rem;font-weight:500;">Have Your Own Idea? Request It <a href="https://www.google.com">Here</a>.</p>
+                <p style="font-size:1.6rem;font-weight:500; text-transform:uppercase;">Have Your Own Idea? Request It <a href="{{ route('productScreen') }}">Here</a>.</p>
             </div>
             {{-- <div class="input_search_field">
                 <div class="form-group">    
@@ -259,7 +259,7 @@ $(document).ready(function(){
     $(".nav-item").on("click", function(e) {
     $(".nav-item").removeClass("active");
     $(this).addClass("active");
-    // e.preventDefault();
+
     });
 
 
