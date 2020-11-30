@@ -265,7 +265,7 @@
               <div class="main__paragraph">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti enim quo hic neque aut odio totam illo dicta molestiae odit vero, consectetur accusantium rerum, beatae cum quas! Earum, laboriosam optio.</p>
               </div>
-              <div class="my-btn_main">
+              <div class="my-btn_main" id="learnMore">
                 <a href="" class="btn my-btn">Learn More</a>
               </div>
             </div>
@@ -347,7 +347,7 @@
     <div class="main_paragraph text-center">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptas velit eligendi perspiciatis esse id nisi quaerat harum blanditiis tempora, voluptates exercitationem a! Vel non alias id nemo soluta incidunt harum sed eligendi, illo molestias odio modi quo laborum illum?</p>
     </div>
-    <div class="m-auto text-center button_div ">
+    <div class="m-auto text-center button_div " id="getStarted">
       <a href="{{ route('designScreen') }}" class="btn my-btn">Get started</a>
     </div>
   </div>

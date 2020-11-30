@@ -514,13 +514,19 @@ footer a.btn.my-btn:hover {
         background: #77a6ba !important ;
        
     } */
+    #indexBtn2 a.btn.my-btn.text-uppercase {
+        background: #77a6ba !important;
+        color: #f1e9b8 !important ;
+            
+    }
+
     #indexBtn2 a.btn.my-btn.text-uppercase:hover {
         color: #77a6ba !important;
-        background: #c9dfe2 !important ;
+        background: #f1e9b8 !important ;
             
     }
     #indexBtn2 a.btn.my-btn.text-uppercase i{
-        color: #e8f5f7 !important ;
+        color: #f1e9b8 !important ;
 
     }
     #indexBtn2 a.btn.my-btn.text-uppercase:hover i {
@@ -582,4 +588,21 @@ footer ul li a:hover{
 }
 footer ul li a{
     font-weight: 600;
+}
+/* #learMore a.btn.my-btn:hover{
+    color: #f1e9b8 !important;
+        background: #77a6ba !important ;
+
+}  */
+#learnMore a.btn.my-btn:hover {
+    background: #77a6ba !important;
+    color: #f1e9b8 !important;
+}
+#getStarted a.btn.my-btn:hover{
+    background: #f1e9b8 !important;
+    color: #77a6ba !important;
+}
+#getStarted a.btn.my-btn{
+    color: #f1e9b8 !important;
+    /* color: #77a6ba !important; */
 }
