@@ -127,6 +127,7 @@
                     <div class="row">
                         
                         @foreach ($products as $product)
+                        
 
 
                             <div class="col-md-3 col-sm-6 col-10 m-auto d-block">
@@ -157,7 +158,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">{{ $product->name }}
+                                            <h5 class="modal-title" id="exampleModalLabel" data-id="{{$product->id}}">{{ $product->name }}
                                                 {{ $product->categories[0]->name }}
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -170,10 +171,10 @@
                                             <div class="row">
                                                 <div class="col-md-6 col-10 d-block m-auto image_product">
                                                     <div class="main_image_class">
-                                                        <div class="image_mainm_spacing text-center" >
+                                                        <div class="image_mainm_spacing text-center" id="id-picker" data-id="{{$product->id}}" >
                                                             {{-- <p></p> --}}
                                                             @if(count($product->variants)>0)
-                                                            <div id="imageProduct">
+                                                        <div id="imageProduct{{$product->id}}" > 
                                                             <img  src="{{ $product->variants[0]->images[0]->url }}"  alt="" class="img-fluid">
                                                             </div>
                                                             @endif
@@ -198,7 +199,7 @@
                                                                         @foreach($variant->colors as $color)
                                                                             <div class="main_colors">
                                                                                 <input type="radio" name="color"
-                                                                                    value="{{ $color->hexcode }}" data-id="{{$variant->id}}">
+                                                                                    value="{{ $color->hexcode }}" data-id="{{$variant->id}}" data-pid="{{$product->id}}">
                                                                                 <label
                                                                                     style="background-color:{{ $color->hexcode }};"></label>
                                                                             </div>
@@ -467,18 +468,21 @@
         $(this).attr('data-active', true)
         $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
         var id = $(this).parent('.main_colors').find('input[type="radio"]').data('id');
+        var pid = $(this).parent('.main_colors').find('input[type="radio"]').data('pid');;
+        console.log(pid);
         $.ajax({
                 url: 'getProductImage/'+id,
                 type: 'get',
                 success: function(response) {
+
                    
-                    $('#imageProduct').html(response);
+                    $('#imageProduct'+pid).html(response);
                     // console.log(response);
 
                 }
         });
 
-        console.log(id);
+        // console.log(id);
     })
   
   </script>
