@@ -81,7 +81,7 @@
                                            </div>
                                            <div class="product_tielt-print">
                                                <h5 class="text-capitalize">{{ $product[0]->name}}</h5>
-                                               <p>{{ Cookie::get('color') }}</p>
+                                               <p>{{ $variant->colors[0]->name }}</p>
                                            </div>
                                        </div>
                                        <div class="main_delete_this">
@@ -94,7 +94,7 @@
                                         <div class="main__footer_selcet">
                                             <div class="main_all_colors">
                                                 <div class="colors_parent_div">
-                                                    <div class="color_main" style="background-color:{{Cookie::get('color')}} ">
+                                                    <div class="color_main" style="background-color:{{ $variant->colors[0]->hexcode }} ">
                                                         
                                                     </div>
                                                 </div>
