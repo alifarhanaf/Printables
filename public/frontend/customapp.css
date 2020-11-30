@@ -414,3 +414,62 @@ height: 1.2rem;
 .sideBarSearch .pl-5, .px-5 {
     padding-left: 1.5rem!important;
 }
+
+header nav ul li a:hover {
+    color: #63757d !important;
+}
+/* .joinOurHouse {
+    display: none !important;
+} */
+/* .joinOurHouse input.form-control {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    padding: 12px 12px !important;
+    font-weight: 600 !important;
+    font-family: Latinotype Recoleta Semi Bold,Courier New,Courier,Georgia,Times,Times New Roman,serif!important;
+    width: 100% !important;
+    border: 2px solid #271827!important;
+    border-radius: 6px !important;
+    color: #271827!important;
+    height: 100% !important;
+    background-color: #fff !important;
+} */
+.joinOurHouse .form-control {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    padding: 12px 12px !important;
+    font-weight: 600 !important;
+    /* font-family: Latinotype Recoleta Semi Bold,Courier New,Courier,Georgia,Times,Times New Roman,serif!important; */
+    width: 100% !important;
+    border: 2px solid #84a0bf !important;
+    border-radius: 6px !important;
+    /* color: #84a0bf!important; */
+    height: 100% !important;
+    background-color: #fff !important;
+}
+.joinOurHouse label{
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #84a0bf;
+}
+.joinOurHouse .btn-dark {
+    color: #fff;
+    background-color: #77a6ba;
+    border-color: #77a6ba;
+    width: 100%;
+    height: 40px;
+}
+.joinOurHouse .btn-dark:hover {
+    color: #fff;
+    background-color: #5e8292;
+    border-color: #77a6ba;
+}
+.joinOurHouse .btn-dark:not(:disabled):not(.disabled):active, .show>.btn-dark.dropdown-toggle {
+    color: #fff;
+    background-color: #77a6ba;
+    border-color: #77a6ba;
+}
+

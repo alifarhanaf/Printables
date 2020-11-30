@@ -17,6 +17,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Campaigns');
     }
+    public function details()
+    {
+        return $this->hasOne('App\Models\UserDetails');
+    }
 
     /**
      * The attributes that are mass assignable.

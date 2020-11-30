@@ -114,7 +114,7 @@
                     <label class="form-label mg-t-10 pd-l-5"><b>Selected Color:</b></label>
                 <div class="row row-sm ">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <p> Will Do Later</p>
+                        <div id="selectedColorBG" ></div>
                         {{-- <div class="custom-file">
                         <input name="image{{$color->id}}" type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
@@ -229,6 +229,7 @@
       var name = $(this).parent('.main_colors').find('input[type="checkbox"]').data('id');
                     document.getElementById("file"+id).style.display ="block";
                     document.getElementById("name"+id).style.display ="block";
+                    $('#selectedColorBG').attr('style', 'background: blue !important');
                     console.log(id);
                     console.log(name);
   })

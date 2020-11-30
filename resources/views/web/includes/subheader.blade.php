@@ -24,8 +24,8 @@
                                 src="{{ asset('storage/images/SVGS/6.svg') }}" class="img-fluid">shop</a>
                     </li>
                     <li class="nav-item mx-2 text-capitalize">
-                        <a class="nav-link" href="#"><img src="{{ asset('storage/images/SVGS/4.svg') }}"
-                                class="img-fluid">join our house</a>
+                        <a class="nav-link" href="{{ route('JoinOurHouse') }}"><img src="{{ asset('storage/images/SVGS/4.svg') }}"
+                                class="img-fluid">join our house</a> 
                     </li>
                     <li class="nav-item mx-2 text-capitalize">
                         <a class="nav-link" href="{{ route('designScreen') }}"><img

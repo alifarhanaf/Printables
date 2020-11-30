@@ -157,5 +157,6 @@ Route::post('campaign/edit_address/{id}','CampaignController@editAddress')->name
  
 Route::get('/terms&conditions', 'MiscController@TandC')->name('Terms&Conditions');
 Route::get('/privacyPolicy', 'MiscController@privacyPolicy')->name('PrivacyPolicy');
-
+Route::get('/joinOurHouse', 'MiscController@joinOurHouse')->name('JoinOurHouse')->middleware('auth');
+Route::post('/submit_join_our_house','MiscController@submitJoinOurHouse')->name('submitJOH');
 Route::get('getProductImage/{id}','MiscController@getProductImage');

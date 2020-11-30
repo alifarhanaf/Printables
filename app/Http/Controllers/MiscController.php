@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\Events;
 use App\Models\Variants;
+use App\Models\UserDetails;
 use Illuminate\Http\Request;
 use App\Models\Organizations;
 use App\Models\PrimaryEvents;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class MiscController extends Controller
 {
@@ -88,6 +91,36 @@ class MiscController extends Controller
         return view('web.helpers.imageUpdate')->with($data)->render();
         // $url = public_path().$variant->images[0]->url;
         // return $url;
+    }
+
+    public function joinOurHouse(){
+        return view ('web.joinOurHouse');
+    }
+    public function submitJoinOurHouse(Request $request){
+        // dd($request);
+        $user =  Auth::user();
+        $userid = $user->id;
+        $userUpdate = User::find($userid);
+        $userUpdate->phone = $request->phone;
+        $userUpdate->save();
+        if($user->details()){
+            // dd($user->details->id);
+            $userDetail = UserDetails::find($user->details->id);
+        }else{
+            $userDetail = new UserDetails();
+        }
+        
+        $userDetail->user_id = $userid;
+        $userDetail->position = $request->position;
+        $userDetail->total_members = $request->members;
+        $userDetail->fraternity = $request->chapter;
+        $userDetail->graduation_year = $request->graduation_year;
+        $userDetail->university = $request->school;
+        $userDetail->ready_submit_design = $request->are_you_ready;
+        $userDetail->save();
+        return redirect()->back();
+        // $user = User::where('')
+
     }
     
 
