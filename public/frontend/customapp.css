@@ -330,11 +330,11 @@
 
   }
   img#designID:hover {
-    transform: scale(1.3,1.3);
+    transform: scale(1.2,1.2);
 }
 img#designID
 {
-    transition: 1s ease;
+    transition: 0.5s ease;
 }
 .chlidren_spacing button
 {
@@ -561,18 +561,18 @@ a.signoutText:hover {
 
 
 img#recentID:hover {
-    transform: scale(1.3,1.3);
+    transform: scale(1.2,1.2);
 }
 img#recentID
 {
-    transition: 1s ease;
+    transition: 0.5s ease;
 }
 img#productImg{
    
-    transition: 1s ease;
+    transition: 0.5s ease;
 }
 img#productImg:hover{
-transform: scale(1.3,1.3);
+transform: scale(1.2,1.2);
 }
 .header_beneath .my_main_product_text .roduct_imgage {
     overflow: hidden;
