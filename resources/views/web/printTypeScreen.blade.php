@@ -223,7 +223,7 @@
                                 <p>Bag n Tag costs an additional $1 per shirt.</p>
                             </div>
                         </div>
-                        <div class="next__btn spacing_bottom">
+                        <div class="next__btn spacing_bottom" id="printTypeNext">
                         
                                 {{-- <input type="hidden" id="designID" name="designID" value=""> --}}
                                 <button type="submit" style="border:none;">

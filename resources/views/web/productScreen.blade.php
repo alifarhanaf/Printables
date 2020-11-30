@@ -258,12 +258,12 @@
                                                                     </div>
                                                                     <div class="my__buttons">
                                                                         <div class="row">
-                                                                            <div class="col-6 text-center button_div">
+                                                                            <div class="col-6 text-center button_div" id="productClose">
                                                                                 <button
                                                                                     class="btn w-100 my-btn close___button"
                                                                                     data-dismiss="modal">Close</button>
                                                                             </div>
-                                                                            <div class="col-6 text-center">
+                                                                            <div class="col-6 text-center" id="productSubmit">
                                                                                 <input type="hidden" id="variantID"
                                                                                     name="variantID"
                                                                                     value="">

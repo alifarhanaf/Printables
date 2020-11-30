@@ -54,7 +54,7 @@
             <div class="main_section_para_collection">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quaerat ratione facere, ea nisi sequi? Omnis excepturi necessitatibus iusto ad?</p>
             </div>
-            <div class="button_model_collection">
+            <div class="button_model_collection" id="customizeonProduct">
                 <form action="{{ route('setCookie') }}" method="POST" >
                     <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
                     {{ csrf_field() }}

@@ -606,3 +606,39 @@ footer ul li a{
     color: #f1e9b8 !important;
     /* color: #77a6ba !important; */
 }
+#customizeonProduct a.btn.my-btn{
+    color: #f1e9b8 !important;
+    /* color: #77a6ba !important; */
+}
+#customizeonProduct a.btn.my-btn:hover {
+    background: #f1e9b8 !important;
+    color: #77a6ba !important;
+}
+#productSubmit a.btn.my-btn:hover {
+    background: #77a6ba !important;
+    color: #f1e9b8 !important;
+}
+#productClose .btn.w-100.my-btn.close___button{
+    color: #f1e9b8;
+}
+#productClose .btn.w-100.my-btn.close___button:hover {
+    background: #f1e9b8 !important;
+    color: #77a6ba !important;
+}
+#designDetailNext a.btn.my-btn{
+  
+    color: #f1e9b8 !important;
+}
+#designDetailNext a.btn.my-btn:hover{
+    background: #f1e9b8 !important;
+    color: #77a6ba !important;
+}
+#printTypeNext a.btn.my-btn{
+    color: #f1e9b8 !important;
+}
+#printTypeNext a.btn.my-btn:hover{
+    background: #f1e9b8 !important;
+    color: #77a6ba !important;
+}
+
+

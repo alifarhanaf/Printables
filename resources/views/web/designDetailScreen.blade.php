@@ -176,7 +176,7 @@
                                         class="image_checker" />
                                 </div>
                             </div>
-                            <div class="next__btn">
+                            <div class="next__btn" id="designDetailNext">
                                 <button type="submit">
                                     <a type="submit" class="btn my-btn">Next</a>
                                 </button>
