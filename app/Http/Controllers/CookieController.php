@@ -19,10 +19,11 @@ use App\Http\Requests\DesignDetailCookieRequest;
 class CookieController extends Controller
 {
     public function setProductCookie(ProductCookieRequest $request){
-        
+        // dd($request);
         DB::beginTransaction();
         try {
         Cookie::queue('productID', $request->productID, 60);
+        Cookie::queue('variantID', $request->variantID, 60);
         Cookie::queue('color', $request->color, 60);
         DB::commit();
         return redirect()->route('designDetailScreen');

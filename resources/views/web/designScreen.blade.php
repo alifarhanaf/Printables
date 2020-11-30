@@ -25,7 +25,7 @@
                 {{-- Start --}}
                 <div id="left-nav" class="sideBarSearch">
                     <div class="sticky-top">
-                        <div class="px-4 py-4">
+                        <div class="">
                             <div>
                                 <div>
                                     <div data-v-26752785="" class="form-group has-search mt-3 pt-5">
@@ -87,8 +87,8 @@
                                 </div>
                                  <div data-v-e6af0ca4="" id="primary-event-collapse" role="tabpanel" aria-labelledby="primary-event-heading" class="collapse " 
                                  >
-                                 <div style="height: 150px; overflow-y:auto; border: 3px solid rgba(0,0,0,.03);
-                                 border-top: none;background: #f1f1f1;">
+                                 <div style="height: 150px; overflow-y:auto; 
+                                 border-top: none;">
                                      <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
                                          @foreach($primaryEvents as $pevents)
                                          {{-- <form method="get" action="{{ route('designScreen') }}">          
@@ -110,8 +110,8 @@
                                         <a data-v-e6af0ca4="" class="card-title text-sm">Event</a>
                                     </div>
                                         <div data-v-e6af0ca4="" id="event-collapse" role="tabpanel" aria-labelledby="event-heading" class="collapse" style="">
-                                            <div style="height: 150px; overflow-y:auto;border: 3px solid rgba(0,0,0,.03);
-                                            border-top: none;background: #f1f1f1;">
+                                            <div style="height: 150px; overflow-y:auto;
+                                            border-top: none;">
                                         <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
                                             @foreach($events as $event)
                                             <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
@@ -127,8 +127,8 @@
                                                 <a data-v-e6af0ca4="" class="card-title text-sm">Organization</a>
                                             </div>
                                                 <div data-v-e6af0ca4="" id="organization-collapse" role="tabpanel" aria-labelledby="organization-heading" class="collapse show" style="">
-                                                <div style="height: 150px; overflow-y:auto; border: 3px solid rgba(0,0,0,.03);
-                                                border-top: none;background: #f1f1f1;">
+                                                <div style="height: 150px; overflow-y:auto; 
+                                                border-top: none;">
                                                     <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
                                                         @foreach ($organizations as $og)
                                                             
@@ -166,7 +166,7 @@
                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">RECENT</a>
                 </li>
                 </ul> --}}
-            <div class="tab-content mt-3 pt-5" id="pills-tabContent"  >
+            <div class="tab-content  pt-4" id="pills-tabContent"  >
                 <div class="tab-pane fade show active" id="pills-home"  role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="my_all_content">
                         <div class="my_flex_main">
@@ -210,7 +210,7 @@
                                     <button type="button" id="modalBtnRecent{{$recent->id}}" data-toggle="modal" data-id="{{$recent->id}}"  data-target="#exampleModalRecent{{$recent->id}}">
                                         <div class="popup_header">
                                             <div class="img_parent">
-                                                <img src="{{ asset($recent->images[0]->url)}}" alt="design" class="img-fluid">
+                                                <img src="{{ asset($recent->images[0]->url)}}" id="recentID" data-id="{{$recent->id}}" alt="design" class="img-fluid">
                                             </div>
                                         </div>
                                     </button>
@@ -259,7 +259,7 @@ $(document).ready(function(){
     $(".nav-item").on("click", function(e) {
     $(".nav-item").removeClass("active");
     $(this).addClass("active");
-    e.preventDefault();
+    // e.preventDefault();
     });
 
 
@@ -270,6 +270,8 @@ $(document).ready(function(){
             type: 'get',
             success: function(response){
                 for (var i = 0, l = response.designs.length; i < l; i++) {
+                    // $(document).on('click','#modalBtn'+response.designs[i].id , function(){
+                     
                     $('#modalBtn'+response.designs[i].id).click(function(e){
                         // var id = $('#designID').data('id');
                         var id  = $(this).data('id');
@@ -362,6 +364,80 @@ $(document).ready(function(){
                 success: function(response){
                     // console.log(response);
                     $('#render').html(response);
+                    $.ajax({
+            url: 'allDesigns/',
+            type: 'get',
+            success: function(response){
+                for (var i = 0, l = response.designs.length; i < l; i++) {
+                    // $(document).on('click','#modalBtn'+response.designs[i].id , function(){
+                     
+                    $('#modalBtn'+response.designs[i].id).click(function(e){
+                        // var id = $('#designID').data('id');
+                        var id  = $(this).data('id');
+                    $.ajax({
+                            url: 'smallBigImages/'+id,
+                            type: 'get',
+                            success: function(data){
+                                for(var j=0 , k =response.designs.length; j < k; j++ ){
+                                $('#modalContent'+response.designs[j].id).html(data);
+                                }
+                                $('.slick_big_inni').slick({
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false,
+                                fade: false,
+                                asNavFor: '.slickInni'
+                                });
+                                $('.slickInni').slick({
+                                slidesToShow: 4,
+                                slidesToScroll: 1,
+                                asNavFor: '.slick_big_inni',
+                                dots: false,
+                                focusOnSelect: true,
+                                vertical: true,
+                                verticalSwiping: true,
+                                infinite:false,
+                                arrows: false
+                                });            
+                            }
+                        });
+                    });
+                    //Start
+                    $('#modalBtnRecent'+response.designs[i].id).click(function(e){
+                        // var id = $('#designID').data('id');
+                        var id  = $(this).data('id');
+                    $.ajax({
+                            url: 'smallBigImages/'+id,
+                            type: 'get',
+                            success: function(data){
+                                for(var j=0 , k =response.designs.length; j < k; j++ ){
+                                $('#modalContentRecent'+response.designs[j].id).html(data);
+                                }
+                                $('.slick_big_inni').slick({
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false,
+                                fade: false,
+                                asNavFor: '.slickInni'
+                                });
+                                $('.slickInni').slick({
+                                slidesToShow: 4,
+                                slidesToScroll: 1,
+                                asNavFor: '.slick_big_inni',
+                                dots: false,
+                                focusOnSelect: true,
+                                vertical: true,
+                                verticalSwiping: true,
+                                infinite:false,
+                                arrows: false
+                                });            
+                            }
+                        });
+                    });
+                    //End
+                }
+            }
+        });
                 }
                 });
                 // console.log(array);

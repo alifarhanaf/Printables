@@ -136,8 +136,9 @@
                                     <div class="product_underimg">
                                         <div class="roduct_imgage text-center">
                                             @if(count($product->variants)>0)
-                                                            <img src="{{ $product->variants[0]->images[0]->url }}" alt="" class="img-fluid">
-                                                           
+                                                            
+                                                            <img src="{{ $product->variants[0]->images[0]->url }}" id="productImg"   alt="" class="img-fluid">
+                                                          
                                                             @endif
                                             {{-- <img src="{{ asset($product->images[0]->url) }}" alt="" class="img-fluid"> --}}
                                         </div>
@@ -195,6 +196,7 @@
                                                                     <div class="All_Colors" style="padding-right: 20%;">
                                                                         @if(count($product->variants)>0)
                                                                         @foreach ($product->variants as $variant)
+                                                                        
                                                                         {{-- <div id="" data-id=""> --}}
                                                                         @foreach($variant->colors as $color)
                                                                             <div class="main_colors">
@@ -211,6 +213,7 @@
 
 
                                                                     </div>
+                                                                    
                                                                     <div class="size_brand">
                                                                         <h6>Size:</h6>
                                                                         <ul class="size_all">
@@ -261,10 +264,15 @@
                                                                                     data-dismiss="modal">Close</button>
                                                                             </div>
                                                                             <div class="col-6 text-center">
+                                                                                <input type="hidden" id="variantID"
+                                                                                    name="variantID"
+                                                                                    value="">
 
                                                                                 <input type="hidden" id="productID"
                                                                                     name="productID"
                                                                                     value="{{ $product->id }}">
+
+                                                                                
                                                                                 <button type="submit"
                                                                                     style="border-radius: 0.5rem;">
                                                                                     <a
@@ -470,6 +478,8 @@
         var id = $(this).parent('.main_colors').find('input[type="radio"]').data('id');
         var pid = $(this).parent('.main_colors').find('input[type="radio"]').data('pid');;
         console.log(pid);
+        
+        $('input[name="variantID"]').val(id);
         $.ajax({
                 url: 'getProductImage/'+id,
                 type: 'get',

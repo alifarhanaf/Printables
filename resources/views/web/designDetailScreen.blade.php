@@ -65,7 +65,7 @@
                 <div class="col-md-6 col-10 mx-auto d-block">
                     <div class="main_image_selected">
                         <div class="image_spacing_main">
-                            <img src="{{ asset($product[0]->images[0]->url) }}" alt="" class="img-fluid">
+                            <img src="{{ asset($variant->images[0]->url) }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>

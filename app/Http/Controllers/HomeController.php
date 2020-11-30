@@ -6,6 +6,7 @@ use App\Models\Colors;
 use App\Models\Events;
 use App\Models\Designs;
 use App\Models\Products;
+use App\Models\Variants;
 use App\Models\OrderTenures;
 use Illuminate\Http\Request;
 use App\Models\Organizations;
@@ -92,16 +93,24 @@ class HomeController extends Controller
     }
     public function designDetailScreen(Request $request)
     {
+        // dd($request);
         $printLocations = PrintLocations::all();
         $designID = $request->cookie('designID');
         $design = Designs::where('id',$designID)->get();
         $productID = $request->cookie('productID');
+        $variantID = $request->cookie('variantID');
+        // dd($variantID);
+
+        // dd($productID);
+        $variant = Variants::where('id',$variantID)->first();
+        // dd($variant);
         $product = Products::where('id',$productID)->get();
         // dd($product[0]->print_locations);
         $data = array(
             "design" =>$design,
-            "product" =>$product,
-            "printLocations" => $printLocations
+            "variant" =>$variant,
+            "printLocations" => $printLocations,
+            "product" => $product
         );
         return view('web.designDetailScreen')->with($data);
     }
