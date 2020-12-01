@@ -286,51 +286,87 @@
     </div>
     <div class="all_collections">
       <div class="row wow animate__animated animate__rotateInDownLeft" data-wow-delay="0.5s">
-        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one_collection ">
+        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one-collection " style="    margin-bottom: 30px !important;">
         
-          <div class="collection_custom_parent">
+          {{-- <div class="collection_custom_parent">
             <a href="">
             
             <div class="text_main_ovrelay">
               <h2>TEES</h2>
             </div>
           </a>
+          </div> --}}
+          <div class="collection_custom_parent" style="height: 300px">
+          <div class="hovereffect ">
+            <img  src="{{ asset('storage/images/b.png')}}" alt="" class="img-fluid">
+            <div class="overlay"  >
+              <h2 style="margin-top:15% !important">TEES</h2>
+      
+          </div>
+        </div>
           </div>
          
         </div>
-        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block two_collection ">
-          <div class="collection_custom_parent">
+        <div class="col-lg-4 col-sm-6 col-12 m-auto " style="    margin-bottom: 30px !important;">
+          <div class="collection_custom_parent" style="height: 300px">
+            <div class="hovereffect ">
+              <img  src="{{ asset('storage/images/A.png')}}" alt="" class="img-fluid">
+              <div class="overlay"  >
+                <h2 style="margin-top:30% !important">TEES</h2>
+        
+            </div>
+          </div>
+            </div>
+          {{-- <div class="collection_custom_parent">
             <a href="">
             
             <div class="text_main_ovrelay">
               <h2>TEES</h2>
             </div>
           </a>
-          </div>
+          </div> --}}
         </div>
       </div>
       <div class="row  wow animate__animated animate__rotateInUpRight" data-wow-delay="0.5s">
         
-        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block two_collection ">
-          <div class="collection_custom_parent">
-            <a href="">
-            
-            <div class="text_main_ovrelay">
-              <h2>TEES</h2>
-            </div>
-          </a>
-          </div>
-        </div>
-        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one_collection ">
+        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block  " style="    margin-bottom: 30px !important;">
+          <div class="collection_custom_parent" style="height: 300px">
+            <div class="hovereffect ">
+              <img  src="{{ asset('storage/images/A.png')}}" alt="" class="img-fluid">
+              <div class="overlay"  >
+                <h2 style="margin-top:30% !important">TEES</h2>
         
-          <div class="collection_custom_parent">
+            </div>
+          </div>
+            </div>
+          {{-- <div class="collection_custom_parent">
             <a href="">
             
             <div class="text_main_ovrelay">
               <h2>TEES</h2>
             </div>
           </a>
+          </div> --}}
+        </div>
+        <div class="col-lg-8 col-sm-6 col-12    " style="margin-bottom: 30px">
+          <div class="collection_custom_parent" style="height: 300px">
+            <div class="hovereffect ">
+              <img  src="{{ asset('storage/images/b.png')}}" alt="" class="img-fluid">
+                  <div class="overlay"  >
+                      <h2 style="margin-top:15% !important">TEES</h2>
+              
+                  </div>
           </div>
+            </div>
+        
+          {{-- <div class="collection_custom_parent">
+            <a href="">
+            
+            <div class="text_main_ovrelay">
+              <h2>TEES</h2>
+            </div>
+          </a>
+          </div> --}}
          
         </div>
       </div>

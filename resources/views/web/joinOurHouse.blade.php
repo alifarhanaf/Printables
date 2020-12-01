@@ -11,8 +11,8 @@
         @csrf
                         <div >
                             <div class="row"> 
-                            <h5 class="mx-auto px-auto" style="font-size:2rem;font-weight:700;text-transform:uppercase;color: #84a0bf;">Join The Conversation.
-                                Get Rewards!</h5>
+                            <h1 class="mx-auto px-auto" style="font-size:2rem;font-weight:700;text-transform:uppercase;color: #84a0bf;">Join The Conversation.
+                                Get Rewards!</h1>
                             </div>
             <div class="row"> 
                 <div class="col-md-2 col-lg-2"></div>

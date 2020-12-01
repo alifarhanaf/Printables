@@ -1,3 +1,52 @@
+#indexBtn1 a.btn.my-btn.text-uppercase {
+    transition: 1s;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    text-transform: uppercase;
+}
+#indexBtn1 a.btn.my-btn.text-uppercase:hover {
+    color: #f1e9b8 !important;
+    background: #77a6ba !important ;
+    
+        
+}
+#indexBtn1 a.btn.my-btn.text-uppercase i{
+    color: #77a6ba !important ;
+    transition: 1s;
+
+}
+#indexBtn1 a.btn.my-btn.text-uppercase:hover i {
+    color: #f1e9b8 !important;
+}
+
+#indexBtn2 a.btn.my-btn.text-uppercase {
+    background: #77a6ba !important;
+    color: #f1e9b8 !important ;
+    transition: 1s;
+    padding-left: 2.5rem !important;
+padding-right: 2.5rem !important ;
+padding-top: 1rem;
+padding-bottom: 1rem;
+text-transform: uppercase;
+        
+}
+
+#indexBtn2 a.btn.my-btn.text-uppercase:hover {
+    color: #77a6ba !important;
+    background: #f1e9b8 !important ;
+        
+}
+#indexBtn2 a.btn.my-btn.text-uppercase i{
+    color: #f1e9b8 !important ;
+    transition: 1s;
+
+}
+#indexBtn2 a.btn.my-btn.text-uppercase:hover i {
+    color: #77a6ba !important;
+}
+
 
 #sidebar li.list-group-item {
     border: none !important;
@@ -494,48 +543,21 @@ footer a.btn.my-btn:hover {
     border: 1px solid #f1e9b8;
     };
   
-    #indexBtn1 a.btn.my-btn.text-uppercase {
+     /* a.btn.my-btn.text-uppercase {
         transition: 1s;
-    }
-    #indexBtn1 a.btn.my-btn.text-uppercase:hover {
-        color: #f1e9b8 !important;
-        background: #77a6ba !important ;
-        
-            
-    }
-    #indexBtn1 a.btn.my-btn.text-uppercase i{
-        color: #77a6ba !important ;
-        transition: 1s;
-
-    }
-    #indexBtn1 a.btn.my-btn.text-uppercase:hover i {
-        color: #f1e9b8 !important;
-    }
+        padding-left: 2.5rem !important;
+        padding-right: 2.5rem !important ;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        text-transform: uppercase;
+    } */
+    
+    
     /* #indexBtn2 a.btn.my-btn.text-uppercase:hover {
         color: #f1e9b8 !important;
         background: #77a6ba !important ;
        
     } */
-    #indexBtn2 a.btn.my-btn.text-uppercase {
-        background: #77a6ba !important;
-        color: #f1e9b8 !important ;
-        transition: 1s;
-            
-    }
-
-    #indexBtn2 a.btn.my-btn.text-uppercase:hover {
-        color: #77a6ba !important;
-        background: #f1e9b8 !important ;
-            
-    }
-    #indexBtn2 a.btn.my-btn.text-uppercase i{
-        color: #f1e9b8 !important ;
-        transition: 1s;
-
-    }
-    #indexBtn2 a.btn.my-btn.text-uppercase:hover i {
-        color: #77a6ba !important;
-    }
     
     /* a.btn.my-btn.text-uppercase i:hover{
         color: #f1e9b8 !important ;
@@ -614,6 +636,12 @@ footer ul li a{
 }  */
 #learnMore a.btn.my-btn {
     transition: 1s;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important ;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    margin-top: 20px;
 }
 #learnMore a.btn.my-btn:hover {
     background: #77a6ba !important;
@@ -626,6 +654,12 @@ footer ul li a{
 #getStarted a.btn.my-btn{
     color: #f1e9b8 !important;
     transition: 1s;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    text-transform: uppercase;
+
     /* color: #77a6ba !important; */
 }
 #customizeonProduct a.btn.my-btn{
