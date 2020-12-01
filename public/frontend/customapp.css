@@ -427,9 +427,7 @@ height: 1.2rem;
     
 }
 
-header nav ul li a:hover {
-    color: #63757d !important;
-}
+
 /* .joinOurHouse {
     display: none !important;
 } */
@@ -639,6 +637,34 @@ footer ul li a{
 #printTypeNext a.btn.my-btn:hover{
     background: #f1e9b8 !important;
     color: #77a6ba !important;
+}
+
+header nav ul li a i {
+    color: #84a0ac !important;
+    font-size: 1.4rem !important;
+    
+}
+/* header nav ul li a  {
+   
+    box-sizing: border-box;
+    border: 1px solid white;
+    
+} */
+
+header nav ul li a:hover {
+    color: #f1e9b8 !important;
+    /* background-color: #84a0ac;
+    
+    
+    border: 1px solid #f1e9b8;
+    border-radius: 0.5rem; */
+   
+    
+}
+header nav ul li a:hover i {
+    color: #f1e9b8 !important;
+ 
+    
 }
 
 

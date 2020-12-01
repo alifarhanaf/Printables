@@ -20,25 +20,38 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 mx-auto">
                     <li class="nav-item active mx-3 ">
-                        <a class="nav-link" href="{{ route('designScreen') }}"><img
-                                src="{{ asset('storage/images/SVGS/6.svg') }}" class="img-fluid">shop</a>
+                        <a class="nav-link" href="{{ route('designScreen') }}">
+                            {{-- <img src="{{ asset('storage/images/SVGS/6.svg') }}" class="img-fluid"> --}}
+                            <i class="fa fa-shopping-bag"></i>
+                            shop</a>
                     </li>
                     <li class="nav-item mx-2 text-capitalize">
-                        <a class="nav-link" href="{{ route('JoinOurHouse') }}"><img src="{{ asset('storage/images/SVGS/4.svg') }}"
-                                class="img-fluid">join our house</a> 
+                        <a class="nav-link" href="{{ route('JoinOurHouse') }}">
+                            {{-- <img src="{{ asset('storage/images/SVGS/4.svg') }}"
+                                class="img-fluid"> --}}
+                                <i class="fa fa-home"></i>
+                                join our house</a> 
                     </li>
                     <li class="nav-item mx-2 text-capitalize">
-                        <a class="nav-link" href="{{ route('designScreen') }}"><img
-                                src="{{ asset('storage/images/SVGS/2.svg') }}" class="img-fluid">Designs</a>
+                        <a class="nav-link" href="{{ route('designScreen') }}">
+                            {{-- <img
+                                src="{{ asset('storage/images/SVGS/2.svg') }}" class="img-fluid"> --}}
+                                <i class="fa fa-star"> </i>
+                                 Designs</a>
                     </li>
                     <li class="nav-item mx-2 text-capitalize">
-                        <a class="nav-link" href="{{ route('aboutUsScreen') }}"><img
-                                src="{{ asset('storage/images/SVGS/1.svg') }}" class="img-fluid"></i>about</a>
+                        <a class="nav-link" href="{{ route('aboutUsScreen') }}">
+                            {{-- <img
+                                src="{{ asset('storage/images/SVGS/1.svg') }}" class="img-fluid"> --}}
+                            <i class="fa fa-info "> </i>     About</a>
                     </li>
                     @if (Illuminate\Support\Facades\Auth::check())
                         <li class="nav-item mx-2 text-capitalize">
-                            <a class="nav-link" href="{{ route('allCampaigns') }}"><img
-                                    src="{{ asset('storage/images/SVGS/1.svg') }}" class="img-fluid"></i>Campaigns</a>
+                            <a class="nav-link" href="{{ route('allCampaigns') }}">
+                                {{-- <img
+                                    src="{{ asset('storage/images/SVGS/1.svg') }}" class="img-fluid"> --}}
+                                <i class="fa fa-list-alt"></i>
+                                Campaigns</a>
                         </li>
                     @endif
                 </ul>
