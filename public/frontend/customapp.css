@@ -5,7 +5,11 @@
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
     text-transform: uppercase;
+    
 }
+/* .second__second_index .main__buttons .second_btn_section a.btn{
+    
+} */
 #indexBtn1 a.btn.my-btn.text-uppercase:hover {
     color: #f1e9b8 !important;
     background: #77a6ba !important ;
@@ -833,4 +837,14 @@ h1 {
 
   .all_designs_main .child_image {
     width: 25% !important;
+}
+
+.chose_underText .heading_under h2.themeColor {
+    margin-bottom: 20px;
+}
+.chose_underText .heading_under h2{
+    margin-bottom: 20px !important;
+}
+.all_designs_main .container .main_heading h1{
+    margin-bottom: 20px !important;
 }

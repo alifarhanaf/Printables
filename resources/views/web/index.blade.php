@@ -395,7 +395,7 @@
       <h1 class="text-center">designs gallery</h1>
     </div>
     <div class="paragraph_under">
-      <p class="text-center">All design can be customized for your organization</p>
+      {{-- <p class="text-center">All design can be customized for your organization</p> --}}
     </div>
     <div class="main_designs">
       <div class="main_all_desings">
