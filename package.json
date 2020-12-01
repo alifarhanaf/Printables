@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
+        "jquery-appear-original": "^0.6.2",
         "node-sass": "^4.14.1"
     }
 }

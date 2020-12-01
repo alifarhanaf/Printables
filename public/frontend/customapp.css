@@ -484,24 +484,28 @@ height: 1.2rem;
     background-color: #77a6ba;
     border-color: #77a6ba;
 }
+/* footer a.btn.my-btn {
+    transition: 1s;
+    }; */
 
 footer a.btn.my-btn:hover {
     color: #f1e9b8 !important;
     background: #77a6ba ;
     border: 1px solid #f1e9b8;
     };
-    #indexBtn1 a.btn.my-btn.text-uppercase:hover {
-        color: #f1e9b8 !important;
-        background: #77a6ba !important ;
-        /* border: 1px solid #f1e9b8 !important; */
+  
+    #indexBtn1 a.btn.my-btn.text-uppercase {
+        transition: 1s;
     }
     #indexBtn1 a.btn.my-btn.text-uppercase:hover {
         color: #f1e9b8 !important;
         background: #77a6ba !important ;
+        
             
     }
     #indexBtn1 a.btn.my-btn.text-uppercase i{
         color: #77a6ba !important ;
+        transition: 1s;
 
     }
     #indexBtn1 a.btn.my-btn.text-uppercase:hover i {
@@ -515,6 +519,7 @@ footer a.btn.my-btn:hover {
     #indexBtn2 a.btn.my-btn.text-uppercase {
         background: #77a6ba !important;
         color: #f1e9b8 !important ;
+        transition: 1s;
             
     }
 
@@ -525,6 +530,7 @@ footer a.btn.my-btn:hover {
     }
     #indexBtn2 a.btn.my-btn.text-uppercase i{
         color: #f1e9b8 !important ;
+        transition: 1s;
 
     }
     #indexBtn2 a.btn.my-btn.text-uppercase:hover i {
@@ -538,6 +544,11 @@ footer a.btn.my-btn:hover {
     /* .second__second_index .main__buttons .first_btn_section a.btn:hover {
         
     } */
+    header .buttons_main a.btn.my-btn {
+      
+        transition: 1s;
+    }
+    
     header .buttons_main a.btn.my-btn:hover {
         color: #f1e9b8 !important;
         background: #77a6ba !important;
@@ -555,13 +566,22 @@ a.signoutText {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    transition: 1s;
 }
+a.signoutText i {
+    color:#84a0ac;
+    transition: 1s;
+}
+a.signoutText:hover i {
+    color:#5E7179;
+}
+
 a.signoutText:hover {
-    color: #63757d !important;
+    color: #5E7179 !important;
 }
-.header_beneath .row.under_nav .my_link a:hover {
+/* .header_beneath .row.under_nav .my_link a:hover {
     color: #63757d !important;
-}
+} */
 
 
 img#recentID:hover {
@@ -592,6 +612,9 @@ footer ul li a{
         background: #77a6ba !important ;
 
 }  */
+#learnMore a.btn.my-btn {
+    transition: 1s;
+}
 #learnMore a.btn.my-btn:hover {
     background: #77a6ba !important;
     color: #f1e9b8 !important;
@@ -602,10 +625,12 @@ footer ul li a{
 }
 #getStarted a.btn.my-btn{
     color: #f1e9b8 !important;
+    transition: 1s;
     /* color: #77a6ba !important; */
 }
 #customizeonProduct a.btn.my-btn{
     color: #f1e9b8 !important;
+    transition: 1s;
     /* color: #77a6ba !important; */
 }
 #customizeonProduct a.btn.my-btn:hover {
@@ -616,8 +641,12 @@ footer ul li a{
     background: #77a6ba !important;
     color: #f1e9b8 !important;
 }
+#productSubmit a.btn.my-btn {
+    transition: 1s;
+}
 #productClose .btn.w-100.my-btn.close___button{
     color: #f1e9b8;
+    transition: 1s;
 }
 #productClose .btn.w-100.my-btn.close___button:hover {
     background: #f1e9b8 !important;
@@ -626,6 +655,7 @@ footer ul li a{
 #designDetailNext a.btn.my-btn{
   
     color: #f1e9b8 !important;
+    transition: 1s;
 }
 #designDetailNext a.btn.my-btn:hover{
     background: #f1e9b8 !important;
@@ -633,6 +663,7 @@ footer ul li a{
 }
 #printTypeNext a.btn.my-btn{
     color: #f1e9b8 !important;
+    transition: 1s;
 }
 #printTypeNext a.btn.my-btn:hover{
     background: #f1e9b8 !important;
@@ -642,17 +673,17 @@ footer ul li a{
 header nav ul li a i {
     color: #84a0ac !important;
     font-size: 1.4rem !important;
+    transition: 0.5s;
     
 }
-/* header nav ul li a  {
+header nav ul li a  {
    
-    box-sizing: border-box;
-    border: 1px solid white;
+    transition: 0.5s;
     
-} */
+}
 
 header nav ul li a:hover {
-    color: #f1e9b8 !important;
+    color: #5E7179 !important;
     /* background-color: #84a0ac;
     
     
@@ -662,9 +693,11 @@ header nav ul li a:hover {
     
 }
 header nav ul li a:hover i {
-    color: #f1e9b8 !important;
+    color: #5E7179 !important;
  
     
 }
-
+.index__section_three .main__slide_section .slide__all_parent:hover {
+    transition: 1s;
+}
 

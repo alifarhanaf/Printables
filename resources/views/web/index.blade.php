@@ -8,13 +8,13 @@
         <div class="col-lg-6 col-12 d-block m-auto">
           <div class="main_text">
             <div class="main_heading">
-              <h1>the most advanced greek apparel company, evey.</h1>
+              <h1 class="wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">the most advanced greek apparel company, evey.</h1>
             </div>
-            <div class="main_paragraph">
+            <div class="main_paragraph wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">
               <p>Get a free, professional design your chapter will <br/> love back within 24 hours</p>
             </div>
-            <div class="main__buttons">
-              <div class="first_btn_section" id="indexBtn2">
+            <div class="main__buttons wow animate__animated animate__flipInX" data-wow-delay="0.2s">
+              <div class="first_btn_section "  id="indexBtn2">
                 <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
                   <i class="fa fa-shopping-bag fa-sm" style="color: black"></i>&nbsp Shop design</a>
                 <p class="para_btn">Start with one of ours.Everything<br/> 
@@ -23,7 +23,7 @@
               <div class="text_rough">
                 <span>OR</span>
               </div>
-              <div class="second_btn_section" id="indexBtn1">
+              <div class="second_btn_section " id="indexBtn1">
                 <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
                   <i class="fa fa-pencil" style="color: black"></i> &nbsp Shop design</a>
                 <p class="para_btn">Have our desingers bring<br/>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-12 d-block m-auto">
+        <div class="col-lg-6 col-12 d-block m-auto wow animate__animated animate__bounceInRight" data-wow-delay="0.2s">
           <div class="main_second_section_image">
             <img src="{{ asset('storage/images/home/1.png')}}" alt="" class="img-fluid">
           </div>
@@ -41,14 +41,14 @@
     </div>
   </section>
 
-<section class="index__section_three">
+<section class="index__section_three" id="flipperParent">
 <div class="container">
   <div class="main_heading text-center">
     <h1>How it works?</h1>
   </div>
   <div class="main_under_section_three">
-    <div class="row custom_slide_parent">
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+    <div class="row custom_slide_parent ">
+      <div id="flipper" class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2 wow animate__animated animate__flipInY"  data-wow-delay="0.5s">
 
 
         <div class="main__slide_section">
@@ -75,7 +75,7 @@
 
 
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2 wow animate__animated animate__flipInY" data-wow-delay="0.5s">
 
 
         <div class="main__slide_section">
@@ -102,7 +102,7 @@
 
 
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2 wow animate__animated animate__flipInY" data-wow-delay="0.5s">
 
         <div class="main__slide_section">
           <div class="slide__all_parent">
@@ -128,7 +128,7 @@
 
 
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2 wow animate__animated animate__flipInY" data-wow-delay="0.5s">
 
 
         <div class="main__slide_section">
@@ -155,7 +155,7 @@
 
 
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2 wow animate__animated animate__flipInY" data-wow-delay="0.5s">
 
 
         <div class="main__slide_section">
@@ -182,7 +182,7 @@
 
 
       </div>
-      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2">
+      <div class="col-lg-2 col-md-4 col-6 d-block slide_child my-lg-0 my-2 wow animate__animated animate__flipInY" data-wow-delay="0.5s">
 
 
         <div class="main__slide_section">
@@ -223,7 +223,7 @@
       </div>
       <div class="main_text_whyChose">
         <div class="row why_chose">
-          <div class="col-lg-6 col-12 d-block m-auto">
+          <div class="col-lg-6 col-12 d-block m-auto wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s">
             <div class="chose_underText">
               <div class="heading_under">
                 <h2>The Platform</h2>
@@ -243,7 +243,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-12 d-block m-auto m_5rem">
+          <div class="col-lg-6 col-12 d-block m-auto m_5rem wow animate__animated animate__fadeInRight" data-wow-delay="0.5s">
             <div class="whychose_img">
               <img src="{{ asset('storage/images/home/3.png')}}" alt="" class="img-fluid">
             </div>
@@ -252,12 +252,12 @@
 
         <div class="row why_chose_second">
           
-          <div class="col-lg-6 col-12 d-block m-auto myImage_second">
+          <div class="col-lg-6 col-12 d-block m-auto myImage_second wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
             <div class="whychose_img">
               <img src="{{ asset('storage/images/home/4.png')}}" alt="" class="img-fluid">
             </div>
           </div>
-          <div class="col-lg-6 col-12 d-block m-auto myText_second">
+          <div class="col-lg-6 col-12 d-block m-auto myText_second wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
             <div class="chose_underText">
               <div class="heading_under">
                 <h2 class="themeColor">Membership</h2>
@@ -342,7 +342,7 @@
 <section class="rough_textmain">
   <div class="container">
     <div class="main_heading">
-      <h1 class="text-center">Lets built this togather.</h1>
+      <h1 class="text-center ">Lets built this togather.</h1>
     </div>
     <div class="main_paragraph text-center">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptas velit eligendi perspiciatis esse id nisi quaerat harum blanditiis tempora, voluptates exercitationem a! Vel non alias id nemo soluta incidunt harum sed eligendi, illo molestias odio modi quo laborum illum?</p>
@@ -447,4 +447,7 @@
   
 @include('web.includes.subfooter')
 @include('web.includes.footer')
+<script>
+  
+  </script>
 @include('web.includes.endfile')
