@@ -125,11 +125,59 @@ footer
         text-align:center;
     }
 }
+h1 {
+    font-size: 2.5rem;
 
+}
+.second__second_index .main_heading h1 {
+    font-size: 2.5rem;
 
+}
+.all_designs_main .child_image .main_child_spacing {
+    padding: 0.5rem;
+
+}
+.header_beneath .image_model .main_product_section .color_one .selected_image .slected_image {
+    max-width: 76px;
+    margin: 20px 0px;
+}
+.header_beneath .my_main_product_text {
+    margin-bottom: 10px;
+}
+.header_beneath .row.under_nav .my_link a {
+    width: 168px;
+    justify-content: left;
+    margin-bottom: 10px;
+}
 }
 @media (max-width:660px)
 {
+    #indexBtn1 a.btn.my-btn.text-uppercase {
+        transition: 1s;
+        
+       
+        font-size: 0.8rem !important;
+        i{
+            font-size: 0.8rem !important;
+        }
+    }
+    #indexBtn2 a.btn.my-btn.text-uppercase {
+        transition: 1s;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+       
+        font-size: 0.8rem !important;
+        i{
+            font-size: 0.8rem !important;
+        }
+    }
+    .collection_custom_parent {
+        height: 130px !important;
+    }
+
+    // .child_image {
+    //     width: 33% !important;
+    // }
     
     .main_heading_about_upper
     {
@@ -394,6 +442,11 @@ footer
                 padding: 0.8rem 2.19rem !important;
             }
         }
+    }
+    #indexBtn1 a.btn.my-btn.text-uppercase {
+        transition: 1s;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 
 

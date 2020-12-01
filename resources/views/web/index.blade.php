@@ -16,7 +16,7 @@
             <div class="main__buttons wow animate__animated animate__flipInX" data-wow-delay="0.2s">
               <div class="first_btn_section "  id="indexBtn2">
                 <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
-                  <i class="fa fa-shopping-bag fa-sm" style="color: black"></i>&nbsp Shop design</a>
+                  <i class="fa fa-shopping-bag fa-sm" style="color: black"></i>&nbsp View Design</a>
                 <p class="para_btn">Start with one of ours.Everything<br/> 
                   is 100% customizable</p>
               </div>
@@ -25,7 +25,7 @@
               </div>
               <div class="second_btn_section " id="indexBtn1">
                 <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
-                  <i class="fa fa-pencil" style="color: black"></i> &nbsp Shop design</a>
+                  <i class="fa fa-pencil" style="color: black"></i> &nbsp Create Design</a>
                 <p class="para_btn">Have our desingers bring<br/>
                   your idea to life</p>
               </div>
@@ -285,7 +285,7 @@
       <h1 class="text-center">Popular Products. Delightful designs.</h1>
     </div>
     <div class="all_collections">
-      <div class="row wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
+      <div class="row wow animate__animated animate__fadeInUp" data-wow-delay="0.5s" style="">
         <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one-collection " style="    margin-bottom: 30px !important;">
         
           {{-- <div class="collection_custom_parent">
@@ -298,7 +298,7 @@
           </div> --}}
           <div class="collection_custom_parent" style="height: 300px">
           <div class="hovereffect ">
-            <img  src="{{ asset('storage/images/b.png')}}" alt="" class="img-fluid">
+            <img  src="{{ asset('storage/images/b.png')}}" height="100%" alt="" class="img-fluid">
             <div class="overlay"  >
               <h2 style="margin-top:15% !important">TEES</h2>
       
@@ -310,7 +310,7 @@
         <div class="col-lg-4 col-sm-6 col-12 m-auto " style="    margin-bottom: 30px !important;">
           <div class="collection_custom_parent" style="height: 300px">
             <div class="hovereffect ">
-              <img  src="{{ asset('storage/images/A.png')}}" alt="" class="img-fluid">
+              <img  src="{{ asset('storage/images/A.png')}}" alt="" height="100%" class="img-fluid">
               <div class="overlay"  >
                 <h2 style="margin-top:30% !important">TEES</h2>
         
@@ -332,7 +332,7 @@
         <div class="col-lg-4 col-sm-6 col-12 m-auto d-block  " style="    margin-bottom: 30px !important;">
           <div class="collection_custom_parent" style="height: 300px">
             <div class="hovereffect ">
-              <img  src="{{ asset('storage/images/A.png')}}" alt="" class="img-fluid">
+              <img  src="{{ asset('storage/images/A.png')}}" alt="" class="img-fluid" height="100%">
               <div class="overlay"  >
                 <h2 style="margin-top:30% !important">TEES</h2>
         
@@ -351,7 +351,7 @@
         <div class="col-lg-8 col-sm-6 col-12    " style="margin-bottom: 30px">
           <div class="collection_custom_parent" style="height: 300px">
             <div class="hovereffect ">
-              <img  src="{{ asset('storage/images/b.png')}}" alt="" class="img-fluid">
+              <img  src="{{ asset('storage/images/b.png')}}" alt="" class="img-fluid" height="100%">
                   <div class="overlay"  >
                       <h2 style="margin-top:15% !important">TEES</h2>
               
@@ -409,13 +409,14 @@
                 <img src="{{ asset($image->url)}}" alt="" class="img-fluid">
                     <div class="overlay" id="overlayDesign">
                         <h2>{{$design->name}}</h2>
-                <p style="margin-top:25% !important;">
+                <p >
                   <form action="{{ route('setCookie') }}" method="POST" >
                     <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
                     {{ csrf_field() }}
                     
                     <button type="submit" style="border:none;background:transparent;">
-                      <a class="btn " style="color: whitesmoke;font-size:16px; ">Customize On a Product</a>
+                      <a class="btn my-btn" style="color: whitesmoke;font-size:13px; "> 
+                         Customize Product</a>
                   </button>
             </form>
                   {{-- Clear --}}

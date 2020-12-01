@@ -45,7 +45,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block d-none m-auto">
+                <div class="col-lg-2 col-12 d-lg-block  m-auto">
                     <div class="my_link">
                         <a href="">
                             <div class="span_round">
@@ -55,7 +55,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block d-none m-auto">
+                <div class="col-lg-2 col-12 d-lg-block  m-auto">
                     <div class="my_link">
                         <a href="">
                             <div class="span_round">
@@ -108,10 +108,9 @@
 
        
         <div id="main_all_produts_section" class="main_all_produts_section">
-            <div class="main_prduct px-auto mx-auto " style="text-align: center;      margin-bottom: 50px;
-            margin-top: 30px;">
+            <div class="main_prduct px-auto mx-auto " >
                 @if(isset($design[0]))
-                <div style="border: 1px solid black; padding-top:20%;padding-bottom:20%; padding-right:30%;padding-left:30%; width:200px;">
+                <div>
                 <h1>Slected Design </h1>
                 <div class="image_selected">
                     <div class="image_spacing">
