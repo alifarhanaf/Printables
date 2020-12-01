@@ -285,8 +285,8 @@
       <h1 class="text-center">Popular Products. Delightful designs.</h1>
     </div>
     <div class="all_collections">
-      <div class="row">
-        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one_collection">
+      <div class="row wow animate__animated animate__rotateInDownLeft" data-wow-delay="0.5s">
+        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one_collection ">
         
           <div class="collection_custom_parent">
             <a href="">
@@ -298,7 +298,7 @@
           </div>
          
         </div>
-        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block two_collection">
+        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block two_collection ">
           <div class="collection_custom_parent">
             <a href="">
             
@@ -309,9 +309,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row  wow animate__animated animate__rotateInUpRight" data-wow-delay="0.5s">
         
-        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block two_collection">
+        <div class="col-lg-4 col-sm-6 col-12 m-auto d-block two_collection ">
           <div class="collection_custom_parent">
             <a href="">
             
@@ -321,7 +321,7 @@
           </a>
           </div>
         </div>
-        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one_collection">
+        <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one_collection ">
         
           <div class="collection_custom_parent">
             <a href="">
