@@ -169,6 +169,11 @@
                                         {{-- Ending Modal Header
                                         --}}
                                         <div class="modal-body">
+                                            <div class="row" style="width: 100%">
+                                                <div id="modalAlert" class="alert alert-danger" role="alert" style="    width: 100%;margin-left: 3%; display:none;" >
+                                                    Kindly Select Product Color !
+                                                  </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-6 col-10 d-block m-auto image_product">
                                                     <div class="main_image_class">
@@ -273,7 +278,7 @@
                                                                                     value="{{ $product->id }}">
 
                                                                                 
-                                                                                <button type="submit"
+                                                                                <button type="submit" id="productNext"
                                                                                     style="border-radius: 0.5rem;">
                                                                                     <a
                                                                                         class="btn w-100 my-btn next_buttonn">Next</a>
@@ -341,6 +346,20 @@
 
 <script>
     $(document).ready(function() {
+        $("#productNext").on("click", function(e) {
+        var chk = $('input[name="variantID"]').val();
+        console.log(chk);
+        if(chk === ''){
+            $('#modalAlert').show();
+            e.preventDefault();
+            $(function() {
+        var timeout = 2000; // in miliseconds (3*1000)
+        $('.alert').delay(timeout).fadeOut(300);
+        });
+        }
+
+    });
+       
         $(function() {
         var timeout = 2000; // in miliseconds (3*1000)
         $('.alert').delay(timeout).fadeOut(300);
@@ -458,13 +477,14 @@
                     $(this).parents('.All_Colors').find('input').removeAttr('checked', false)
                     $(this).attr('data-active', true)
                     $(this).parent('.main_colors').find('input[type="radio"]').attr('checked', 'checked')
-    })
+        })
 
                 }
             });
 
             }
         });
+        
 
     });
 
@@ -488,6 +508,7 @@
                    
                     $('#imageProduct'+pid).html(response);
                     // console.log(response);
+                    
 
                 }
         });
