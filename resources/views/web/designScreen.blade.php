@@ -176,7 +176,18 @@
                                     <button type="button" id="modalBtn{{$design->id}}" data-toggle="modal" data-id="{{$design->id}}" data-target="#exampleModal{{$design->id}}">
                                         <div class="popup_header">
                                             <div class="img_parent">
-                                                <img src="{{ asset($design->images[0]->url)}}" alt="design" id="designID" data-id="{{$design->id}}" class="img-fluid">
+
+                                                <div class="hovereffect">
+                                                    <img src="{{ asset($design->images[0]->url)}}" alt="design" id="designID" data-id="{{$design->id}}" class="img-fluid">
+                                                        <div class="overlay">
+                                                            <h2>{{$design->name}}</h2>
+                                                            <p style="margin-top:50% !important;">
+                                                                <a >Customize On a Product</a>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                                {{-- //End --}}
+                                                
                                             </div>
                                         </div>
                                     </button>
@@ -210,8 +221,17 @@
                                     <button type="button" id="modalBtnRecent{{$recent->id}}" data-toggle="modal" data-id="{{$recent->id}}"  data-target="#exampleModalRecent{{$recent->id}}">
                                         <div class="popup_header">
                                             <div class="img_parent">
-                                                <img src="{{ asset($recent->images[0]->url)}}" id="recentID" data-id="{{$recent->id}}" alt="design" class="img-fluid">
-                                            </div>
+                                                <div class="hovereffect">
+                                                    <img src="{{ asset($recent->images[0]->url)}}" alt="design" id="recentID" data-id="{{$recent->id}}" class="img-fluid">
+                                                        <div class="overlay">
+                                                            <h2>{{$recent->name}}</h2>
+                                                            <p style="margin-top:50% !important;">
+                                                                <a >Customize On a Product</a>
+                                                            </p>
+                                                        </div>
+                                                </div>
+
+                                                </div>
                                         </div>
                                     </button>
                                     {{-- Modal 2 Start --}}

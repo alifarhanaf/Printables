@@ -14,9 +14,9 @@
 <section class="header_beneath">
     <div class="container">
         <div class="my_nav first_underLine_section">
-            <div class="row under_nav ">
-                <div class="col-lg-2 col-12 d-block m-auto" data-toggle="modal" data-target="#exampleModal">
-                    <div class="my_link">
+            <div class="row under_nav">
+                <div class="col-lg-2 col-12 d-block m-auto active" data-toggle="modal" data-target="#exampleModal">
+                    <div class="my_link active">
                     <a href="{{route('productScreen')}}" class="main">
                             <div class="span_round">
                                 <span>1</span>
@@ -25,7 +25,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block d-none m-auto">
+                <div class="col-lg-2 col-12 d-lg-block  m-auto">
                     <div class="my_link">
                         <a href="" class="">
                             <div class="span_round">
@@ -35,7 +35,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block d-none m-auto">
+                <div class="col-lg-2 col-12 d-lg-block  m-auto">
                     <div class="my_link">
                         <a href="">
                             <div class="span_round">
@@ -136,21 +136,30 @@
                                     <div class="product_underimg">
                                         <div class="roduct_imgage text-center">
                                             @if(count($product->variants)>0)
+                                            <div class="hovereffect">
+                                                <img src="{{ $product->variants[0]->images[0]->url }}" id="productImg"   alt="" class="img-fluid">
+                                                    <div class="overlay">
+                                                        <h2>{{$product->name}}</h2>
+                                                        <p style="margin-top:35% !important;">
+                                                            <a >SELECT VARIANT</a>
+                                                        </p>
+                                                    </div>
+                                            </div>
                                                             
-                                                            <img src="{{ $product->variants[0]->images[0]->url }}" id="productImg"   alt="" class="img-fluid">
+                                                            {{-- <img src="{{ $product->variants[0]->images[0]->url }}" id="productImg"   alt="" class="img-fluid"> --}}
                                                           
                                                             @endif
                                             {{-- <img src="{{ asset($product->images[0]->url) }}" alt="" class="img-fluid"> --}}
                                         </div>
                                     </div>
-                                    <div class="product_text_under text-center">
+                                    {{-- <div class="product_text_under text-center">
                                         <div class="small_text">
                                             <span>{{ $product->name }}</span>
                                         </div>
                                         <div class="main_heading_product">
                                             <h4 class="title">{{ $product->categories[0]->name }}</h4>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <!-- Model is start from here -->

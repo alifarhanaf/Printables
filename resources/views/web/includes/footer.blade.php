@@ -9,7 +9,7 @@
 new WOW().init();
 </script>
 <script>
-    $(document).ready(function(){
+    // $(document).ready(function(){
 // Add active class to the current button (highlight it)
 // var header = document.getElementById("navbarTogglerDemo01");
 // var btns = header.getElementsByClassName("nav-item");
@@ -22,11 +22,11 @@ new WOW().init();
 // }
 
 
-$('.nav-item').on('click', function(){
-    //$(this).addClass('active').removeClass('off').siblings().addClass('off').removeClass('active'); // no need to add .off
-        $(this).addClass('active').siblings().removeClass('active');
-    });
-    });
+// $('.nav-item').on('click', function(){
+//     //$(this).addClass('active').removeClass('off').siblings().addClass('off').removeClass('active'); // no need to add .off
+//         $(this).addClass('active').siblings().removeClass('active');
+//     });
+    // });
 
     </script>
 

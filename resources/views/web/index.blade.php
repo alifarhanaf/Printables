@@ -367,8 +367,27 @@
         @foreach($design->images as $image)
         <div class="child_image">
           <div class="main_child_spacing">
-            <a href="">
-             <img src="{{ asset($image->url)}}" alt="" class="img-fluid">
+            <a >
+              <div class="hovereffect">
+                {{-- <img class="img-responsive" src="http://placehold.it/350x250" alt=""> --}}
+                <img src="{{ asset($image->url)}}" alt="" class="img-fluid">
+                    <div class="overlay">
+                        <h2>{{$design->name}}</h2>
+                <p style="margin-top:35% !important;">
+                  <form action="{{ route('setCookie') }}" method="POST" >
+                    <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
+                    {{ csrf_field() }}
+                    <button type="submit" style="border:none;background:transparent;">
+                      <a style="color: whitesmoke;font-size:16px; ">Customize On a Product</a>
+                  </button>
+            </form>
+                  {{-- Clear --}}
+                  
+                </p>
+                    </div>
+            </div>
+
+             
             </a>
           </div>
         </div>

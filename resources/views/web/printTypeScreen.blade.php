@@ -158,7 +158,7 @@
                             </li> --}}
                             <div class="add_Products_Msg">
                                 <div class="product_spacing text-center">
-                                    <p>You Can add upto 4 apperel options  .</p>
+                                    {{-- <p>You Can add upto 4 apperel options  .</p> --}}
                                 </div>
                             </div>
                         </ul>
