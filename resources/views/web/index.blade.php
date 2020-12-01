@@ -285,7 +285,7 @@
       <h1 class="text-center">Popular Products. Delightful designs.</h1>
     </div>
     <div class="all_collections">
-      <div class="row wow animate__animated animate__rotateInDownLeft" data-wow-delay="0.5s">
+      <div class="row wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
         <div class="col-lg-8 col-sm-6 col-12 m-auto d-block one-collection " style="    margin-bottom: 30px !important;">
         
           {{-- <div class="collection_custom_parent">
@@ -327,7 +327,7 @@
           </div> --}}
         </div>
       </div>
-      <div class="row  wow animate__animated animate__rotateInUpRight" data-wow-delay="0.5s">
+      <div class="row  wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
         
         <div class="col-lg-4 col-sm-6 col-12 m-auto d-block  " style="    margin-bottom: 30px !important;">
           <div class="collection_custom_parent" style="height: 300px">
@@ -407,14 +407,15 @@
               <div class="hovereffect">
                 {{-- <img class="img-responsive" src="http://placehold.it/350x250" alt=""> --}}
                 <img src="{{ asset($image->url)}}" alt="" class="img-fluid">
-                    <div class="overlay">
+                    <div class="overlay" id="overlayDesign">
                         <h2>{{$design->name}}</h2>
-                <p style="margin-top:35% !important;">
+                <p style="margin-top:25% !important;">
                   <form action="{{ route('setCookie') }}" method="POST" >
                     <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
                     {{ csrf_field() }}
+                    
                     <button type="submit" style="border:none;background:transparent;">
-                      <a style="color: whitesmoke;font-size:16px; ">Customize On a Product</a>
+                      <a class="btn " style="color: whitesmoke;font-size:16px; ">Customize On a Product</a>
                   </button>
             </form>
                   {{-- Clear --}}

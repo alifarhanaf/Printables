@@ -848,3 +848,21 @@ h1 {
 .all_designs_main .container .main_heading h1{
     margin-bottom: 20px !important;
 }
+#overlayDesign a.btn{
+    /* padding-bottom: 0.5px !important; */
+    border: 1px solid whitesmoke;
+    padding-bottom: 8px !important;
+    padding-top: 8px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+/* padding:0px !important; */
+}
+#overlayDesign a.btn:hover{
+    /* padding-bottom: 0.5px !important; */
+    background-color: #928f8f;
+    padding-bottom: 8px !important;
+    padding-top: 8px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+/* padding:0px !important; */
+}
