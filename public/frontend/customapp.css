@@ -703,3 +703,11 @@ header nav ul li a:hover i {
 footer h1{
     margin-top: 15%;
 }
+h1 {
+    font-weight: bold !important;
+}
+
+.second__second_index .main_paragraph p {
+    
+    font-weight: 500;
+}

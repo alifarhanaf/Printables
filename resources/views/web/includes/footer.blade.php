@@ -8,6 +8,27 @@
 <script>
 new WOW().init();
 </script>
+<script>
+    $(document).ready(function(){
+// Add active class to the current button (highlight it)
+// var header = document.getElementById("navbarTogglerDemo01");
+// var btns = header.getElementsByClassName("nav-item");
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function() {
+//   var current = document.getElementsByClassName("active");
+//   current[0].className = current[0].className.replace(" active", "");
+//   this.className += " active";
+//   });
+// }
+
+
+$('.nav-item').on('click', function(){
+    //$(this).addClass('active').removeClass('off').siblings().addClass('off').removeClass('active'); // no need to add .off
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    });
+
+    </script>
 
 
 

@@ -448,6 +448,7 @@
 @include('web.includes.subfooter')
 @include('web.includes.footer')
 <script>
+
   
   </script>
 @include('web.includes.endfile')
