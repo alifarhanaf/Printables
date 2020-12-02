@@ -251,6 +251,16 @@
                         <div class="card-header ">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                  {{-- <div class="row">
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                  </div> --}}
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
                                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Products</a>
                                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Description</a>
@@ -373,7 +383,7 @@
                               @endif
                               @if($campaign->suggestions[0]->backSuggestion)
                               <div class="card card-body  ">
-                                <div class="row d-flex justify-content-between  my-auto" >
+                                <div class="row d-flex justify-content-between  my-auto" id="flexDynamic" >
                                 <p >BACK OF SHIRT </p>
                                 @if($campaign->suggestions[0]->backColors)
                                 <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->backColors}}</p>
@@ -400,7 +410,7 @@
                               @if($campaign->suggestions[0]->sleevesSuggestion)
                               <div class="card card-body  ">
                                 <div class="row d-flex justify-content-between  my-auto" >
-                                <p >SLEEVES OF SHIRT </p>
+                                <p >SLEEVE OF SHIRT </p>
                                 @if($campaign->suggestions[0]->sleevesColors)
                                 <p class="card-text"># OF COLORS: {{$campaign->suggestions[0]->sleevesColors}}</p>
                                 @else

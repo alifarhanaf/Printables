@@ -178,7 +178,7 @@
                                         --}}
                                         <div class="modal-body">
                                             <div class="row" style="width: 100%">
-                                                <div id="modalAlert" class="alert alert-danger" role="alert" style="    width: 100%;margin-left: 3%; display:none;" >
+                                            <div id="modalAlert{{$product->id}}" class="alert alert-danger" role="alert" style="    width: 100%;margin-left: 3%; display:none;" >
                                                     Kindly Select Product Color !
                                                   </div>
                                             </div>
@@ -286,7 +286,7 @@
                                                                                     value="{{ $product->id }}">
 
                                                                                 
-                                                                                <button type="submit" id="productNext"
+                                                                            <button type="submit" id="productNext" class="productNext{{$product->id}}" data-id="{{$product->id}}"
                                                                                     style="border-radius: 0.5rem;">
                                                                                     <a
                                                                                         class="btn w-100 my-btn next_buttonn">Next</a>
@@ -354,19 +354,45 @@
 
 <script>
     $(document).ready(function() {
-        $("#productNext").on("click", function(e) {
-        var chk = $('input[name="variantID"]').val();
-        console.log(chk);
-        if(chk === ''){
-            $('#modalAlert').show();
-            e.preventDefault();
-            $(function() {
-        var timeout = 2000; // in miliseconds (3*1000)
-        $('.alert').delay(timeout).fadeOut(300);
-        });
-        }
+        
+        
+            $.ajax({
+            url: 'allproductscount',
+            type: 'get',
+            success: function(response) {
+                // console.log(response[1].id);
+                
+                
+                for($i=0;$i<response.length;$i++){
+                    // var id = response[$i].id
+                    
+                    $(".productNext"+response[$i].id).on("click", function(e) {
+                        // console.log(id);
+                        var id = $(this).data('id');
+                        // console.log(id);
 
-    });
+                       
+                        // alert('Hi');
+                    var chk = $('input[name="variantID"]').val();
+                    console.log(chk);
+                    if(chk === ''){
+                    $('#modalAlert'+id).show();
+                    e.preventDefault();
+                    $(function() {
+                    var timeout = 2000; // in miliseconds (3*1000)
+                    $('.alert').delay(timeout).fadeOut(300);
+                    });
+                    }
+                });
+
+                }
+            }
+
+
+        });
+        
+
+    // }); this onw
        
         $(function() {
         var timeout = 2000; // in miliseconds (3*1000)

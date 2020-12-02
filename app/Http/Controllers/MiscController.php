@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\Events;
+use App\Models\Products;
 use App\Models\Variants;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
@@ -136,6 +137,10 @@ class MiscController extends Controller
         Session::put('zip', $request->input('zip') ); 
 
 
+    }
+    public function allproductscount(){
+        $products = Products::all();
+        return $products;
     }
     
 

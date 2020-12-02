@@ -415,6 +415,9 @@ img#designID
 #exampleFormControlFile1 {
  padding: 2rem .75rem !important;
 }
+#navPillsId {
+    padding: 1.25rem;
+}
 #navPillsId ul.nav li.nav-item::before {
     content: '';
     width: 16px;
@@ -482,7 +485,7 @@ button.btn.btn-sm.btn-block.btn-dark.mb-2 {
     
     margin: 0;
     padding: 0 !important;
-    padding-left: 1.25rem !important;
+    /* padding-left: 1.25rem !important; */
     /* border-radius: .5rem; */
     
 }
@@ -914,4 +917,13 @@ body {
 }
 .main_labels{
     color: #707e79;;
+}
+#priEvents label.custom-control-label {
+    padding-left: 0.8rem;
+}
+#EventsMain label.custom-control-label{
+    padding-left: 0.8rem;
+}
+#orgMain label.custom-control-label{
+    padding-left: 0.8rem;
 }

@@ -161,3 +161,4 @@ Route::get('/joinOurHouse', 'MiscController@joinOurHouse')->name('JoinOurHouse')
 Route::post('/submit_join_our_house','MiscController@submitJoinOurHouse')->name('submitJOH');
 Route::get('getProductImage/{id}','MiscController@getProductImage');
 Route::get('/setSession','MiscController@setSession');
+Route::get('/allproductscount','MiscController@allproductscount');

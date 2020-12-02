@@ -95,7 +95,7 @@
                                             <button type="submit"> --}}
                                            
                                             
-                                         <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
+                                         <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm" id="priEvents">
                                              <input data-v-e6af0ca4="" type="checkbox" id="{{$pevents->name}}" name="tags[]" class="custom-control-input" value="{{$pevents->name}}">
                                               <label data-v-e6af0ca4="" for="{{$pevents->name}}" class="custom-control-label">{{$pevents->name}}</label>
                                             </div>
@@ -114,7 +114,7 @@
                                             border-top: none;">
                                         <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
                                             @foreach($events as $event)
-                                            <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
+                                            <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm" id="EventsMain">
                                                 <input data-v-e6af0ca4="" type="checkbox" id="{{$event->name}}" name="tags[]" class="custom-control-input" value="{{$event->name}}"> 
                                             <label data-v-e6af0ca4="" for="{{$event->name}}" class="custom-control-label">{{$event->name}}</label>
                                         </div>
@@ -133,7 +133,7 @@
                                                         @foreach ($organizations as $og)
                                                             
                                                     
-                                                        <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm">
+                                                        <div data-v-e6af0ca4="" class="custom-control custom-checkbox form-control-sm" id="orgMain">
                                                             <input data-v-e6af0ca4="" type="checkbox" id="{{$og->name}}" name="tags[]" class="custom-control-input" value="{{$og->name}}"> 
                                                             <label data-v-e6af0ca4="" for="{{$og->name}}" class="custom-control-label">{{$og->name}}</label>
                                                         </div>
