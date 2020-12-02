@@ -409,9 +409,9 @@ img#designID
     font-size: 1.1rem;
     font-weight: 600;
 }     
-.Second_main_section .tab-content .my_flex_main .flex_child {
+/* .Second_main_section .tab-content .my_flex_main .flex_child {
     width: 33% !important;
-}
+} */
 #exampleFormControlFile1 {
  padding: 2rem .75rem !important;
 }
@@ -461,6 +461,12 @@ height: 1.2rem;
 .sideBarSearch .custom-control-label{
     text-transform: uppercase !important;
     font-weight: 600;
+}
+.allLocations {
+    padding-left: 10px;
+}
+button.btn.btn-sm.btn-block.btn-dark.mb-2 {
+    height: 25px;
 }
 .sideBarSearch .form-control-sm {
     font-size: 1.2rem;

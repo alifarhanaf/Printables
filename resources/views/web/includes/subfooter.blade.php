@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="col-md-4 col-12  d-block my-md-auto my-4">
-                <ul class="mx-auto">
+                <ul class="mx-auto" id="footmenu1">
                   <li>
                     <a href="{{ route('JoinOurHouse') }}" class="text-white">Join Our Team</a>
                   </li>
@@ -31,7 +31,7 @@
                 </ul>
               </div>
               <div class="col-md-3 col-12  d-block my-md-auto my-4">
-                <ul class="mx-auto">
+                <ul class="mx-auto" id="footermenu2">
                   <li>
                     <a href="mailto:someone@mail.com"class="text-white">Contact us</a>
                   </li>

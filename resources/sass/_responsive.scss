@@ -43,8 +43,7 @@
     {
         max-width: 222.2px !important;
         margin: auto;
-        border: 2px solid #598ba3;
-        border-radius: .5rem;
+      
         margin-top: 7rem;
         margin-bottom: 2.5rem;
         li
@@ -81,27 +80,29 @@
     {
         max-width: 200.2px;
         margin: auto;
-        border: 2px solid #598ba3;
-        border-radius: .5rem;
+       
+        
         margin-top: 7rem;
         margin-bottom: 2.5rem;
         li
         {
             a
             {
-                color: #598ba3;
+                color: black;
                 font-weight: bold;
-                padding: 0.8rem 2.74rem;;
+                
             }
             a.active
             {
-                background: #598ba4;
+                color: black;
+               
                 font-weight: bold;
-                color: #fff;
+                
             }
         }
     }
 }
+ 
     
 
 footer
@@ -144,11 +145,51 @@ h1 {
 .header_beneath .my_main_product_text {
     margin-bottom: 10px;
 }
+.mian_image_aboutSection .UploadImages {
+    text-align: center;
+    display: block;
+    margin-bottom: 10px !important;
+}
+.mian_image_aboutSection .UploadImages .upload-btn-wrapper {
+    
+    margin-bottom: 1.5rem;
+    margin-right: 0px ;
+}
+div#designDetailNext {
+    text-align: center;
+}
+
 // .header_beneath .row.under_nav .my_link a {
 //     width: 168px;
 //     justify-content: left;
 //     margin-bottom: 10px;
 // }
+.main_image_selected{
+    margin-top: 10px;
+}
+.no_padding_marg {
+    padding-right: 0px !important;
+}
+.single__product_selected_print .print_info {
+     margin-left: 0px; 
+     margin-top: 0px; 
+}
+p#finalWords{
+    padding: 0 1.8rem;
+    
+}
+.main_paragrap.w-50.spacing_bottom{
+    width: 100% !important;
+}
+button#finalSubmit{
+    margin-left: 1.8rem;
+}
+#footmenu1{
+    text-align: center;
+}
+#footermenu2{
+    text-align: center;
+}
 }
 @media (max-width:660px)
 {

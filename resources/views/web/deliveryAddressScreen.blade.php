@@ -153,7 +153,7 @@
                   </div>
 
                   <div class="main_paragrap w-50 spacing_bottom">
-                      <p>Greek House delivers your order within 10 business days after sizes and payment have been submitted. Need your order rushed.</p>
+                      <p id="finalWords">Greek House delivers your order within 10 business days after sizes and payment have been submitted. Need your order rushed.</p>
                   </div>
                   <div id="deliveryDate">
                   </div>
