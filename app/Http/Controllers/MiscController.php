@@ -11,6 +11,8 @@ use App\Models\Organizations;
 use App\Models\PrimaryEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class MiscController extends Controller
 {
@@ -120,6 +122,19 @@ class MiscController extends Controller
         $userDetail->save();
         return redirect()->back();
         // $user = User::where('')
+
+    }
+    public function setSession(Request $request){
+        // dd($request->all());
+        Session::put('addressName', $request->input('addressName') ); 
+        Session::put('firstName', $request->input('fname') ); 
+        Session::put('lastName', $request->input('lastname') ); 
+        Session::put('address1', $request->input('address1') ); 
+        Session::put('address2', $request->input('address2') ); 
+        Session::put('city', $request->input('city') ); 
+        Session::put('state', $request->input('state') ); 
+        Session::put('zip', $request->input('zip') ); 
+
 
     }
     

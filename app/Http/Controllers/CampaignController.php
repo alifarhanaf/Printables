@@ -28,6 +28,7 @@ use App\Http\Requests\CampaignSubmitRequest;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\DesignApprovalNotification;
 use App\Notifications\CampaignSubmissionNotification;
+use Illuminate\Support\Facades\Session;
 
 class CampaignController extends Controller
 {   
@@ -114,13 +115,37 @@ class CampaignController extends Controller
         };
         $address = new Addresses();
         $address->addressName = $request->addressName;
+        if (Session::has('addressName')){
+        $request->session()->forget('addressName');
+        }
         $address->firstName = $request->firstName;
+        if (Session::has('firstName')){
+        $request->session()->forget('firstName');
+        }
         $address->lastName = $request->lastName;
+        if (Session::has('lastName')){
+        $request->session()->forget('lastName');
+        }
         $address->addressLine1 = $request->addressLine1;
+        if (Session::has('address1')){
+        $request->session()->forget('address1');
+        }
         $address->addressLine2 = $request->addressLine2;
+        if (Session::has('address2')){
+        $request->session()->forget('address2');
+        }
         $address->city = $request->city;
+        if (Session::has('city')){
+        $request->session()->forget('city');
+        }
         $address->state = $request->state;
+        if (Session::has('state')){
+        $request->session()->forget('state');
+        }
         $address->zipCode = $request->zipCode;
+        if (Session::has('zip')){
+        $request->session()->forget('zip');
+        }
         $address->save();
         $addressId = $address->id;
         $user =  Auth::user();

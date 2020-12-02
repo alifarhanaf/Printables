@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="addressName">Address Name</label>
-                      <input type="text" name="addressName" class="form-control form_class" id="adname" placeholder="Address Name"/>
+                      <input type="text" name="addressName" class="form-control form_class" id="adname" value="{{ Session::get('addressName') }}" placeholder="Address Name" />
                       {{-- <select id="addressName" class="form-control form_class">
                         <option selected>Choose...</option>
                         <option>...</option>
@@ -93,11 +93,11 @@
                   <div class="form-row spacing_bottom">
                     <div class="form-group col-md-6">
                       <label for="fname">First Name</label>
-                      <input type="text" name="firstName" class="form-control form_class" id="fname" placeholder="First Name"/>
+                      <input type="text" name="firstName" class="form-control form_class" id="fname" value="{{ Session::get('firstName')}}"  placeholder="First Name"/>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="lname">Last Name</label>
-                      <input type="text" name="lastName" class="form-control form_class" id="lname" placeholder="Last Name"/>
+                      <input type="text" name="lastName" class="form-control form_class" id="lname" value="{{ Session::get('lastName')}}" placeholder="Last Name"/>
                     </div>
                   </div>
 
@@ -105,11 +105,11 @@
                   <div class="form-row spacing_bottom">
                     <div class="form-group col-md-6">
                       <label for="address1">Address line 1</label>
-                      <input type="text" name="addressLine1" class="form-control form_class" id="address1" placeholder="Address"/>
+                      <input type="text" name="addressLine1" class="form-control form_class" id="address1" value="{{ Session::get('address1')}}" placeholder="Address"/>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="address2">Address line 2</label>
-                      <input type="text" name="addressLine2" class="form-control form_class" id="address2" placeholder="Address"/>
+                      <input type="text" name="addressLine2" class="form-control form_class" id="address2" value="{{ Session::get('address2')}}" placeholder="Address"/>
                     </div>
                   </div>
 
@@ -117,15 +117,15 @@
                   <div class="form-row spacing_bottom">
                     <div class="form-group col-md-4">
                       <label for="inputCity">City</label>
-                      <input type="text" name="city" class="form-control form_class" id="inputCity" placeholder="City"/>
+                      <input type="text" name="city" class="form-control form_class" id="inputCity" value="{{ Session::get('city')}}" placeholder="City"/>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputState">State</label>
-                      <input type="text" name="state" class="form-control form_class" id="inputState" placeholder="State"/>
+                      <input type="text" name="state" class="form-control form_class" id="inputState" value="{{ Session::get('state')}}" placeholder="State"/>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputZip">Zip Code</label>
-                      <input type="number" name="zipCode" class="form-control form_class" id="inputZip" placeholder="Zip Code"/>
+                      <input type="number" name="zipCode" class="form-control form_class" id="inputZip" value="{{ Session::get('zip')}}" placeholder="Zip Code"/>
                     </div>
                   </div>
 
@@ -153,14 +153,14 @@
                   </div>
 
                   <div class="main_paragrap w-50 spacing_bottom">
-                      <p>Greek House delivers your order within 10 business days after sizes and payment have been submitted. Need your order rushed .</p>
+                      <p>Greek House delivers your order within 10 business days after sizes and payment have been submitted. Need your order rushed.</p>
                   </div>
                   <div id="deliveryDate">
                   </div>
 
                   <div class="next_btn spacing_bottom">
                     
-                      <button type="submit" style="border:none;">
+                      <button type="submit" style="border:none;" id="finalSubmit">
                   <a  class="btn my-btn w-100">
                        
                           Next
@@ -209,6 +209,43 @@
       //      }
       //  });
    });
+   $('#finalSubmit').click(function(event){
+    
+     
+     var fname = $('#fname').val();
+     var lname = $('#lname').val();
+     var adname = $('#adname').val();
+     var address1 = $('#address1').val();
+     var address2 = $('#address2').val();
+     var city = $('#inputCity').val();
+     var state = $('#inputState').val();
+     var zip = $('#inputZip').val();
+    //  alert(fname);
+    //  event.preventDefault();
+     $.ajax({
+         url: `setSession?fname=${fname}&lastname=${lname}&addressName=${adname}&address1=${address1}&address2=${address2}&city=${city}&state=${state}&zip=${zip}`,
+         type: 'get',
+        //  data: {
+          //  addressName: adname, 
+          //  firstName: fname,
+          //  lastName: lname,
+          //  addressLine1: address1,
+          //  addressLine2: address2,
+          //  city: inputCity,
+          //  state: inputState,
+          //  zip: inputZip,
+          // },
+         success: function(response){
+           console.log(response);
+
+         }
+    });
+     
+     
+    //  alert(fname);
+     
+     
+        });
    });
 </script>
 @include('web.includes.endfile')

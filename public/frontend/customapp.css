@@ -893,3 +893,6 @@ h1 {
 button#productNext {
     width: 100%;
 }
+#designModalHeading h1{
+    font-size: 2.5rem;
+}

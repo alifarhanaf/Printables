@@ -8,7 +8,7 @@
         <div class="col-lg-6 col-12 d-block m-auto">
           <div class="main_text">
             <div class="main_heading">
-              <h1 class="wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">the most advanced greek apparel company, evey.</h1>
+              <h1 class="wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">the most advanced greek apparel company, ever.</h1>
             </div>
             <div class="main_paragraph wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">
               <p>Get a free, professional design your chapter will <br/> love back within 24 hours</p>

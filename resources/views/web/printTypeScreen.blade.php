@@ -173,7 +173,7 @@
                             <label for="Print_type">
                                 Print Type
                             </label>
-                            <select name="print_type" id="Print_type"  class="form_class form-control w-50">
+                            <select name="print_type" id="Print_type"  class="form_class form-control">
                                 <option  value=""> Select One </option>
                                 @foreach ($product[0]->groups[0]->print_types as $printTypes)
                                 <option  value="{{$printTypes->id}}"> {{$printTypes->name}} </option>

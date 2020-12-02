@@ -45,11 +45,11 @@
     </div>
     <div class="col-lg-5 col-md-6 col-12 d-block mx-auto">
         <div class="model_main_section_textt">
-            <div class="main_heading_collection">
+            <div class="main_heading_collection" id="designModalHeading">
                 <h1>university of flwrida - fraternity row</h1>
             </div>
             <div class="button_main_section">
-                <a href="" class="btn my-btn">compaign # 42790</a>
+                <a href="" class="btn my-btn">Campaign # 42790</a>
             </div>
             <div class="main_section_para_collection">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quaerat ratione facere, ea nisi sequi? Omnis excepturi necessitatibus iusto ad?</p>

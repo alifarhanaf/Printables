@@ -160,3 +160,4 @@ Route::get('/privacyPolicy', 'MiscController@privacyPolicy')->name('PrivacyPolic
 Route::get('/joinOurHouse', 'MiscController@joinOurHouse')->name('JoinOurHouse')->middleware('auth');
 Route::post('/submit_join_our_house','MiscController@submitJoinOurHouse')->name('submitJOH');
 Route::get('getProductImage/{id}','MiscController@getProductImage');
+Route::get('/setSession','MiscController@setSession');
