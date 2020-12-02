@@ -460,6 +460,7 @@ height: 1.2rem;
 }
 .sideBarSearch .custom-control-label{
     text-transform: uppercase !important;
+    font-weight: 600;
 }
 .sideBarSearch .form-control-sm {
     font-size: 1.2rem;
@@ -895,4 +896,16 @@ button#productNext {
 }
 #designModalHeading h1{
     font-size: 2.5rem;
+}
+label {
+    font-family: 'Nunito', sans-serif !important; 
+}
+input {
+    font-family: 'Nunito', sans-serif !important;
+}
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+.main_labels{
+    color: #707e79;;
 }

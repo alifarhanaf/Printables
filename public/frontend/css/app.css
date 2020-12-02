@@ -1466,12 +1466,6 @@ footer ul li a {
   .header_beneath .my_main_product_text {
     margin-bottom: 10px;
   }
-
-  .header_beneath .row.under_nav .my_link a {
-    width: 168px;
-    justify-content: left;
-    margin-bottom: 10px;
-  }
 }
 
 @media (max-width: 660px) {

@@ -15,7 +15,7 @@
     <div class="container">
         <div class="my_nav first_underLine_section">
             <div class="row under_nav">
-                <div class="col-lg-2 col-12 d-block m-auto active" data-toggle="modal" data-target="#exampleModal">
+                <div class="col-lg-2 col-12 d-block m-auto d-none active" data-toggle="modal" data-target="#exampleModal">
                     <div class="my_link active">
                     <a href="{{route('productScreen')}}" class="main">
                             <div class="span_round">
@@ -25,7 +25,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block  m-auto">
+                <div class="col-lg-2 col-12 d-lg-block d-none  m-auto">
                     <div class="my_link">
                         <a href="" class="">
                             <div class="span_round">
@@ -35,7 +35,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block  m-auto">
+                <div class="col-lg-2 col-12 d-lg-block d-none  m-auto">
                     <div class="my_link">
                         <a href="">
                             <div class="span_round">
@@ -45,7 +45,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block  m-auto">
+                <div class="col-lg-2 col-12 d-lg-block d-none  m-auto">
                     <div class="my_link">
                         <a href="">
                             <div class="span_round">
@@ -55,7 +55,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-12 d-lg-block  m-auto">
+                <div class="col-lg-2 col-12 d-lg-block d-none  m-auto">
                     <div class="my_link">
                         <a href="">
                             <div class="span_round">
