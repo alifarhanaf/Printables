@@ -299,7 +299,9 @@ $(document).ready(function(){
                             url: 'smallBigImages/'+id,
                             type: 'get',
                             success: function(data){
+                                
                                 for(var j=0 , k =response.designs.length; j < k; j++ ){
+
                                 $('#modalContent'+response.designs[j].id).html(data);
                                 }
                                 $('.slick_big_inni').slick({

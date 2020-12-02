@@ -261,7 +261,7 @@
                                                                         @endif
 
                                                                         <div class="product_discription">
-                                                                            <p>Lorem ipsum dolor sit amet consectetur
+                                                                            <p style="margin-top:10px">Lorem ipsum dolor sit amet consectetur
                                                                                 adipisicing elit. Doloremque ut itaque
                                                                                 iste nesciunt, consequatur cupiditate in
                                                                                 officiis reiciendis voluptatem totam
