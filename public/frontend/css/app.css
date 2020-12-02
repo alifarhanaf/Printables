@@ -1513,6 +1513,23 @@ footer ul li a {
     padding-left: 5% !important;
     padding-right: 5% !important;
   }
+
+  #productOverlayButton {
+    margin-top: 15%;
+  }
+
+  #productOverlayButtonHeading {
+    font-size: 0.8rem;
+  }
+
+  #productOverlayButton a {
+    font-size: 0.8rem;
+    padding: 0.5rem !important;
+  }
+
+  #designOverLayProducts {
+    margin-top: 15% !important;
+  }
 }
 
 @media (max-width: 660px) {

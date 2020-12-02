@@ -139,8 +139,8 @@
                                                 <img src="{{ $product->variants[0]->images[0]->url }}" id="productImg"   alt="" class="img-fluid">
                                                     <div class="overlay">
                                                         <h2>{{$product->name}}</h2>
-                                                        <p style="margin-top:35% !important;">
-                                                            <a >SELECT VARIANT</a>
+                                                        <p id="designOverLayProducts" style="margin-top:30% ;">
+                                                            <a class="btn my-btn" style="padding: 1rem" >SELECT VARIANT</a>
                                                         </p>
                                                     </div>
                                             </div>

@@ -60,10 +60,10 @@
                             <div id="navPillsId" style="height: 100%; overflow-y:auto">
                             <ul class="nav nav-pills my-tabs_btns" style="width:100%;height: 100%;display:block;" id="pills-tab" role="tablist">
                             <li class="nav-item active" role="presentation" style="width: 50%">
-                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" style="text-transform: none;">Popular</a>
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" style="text-transform: uppercase;">Popular</a>
                             </li>
                             <li class="nav-item" role="presentation" style="width: 50%">
-                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="text-transform: none;">Recent</a>
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="text-transform: uppercase;">Recent</a>
                             </li>
                             </ul>
                             </div>
@@ -180,9 +180,9 @@
                                                 <div class="hovereffect">
                                                     <img src="{{ asset($design->images[0]->url)}}" alt="design" id="designID" data-id="{{$design->id}}" class="img-fluid">
                                                         <div class="overlay">
-                                                            <h2>{{$design->name}}</h2>
-                                                            <p style="margin-top:50% !important;">
-                                                                <a >Customize On a Product</a>
+                                                            <h2 id="productOverlayButtonHeading">{{$design->name}}</h2>
+                                                            <p id="productOverlayButton" style="margin-top:30% ;">
+                                                                <a class="btn my-btn" style="padding: 1rem" >Customize On a Product</a>
                                                             </p>
                                                         </div>
                                                 </div>

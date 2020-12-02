@@ -195,7 +195,21 @@ button#finalSubmit{
     padding-right: 5% !important;
 
 }
+#productOverlayButton{
+    margin-top: 15%;
 }
+#productOverlayButtonHeading{
+    font-size: 0.8rem;
+}
+#productOverlayButton a {
+    font-size: 0.8rem;
+    padding: 0.5rem !important;
+}
+#designOverLayProducts {
+    margin-top: 15% !important;
+}
+}
+
 @media (max-width:660px)
 {
     #indexBtn1 a.btn.my-btn.text-uppercase {
