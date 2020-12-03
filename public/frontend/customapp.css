@@ -954,7 +954,7 @@ body {
 .f-bold {
     font-weight: 500 !important;
 }
-/* .f-bold ul.size-all {
-    margin-bottom: 0px; */
-
+.form-control {
+    color: #898989 !important;
 }
+

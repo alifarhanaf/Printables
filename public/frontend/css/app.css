@@ -808,7 +808,7 @@ button[data-dismiss="modal"] span {
 }
 
 .mian_image_aboutSection label {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .mian_image_aboutSection .compainName {
@@ -963,6 +963,7 @@ button[data-dismiss="modal"] span {
 
 .single__product_selected_print .all_selected_prod .view_product .spacing_product .product_head_select .d-flex .product_tielt-print h5 {
   font-size: 1.8rem;
+  color: #84a0ac;
 }
 
 .single__product_selected_print .all_selected_prod .view_product .spacing_product .product_head_select .main_delete_this {
@@ -1009,7 +1010,7 @@ button[data-dismiss="modal"] span {
 .single__product_selected_print .print_info label {
   font-size: 1.8rem;
   margin-bottom: 1.8rem;
-  color: #405a66;
+  color: #84a0ac;
 }
 
 .single__product_selected_print .print_info .spacing_bottom {
