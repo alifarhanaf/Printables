@@ -415,8 +415,8 @@
                     {{ csrf_field() }}
                     
                     <button type="submit" style="border:none;background:transparent;" id="productOverlayButton">
-                      <a class="btn my-btn" style="color: whitesmoke;font-size:12px; "> 
-                         Customize On a Product</a>
+                      <a class="btn my-btn" style="color: whitesmoke;font-size:12px; text-transform:uppercase "> 
+                         Customize Product</a>
                   </button>
             </form>
                   {{-- Clear --}}
