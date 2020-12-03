@@ -952,5 +952,9 @@ body {
     color: #f1e9b8 !important;
 }
 .f-bold {
-    font-weight: bold !important;
+    font-weight: 500 !important;
+}
+/* .f-bold ul.size-all {
+    margin-bottom: 0px; */
+
 }

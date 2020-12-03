@@ -167,7 +167,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title f-bold" id="exampleModalLabel" data-id="{{$product->id}}">
+                                            <h5 class="modal-title " style="font-weight: bold;" id="exampleModalLabel" data-id="{{$product->id}}">
                                                 {{-- {{ $product->name }}
                                                 {{ $product->categories[0]->name }} --}}
                                                  University Of Flwrida - Fraternity Row

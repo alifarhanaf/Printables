@@ -117,7 +117,7 @@
         {
             .All_Colors
             {
-                margin: 1rem 0rem;
+                margin: 0rem 0rem;
                 input[type="radio"]
                 {
                     display:none;
@@ -148,6 +148,7 @@
                 {
                     display: inline-block;
                     margin-left: 1rem;
+                    margin-bottom: 0px;
                     li
                     {
                         display: inline-block;
