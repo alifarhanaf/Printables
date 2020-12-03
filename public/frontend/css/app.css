@@ -1651,22 +1651,26 @@ footer ul li a {
 @media (max-width: 660px) {
   #indexBtn1 a.btn.my-btn.text-uppercase {
     transition: 1s;
-    font-size: 0.8rem !important;
+    font-size: 1.2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 
   #indexBtn1 a.btn.my-btn.text-uppercase i {
-    font-size: 0.8rem !important;
+    font-size: 1.2rem !important;
   }
 
   #indexBtn2 a.btn.my-btn.text-uppercase {
     transition: 1s;
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
-    font-size: 0.8rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-size: 1.2rem !important;
   }
 
   #indexBtn2 a.btn.my-btn.text-uppercase i {
-    font-size: 0.8rem !important;
+    font-size: 1.2rem !important;
   }
 
   .collection_custom_parent {
@@ -1858,8 +1862,6 @@ footer ul li a {
 
   #indexBtn1 a.btn.my-btn.text-uppercase {
     transition: 1s;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
   }
 }
 
