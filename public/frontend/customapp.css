@@ -162,12 +162,12 @@ text-transform: uppercase;
 }
 #BodyCard th{
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #84a0ac;
-    font-weight: 500;
+    
 }
 .new{
-    font-weight: 300 !important;
+    font-weight: normal !important;
 }
 
 
@@ -215,7 +215,7 @@ text-transform: uppercase;
     margin-right: 5%; */
 }
 #mainHeader i {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
     line-height: 2.2rem;
     color: #84a0ac;
 }
@@ -225,11 +225,20 @@ text-transform: uppercase;
     margin: 2% 0;
     
 }
-#activeOrdersCard button.btn.btn-primary {
-    height: 25px;
+/* #activeOrdersCard button.btn.btn-primary {
+    height: 40px;
     background-color: #84a0bf;
-    width: 70px;
-    font-size: 1.2rem;
+    color: #f1e9b8;
+    width: 110px;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+} */
+#activeOrdersCard button.btn.my-btn:hover {
+   
+    color: #f1e9b8 !important;
+    background: #84a0bf ;
+   
 }
 
 #cardLayer .card {
@@ -963,4 +972,16 @@ body {
 #finalSubmit a.btn.my-btn:hover{
     color: #77a6ba !important;
     background: #f1e9b8 !important;
+}
+#hoverAnchor p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: capitalize !important;
+    color: #84a0ac
+}
+.t-font {
+    color: #898989 !important;
+    font-size: 1.5rem;
+
+
 }

@@ -8,9 +8,10 @@
                 <div class="row d-flex justify-content-center">
                 <a  href="{{route('designScreen')}}">
                 <div class="row">
+                  <p>
                 <i  class="fa fa-edit "></i>
-                &nbsp &nbsp
-                <p>NEW CAMPAIGN</p>
+           
+                New Campaign</p>
                 </div>
                 </a>
                 </div>
@@ -19,43 +20,48 @@
                 <div class="row d-flex justify-content-center">
                   <a href="{{route('designScreen')}}">
                     <div class="row">
+                      <p>
                 <i  class="fa fa-photo "></i>
-                &nbsp &nbsp 
-                <p>VISIT DESIGN GALLERY</p>
+                
+                Visit Design Gallery</p>
                     </div>
                   </a>
                 </div>
             </div>
             <div class="col-md">
                 <div class="row d-flex justify-content-center align-middle py-auto my-auto">
+                  <p>
                 <i  class="fa fa-user "></i>
-                &nbsp &nbsp
-                <p>REFER A FRIEND</p>
+                
+                Refer A Friend</p>
                 </div>
             </div>
             <div class="col-md">
                 <div class="row d-flex justify-content-center">
                   <a href="{{route('homeScreen')}}">
                     <div class="row">
+                      <p>
                 <i  class="fa fa-shopping-bag "></i>
-                &nbsp &nbsp
-                <p>VISIT STORE</p>
+               
+                Visit Store</p>
                     </div>
                   </a>
                 </div>
             </div>
             <div class="col-md">
                 <div class="row d-flex justify-content-center">
+                  <p>
                 <i  class="fa fa-question-circle "></i>
-                &nbsp &nbsp
-                <p>HELP</p>
+         
+                Help</p>
                 </div>
             </div>
         </div>
       </div><!-- card -->
     </div>
 
-    <h4  >OPEN ODERS:</h4>
+    <h4 style="    font-weight: bold;
+    color: #84a0ac;" >OPEN ODERS:</h4>
 
 
     <div id="activeOrdersCard">
@@ -77,26 +83,26 @@
                     <th class="new" scope="row">
                         <form action="{{ route ('campaignScreen',$activeCampaign->id) }}" >
                             {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary">{{$activeCampaign->id}}</button>   
+                        <button type="submit" class="btn my-btn">{{$activeCampaign->id}}</button>   
                         <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">
                           {{$activeCampaign->name}}
                         </a>
                         
                     </form>
                     </th>
-                    <th class="new">{{$activeCampaign->updated_at}}</th>
+                    <th class="new t-font">{{$activeCampaign->updated_at}}</th>
                     
-                    <th class="new">
+                    <th class="new t-font">
                       @if($activeCampaign->status==1)
-                              DESIGN AWAITING
+                              Design Awaiting
                               @elseif($activeCampaign->status==2)
-                              DESIGN IN PROCESS
+                              Design In Process
                               @elseif($activeCampaign->status==3)
-                              DESIGN APPROVED
+                              Design Approved
                               @elseif($activeCampaign->status==4)
-                              IN PROCESS
+                              In Process
                               @elseif($activeCampaign->status==5)
-                              CAMPAIGN APPROVED
+                              Campaign Approved
                               @endif
                         {{-- {{$activeCampaign->status == 1 ? 'STATUS_AWAITING':'N/A'}} --}}
                     </th>
@@ -109,7 +115,8 @@
     </div><!-- card -->
     </div>
 
-    <h4  >CLOSED ODERS:</h4>
+    <h4 style="    font-weight: bold;
+    color: #84a0ac;"  >CLOSED ODERS:</h4>
 
 
     <div id="activeOrdersCard">
@@ -130,15 +137,15 @@
                     <th class="new" scope="row">
                       <form action="{{ route ('campaignScreen',$activeCampaign->id) }}" >
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary">{{$closedCampaign->id}}</button>
+                        <button type="submit" class="btn my-btn">{{$closedCampaign->id}}</button>
                         <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">   
                         {{$closedCampaign->name}}
                         </a>
                       </form>
                     </th>
-                    <th class="new">{{$closedCampaign->updated_at}}</th>
-                    <th class="new">View Total Ordered</th>
-                    <th class="new">{{$closedCampaign->deliveryDate}}</th>
+                    <th class="new t-font">{{$closedCampaign->updated_at}}</th>
+                    <th class="new t-font">View Total Ordered</th>
+                    <th class="new t-font">{{$closedCampaign->deliveryDate}}</th>
                   </tr>
                   @endforeach
                  
@@ -166,10 +173,10 @@
 @include('web.includes.footer')
 <style>
   #BodyCard a {
-    color: #84a0bf !important;
+    color: #898989 !important;
   }
   #BodyCard a:hover{
-    color: #1c2e42 !important;
+    color: #5E7179  !important;
     text-decoration: none;
   }
   /* #colsedOrders a {
@@ -184,16 +191,19 @@
     color: ;
   }
   #hoverAnchor p {
-    color: #84a0bf;
+    color: #84a0ac;
   }
   #hoverAnchor p:hover {
-    color: #1c2e42;
+    color: #5E7179;
   }
-  #mainHeader i:hover {
+  #hoverAnchor p:hover i {
+    color: #5E7179;
+  }
+  /* #mainHeader i:hover {
     font-size: 1.3rem !important;
     color: #1c2e42;
   
-}
+} */
   </style>
 <script>
    $(document).ready(function(){
