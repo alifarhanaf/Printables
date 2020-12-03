@@ -957,4 +957,10 @@ body {
 .form-control {
     color: #898989 !important;
 }
-
+#finalSubmit a.btn.my-btn{
+    color: #f1e9b8 !important;
+}
+#finalSubmit a.btn.my-btn:hover{
+    color: #77a6ba !important;
+    background: #f1e9b8 !important;
+}

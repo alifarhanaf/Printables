@@ -161,7 +161,7 @@
                   <div class="next_btn spacing_bottom">
                     
                       <button type="submit" style="border:none;" id="finalSubmit">
-                  <a  class="btn my-btn w-100">
+                  <a style="text-transform:uppercase;"  class="btn my-btn w-100">
                        
                           Next
                       {{ csrf_field() }}
