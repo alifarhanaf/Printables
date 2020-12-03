@@ -105,7 +105,7 @@
                                                     type="checkbox" id="checkbox{{ $PL->data_id }}"
                                                     value="{{ $PL->id }}">
 
-                                                <label class="main_labels" check-Data="checkbox{{ $PL->data_id }}"
+                                                <label class="main_labels" style="color:#898989 !important" check-Data="checkbox{{ $PL->data_id }}"
                                                     for="front">{{ $PL->name }}</label>
                                             </div>
                                         @endforeach
