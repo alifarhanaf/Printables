@@ -5,11 +5,11 @@
     <div class="container">
         <div class="second_all">
             <div class="main_heading">
-                <h1 class="text-center">DESIGN GALLERY</h1>
+                <h1 class="text-center">Design Gallery</h1>
             </div>
             <div class="main_paragraph text-center">
-                <p style="font-size:1.6rem;font-weight:500;">10,000+ Customizable Designs</p>
-                <p style="font-size:1.6rem;font-weight:500; text-transform:uppercase;">Have Your Own Idea? Request It <a href="{{ route('productScreen') }}">Here</a>.</p>
+                <p style="font-weight: 500;">10,000+ Customizable Designs</p>
+                <p style="font-weight: 500;">Have Your Own Idea? Request It <a style="color: #5f8fa5" href="{{ route('productScreen') }}">Here</a>.</p>
             </div>
             {{-- <div class="input_search_field">
                 <div class="form-group">    
@@ -60,10 +60,10 @@
                             <div id="navPillsId" style="height: 100%; overflow-y:auto">
                             <ul class="nav nav-pills my-tabs_btns" style="width:100%;height: 100%;display:block;" id="pills-tab" role="tablist">
                             <li class="nav-item active" role="presentation" style="width: 50%">
-                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" style="text-transform: uppercase;">Popular</a>
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" style="text-transform: capitalize;font-size:1.5rem;font-weight:500;color:#898989;">Popular</a>
                             </li>
                             <li class="nav-item" role="presentation" style="width: 50%">
-                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="text-transform: uppercase;">Recent</a>
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="text-transform: capitalize;font-size:1.5rem;font-weight:500;color:#898989;">Recent</a>
                             </li>
                             </ul>
                             </div>
@@ -85,7 +85,7 @@
                              <div data-v-e6af0ca4="" role="tab" id="primary-event-heading" href="#primary-event-collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="primary-event-collapse" class="card-header collapsed" >
                                  <a data-v-e6af0ca4="" class="card-title text-sm">Primary Event</a>
                                 </div>
-                                 <div data-v-e6af0ca4="" id="primary-event-collapse" role="tabpanel" aria-labelledby="primary-event-heading" class="collapse " 
+                                 <div data-v-e6af0ca4="" id="primary-event-collapse" role="tabpanel" aria-labelledby="primary-event-heading" class="collapse show" 
                                  >
                                  <div style="height: 150px; overflow-y:auto; 
                                  border-top: none;">
@@ -109,7 +109,7 @@
                                     <div data-v-e6af0ca4="" role="tab" id="event-heading" href="#event-collapse" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="event-collapse" class="card-header collapsed">
                                         <a data-v-e6af0ca4="" class="card-title text-sm">Event</a>
                                     </div>
-                                        <div data-v-e6af0ca4="" id="event-collapse" role="tabpanel" aria-labelledby="event-heading" class="collapse" style="">
+                                        <div data-v-e6af0ca4="" id="event-collapse" role="tabpanel" aria-labelledby="event-heading" class="collapse show" style="">
                                             <div style="height: 150px; overflow-y:auto;
                                             border-top: none;">
                                         <div data-v-e6af0ca4="" class="card-body border-bottom pl-5">
@@ -182,7 +182,7 @@
                                                         <div class="overlay">
                                                             <h2 id="productOverlayButtonHeading">{{$design->name}}</h2>
                                                             <p id="productOverlayButton" style="margin-top:30% ;">
-                                                                <a class="btn my-btn" style="padding: 1rem" >Customize On a Product</a>
+                                                                <a class="btn my-btn" style="padding: 1rem; text-transform:uppercase;" >Customise Product</a>
                                                             </p>
                                                         </div>
                                                 </div>

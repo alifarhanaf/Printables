@@ -11,23 +11,22 @@
               <h1 class="wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">the most advanced greek apparel company, ever.</h1>
             </div>
             <div class="main_paragraph wow animate__animated animate__bounceInLeft" data-wow-delay="0.2s">
-              <p>Get a free, professional design your chapter will <br/> love back within 24 hours</p>
+              <p>Get a free, professional design your chapter will love back within 24 hours</p>
             </div>
+            
             <div class="main__buttons wow animate__animated animate__flipInX" data-wow-delay="0.2s">
-              <div class="first_btn_section "  id="indexBtn2">
-                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
+              <div class="first_btn_section "  id="indexBtn2" style="width: 45%">
+                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase  w-100">
                   <i class="fa fa-shopping-bag fa-sm" style="color: black"></i>&nbsp View Design</a>
-                <p class="para_btn">Start with one of ours.Everything<br/> 
-                  is 100% customizable</p>
+                <p  class="para_btn w-100" style="text-align: left">Start with One of Our Customized Designs!</p>
               </div>
               <div class="text_rough">
                 <span>OR</span>
               </div>
-              <div class="second_btn_section " id="indexBtn1">
-                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase">
+              <div class="second_btn_section " id="indexBtn1" style="width: 45%">
+                <a href="{{ route('designScreen') }}" class="btn my-btn text-uppercase w-100 ">
                   <i class="fa fa-pencil" style="color: black"></i> &nbsp Create Design</a>
-                <p class="para_btn">Have our desingers bring<br/>
-                  your idea to life</p>
+                <p class="para_btn w-100" style="text-align: left">Let our Designers Bring your Idea to Life!</p>
               </div>
             </div>
           </div>

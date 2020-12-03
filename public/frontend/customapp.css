@@ -423,7 +423,7 @@ img#designID
     width: 16px;
     height: 16px;
     background: #f8f9fa;
-    border: 1px solid black;
+    border: 1px solid #898989;
     position: absolute;
     top: 50%;
     /* left: 50%; */
@@ -437,7 +437,7 @@ img#designID
     content: '';
     width: 8px;
     height: 8px;
-    background: blue;
+    background: #84a0bf;
     position: absolute;
     top: 50%;
     left: 8px;
@@ -445,12 +445,12 @@ img#designID
     border-radius: 50%;
 }
 .sideBarSearch a{
-    color: #84a0bf;
+    color: #5f8fa5;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     background-color: transparent;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 500;
 } 
 
 .sideBarSearch #primary-event-collapse .collapse .active {
@@ -462,8 +462,10 @@ width: 1.2rem;
 height: 1.2rem;
 }
 .sideBarSearch .custom-control-label{
-    text-transform: uppercase !important;
-    font-weight: 600;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #898989;
 }
 .allLocations {
     padding-left: 10px;
@@ -874,7 +876,24 @@ h1 {
     background: #77a6ba  !important;
     color: #f1e9b8 !important;
     
-/* padding:0px !important; */
+
+}
+#productOverlayButton a.btn:hover{
+    /* padding-bottom: 0.5px !important; */
+    /* background-color: #928f8f; */
+    background: #77a6ba  !important;
+    color: #f1e9b8 !important;
+    
+
+}
+#productOverlayButton a.btn{
+    transition: 1s;
+    /* padding-bottom: 0.5px !important; */
+    /* background-color: #928f8f; */
+    background: #77a6ba  !important;
+    color: #f1e9b8 !important;
+    
+
 }
 .header_beneath .main_all_produts_section .main_prduct {
     width: 100%;
