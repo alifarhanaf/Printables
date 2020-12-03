@@ -895,6 +895,14 @@ h1 {
     
 
 }
+#designOverLayProducts a.btn.my-btn{
+    transition: 1s;
+}
+
+#designOverLayProducts a.btn.my-btn:hover{
+    background: #77a6ba  !important;
+    color: #f1e9b8 !important;
+}
 .header_beneath .main_all_produts_section .main_prduct {
     width: 100%;
     display: inline-block;
@@ -942,4 +950,7 @@ body {
 .text-center.d-md-none button.btn.my-btn.w-100:hover {
     background: #77a6ba !important;
     color: #f1e9b8 !important;
+}
+.f-bold {
+    font-weight: bold !important;
 }

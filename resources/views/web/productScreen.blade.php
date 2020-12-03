@@ -111,7 +111,7 @@
             <div class="main_prduct px-auto mx-auto " >
                 @if(isset($design[0]))
                 <div>
-                <h1>Slected Design </h1>
+                <h1>Selected Design </h1>
                 <div class="image_selected">
                     <div class="image_spacing">
                         <img src="{{ $design[0]->images[0]->url }}"  alt="" class="img-fluid">
@@ -167,8 +167,10 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel" data-id="{{$product->id}}">{{ $product->name }}
-                                                {{ $product->categories[0]->name }}
+                                            <h5 class="modal-title f-bold" id="exampleModalLabel" data-id="{{$product->id}}">
+                                                {{-- {{ $product->name }}
+                                                {{ $product->categories[0]->name }} --}}
+                                                 University Of Flwrida - Fraternity Row
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -205,7 +207,7 @@
                                                                 <div class="color_one">
                                                                     {{-- Ye 3 divs missing
                                                                     hein uper wali --}}
-                                                                    <h6>Choose a Color:</h6>
+                                                                    <h6 class="f-bold">Choose a Color:</h6>
                                                                     <div class="All_Colors" style="padding-right: 20%;">
                                                                         @if(count($product->variants)>0)
                                                                         @foreach ($product->variants as $variant)
@@ -228,7 +230,7 @@
                                                                     </div>
                                                                     
                                                                     <div class="size_brand">
-                                                                        <h6>Size:</h6>
+                                                                        <h6 class="f-bold">Size:</h6>
                                                                         <ul class="size_all">
                                                                             @php
                                                                             $arr = (explode(",",$product->sizes));
@@ -241,12 +243,12 @@
                                                                         </ul>
                                                                     </div>
                                                                     <div class="Price">
-                                                                        <h6>Price</h6>
+                                                                        <h6 class="f-bold">Price</h6>
                                                                         <span>{{ $product->price }}$</span>
                                                                     </div>
                                                                     <div class="selected_image">
                                                                         @if(isset($design[0]))
-                                                                        <h6>Selected Design</h6>
+                                                                        <h6 class="f-bold">Selected Design</h6>
                                                                         <div class="slected_image">
                                                                             <div class="image_select_spacing">
                                                                                 
