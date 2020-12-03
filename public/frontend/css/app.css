@@ -1639,7 +1639,7 @@ footer ul li a {
   }
 
   #productOverlayButton a {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
     padding: 0.5rem !important;
   }
 

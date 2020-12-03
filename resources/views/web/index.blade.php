@@ -408,15 +408,15 @@
                 {{-- <img class="img-responsive" src="http://placehold.it/350x250" alt=""> --}}
                 <img src="{{ asset($image->url)}}" alt="" class="img-fluid">
                     <div class="overlay" id="overlayDesign">
-                        <h2>{{$design->name}}</h2>
-                <p >
+                        <h2 id="productOverlayButtonHeading">{{$design->name}}</h2>
+                <p  id="productOverlayButton">
                   <form action="{{ route('setCookie') }}" method="POST" >
                     <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
                     {{ csrf_field() }}
                     
-                    <button type="submit" style="border:none;background:transparent;">
-                      <a class="btn my-btn" style="color: whitesmoke;font-size:13px; "> 
-                         Customize Product</a>
+                    <button type="submit" style="border:none;background:transparent;" id="productOverlayButton">
+                      <a class="btn my-btn" style="color: whitesmoke;font-size:12px; "> 
+                         Customize On a Product</a>
                   </button>
             </form>
                   {{-- Clear --}}
