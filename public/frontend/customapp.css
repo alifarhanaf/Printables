@@ -72,14 +72,17 @@ text-transform: uppercase;
 }
 #sidebar i{
     color: #84a0ac; 
+    font-size: 1.5rem !important;
+    line-height: 2.2rem;
 }
 #sidebar p.large {
     margin-bottom: 0;
-    padding-inline-start: 5%;
+    color: #84a0ac;
+    
 }
 #sidebar p.smallp {
-    font-size: 1.1rem;
-    padding-inline-start: 5%;
+    font-size: 1.3rem;
+    
 }
 #tabs .card {
     border-radius: 10px !important;
@@ -130,13 +133,13 @@ text-transform: uppercase;
 }
 #HeadaingP p{
     color: #84a0ac;
-    font-size: 2.0rem;
-    
-    font-weight: 400 !important;
+    font-size: 2.8rem;
+    font-weight: bold;
 }
 #HeadaingZ p{
     color: #84a0ac;
-    font-size: 2.0rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     /* float: right; */
     /* text-align: right; */
     
@@ -179,7 +182,7 @@ text-transform: uppercase;
     margin-bottom: 0;
 }
 #tabss a{
-    font-size: 1.5rem; 
+    font-size: 1.4rem; 
     color: #84a0ac;
     font-weight: 500;
 }
@@ -191,11 +194,18 @@ text-transform: uppercase;
     border: 0px !important; 
      border-top-left-radius: 0px !important; 
      border-top-right-radius: 0px !important;
+     text-transform: uppercase;
+     padding: 1rem;
 }
 #tabss .nav-item.nav-link.active {
-    background: #84a0bf;
-    color: #fff !important;
+    color: #f1e9b8 !important;
+    background: #77a6ba !important;
     font-weight: bold !important;
+    border: 0.5rem !important;
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+    border-bottom-left-radius: 0.5rem !important;
+    border-bottom-right-radius: 0.5rem !important;
 }
 #tabss .card-header {
     background-color: white !important;
@@ -984,4 +994,12 @@ body {
     font-size: 1.5rem;
 
 
+}
+#cpbtn button.btn.my-btn{
+    transition: 1s;
+}
+#cpbtn button.btn.my-btn:hover{
+    
+    color: #f1e9b8 !important;
+    background: #77a6ba  !important;
 }

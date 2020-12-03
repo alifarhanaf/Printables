@@ -83,7 +83,8 @@
                     <th class="new" scope="row">
                         <form action="{{ route ('campaignScreen',$activeCampaign->id) }}" >
                             {{ csrf_field() }}
-                        <button style="width: 100px" type="submit" class="btn my-btn">{{$activeCampaign->id}}</button>   
+                        <button style="width: 100px" type="submit" class="btn my-btn">{{$activeCampaign->id}}</button>  
+                        &nbsp 
                         <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">
                           {{$activeCampaign->name}}
                         </a>
@@ -138,6 +139,7 @@
                       <form action="{{ route ('campaignScreen',$activeCampaign->id) }}" >
                         {{ csrf_field() }}
                         <button style="width:100px" type="submit" class="btn my-btn">{{$closedCampaign->id}}</button>
+                        &nbsp
                         <a href="{{ route ('campaignScreen',$activeCampaign->id) }}">   
                         {{$closedCampaign->name}}
                         </a>

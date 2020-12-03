@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row d-flex justify-content-between">
                        
-                            <h5 class="card-title">IMPORTANT DATES</h5>
+                            <h5 style="font-weight: bold;line-height: 2.2rem;" class="card-title">Important Dates</h5>
                         
                         <div style="padding-right: 5%">
                           <a href="#exampleModalCenter" data-toggle="modal" data-target="#exampleModalCenter">
@@ -21,9 +21,9 @@
                     </div>
                   
                   <ul class="list-group">
-                    <li class="list-group-item"><span style="font-weight: 500">RUSH DELIVERY:</span> {{ ($campaign->rush_delivery == 0) ? 'No' : 'Yes' }}</li>
-                    <li class="list-group-item"><span style="font-weight: 500">DELIVERY DUE DATE:</span>    {{$campaign->deliveryDate}}</li>
-                    <li class="list-group-item"><span style="font-weight: 500">FINALIZE DESIGN BY:</span>   N/A</li>
+                    <li class="list-group-item" style="padding: .25rem 0rem;"><span style="font-weight: 500;color:#84a0ac;">Rush Delivery:</span> {{ ($campaign->rush_delivery == 0) ? 'No' : 'Yes' }}</li>
+                    <li class="list-group-item" style="padding: .25rem 0rem;"><span style="font-weight: 500;color:#84a0ac;">Delivery Due Date:</span>    {{$campaign->deliveryDate}}</li>
+                    <li class="list-group-item"style="padding: .25rem 0rem;" ><span style="font-weight: 500;color:#84a0ac;">Finalize Design By:</span>   N/A</li>
                    
                   </ul>
                   
@@ -84,7 +84,7 @@
                 <div class="card-body">
                     <div class="row d-flex justify-content-between">
                         
-                            <h5 class="card-title">SHIPPING ADDRESS</h5>
+                            <h5 style="font-weight: bold;line-height: 2.2rem;" class="card-title">Shipping Address</h5>
                         
                             <div style="padding-right: 5%">
                               <a href="#exampleModalCenter1" data-toggle="modal" data-target="#exampleModalCenter1">
@@ -96,16 +96,16 @@
                  @foreach ($campaign->addresses as $address)
                      
                  
-                    <p class="large">NAME</p>
+                    <p class="large">Name</p>
                     <p class="smallp">{{$address->firstName. '  ' .$address->lastName }} </p>
-                    <p class="large">ADDRESS</p>
+                    <p class="large">Address</p>
                     <p class="smallp" style="margin-bottom: 0px !important">{{$address->addressLine1 }}</p>
                     <p class="smallp" >{{$address->addressLine2 }}</p>
-                    <p class="large">CITY</p>
+                    <p class="large">City</p>
                     <p class="smallp">{{$address->city }}</p>
-                    <p class="large">STATE</p>
+                    <p class="large">State</p>
                     <p class="smallp">{{$address->state }}</p>
-                    <p class="large">ZIP CODE</p>
+                    <p class="large">Zip Code</p>
                     <p class="smallp">{{$address->zipCode }}</p>
 
 
@@ -215,27 +215,27 @@
             <div class="card card-body ">
                 <div id="cardInsideCard">
                     <div class="row ">
-                        <div class="col-md-4 my-auto mid"> 
+                        <div class="col-md-4 my-auto mid" id="cpbtn"> 
                           
                               
                           
-                            <button type="button" class="btn btn-primary">{{$campaign->id}}</button>     
+                            <button style="width: 100px" type="button" class="btn my-btn">{{$campaign->id}}</button>     
                         </div>                            
                         <div class="col-md-4  my-auto mid"  id="HeadaingP">
                             <p>{{$campaign->name}}</p>
                         </div>
                         <div class="col-md-4  my-auto mid"  id="HeadaingZ">
-                            <p>STATUS: 
+                            <p>Status: 
                               @if($campaign->status==1)
-                              DESIGN AWAITING
+                              Design Awaiting
                               @elseif($campaign->status==2)
-                              DESIGN IN PROCESS
+                              Design In Process
                               @elseif($campaign->status==3)
-                              DESIGN APPROVED
+                              Design Approved
                               @elseif($campaign->status==4)
-                              IN PROCESS
+                              IN Process
                               @elseif($campaign->status==5)
-                              CAMPAIGN APPROVED
+                              Campaign Approved
                               @endif
                             </p>
                         </div>
@@ -261,7 +261,9 @@
                                     <div class="col-md-3">
                                     </div>
                                   </div> --}}
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
+                                 
+                                  <a class=" nav-item nav-link active " id="nav-home-tab" data-id="1" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Messages</a>
+                                
                                   <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Products</a>
                                   <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Description</a>
                                   @if(isset($campaign->suggested_design_groups))
@@ -323,10 +325,10 @@
                                                 <tbody>
                                                   @foreach ($campaign->products as $product)
                                                   <tr>
-                                                    <th class="new" scope="row">{{$product->name}}</th>
-                                                    <th class="new">{{$product->categories[0]->name}} </th>
-                                                    <th class="new">6030</th>
-                                                    <th class="new">{{$campaign->product_color}}</th>
+                                                    <th class="new t-font" scope="row">{{$product->name}}</th>
+                                                    <th class="new t-font">{{$product->categories[0]->name}} </th>
+                                                    <th class="new t-font">6030</th>
+                                                    <th class="new t-font">{{$campaign->product_color}}</th>
                                                   </tr>
                                                   @endforeach
                                                   
@@ -356,10 +358,10 @@
                                           </thead>
                                           <tbody>
                                             <tr>
-                                              <th class="new" scope="row">Juliana Wil</th>
-                                              <th class="new">{{$campaign->answers[0]->answers}}</th>
-                                              <th class="new">University of Houston</th>
-                                              <th class="new">Alpha Chi Omega</th>
+                                              <th class="new t-font" scope="row">Juliana Wil</th>
+                                              <th class="new t-font">{{$campaign->answers[0]->answers}}</th>
+                                              <th class="new t-font">University of Houston</th>
+                                              <th class="new t-font">Alpha Chi Omega</th>
                                             </tr>
                                             
                                           </tbody>
@@ -379,7 +381,7 @@
                                 @endif
                                 </div>
                               </div>
-                              <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->frontSuggestion}}</p>
+                              <p style="padding-left: 2%; padding-top:2%; color:#898989 !important;">{{$campaign->suggestions[0]->frontSuggestion}}</p>
                               @endif
                               @if($campaign->suggestions[0]->backSuggestion)
                               <div class="card card-body  ">
@@ -392,7 +394,7 @@
                                 @endif
                                 </div>
                               </div>
-                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->backSuggestion}}</p>
+                            <p style="padding-left: 2%; padding-top:2%; color:#898989 !important;">{{$campaign->suggestions[0]->backSuggestion}}</p>
                               @endif
                               @if($campaign->suggestions[0]->pocketSuggestion)
                               <div class="card card-body  ">
@@ -405,7 +407,7 @@
                                 @endif
                                 </div>
                               </div>
-                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->pocketSuggestion}}</p>
+                            <p style="padding-left: 2%; padding-top:2%; color:#898989 !important;">{{$campaign->suggestions[0]->pocketSuggestion}}</p>
                               @endif
                               @if($campaign->suggestions[0]->sleevesSuggestion)
                               <div class="card card-body  ">
@@ -418,7 +420,7 @@
                                 @endif
                                 </div>
                               </div>
-                            <p style="padding-left: 2%; padding-top:2%; color:#84a0bf !important;">{{$campaign->suggestions[0]->sleevesSuggestion}}</p>
+                            <p style="padding-left: 2%; padding-top:2%; color:#898989 !important;">{{$campaign->suggestions[0]->sleevesSuggestion}}</p>
                               @endif
                               @endif
                             <div class="card card-body  ">
@@ -428,7 +430,7 @@
                               </div>
                             </div>
                             @if($campaign->designs)
-                            <img src="{{$campaign->designs[0]->images[0]->url}}" alt="" class="img-fluid" style="width:20%;height:20%;">
+                            <img src="{{$campaign->designs[0]->images[0]->url}}" alt="" class="img-fluid" style="width:20%;height:20%;padding: 2rem;">
                   
                 
                             @endif
@@ -440,7 +442,7 @@
                             </div>
                             @if($campaign->images)
                             @foreach ($campaign->images as $image)
-                            <img src="{{$image->url}}" alt="" class="img-fluid" style="width:20%;height:20%;">    
+                            <img src="{{$image->url}}" alt="" class="img-fluid" style="width:20%;height:20%;padding: 2rem;">    
                             @endforeach
                             
 
