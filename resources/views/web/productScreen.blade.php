@@ -274,7 +274,7 @@
                                                                     <div class="my__buttons">
                                                                         <div class="row">
                                                                             <div class="col-6 text-center button_div" id="productClose">
-                                                                                <button
+                                                                                <button style="text-transform: uppercase"
                                                                                     class="btn w-100 my-btn close___button"
                                                                                     data-dismiss="modal">Close</button>
                                                                             </div>
