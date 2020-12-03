@@ -1648,6 +1648,11 @@ footer ul li a {
   #designOverLayProducts {
     margin-top: 25% !important;
   }
+
+  #sidebar h5.card-title {
+    -webkit-margin-start: 6%;
+            margin-inline-start: 6%;
+  }
 }
 
 @media (max-width: 660px) {
