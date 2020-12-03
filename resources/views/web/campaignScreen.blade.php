@@ -96,16 +96,16 @@
                  @foreach ($campaign->addresses as $address)
                      
                  
-                    <p class="large">Name</p>
+                    <p class="large" style="font-weight: 500;">Name</p>
                     <p class="smallp">{{$address->firstName. '  ' .$address->lastName }} </p>
-                    <p class="large">Address</p>
+                    <p class="large" style="font-weight: 500;">Address</p>
                     <p class="smallp" style="margin-bottom: 0px !important">{{$address->addressLine1 }}</p>
                     <p class="smallp" >{{$address->addressLine2 }}</p>
-                    <p class="large">City</p>
+                    <p class="large" style="font-weight: 500;">City</p>
                     <p class="smallp">{{$address->city }}</p>
-                    <p class="large">State</p>
+                    <p class="large" style="font-weight: 500;">State</p>
                     <p class="smallp">{{$address->state }}</p>
-                    <p class="large">Zip Code</p>
+                    <p class="large" style="font-weight: 500;">Zip Code</p>
                     <p class="smallp">{{$address->zipCode }}</p>
 
 

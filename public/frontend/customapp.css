@@ -60,7 +60,7 @@ text-transform: uppercase;
 }
 #sidebar h5.card-title {
     color: #84a0ac !important;
-    margin-inline-start: 8% !important;
+    margin-inline-start: 8% ;
     font-size: 1.5rem !important;
 }
 #sidebar .card {
