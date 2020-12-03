@@ -237,7 +237,7 @@
                   <li>Instant Quotes</li>
                   <li>Real Time Order Update</li>
                   <li>Collaborate Directly With Designers</li>
-                  <li>5000+ Designs That can be customizeed</li>
+                  <li>5000+ Designs Can be customized</li>
                   <li>Text updated</li>
                 </ul>
               </div>

@@ -655,7 +655,7 @@ footer ul li a{
     padding-top: 1rem;
     padding-bottom: 1rem;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 1.5rem;
 }
 #learnMore a.btn.my-btn:hover {
     background: #77a6ba !important;
@@ -753,12 +753,10 @@ footer h1{
 }
 h1 {
     font-weight: bold !important;
+    margin-bottom: 20px;
 }
 
-.second__second_index .main_paragraph p {
-    
-    font-weight: 500;
-}
+
 
 
 /* Start */
@@ -849,15 +847,9 @@ h1 {
     width: 25% !important;
 } */
 
-.chose_underText .heading_under h2.themeColor {
-    margin-bottom: 20px;
-}
-.chose_underText .heading_under h2{
-    margin-bottom: 20px !important;
-}
-.all_designs_main .container .main_heading h1{
-    margin-bottom: 20px !important;
-}
+
+
+
 #overlayDesign a.btn{
     /* padding-bottom: 0.5px !important; */
     /* border: 1px solid whitesmoke; */
@@ -927,3 +919,5 @@ body {
 #orgMain label.custom-control-label{
     padding-left: 0.8rem;
 }
+
+

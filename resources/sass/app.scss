@@ -38,7 +38,7 @@ button{
 }
 
 @mixin headingTwo {
-    font-size: 3rem;
+    font-size: 2.8rem;
 }
 @mixin smallSpacing {
     padding: 4rem 0rem;
@@ -55,13 +55,17 @@ h1
 h2
 {
     @include headingTwo;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #5f8fa5;
 }
 
 p,li
 {
-    @include paragraph_heading;
-    color: #707e79;
+   
+    color: #898989;
     line-height: 2.2rem;
+    font-size: 1.5rem;
 }
 
 ul

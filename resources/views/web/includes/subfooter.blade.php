@@ -2,7 +2,7 @@
     <div class="container">
         <div class="main__footer_site text-center">
           <h1 class="text-white"> Start your daily design today </h1>
-          <div class="main_footer_style">
+          <div class="main_footer_style" style="margin-top: 3rem;">
             <div class="btttn my-4">
               <a href="#" class="btn my-btn">Join Our House</a>
             </div>

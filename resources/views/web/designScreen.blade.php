@@ -200,6 +200,15 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <div id="modalContent{{$design->id}}">
+                                                        <div id="loader">
+                                                            <div class="container">
+                                                                <div class="circle circle-1"></div>
+                                                                <div class="circle circle-2"></div>
+                                                                <div class="circle circle-3"></div>
+                                                                <div class="circle circle-4"></div>
+                                                                <div class="circle circle-5"></div>
+                                                              </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -299,6 +308,7 @@ $(document).ready(function(){
                             url: 'smallBigImages/'+id,
                             type: 'get',
                             success: function(data){
+                                $('#loader').hide();
                                 
                                 for(var j=0 , k =response.designs.length; j < k; j++ ){
 

@@ -76,8 +76,9 @@
         margin-bottom: 2.5rem;
         p
         {
-            @include paragraph_heading;
-            color:#515e67;
+            font-size: 1.5rem;
+            color:#898989;
+            font-weight: 500;
             
         }
     }
