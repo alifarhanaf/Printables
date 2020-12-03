@@ -229,7 +229,7 @@
                         
                                 {{-- <input type="hidden" id="designID" name="designID" value=""> --}}
                                 <button type="submit" style="border:none;">
-                            <a  class="btn my-btn w-100">
+                            <a style="text-transform: uppercase" class="btn my-btn w-100">
                                  
                                     Next
                                 {{ csrf_field() }}

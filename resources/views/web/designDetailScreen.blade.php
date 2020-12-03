@@ -178,7 +178,7 @@
                             </div>
                             <div class="next__btn" id="designDetailNext">
                                 <button type="submit">
-                                    <a type="submit" class="btn my-btn">Next</a>
+                                    <a type="submit" class="text-transform:uppercase;" class="btn my-btn">Next</a>
                                 </button>
 
                             </div>

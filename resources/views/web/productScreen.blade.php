@@ -290,7 +290,7 @@
                                                                                 
                                                                             <button type="submit" id="productNext" class="productNext{{$product->id}}" data-id="{{$product->id}}"
                                                                                     style="border-radius: 0.5rem;">
-                                                                                    <a
+                                                                                    <a style="text-transform: uppercase"
                                                                                         class="btn w-100 my-btn next_buttonn">Next</a>
 
                                                                                 </button>
