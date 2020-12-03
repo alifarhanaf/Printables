@@ -45,7 +45,7 @@
                                             <span data-v-e6af0ca4="" class="text-sm font-weight-semi-bold color-slate d-none">Filter By:</span>
                                              <span data-v-e6af0ca4="" class="clear-filter badge badge-light p-2 mr-1 align-middle my-1 text-white float-right d-none">
                     Clear Filters
-                </span> </div> <div data-v-e6af0ca4="" class="mt-2"><div data-v-e6af0ca4="" class="text-center d-md-none"><button data-v-e6af0ca4="" type="button" data-toggle="collapse" data-target="#accordion-container" aria-expanded="false" aria-controls="accordion-container" class="btn btn-sm btn-block btn-dark mb-2">
+                </span> </div> <div data-v-e6af0ca4="" class="mt-2"><div data-v-e6af0ca4="" class="text-center d-md-none"><button data-v-e6af0ca4="" type="button" data-toggle="collapse" data-target="#accordion-container" aria-expanded="false" aria-controls="accordion-container" class="btn my-btn w-100">
                         FILTER BY
                     </button>
                 </div>

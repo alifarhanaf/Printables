@@ -878,15 +878,15 @@ h1 {
     
 
 }
-#productOverlayButton a.btn:hover{
+#productOverlayButton a.btn.my-btn:hover{
     /* padding-bottom: 0.5px !important; */
     /* background-color: #928f8f; */
-    background: #77a6ba  !important;
-    color: #f1e9b8 !important;
+    background: #f1e9b8  !important;
+    color: #77a6ba !important;
     
 
 }
-#productOverlayButton a.btn{
+#productOverlayButton a.btn.my-btn{
     transition: 1s;
     /* padding-bottom: 0.5px !important; */
     /* background-color: #928f8f; */
@@ -939,4 +939,7 @@ body {
     padding-left: 0.8rem;
 }
 
-
+.text-center.d-md-none button.btn.my-btn.w-100:hover {
+    background: #77a6ba !important;
+    color: #f1e9b8 !important;
+}

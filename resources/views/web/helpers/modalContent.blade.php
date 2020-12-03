@@ -59,7 +59,7 @@
                     <input type="hidden" id="designID" name="designID" value="{{$design->id}}">
                     {{ csrf_field() }}
                     <button type="submit" style="border:none;">
-                <a  class="btn my-btn w-100">Customize on a product</a>
+                <a  class="btn my-btn w-100 " style="text-transform: uppercase">Customize Product</a>
             </button>
             </form>
             </div>
