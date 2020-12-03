@@ -1650,8 +1650,12 @@ footer ul li a {
   }
 
   #sidebar h5.card-title {
-    -webkit-margin-start: 6%;
-            margin-inline-start: 6%;
+    -webkit-margin-start: 6% !important;
+            margin-inline-start: 6% !important;
+  }
+
+  #cpbtn {
+    margin-bottom: 5px !important;
   }
 }
 
