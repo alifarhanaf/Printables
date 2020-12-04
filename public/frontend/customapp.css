@@ -1009,6 +1009,7 @@ body {
 }
 #footer-button button.btn.my-btn{
     transition: 1s;
+    margin-right: 15px;
 
 }
 #footer-button button.btn.my-btn:hover{
