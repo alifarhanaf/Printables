@@ -555,6 +555,23 @@
 
     
    $(document).ready(function(){
+
+    receiver_id = $('#nav-home-tab').data('id');
+            // console.log(receiver_id);
+            $.ajax({
+                type: "get",
+                url: "/messages/" + receiver_id, // need to create this route
+                success: function (data) {
+                  // console.log(data);
+                    $('#messages').html(data);
+                    scrollToBottomFunc();
+                }
+            });
+
+
+
+
+
     var campaign_id = $('#messages').data('id');
     
     // console.log(campaign_id);
