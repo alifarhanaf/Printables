@@ -162,3 +162,6 @@ Route::post('/submit_join_our_house','MiscController@submitJoinOurHouse')->name(
 Route::get('getProductImage/{id}','MiscController@getProductImage');
 Route::get('/setSession','MiscController@setSession');
 Route::get('/allproductscount','MiscController@allproductscount');
+Route::get('/kk', function () {
+    return view('auth.passwords.emailbk');
+});

@@ -37,23 +37,26 @@
           <form method="POST" action="{{ route('login') }}" class="sign-in-form">
         
                 @csrf
-            <h2 class="title">Sign in</h2>
+            <h2 class="title">Sign In</h2>
+            {{-- <img style="margin-bottom:20px" src="{{ asset('storage/images/lg.png')}}">  --}}
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"  />
+              <input id="email" type="email" placeholder="Enter Your Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"  />
               
                                
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"  />
+              <input id="password" type="password" placeholder="Enter Your Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"  />
               
                                 
             </div>
+            <a id="logInBtn" style="color:#898989;text-decoration:none;"  href="{{ route('password.request') }}">Forgot Password?</a>
+            {{-- <p >Forget Password?</p> --}}
        
             
             {{-- <span>Hello This is span to test</span> --}}
-            <input type="submit" value="Login" class="btn solid" />
+            <input type="submit" value="Login" class="btn my-btn solid" />
             {{-- <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -101,7 +104,7 @@
              
               
                                
-            <input type="submit" id="signup" class="btn" value="Sign up" />
+            <input type="submit" id="signup" class="btn my-btn solid" value="Sign up" />
             {{-- <p class="social-text">Or Sign up with social platforms</p> --}}
             {{-- <div class="social-media">
               <a href="#" class="social-icon">
