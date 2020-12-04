@@ -9,10 +9,11 @@
     ></script>
     {{-- <link rel="stylesheet" href="style.css" /> --}}
     <link href="{{ asset('frontend/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
-    @if ($errors->any() )
+    {{-- @if ($errors->any() )
     <div  class="alert alert-danger" style="border: 2px solid #77a6ba; padding : 5px;">
         <ul>
             @foreach ($errors->all() as $error)
@@ -24,7 +25,7 @@
             @endforeach
         </ul>
     </div>
-    @endif
+    @endif --}}
  
  
     <div class="container">
@@ -157,6 +158,18 @@
     {{-- <script src="app.js"></script> --}}
     <script src="{{ asset('frontend/style.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            @if(Session::has('status'))
+            // console.log('Hi');
+                toastr.success("{{ Session::get('status') }}") ;
+            @endif
+            @if(Session::has('errors'))
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}") ;
+            @endforeach
+            @endif
+        </script>
     <script>
       $(document).ready(function(){
 
@@ -168,8 +181,7 @@
         
         var cookie = document.cookie;
         console.log(cookie);
-        const cookieValue = document.cookie
-        .split('; ')
+        const cookieValue = document.cookie.split('; ')
         .find(row => row.startsWith('error'))
         .split('=')[1];
         // alert(cookieValue);
