@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-7 col-md-6 col-12 d-block">
         <div class="my__all_images">
-            <div class="all__small_images">
+            <div class="all__small_images" style="padding-right: 5px">
                 <div class="slickInni">
                     @foreach($design->images as $image)
                     <div class="images_all">
@@ -25,7 +25,7 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="all__big_images">
+            <div class="all__big_images" style="padding-left: 5px">
                 <div class="slick_big_inni">
                     @foreach($design->images as $image)
                     <div class="main_bigImages">
