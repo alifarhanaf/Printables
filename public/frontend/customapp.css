@@ -1003,3 +1003,16 @@ body {
     color: #f1e9b8 !important;
     background: #77a6ba  !important;
 }
+
+.modalLabels{
+    color: #84a0ac;
+}
+#footer-button button.btn.my-btn{
+    transition: 1s;
+
+}
+#footer-button button.btn.my-btn:hover{
+    background: #77a6ba;
+    color: #f1e9b8 !important ;
+
+}

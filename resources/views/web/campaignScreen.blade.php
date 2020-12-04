@@ -42,11 +42,12 @@
       @csrf
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title my-auto" id="exampleModalLabel" style="text-transform: uppercase;
+        <h5 class="modal-title my-auto" id="exampleModalLabel" style="text-transform: capitalize;
+        color: #84a0ac;
         text-align: center;
         font-size: 1.5rem;
         padding-left: 2%;
-        font-weight: 700;">Edit Delivery Date</h5>
+        font-weight: bold;">Edit Delivery Date</h5>
         <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -54,7 +55,7 @@
       <div class="modal-body" id="modalBodyContent">
         {{-- Body Start --}}
           <div class="form-group col-md-12">
-            <label for="addcheck">Rush Delivery</label>
+            <label class="modalLabels" for="addcheck">Rush Delivery</label>
             <select id="addcheck" name="rushDelivery" class="form-control form_class">
               <option value="1" >Yes</option>
               <option value="0">No</option>
@@ -63,7 +64,7 @@
           </div>
          
             <div class="form-group col-md-12">
-              <label >Change Delivery Date</label>
+              <label class="modalLabels" >Change Delivery Date</label>
               <input type="date" class="form-control form_class" value="{{$campaign->deliveryDate}}" name="deliveryDate" id="dd">
                 
             </div>
@@ -72,7 +73,7 @@
       </div>
       <div class="modal-footer" id="footer-button">
         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn my-btn">Save changes</button>
       </div>
     </div>
     </form>
@@ -121,11 +122,12 @@
       @csrf
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title my-auto" id="exampleModalLabel" style="text-transform: uppercase;
+        <h5 class="modal-title my-auto" id="exampleModalLabel" style="text-transform: capitalize;
+        color: #84a0ac;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 2rem;
         padding-left: 2%;
-        font-weight: 700;">Edit Shipping Address</h5>
+        font-weight: bold;">Edit Shipping Address</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -142,42 +144,42 @@
           </div> --}}
          
           <div class="form-group col-md-12" >
-            <label >Address Name</label>
+            <label class="modalLabels" >Address Name</label>
             <input type="text" class="form-control form_class" name="addressName"  value="{{$address->addressName }}" >
               
           </div>
             <div class="form-group col-md-12">
-              <label >First Name</label>
+              <label class="modalLabels" >First Name</label>
               <input type="text" class="form-control form_class" name="firstName"  value="{{$address->firstName }}" >
                 
             </div>
             <div class="form-group col-md-12">
-              <label >Last Name</label>
+              <label class="modalLabels" >Last Name</label>
               <input type="text" class="form-control form_class" name="lastName"  value="{{$address->lastName }}" >
                 
             </div>
             <div class="form-group col-md-12">
-              <label >Address Line 1</label>
+              <label class="modalLabels" >Address Line 1</label>
               <input type="text" class="form-control form_class" name="addressLine1" value="{{$address->addressLine1 }}"  >
                 
             </div>
             <div class="form-group col-md-12">
-              <label >Address Line 2</label>
+              <label class="modalLabels" >Address Line 2</label>
               <input type="text" class="form-control form_class" name="addressLine2"  value="{{$address->addressLine2 }}" >
                 
             </div>
             <div class="form-group col-md-12">
-              <label >City</label>
+              <label class="modalLabels" >City</label>
               <input type="text" class="form-control form_class" name="city"  value="{{$address->city }}" >
                 
             </div>
             <div class="form-group col-md-12">
-              <label >State</label>
+              <label class="modalLabels" >State</label>
               <input type="text" class="form-control form_class" name="state"  value="{{$address->state }}" >
                 
             </div>
             <div class="form-group col-md-12">
-              <label >Zip Code</label>
+              <label class="modalLabels" >Zip Code</label>
               <input type="text" class="form-control form_class" name="zipCode"  value="{{$address->zipCode }}" >
                 
             </div>
@@ -186,7 +188,7 @@
       </div>
       <div class="modal-footer" id="footer-button">
         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn my-btn">Save changes</button>
       </div>
     </div>
     </form>
